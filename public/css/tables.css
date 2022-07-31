@@ -1,0 +1,172 @@
+@import url('./estilosGenerales.css');
+
+/* body{
+	margin:0;
+	padding:20px;
+	font-family: sans-serif;
+} */
+
+/* *{
+	box-sizing: border-box;
+} */
+
+.tContainer{
+    display: flex;
+	justify-content: space-between;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tTituloContainer {
+	display: flex;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 10px;
+	background-color: var(--verdeagua);
+	color: var(--blanco);
+}
+
+.tTituloContainer h2{
+	padding: 10px; 
+}
+
+.tFiltros{
+	width: 100%;
+	display: flex;
+	text-align: center;
+	margin-bottom: 10px;
+	justify-content: space-around;
+	flex-wrap: wrap;
+
+}
+
+.BtnNuevaCita{
+	display: flex;	
+}
+
+
+.table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table thead{
+	background-color: var(--azul2);
+	color: var(--blanco);
+}
+
+
+.table td,.table th{
+  padding:12px 15px;
+  border:1px solid #ddd;
+  text-align: center;
+  font-size:16px;
+}
+
+.table th{
+	background-color: var(--azul2);
+	color:#ffffff;
+}
+
+.table tbody tr:nth-child(even){
+	background-color: #f5f5f5;
+}
+
+label {
+    color: var(--gris);
+}
+
+
+.select {
+    width: 250px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+}
+
+.fechas {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--blanco);
+    transition: all .5s ease;
+    font-size: large;
+}
+
+.btnV,
+.btnEd,
+.btnCa {
+	color: var(--turquesa);
+	margin: 21px;
+	transform: scale(1.5);
+	transition: all 200ms linear;
+}
+.btnV:hover,
+.btnEd:hover,
+.btnCa:hover {
+	transform: scale(1.6);
+}
+.btnEd {
+	color: var(--naranja);
+}
+.btnCa {
+	color: var(--Rojo2);
+}
+
+.AGENDADA {
+	background-color: var(--naranja);
+}
+.CANCELADA {
+	background-color: var(--Rojo2);
+}
+.FINALIZADA {
+	background-color: var(--verdeagua);
+}
+
+
+
+
+/*responsive*/
+
+@media(max-width: 500px){
+	.table thead{
+		display: none;
+	}
+
+	.table, .table tbody, .table tr, .table td{
+		display: block;
+		width: 100%;
+	}
+	.table tr{
+		margin-bottom:15px;
+	}
+	.table td{
+		text-align: right;
+		padding-left: 50%;
+		text-align: right;
+		position: relative;
+	}
+	.table td::before{
+		content: attr(data-label);
+		position: absolute;
+		left:0;
+		width: 50%;
+		padding-left:15px;
+		font-size:15px;
+		font-weight: bold;
+		text-align: left;
+	}
+}
+
+
+
+
+
+

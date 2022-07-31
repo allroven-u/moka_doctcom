@@ -7,11 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moka Veterinaria Citas</title>
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/VerCitas.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <!-- <link rel="stylesheet" href="css/VerCitas.css"> -->
     <link rel="stylesheet" href="css/CrearCita.css">
     <link rel="stylesheet" href="css/CrearReservacion.css">
     <link rel="stylesheet" href="css/estilosGenerales.css">
-    <link rel="stylesheet" href="css/CancelarCita.css">
+    <!-- <link rel="stylesheet" href="css/CancelarCita.css"> -->
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
@@ -123,7 +124,7 @@
 
         <div class="home">
 
-            <div class="tblCaja">
+            <!-- <div class="tblCaja">
                 <div class="tituloCaja">
                     <h2>Mis citas</h2>
                 </div>
@@ -142,8 +143,47 @@
                     <tbody id="tbdCitas">
                     </tbody>
                 </table>
-            </div>
+            </div> -->
 
+            <div class="tContainer">
+                <div class="tTituloContainer">
+                    <h2>Lista de citas</h2>
+                    <button class="BtnNuevaCita"> Crear Nueva Cita </button>
+                </div>
+
+                <div class="tFiltros">
+                    
+                    <div for="txtNumCita">Num. Cita
+                        <input id="txtNumCita" type="text">
+                    </div>
+                    <div for="DateFecha1">Fecha Inicio
+                        <input id="DateFecha1" type="date" class="fechas">
+                    </div>
+                    <div for="DateFecha2">Fecha Fin
+                        <input id="DateFecha2" type="date" class="fechas">
+                    </div>
+                    <div for="txtNumCita">Mascota
+                        <input id="txtNumCita" type="text">
+                    </div>
+                    <div for="txtNumCita">Veterinario
+                        <input id="txtNumCita" type="text">
+                    </div>
+                    <div for="txtNumCita">Estado
+                        <input id="txtNumCita" type="checkbox">
+                    </div>
+
+                    <div><input type="button" value="Filtrar"></div>
+
+                </div>
+
+                <table id="tCitas" class="table">
+                    <thead id="tTheadCitas" >
+
+                    </thead>
+                    <tbody id="tBodyCitas", class="tbody">
+
+                    </tbody>
+                </table>
 
             <!-------------CREAR CITA--------->
             <div class="cuerpoCita hidden">
@@ -242,17 +282,18 @@
             <div class="overlay hidden"></div>
         </div>
     </div>
-    <script src="./js/services/MascotasService.js"></script>
+    <!-- <script src="./js/services/MascotasService.js"></script> -->
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/CitaService.js"></script>
     <!-- <script src="./js/services/demoService.js"></script> -->
     <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/controllers/CrearCitaController.js"></script>
-    <script src="./js/controllers/CrearReservaController.js"></script>
-    <script src="./js/controllers/ControllerVerCitas.js"></script>
+    <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
+    <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
+    <script src="./js/controllers/CitasController.js"></script>
+    <!-- <script src="./js/controllers/ControllerVerCitas.js"></script> -->
     <script src="./js/controllers/appController.js"></script>
-    <script src="./js/controllers/CancelarControler.js"></script>
+    <!-- <script src="./js/controllers/CancelarControler.js"></script> -->
 </body>
 
 </html>
