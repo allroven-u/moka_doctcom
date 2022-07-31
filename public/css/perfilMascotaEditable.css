@@ -3,7 +3,6 @@
 .border-radius{
     border-radius: 5px;
 }
-
 .shadow{
     box-shadow: -5px 5px 15px var(--gris);
 }
@@ -32,28 +31,39 @@
 }
 
 .box-img {
-    background-image: url('../assets/img/default-user-image.jpg');
+    background-image: url('../assets/img/default-user-mascota.jpg');
     background-size: cover;
     width: 90%;
     height: 50%;
     margin-bottom: 30px;
 }
 
+.annadir,.remover{
+    transition: all 300ms ease;
+}
+
+.annadir{
+    background-color: var(--verde) !important;
+}
+
+.annadir:hover{
+    background-color: var(--esmeralda) !important;
+}
+.remover{
+    background-color: var(--Rojo2) !important;
+}
+.remover:hover{
+    background-color: var(--Roj1) !important;
+}
+
 .usuario {
     background-color: var(--navApp);
     width: 90%;
     color: var(--blanco);
-    font-size: 22px;
+    font-size: 18px;
     text-align: center;
     padding: 10px;
-}
-
-.resetearcontrasena {
-    width: 90%;
-    color: var(--azul2);
-    font-size: 22px;
-    text-align: center;
-    padding: 10px;
+    margin: 5px;
 }
 
 .informacion-personal {
@@ -67,15 +77,10 @@
     justify-content: center;
 }
 
-.infopersonalbtn{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
 .titulo-info-usario {
     background-color: var(--verdeagua);
     width: 100%;
-    height: 8%;
+    height: 12%;
     color: var(--blanco);
     text-align: center;
     padding: 10px;
@@ -86,14 +91,14 @@
     width: 40%;
     height: 10%;
     margin: 0px 12px;
-    color: black;
+    color: var(--blanco);
 }
 
 .box-info-usuario p{
     color: #333;
     font-family: Roboto500;
     text-align: center;
-    padding-top: 10px;
+    padding-top: 13px;
 }
 
 .calificacion {
@@ -101,17 +106,16 @@
     background-color: transparent;
 }
 
-.historial-de-pagos,
 .historial-mascota {
+    margin-top: 20px;
     overflow: hidden;
     background-color: var(--silver);
-    width: 45%;
+    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
 }
 
-.titulo-historial,
 .titulo-lastCitas {
     background-color: var(--verdeagua);
     width: 100%;
@@ -131,16 +135,6 @@ td{
    text-align: center;
 }
 
-.detalle {
-    width: 70%;
-    height: 35px;
-    background-color: var(--blanco);
-}
-
-.precio {
-    background-color: var(--headerApp);
-    color: var(--blanco);
-}
 
 .h-citas {
     height: 35px;
@@ -148,7 +142,6 @@ td{
 }
 
 .btn-editar{
-    width: 100%;
     height: 50px;
     margin-bottom: 10px;
     padding: 5px 20px;
@@ -207,12 +200,35 @@ td{
     border-radius: 5px;
     padding: 5px;
 }
-
 .thTitle th{
     padding: 5px;
 }
-.direccion{
+.observaciones{
     width: 82%;
+}
+
+.observaciones p{
+    text-align: left;
+    margin-left: 10px;
+}
+
+button{
+    border: none;
+}
+
+.AGENDADA {
+    background-color: var(--naranja);
+}
+.CANCELADA {
+    background-color: var(--Rojo2);
+}
+.FINALIZADA {
+    background-color: var(--verdeagua);
+}
+
+.editarperfilfila1{
+    display: flex;
+    flex-direction: row;
 }
 
 .perfilContainer{
@@ -225,34 +241,4 @@ td{
     display: flex;
     flex-direction: column;
     width: 70%;
-}
-
-.cajas {
-    margin-top: 10px;
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: none;
-    border-left: 10px solid var(--silver);
-    transition: all .5s ease;
-    color: grey;
-}
-
-.cajas:hover,
-.cajas:focus {
-    border-left: 10px solid var(--verdeagua);
-}
-
-.linkModal{
-    color: var(--gris);
-    font-size: 17px;
-    padding: 5px;
-    margin-left: 10px;
-    cursor:pointer;
-
-}
-.linkModal:hover{
-    color: var(--turquesa);
-    
 }
