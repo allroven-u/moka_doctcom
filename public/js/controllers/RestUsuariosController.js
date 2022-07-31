@@ -4,7 +4,7 @@
 let userLogin = 206790172;
 let rolUser = 1;
 
-
+const loginModal = document.querySelector('.lModal-form');
 
 if (rolUser == 2){//ocultar opciones Cliente
 

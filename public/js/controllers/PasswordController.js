@@ -5,8 +5,8 @@ let inputContrasenha1C = document.getElementById('txtContrasenha-c');
 let inputContrasenha2C = document.getElementById('txtContrasenha2-c');
 
 
-let btnCambiarC = document.getElementById('btnPassword');
-btnCambiarC.addEventListener('click',CrearReserva);
+// let btnCambiarC = document.getElementById('btnPassword');
+// btnCambiarC.addEventListener('click',CrearReserva);
 
 function CambiarContrasenha(){
    if(ValidarCambioContrsenha() == true) {
