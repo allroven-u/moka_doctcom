@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/CrearCita.css">
     <link rel="stylesheet" href="css/CrearReservacion.css">
     <link rel="stylesheet" href="css/RegistroMascota.css">
-    <link rel="stylesheet" href="css/MiPerfilEditable.css">
+    <link rel="stylesheet" href="css/perfilMascotaEditable.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
@@ -18,12 +18,12 @@
     <header>
         <div class="menuBars">
             <a href="App.html" class="menuBars logo">
-                <img src="../public/assets/img/moka-logo.png" alt="">
+                <img src="../public/assets/img/moka-logo.png" alt="foto de usuario" width="200">
             </a>
             <div class="profile">
                 <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
                 <a class="logout" href="./landing.html">
-                    <i class="fa-solid fa-right-to-bracket fa-2x "></i>
+                    <i class="fa-solid fa-right-to-bracket fa-size"></i>
                 </a>
             </div>
         </div>
@@ -59,6 +59,7 @@
                                 Mis Mascotas</a>
                         </li>
                     </ul>
+
                 </li>
 
                 <li class="list__item list__item--click">
@@ -116,36 +117,23 @@
                     </div>
                     <ul class="list__show">
                         <li class="list__inside">
-                            
-                            <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de citas</a>
+                            <a href="reporteCitas.html" class="nav__link nav__link--inside">Listado de citas</a>
                         </li>
 
                         <li class="list__inside">
-                            <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de reservaciones</a>
+                            <a href="reporteReservacion.html" class="nav__link nav__link--inside">Listado de reservaciones</a>
                         </li>
 
                         <li class="list__inside">
-                            <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                                 Calificaciones</a>
+                            <a href="reporteVeterinario.html" class="nav__link nav__link--inside">Calificaciones</a>
                         </li>
 
                         <li class="list__inside">
-                            <a href="reporteGanancia.html" class="nav__link nav__link--inside">
-                             
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>
-                                Ganacias</a>
+                            <a href="reporteGanancia.html" class="nav__link nav__link--inside">Ganacias</a>
                         </li>
 
                         <li class="list__inside">
-                            <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Usuarios Registrados</a>
+                            <a href="reporteUsuario.html" class="nav__link nav__link--inside">Usuarios Registrados</a>
                         </li>
 
                     </ul>
@@ -154,100 +142,67 @@
             </ul>
         </nav>
 
+
         <div class="home">
+
             <div class="perfil-main">
                 <div class="perfil-contenido">
                     <div class="box-usuario_img">
                         <div class="box-img border-radius shadow">
                             <i class="fa-solid fa-pen-to-square edit-icon"></i>
                         </div>
-                        <div class="usuario border-radius">
-                            <p id="TxtUsuarioLogueado2"></p>
+                        <div class="usuario border-radius name-mascota">
+
+                            <p id="TxtMascotaM">Pinto</p>
                         </div>
-                        <div class="resetearcontrasena border-radius">
-                            <button class="btn-editar border-radius" type="button" onclick="location.href='./MiPerfil.html'">Resetear Contraseña</button>
-                        </div>
+                        <button class="usuario border-radius annadir" id="annadir-mascota">Añadir mascota</button>
+                        <button class="usuario border-radius remover" id="remover-mascota">Remover mascota</button>
 
                     </div>
                     <div class="informacion-personal border-radius shadow">
                         <div class="titulo-info-usario">
-                            <h2>Editar Informacion Personal</h2>
-                        </div>
-                        <div class="perfilContainer">
-                            <label for="txtNombreP">Nombre: </label>
-                            <input class="cajas" id="txtNombreP" type="text" placeholder="Nombre: " maxlength="30">
+                            <h2>Informacion General</h2>
                         </div>
 
                         <div class="perfilContainer">
-                            <label for="txtApellidosP">Apellidos: </label>
-                            <input class="cajas" id="txtApellidosP" type="text" placeholder="Apellidos: " maxlength="30">
+                            <label for="txtDuennoM">Dueño: </label>
+                            <input class="cajas" id="txtDuennoM" type="text" placeholder="Dueño: " maxlength="30">
                         </div>
 
                         <div class="perfilContainer">
-                            <label for="txtCedulaP">Identificación: </label>
-                            <input class="cajas" id="txtCedulaP" type="text" placeholder="Identificación: " maxlength="30">
-                        </div>
-
-                        <div class="perfilContainer">
-                            <label for="txtEmailP">Email: </label>
-                            <input class="cajas" id="txtEmailP" type="text" placeholder="Email: " maxlength="30">
+                            <label for="txtEdadM">Edad: </label>
+                            <input class="cajas" id="txtEdadM" type="text" placeholder="Edad: " maxlength="30">
                         </div>
 
                         <div class="perfilContainer2">
-                            <label for="txtUsuarioP">Nombre de Usuario: </label>
-                            <input class="cajas" id="txtUsuarioP" type="text" placeholder="Nombre de Usuario: " maxlength="30">
+                            <label for="txtDireccionM">Direccion: </label>
+                            <input class="cajas" id="txtDireccionM" type="text" placeholder="Direccion: " maxlength="30">
+                            <label for="txtObservacionesM">Observaciones: </label>
+                            <textarea class="cajas" id="txtObservacionesM" placeholder="Observaciones: " cols="30" rows="10"></textarea>
+                            <button class="btn-editar border-radius" id="btn-guardarMiPerfil2" type="button">Guardar Informacion de Mascota</button>
+                            <button class="btn-cancelar border-radius" type="button" onclick="location.href='./perfilMascota.html'" >CANCELAR</button>
                         </div>
-                        
-                        <div class="perfilContainer2">
-                            <label for="txtDireccionP">Direccion: </label>
-                            <textarea class="cajas" id="txtDireccionP" placeholder="Direccion: " cols="30" rows="10"></textarea>
-                            <button type="button" id="btn-guardarMiPerfil2" class="btn-editar border-radius">Guardar Informacion Personal</button>
-                            <button class="btn-cancelar border-radius" type="button" onclick="location.href='./MiPerfil.html'">CANCELAR</button>
-                        </div>
+
 
                     </div>
                 </div>
             </div>
         </div>
-        <div class="overlay hidden"></div>
     </div>
 
-    <!--Cambiar Contraseña-->
-    <form class="cModal-form hidden" id="formCambioC">
-        <div class="InicioSesion-titleContainer">
-            <h1 class="cTitulo">Cambiar contraseña</h1>
-            <a href="./MiPerfilEditable.html" ><i class="fa-solid fa-circle-xmark cerrarModalInicio"></i></a>
-        </div>
-        
-        <div>
-            <label for="txtUsuario-c">Nombre de Usuario / email:</label>
-            <input class="cCajas" id="txtUsuario-c" type="text" placeholder="Nombre de Usuario / email" required maxlength="15">
-        </div>
-        
-        <div >
-            <label for="txtContrasenha-l">Contraseña:</label>
-            <input class="cCajas" id="txtContrasenha-c" type="password" placeholder="Contraseña" required maxlength="12">
-        </div>
-
-        <div >
-            <label for="txtContrasenha-l">Confirmar Contraseña:</label>
-            <input class="cCajas" id="txtContrasenha2-c" type="password" placeholder="Confirmar contraseña" required maxlength="12">
-        </div>
-
-        <div class="lBtns">
-            <input type="button" class="lBtnCancelar" id="cancelPassword" value="Cancelar">
-            <input type="button" id="btnPassword " class="cBtn" value="Cambiar Contraseña">
-        </div>
-        
-    </form>
-
+    <div class="overlay hidden"></div>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/controllers/ControllerRegistroMascota.js"></script>  
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/MascotasService.js"></script>
+    
     <script src="./js/controllers/CrearCitaController.js"></script>
     <script src="./js/controllers/CrearReservaController.js"></script>
-    <script src="./js/controllers/ControllerMiPerfilEditable.js"></script>
+    <script src="./js/controllers/ControllerPerfilMascotaEditable.js"></script>
     <script src="./js/controllers/appController.js"></script>
+
     <script src="./js/services/SessionService.js"></script>
 </body>
+
 </html>
