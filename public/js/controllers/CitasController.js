@@ -71,7 +71,7 @@ function ImprimirListaCitas(){
         let EstadoCitaif = document.querySelectorAll('.Estado');
         if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
         let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','#')
+        BotonV.setAttribute('href','/public/VerCitaDatos.html')
         let iconoV =document.createElement('i');
         iconoV.classList.add("fa-solid")
         iconoV.classList.add("fa-eye")
@@ -81,7 +81,7 @@ function ImprimirListaCitas(){
         
 
         let Boton = document.createElement('a');
-        Boton.setAttribute('href','#')
+        Boton.setAttribute('href','/public/CompletarCita.html')
         let icono =document.createElement('i');
         icono.classList.add("fa-solid")
         icono.classList.add("fa-pen-to-square")
@@ -98,7 +98,7 @@ function ImprimirListaCitas(){
         BotonC.appendChild(iconoC);
         celdaBoton.appendChild(BotonC);
         }else{
-            let BotonV = document.createElement('a');
+        let BotonV = document.createElement('a');
         BotonV.setAttribute('href','#')
         let iconoV =document.createElement('i');
         iconoV.classList.add("fa-solid")
