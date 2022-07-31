@@ -1,0 +1,82 @@
+@import url(./estilosGenerales.css);
+*{
+  font-family: Roboto300;
+}
+.form-cancelar-cita{
+  width: 450px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 25px;
+  background-color: var(--blanco);
+  border-radius: 5px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 11;
+}
+/*--TITULO-----------------------*/
+.titulo{
+  text-align: center;
+  color: var(--verdeagua);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--silver);
+
+}
+/*--CAJAS-DE-DATOS---------------*/
+.cajas{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+}
+
+label{
+    color: var(--gris);
+}
+
+.cajas:hover, .cajas:focus{
+  border-left: 10px solid var(--verdeagua);
+}
+.Cita{
+    display: flex;
+    flex-direction: column;
+}
+
+.cajasOut{
+background-color: white;
+width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  border-left: 10px solid var(--silver);
+  transition: all .5s ease;
+}
+.cajasOut:hover, .cajasOut:focus{
+    border-left: 10px solid var(--verdeagua);
+  }
+
+.btn-cancelar-cita{
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: var(--blanco);
+    cursor: pointer;
+    transition: all .5s ease;
+    
+  }
+  .btn-cancelar-cita:hover{
+    background-color: var(--Roj1);
+  }
+ 
+  .error{
+    border: 2px solid var(--Rojo2);
+  }

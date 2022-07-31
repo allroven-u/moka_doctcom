@@ -1,0 +1,295 @@
+@import url(./estilosGenerales.css);
+* {
+    font-family: Roboto300;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.infoTd {
+    border: 1px solid var(--silver);
+    border-radius: 5px;
+    text-align: center;
+    padding: 3px;
+    background-color: var(--blanco);
+    cursor: default;
+    width: 180px;
+    margin: 5px;
+}
+
+.tblTitle {
+    background-color: var(--azul2);
+    color: var(--blanco);
+    cursor: default;
+    border-radius: 5px;
+    width: 180px;
+    margin: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.btn {
+    text-align: center;
+    background-color: var(--blanco);
+    color: var(--turquesa);
+    border: 2px solid var(--turquesa);
+    padding: 2px 5px;
+    border-radius: 5px;
+    top: 2px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    width: 180px;
+}
+
+.btn:hover {
+    color: var(--blanco);
+}
+
+.btn::after {
+    content: '';
+    background-color: var(--turquesa);
+    position: absolute;
+    z-index: -1;
+    padding: 5px 8px;
+    display: block;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -150%;
+    bottom: -150%;
+    transform: scale(0, 0);
+    transition: all 0.4s ease;
+}
+
+.btn:hover::after {
+    transition: all 0.6s ease-out;
+    transform: scale(1, 1);
+}
+
+.thTitle {
+    border: 1px solid var(--azul2);
+    background-color: var(--azul2);
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+    width: fit-content;
+}
+
+#tbdCitas {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#tbdReservas {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tblCitas {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.tituloCaja {
+    text-align: center;
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 100%;
+    margin-top: 2px;
+}
+
+.tblCaja {
+    display: flex;
+    width: 100%;
+    margin: 0 100px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Pendiente {
+    background-color: var(--naranja);
+}
+
+.Cancelada {
+    background-color: var(--Rojo2);
+}
+
+.Finalizada {
+    background-color: var(--verdeagua);
+}
+
+.h2 {
+    text-align: center;
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 80%;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.DescripcionParrafo {
+    text-align: center;
+    background-color: var(--silver);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 80%;
+    padding: 20px;
+    margin-top: 0%;
+}
+
+.h3 {
+    text-align: center;
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 300px;
+    margin-right: 60%;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btns {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--azul2);
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--naranja);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnEnviar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--turquesa);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btn:hover {
+    background-color: var(--naranja);
+}
+
+.btnEnviar:hover {
+    background-color: var(--turquesa);
+}
+
+.btnCancelar {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnCancelar:hover {
+    background-color: var(--Roj1);
+}
+
+.stars {
+    height: 100px;
+    width: 500px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.star {
+    color: rgb(22, 17, 17);
+}
+
+.color {
+    color: rgb(192, 192, 11);
+}
+
+.cajas {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--blanco);
+    transition: all .5s ease;
+}
+
+.cajas:hover,
+.cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
+
+.PagoFacura {
+    text-align: center;
+    background-color: var(--silver);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 80%;
+    padding: 20px;
+    margin-top: 0%;
+}
+.error {
+    border: 2px solid var(--Rojo2);
+}
+.cajasOut{
+    background-color: white;
+    width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      border-left: 10px solid var(--blanco);
+      transition: all .5s ease;
+    }
+    .cajasOut:hover, .cajasOut:focus{
+        border-left: 10px solid var(--verdeagua);
+      }

@@ -1,0 +1,75 @@
+
+*{
+  font-family: Roboto300;
+}
+
+.form{
+  width: 450px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 50px;
+  background-color:var(--silver);
+  border-radius: 10px;
+  
+}
+/*--TITULO-----------------------*/
+.titulo{
+  text-align: center;
+  color: var(--verdeagua);
+  margin-bottom: 20px;
+  border-bottom: 2px solid black;
+}
+/*--CAJAS-DE-DATOS---------------*/
+.cajas{
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: none;
+  border-left: 10px solid var(--blanco);
+  transition: all .5s ease;
+  
+  
+}
+.cajas:hover, .cajas:focus{
+  border-left: 10px solid var(--verdeagua);
+}
+.btns{
+  display: flex;
+  justify-content: space-around;
+}
+.btn{
+    width: 100%;
+    padding: 10px;
+    border-radius: 25px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--verdeagua);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+  }
+  .btn:hover{
+    background-color: var(--turquesa) ;
+  }
+  .btnCancelar{
+    width: 100%;
+    padding: 5px;
+    border-radius: 25px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--Rojo2) ;
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+  }
+  .btnCancelar:hover{
+    background-color: var(--Roj1);
+  }
+  .error{
+    border: 2px solid var(--Roj1);
+  }

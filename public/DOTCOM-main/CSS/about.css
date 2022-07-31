@@ -1,0 +1,42 @@
+.body {
+    margin: 120px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.mision,
+.vision,
+.values {
+    border: 2px solid silver;
+    display: flex;
+    flex-direction: column;
+    margin: 150px 25px 25px;
+    width: 30%;
+    min-width: 350px;
+    min-height: 450px;
+    border-radius: 10px;
+    display: block;
+    transition: 500ms all;
+}
+
+.name {
+    color: goldenrod;
+    font-size: 32px;
+}
+
+p {
+    font-size: 22px;
+    margin: 20px;
+}
+
+.name-value {
+    font-weight: bolder;
+}
+
+.mision:hover,
+.vision:hover,
+.values:hover {
+    transform: scale(1.05, 1.05);
+}

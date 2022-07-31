@@ -1,0 +1,5 @@
+
+function getHistorialPagos(pUsuarioid){
+
+return [];
+}

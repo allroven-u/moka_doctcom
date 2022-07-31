@@ -1,0 +1,74 @@
+@import url(./estilosGenerales.css);
+
+*{
+    font-family: Roboto300;  
+}
+
+.h2 {
+    text-align: center;
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 80%;
+    padding: 20px;
+    margin-top: 20px;
+}
+.tblCaja {
+    display: flex;
+    width: 80%;
+    margin: 0 100px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tblTitulo{
+    background-color: var(--azul2);
+    color: var(--blanco);
+    cursor: default;
+    border-radius: 5px;
+    width: 180px;
+    margin: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+.tblContenido{
+    background-color: var(--silver);
+    color: var(--azul2);
+    cursor: default;
+    border-radius: 5px;
+    width: 180px;
+    margin: 5px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.tblReporte{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.tituloCaja {
+    text-align: center;
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 100%;
+    margin-top: 2px;
+}
+.thTitle{
+    
+    border: 1px solid var(--azul2);
+    background-color: var(--azul2);
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+    width: fit-content;
+ 
+}

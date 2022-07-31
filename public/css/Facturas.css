@@ -1,0 +1,141 @@
+/*--ACOMODANDO-MARGENES-PADDING--*/
+@import url(./estilosGenerales.css);
+
+* {
+    margin: 0px auto;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header {
+    margin-top: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.cajaPrincipal {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--headerApp);
+
+}
+
+.btnPagar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--naranja);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnEnviar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--turquesa);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnPagar:hover {
+    background-color: var(--naranja);
+}
+
+.btnEnviar:hover {
+    background-color: var(--turquesa);
+}
+
+.btnCancelar {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnCancelar:hover {
+    background-color: var(--Roj1);
+}
+
+.tableTotales {}
+
+
+.tblinfo1 {
+
+    width: 50%;
+}
+
+.tblinfo2 {
+
+    width: 50%;
+}
+
+.tblCliente {
+
+    width: 50%;
+}
+
+.cajaPrincipal {}
+
+.infoTh1 {
+    border: 1px solid;
+}
+
+.infoTd2 {
+    border: 1px solid;
+}
+
+.infoTotales {}
+
+td {
+    border: 1px solid;
+    padding: 4px;
+}
+
+tbody {}
+
+.tableTotales {
+    width: 50%;
+}
+
+.tblMontosTotales {
+ 
+    width: 100%;
+}

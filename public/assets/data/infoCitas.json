@@ -1,0 +1,60 @@
+[
+    {
+        "NumeroCita":1,
+        "IdentificacionUsurio": "113000436",
+        "NombreMascota": "Pinto",
+        "FechaHora":"01/08/2022 14:00",
+        "Calificacion":5,
+        "Estado":"AGENDADA",
+        "IdentificacionVeterinario":"112020438",
+        "ObservacionesVeterinario":"",
+        "ObservacionesCita":""
+    },
+
+    {
+        "NumeroCita":2,
+        "IdentificacionUsurio": "113000436",
+        "NombreMascota": "Negro",
+        "FechaHora":"02/08/2022 14:00",
+        "Calificacion":5,
+        "Estado":"AGENDADA",
+        "IdentificacionVeterinario":"112020438",
+        "ObservacionesVeterinario":"",
+        "ObservacionesCita":""
+    },
+
+    {
+        "NumeroCita":3,
+        "IdentificacionUsurio": "206690526",
+        "NombreMascota": "Pancho",
+        "FechaHora":"03/08/2022 14:00",
+        "Calificacion":4,
+        "Estado":"AGENDADA",
+        "IdentificacionVeterinario":"156358620",
+        "ObservacionesVeterinario":"",
+        "ObservacionesCita":""
+    },
+    {
+        "NumeroCita":4,
+        "IdentificacionUsurio": "113000436",
+        "NombreMascota": "Negro",
+        "FechaHora":"28/07/2022 14:00",
+        "Calificacion":4,
+        "Estado":"FINALIZADA",
+        "IdentificacionVeterinario":"112020438",
+        "ObservacionesVeterinario":"Tiene Pulgas y garrapatas",
+        "ObservacionesCita":"Le pica mucho"
+    },
+
+    {
+        "NumeroCita":5,
+        "IdentificacionUsurio": "206690526",
+        "NombreMascota": "Pancho",
+        "FechaHora":"29/07/2022 14:00",
+        "Calificacion":5,
+        "Estado":"CANCELADA",
+        "IdentificacionVeterinario":"156358620",
+        "ObservacionesVeterinario":"",
+        "ObservacionesCita":"Usuario indica que no puede asistir"
+    }
+]

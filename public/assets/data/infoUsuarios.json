@@ -1,0 +1,161 @@
+[
+
+    {
+        "Nombre": "Admin",
+        "Apellido1": "General",
+        "Apellido2": "Moka",
+        "Identificacion": "113040446",
+        "Email": "admin@ucenfotec.ac.cr",
+        "Usuario": "admin",
+        "Contrasenia": "Admin123",
+        "Contrasenia2": "Admin123",
+        "Direccion": "San Jose",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":1
+    },
+    {
+        "Nombre": "Allan",
+        "Apellido1": "Rodriguez",
+        "Apellido2": "Venegas",
+        "Identificacion": "113000436",
+        "Email": "arodriguezv@ucenfotec.ac.cr",
+        "Usuario": "allroven",
+        "Contrasenia": "Patito123",
+        "Contrasenia2": "Patito123",
+        "Direccion": "Curridabat, San Jose",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":2
+    },
+
+    {
+        "Nombre": "Denis",
+        "Apellido1": "Salazar",
+        "Apellido2": "Chacon",
+        "Identificacion": "206790172",
+        "Email": "dsalazarc@ucenfotec.ac.cr",
+        "Usuario": "dns2690",
+        "Contrasenia": "Baloo2022",
+        "Contrasenia2": "Baloo2022",
+        "Direccion": "San Carlos, Alajuela",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":2
+    },
+
+    {
+        "Nombre": "Laura",
+        "Apellido1": "Murillo",
+        "Apellido2": "Salazar",
+        "Identificacion": "206690526",
+        "Email": "lmurillos@ucenfotec.ac.cr",
+        "Usuario": "lms0690",
+        "Contrasenia": "Gala9001",
+        "Contrasenia2": "Gala9001",
+        "Direccion": "Sarchi, Alajuela",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":2
+    },
+
+    {
+        "Nombre": "Jose",
+        "Apellido1": "Jimenez",
+        "Apellido2": "Abarca",
+        "Identificacion": "118360868",
+        "Email": "jjimeneza03@ucenfotec.ac.cr",
+        "Usuario": "jjimenez",
+        "Contrasenia": "admin1234",
+        "Contrasenia2": "admin1234",
+        "Direccion": "Escazu, San Jose",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":2
+    },
+    {
+        "Nombre": "Luis Daniel",
+        "Apellido1": "Roman",
+        "Apellido2": "Jara",
+        "Identificacion": "115270194",
+        "Email": "lromanj@ucenfotec.ac.cr",
+        "Usuario": "lromanj",
+        "Contrasenia": "Atun123",
+        "Contrasenia2": "Atun123",
+        "Direccion": "Santo Domingo, Heredia",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":2
+    },
+    {
+        "Nombre": "Luis Felipe",
+        "Apellido1": "Solano",
+        "Apellido2": "Marin",
+        "Identificacion": "116100306",
+        "Email": "lsolanoma@ucenfotec.ac.cr",
+        "Usuario": "lsolano",
+        "Contrasenia": "Atun123",
+        "Contrasenia2": "Atun123",
+        "Direccion": "Guapiles, Limon",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":2
+    },
+
+    {
+        "Nombre": "Juan Pablo",
+        "Apellido1": "Campos",
+        "Apellido2": "Marin",
+        "Identificacion": "112020438",
+        "Email": "docto1@ucenfotec.ac.cr",
+        "Usuario": "doctor1",
+        "Contrasenia": "doctor123",
+        "Contrasenia2": "doctor123",
+        "Direccion": "San Jose",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":3
+    },
+
+    {
+        "Nombre": "Pablo Jose",
+        "Apellido1": "Rodriguez",
+        "Apellido2": "Silva",
+        "Identificacion": "156358620",
+        "Email": "docto2@ucenfotec.ac.cr",
+        "Usuario": "doctor2",
+        "Contrasenia": "doctor123",
+        "Contrasenia2": "doctor123",
+        "Direccion": "San Jose",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":3
+    },
+
+    {
+        "Nombre": "Beatriz",
+        "Apellido1": "Pinzon",
+        "Apellido2": "Solano",
+        "Identificacion": "682780682",
+        "Email": "bpinzon@ucenfotec.ac.cr",
+        "Usuario": "bpinzon",
+        "Contrasenia": "BetiBeti",
+        "Contrasenia2": "BetiBeti",
+        "Direccion": "San Jose",
+        "CalificacionPromedio": 3,
+        "Foto":"",
+        "Activo":1,
+        "Rol":4
+    }
+
+
+]

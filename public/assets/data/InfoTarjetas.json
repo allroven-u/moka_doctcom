@@ -1,0 +1,12 @@
+[
+    {
+        "Identificacion": "113000436",
+        "NumeroTarjeta":"1111222233334444",
+        "MesVenceTarjeta": "03",
+        "AnioVenceTarjeta": "03",
+        "Principal":"S",
+        "Tipo":"Visa",
+        "Activo": 1
+    
+    }
+]

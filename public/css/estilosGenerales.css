@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+
+}
+
+@font-face {
+    font-family: Roboto100;
+    src: url('../assets/fonts/Roboto/Roboto-Thin.ttf');
+}
+
+@font-face {
+    font-family: Roboto300;
+    src: url('../assets/fonts/Roboto/Roboto-Light.ttf');
+    font-weight: 300;
+}
+@font-face {
+    font-family: Roboto400;
+    src: url('../assets/fonts/Roboto/Roboto-Regular.ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: Roboto500;
+    src: url('../assets/fonts/Roboto/Roboto-Medium.ttf');
+    font-weight: 500;
+}
+
+body{
+    font-family: Roboto300;
+    font-size: 17px;
+    width: 100%;
+    text-decoration: none;
+}
+
+a{
+    color: var(--blanco);
+    text-decoration: none;
+}
+
+:root{
+    --turquesa: #1abc9c;
+    --verdeagua: #16a085;
+    --esmeralda: #2ecc71;
+    --verde: #27ae60;
+    --celeste: #3498db;
+    --celestemar: #2980b9;
+    --morado:#9b59b6;
+    --violeta: #8e44ad;
+    --azul1: #34495e;
+    --azul2: #2c3e50;
+    --amarillo: #f1c40f;
+    --naranja: #f39c12;
+    --naranja2: #e67e22;
+    --naranja3: #d35400;
+    --Roj1: #e74c3c;
+    --Rojo2: #c0392b;
+    --blanco: #ecf0f1;
+    --silver: #bdc3c7;
+    --concreto: #95a5a6;
+    --gris: #7f8c8d;
+    --headerApp: #2f3640;
+    --navApp: #353b48;
+
+
+}
+
+
+

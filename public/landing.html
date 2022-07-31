@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VETERINARIA MOKA</title>
+    <link rel="stylesheet" href="css/estilosGenerales.css">
+    <link rel="stylesheet" href="css/estilosLanding.css">
+    <link rel="stylesheet" href="css/mediaqueryLanding.css">
+
+</head>
+
+<body>
+
+    <!--REGISTRARSE-->
+    <form class="rModal-form hidden">
+
+        <div class="InicioSesion-titleContainer">
+            <h1 class="rTitulo">Registrarse</h1>
+            <a href="./landing.html" ><i class="fa-solid fa-circle-xmark cerrarModalInicio"></i></a>
+        </div>
+        <label for="txtNombre">Nombre:</label>
+        <input class="rCajas" id="txtNombre" type="text" placeholder="Nombre*" maxlength="30">
+
+        <label for="txtApellido">Apellidos:</label>
+        <input class="rCajas" id="txtApellido" type="text" placeholder="Apellidos*" maxlength="30">
+
+        <label for="numCedula">Identificación:</label>
+        <input class="rCajas" id="numCedula" type="text" placeholder="Identificación*" maxlength="15">
+
+        <label for="txtEmail">Email:</label>
+        <input class="rCajas" id="txtEmail" type="email" placeholder="Email*" maxlength="30">
+
+        <label for="txtUsuario">Nombre de Usuario:</label>
+        <input class="rCajas" id="txtUsuario" type="text" placeholder="Nombre de Usuario*" maxlength="15">
+
+        <label for="txtContrasenha">Contraseña:</label>
+        <input class="rCajas" id="txtContrasenha" type="password" placeholder="Contraseña*" maxlength="12">
+
+        <label for="txtContrasenha2">Confirmar contraseña:</label>
+        <input class="rCajas" id="txtContrasenha2" type="password" placeholder="Confirmar contraseña*" maxlength="12">
+
+        <label for="txtDireccion">Dirección exacta:</label>
+        <textarea class="rCajas" name="Dirección" id="txtDireccion" cols="30" rows="2"
+            placeholder="Dirección exacta*"></textarea>
+
+        <input type="button" class="rBtn" id="btnRegistrar" value="REGISTRAR">
+        <p class="rBtnCancelar">Tiene una cuenta?</p>
+    </form>
+
+    <!--INICIAR SESION-->
+    <form class="lModal-form hidden">
+        <div class="InicioSesion-titleContainer">
+            <h1 class="lTitulo">Iniciar Sesión</h1>
+            <a href="./landing.html" ><i class="fa-solid fa-circle-xmark cerrarModalInicio"></i></a>
+        </div>
+        
+        <div>
+            <label for="txtUsuario-l">Nombre de Usuario / email:</label>
+            <input class="lCajas" id="txtUsuario-l" type="text" placeholder="Nombre de Usuario / email" required maxlength="15">
+        </div>
+        
+        <div >
+            <label for="txtContrasenha-l">Contraseña:</label>
+            <input class="lCajas" id="txtContrasenha-l" type="password" placeholder="Contraseña" required maxlength="12">
+        </div>
+
+        <div class="footContainer">
+            
+            <p class="redirect-modal-Password linkModal ">Olvidó su contraseña?</p>
+            <p class="redirect-modal-sigin linkModal" >No tiene una Cuenta?</p>
+        </div>
+        
+        <div class="lBtns">
+            <input type="button" class="lBtnCancelar" value="Cancelar" >
+            <input type="button" id="btnIniciar" class="lBtn" value="Iniciar Sesion">
+        </div>
+        
+    </form>
+
+        <!--Cambiar Contraseña-->
+        <form class="cModal-form hidden" id="formCambioC">
+            <div class="InicioSesion-titleContainer">
+                <h1 class="cTitulo">Cambiar contraseña</h1>
+                <a href="./landing.html" ><i class="fa-solid fa-circle-xmark cerrarModalInicio"></i></a>
+            </div>
+            
+            <div>
+                <label for="txtUsuario-c">Nombre de Usuario / email:</label>
+                <input class="cCajas" id="txtUsuario-c" type="text" placeholder="Nombre de Usuario / email" required maxlength="15">
+            </div>
+            
+            <div >
+                <label for="txtContrasenha-l">Contraseña:</label>
+                <input class="cCajas" id="txtContrasenha-c" type="password" placeholder="Contraseña" required maxlength="12">
+            </div>
+
+            <div >
+                <label for="txtContrasenha-l">Confirmar Contraseña:</label>
+                <input class="cCajas" id="txtContrasenha2-c" type="password" placeholder="Confirmar contraseña" required maxlength="12">
+            </div>
+
+            <div class="lBtns">
+                <input type="button" class="lBtnCancelar" id="cancelPassword" value="Cancelar">
+                <input type="button" id="btnPassword " class="cBtn" value="Cambiar Contraseña">
+            </div>
+            
+        </form>
+
+
+    <div id="top-page"></div>
+
+
+    <!--MENU PARA MOBILE INICIO-->
+    <nav id="nav-bar-left" class="hidden">
+        <div class="btn-leftNav2">
+            <span class="nav-line"></span>
+            <span class="nav-line"></span>
+            <span class="nav-line"></span>
+        </div>
+        <div class="content-left-nav">
+            <a href="">
+                <img id="logo-nav-left" src="./assets/img/moka-logo.png" alt="Logo Moka" width="150">
+            </a>
+            <div class="nav-left">
+                <a class="show-modal-login">INICIAR SESION</a>
+                <a class="show-modal-signin">REGISTRARSE</a>
+                <a href="#nosotros" id="about-redi">SOBRE NOSOTROS</a>
+                <a href="#contacto" id="contact-redi">CONTACTENOS</a>
+            </div>
+        </div>
+    </nav>
+    <!--MENU PARA MOBILE FIN-->
+
+    <!--MENU NOMARL INICIO-->
+    <nav id="nav-bar" class="">
+        <div class="main-nav-bar">
+            <div class="btn-leftNav">
+                <span class="nav-line"></span>
+                <span class="nav-line"></span>
+                <span class="nav-line"></span>
+            </div>
+            <a href="">
+                <img id="logo-nav" src="./assets/img/moka-logo-blanco.png" alt="Logo Moka" width="150">
+            </a>
+            <div class="nav-right">
+                <a class="show-modal-login">INICIAR SESIÓN</a>
+                <a class="show-modal-signin">REGISTRARSE</a>
+            </div>
+        </div>
+    </nav>
+    <!--MENU NORMAL FIN-->
+
+
+    <header>
+        <div id="header">
+            <div class="info-header">
+                <p><span>Moka</span> la mejor amiga de tu mascota</p>
+                <button class="button-header">
+                    <a href="#nosotros">Sobre nosotros</a> </button>
+                <button class="button-header">
+                    <a href="#contacto">Contactanos</a> </button>
+            </div>
+
+        </div>
+    </header>
+
+
+    <main>
+        <div id="main-content">
+            <div class="main-info1 main-general">
+                <div class="info">
+                    <div class="container-info">
+                        <h2>Nuestros <span>Servicios</span></h2>
+                        <p>En la veterinaria Moka encontraras los mejores servicios para tu mascota, contamos con todo
+                            lo necesario y ofrecemos el mejor servicio para que tu mascota este tranquila y segura. En
+                            Moka te ofrecemos dos increibles servicios, que son, medica veterinaria y hotel para
+                            mascotas.</p>
+                    </div>
+                    <div class="container-info">
+                        <div class="info-img"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main-info2 main-general">
+
+                <div class="info">
+                    <div class="title-servicios">
+                        <h2>Contamos con...</h2>
+                    </div>
+                    <div class="servicios">
+                        <div class="vacunacion img-ser">
+                            <div class="icon"><i class="fa-solid fa-syringe"></i></div>
+                        </div>
+                        <h3>VACUNACIÓNES</h3>
+                    </div>
+                    <div class="servicios">
+                        <div class="operaciones img-ser">
+                            <div class="icon"><i class="fa-solid fa-book-medical"></i></div>
+                        </div>
+                        <h3>OPERACIONES</h3>
+                    </div>
+                    <div class="servicios">
+                        <div class="dentista img-ser">
+                            <div class="icon"><i class="fa-solid fa-tooth"></i></div>
+                        </div>
+                        <h3>DENTISTA</h3>
+                    </div>
+                    <div class="servicios">
+                        <div class="radiologia img-ser">
+                            <div class="icon"><i class="fa-solid fa-x-ray"></i></div>
+                        </div>
+                        <h3>RADIOLOGIAS</h3>
+                    </div>
+                </div>
+
+            </div>
+            <div class="main-nosotros main-general" id="nosotros">
+                <div class="info content-center">
+                    <div class="title-team">
+                        <h2>Nuestro <span>Equipo</span></h2>
+                    </div>
+                    <div class="cards-teams">
+                        <div class="team-img1 pic-team">
+                            <div class="icon-especialidad"><i class="fa-solid fa-user-nurse"></i></div>
+                        </div>
+                        <div class="team-description">
+                            <h4>Citología, Cirugía</h4>
+                            <h3>Sofía Montes</h3>
+                            <p>Licenciada de la Universidad Nacional de Costa Rica en Medicina Veterinaria y Cirugía
+                                 actualmente se encuentra enteramente dedicada al diagnóstico citológico.</p>
+                        </div>
+                    </div>
+                    <div class="cards-teams">
+                        <div class="team-img2 pic-team">
+                            <div class="icon-especialidad"><i class="fa-solid fa-briefcase-medical"></i></div>
+                        </div>
+                        <div class="team-description">
+                            <h4>Medicina de emergencia</h4>
+                            <h3>Maria Jimenez</h3>
+                            <p>Licenciada de la Escuela de Medicina y Cirugía Veterinaria San Francisco de Asís,
+                                 se dedica en el campo de medicina de emergencias desde hace 10 años.</p>
+                                 
+                        </div>
+                    </div>
+                    <div class="cards-teams">
+                        <div class="team-img3 pic-team">
+                            <div class="icon-especialidad"><i class="fa-solid fa-stethoscope"></i></div>
+                        </div>
+                        <div class="team-description">
+                            <h4>Medicina diagnóstica</h4>
+                            <h3>Laura Murillo</h3>
+                            <p>Licenciada de la Universidad Nacional de Costa Rica en Medicina Veterinaria y Cirugía,
+                                dedicada actualmente al campo de diagnóstico.</p>
+                        </div>
+                    </div>
+                    <div class="cards-teams">
+                        <div class="team-img4 pic-team">
+                            <div class="icon-especialidad"><i class="fa-solid fa-user-doctor"></i></div>
+                        </div>
+                        <div class="team-description">
+                            <h4>Cirugía, Ortopedia</h4>
+                            <h3>Camila Calderon</h3>
+                            <p>Licenciada de la Escuela de Medicina y Cirugía Veterinaria San Francisco de Asís,
+                                cuenta con una metodología en el examen físico general por aparatos y sistemas e identificar, 
+                                aquellas alteraciones fisiopatológicas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-contacto main-general" id="contacto">
+                <div class="info content-center">
+                    <div class="title-contact">
+                        <div>
+                            <h2>Contactenos</h2>
+                        </div>
+                        <div class="social-contact">
+                            <span> <a href="https://www.facebook.com/profile.php?id=100084194042982" target="_blank"><i class="fa-brands fa-facebook-square"></i></a>
+                                Facebook&nbsp;&nbsp;</span>
+                            <span><a href="https://twitter.com/MokaVetrinaria" target="_blank"><i class="fa-brands fa-twitter-square"></i></a> 
+                                Twitter&nbsp;&nbsp;</span>
+                            <span> <i class="fa-solid fa-square-phone"></i>
+                                +506 2201-2543</span>
+                        </div>
+                    </div>
+                    <div class="form-contact">
+                        <form action="" id="formulario-contancto">
+                            <div class="box-form">
+                                <label for="">Nombre:</label>
+                                <input type="text" name="" id="cont-name">
+                            </div>
+                            <div class="box-form">
+                                <label for="">Correo Electronico:
+                                </label>
+                                <input type="text" name="" id="cont-mail">
+                            </div>
+                            <div class="box-form">
+                                <label for="">Numero de telefono:</label>
+                                <input type="text" name="" id="cont-phone">
+                            </div>
+                            <div class="box-form">
+                                <label for="">Descripcion:</label>
+                                <textarea id="cont-descrip"></textarea>
+                            </div>
+                            <div class="box-form">
+                                <button type="button" id="btn-contact" class="button">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="img-contact"></div>
+
+                </div>
+            </div>
+            <div class="main-maps main-general">
+                <div class="info info-maps">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6296.802981103994!2d-84.04117616864028!3d9.913520585145035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2scr!4v1658861476582!5m2!1sen!2scr"
+                        width="100%" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="horario-moka">
+                        <h3>HORARIOS MOKA</h3>
+                        <div class="horario">
+                            <p>Lunes - Domingo </p>
+                            <p>24h del día</p>
+                        </div>
+                        <h3>CONTACTO</h3>
+                        <div class="social-maps ">
+                            <span> <a href="https://www.facebook.com/profile.php?id=100084194042982" target="_blank"><i class="fa-brands fa-facebook-square facebook"></i></a>
+                                Facebook&nbsp;&nbsp;</span>
+                            <span> <a href="https://twitter.com/MokaVetrinaria" target="_blank"><i class="fa-brands fa-twitter-square twitter"></i></a>
+                                Twitter&nbsp;&nbsp;</span>
+                            <span> <i class="fa-solid fa-square-phone"></i>
+                                +506 2201-2543</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="overlay hidden"></div>
+
+    <footer>
+        <div id="footer">
+            <div class="footer-content">
+                <span> Moka <span>&#169;</span> 2022 all rights reserved by <a href="./DOTCOM-main/landig.html" target="_blank"><i style="text-decoration: underline;">DOTCOM</i></a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/controllers/ControllerRegistrarse.js"></script>
+    <script src="./js/services/SessionService.js"></script>
+    <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/controllers/PasswordController.js"></script>
+    <script src="./js/controllers/ControllerIniciarSesion.js"></script>
+    <script src="./js/controllers/controllerLanding.js"></script>
+</body>
+
+</html>

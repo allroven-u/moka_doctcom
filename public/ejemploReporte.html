@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moka Veterinaria Citas</title>
+    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="./CSS/VerCitas.css">
+    <link rel="stylesheet" href="./css/estilosGenerales.css">
+    <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
+</head>
+<body onload="ImprimirListaCitas();">
+    <header>
+        <div class="menuBars">
+            <a href="#" class="menuBars logo" >
+                <!-- <i class="fa-solid fa-shield-dog fa-2x"></i> -->
+                <img src="../public/assets/img/logo.png" alt="">
+            </a>
+            <a href="#" class="menuBars bars">
+                <i id="toggle" onclick="cerrar()" class="fa-solid fa-bars fa-xl "></i>
+            </a>
+        </div>
+
+        <div class="profile">
+            <a class="name" href="#"> Allan Rodriguez</a>
+        </div>
+
+
+    </header>
+    <div class="bodyContainer">
+    <nav class="nav">
+
+        <ul class="list">
+
+            <li class="list__item">
+                <div class="list__button">
+                    <i class="fa-solid fa-angle-right fa-2x list__img "></i>
+                    <a href="#" class="nav__link">Inicio</a>
+                    
+                </div>
+            </li>
+
+            <li class="list__item list__item--click">
+                <div class="list__button list__button--click">
+                    <i class="fa-solid fa-user list__img" ></i>
+                    <a href="#" class="nav__link">Cuenta</a>
+                    <i class="fa-solid fa-angle-right list__arrow "></i>
+                    
+                </div>
+
+                <ul class="list__show">
+                    <li class="list__inside">
+                        
+                        <a href="#" class="nav__link nav__link--inside">
+                            <i class="fa-solid fa-address-card" list__arrow></i>
+                            Mi perfil</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">
+                            <i class="fa-solid fa-paw" list__arrow></i>
+                            Mis Mascotas</a>
+                    </li>
+                </ul>
+
+            </li>
+
+
+            <li class="list__item list__item--click">
+                   <div class="list__button list__button--click">
+                    <i class="fa-solid fa-house-chimney-medical list__img"></i>
+                    <a href="#" class="nav__link">Veterinaria</a>
+                    <i class="fa-solid fa-angle-right list__arrow "></i>
+                </div>
+
+                <ul class="list__show">
+                    <li class="list__inside">
+                        
+                        <a href="#" class="nav__link nav__link--inside">
+                            <i class="fa-solid fa-plus list__arrow"></i>
+                            Crear nueva Cita</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="/public/VerCitas.html" class="nav__link nav__link--inside">
+                            <i class="fa-solid fa-rectangle-list list__arrow"></i>
+                            Ver Citas</a>
+                    </li>
+                </ul>
+
+
+            </li>
+
+            <li class="list__item list__item--click">
+                <div class="list__button list__button--click">
+                    <i class="fa-solid fa-hotel list__img"></i>
+                    <a href="#" class="nav__link">Hotel</a>
+                    <i class="fa-solid fa-angle-right list__arrow "></i>
+                </div>
+
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">
+                            <i class="fa-solid fa-plus list__arrow"></i>
+                            Crear Reservación</a>
+                    </li>
+
+                    <li class="list__inside">
+                        
+                        <a href="/public/VerReservacion.html" class="nav__link nav__link--inside">
+                            <i class="fa-solid fa-list-check list__arrow"></i>
+                            Reservaciones</a>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="list__item list__item--click">
+                <div class="list__button list__button--click">
+                    <i class="fa-solid fa-file-contract list__img"></i>
+                    <a href="#" class="nav__link">Reportes</a>
+                    <i class="fa-solid fa-angle-right list__arrow "></i>
+                </div>
+
+                <ul class="list__show">
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">Reporte 1</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">Reporte 2</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">Reporte 3</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">Reporte 4</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">Reporte 5</a>
+                    </li>
+
+                    <li class="list__inside">
+                        <a href="#" class="nav__link nav__link--inside">Reporte 6</a>
+                    </li>
+                </ul>
+
+            </li>
+
+            
+
+        </ul>
+    </nav>
+        <div class="tblCaja">
+            <div class="tituloCaja">
+                <h2>Mis citas</h2>
+
+                <span>Fecha Inicio</span> 
+                <input type="date">
+
+                <span>Fecha Final</span> 
+                <input type="date">
+
+                <span>Mascota</span> 
+                <input type="text">
+
+                <span>Usuario</span> 
+                <input type="text">
+
+                <button>Filtrar</button>
+
+            </div>
+            <table class="tblCitas" >
+                <thead class="thTitle">
+                    <tr>
+                        
+                        <th class="tblTitle">No.Cita</th>
+                        <th class="tblTitle">Mascota</th>
+                        <th class="tblTitle">Veterinario(a)</th>
+                        <th class="tblTitle">Fecha</th>
+                        <th class="tblTitle">Estado</th> 
+                        <th class="tblTitle">Acciones</th>                    
+                    </tr>
+                </thead>
+                <tbody id="tbdCitas">   
+                </tbody>
+            </table> 
+        </div>
+    </div>
+
+    <script src="./js/services/UsuariosService.js"></script>
+    <script src="./js/services/demoService.js"></script>
+    <script src="./js/controllers/ControllerVerCitas.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+</body>
+</html>

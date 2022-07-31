@@ -1,0 +1,164 @@
+.body-contactos {
+    margin: 150px auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 800px;
+    max-width: 1200px;
+}
+
+.perfil {
+    background-color: #d8d8d8;
+    width: 150px;
+    height: 150px;
+    border: 2px solid #d8d8d8;
+    border-radius: 100%;
+    margin: 40px;
+}
+
+.cuadro-perfil {
+    display: block;
+    /*border: 2px solid #f7f7f7;*/
+    background-color: #262626;
+    border-radius: 7px;
+    padding: 10px;
+    margin: 50px;
+    overflow: hidden;
+    transition: all 350ms;
+
+}
+
+.cuadro-perfil a {
+    text-decoration: none;
+}
+
+.cuadro-perfil h3 {
+    font-weight: 400;
+    color: goldenrod;
+    font-size: 25px;
+}
+
+.cuadro-perfil h4 {
+    font-weight: 300;
+    font-size: 20px;
+    color: #d9d9d9;
+    margin-top: -13px;
+}
+
+.main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.icons a {
+    font-size: 20px;
+    display: block;
+    margin: 5px;
+    transition: all 500ms;
+    color: #d9d9d9;
+}
+
+.icons a:hover {
+    transform: scale(1.2, 1.2);
+    cursor: pointer;
+}
+
+.cuadro-perfil:hover {
+    background-color: goldenrod;
+    cursor: pointer;
+    /* transform: scale(0.98, 0.98);*/
+}
+
+.cuadro-perfil:hover h3 {
+    color: #f2f2f2;
+    animation: showhead 400ms linear;
+}
+
+@keyframes showhead {
+    from {
+        transform: translateY(-1000%);
+        color: #212121;
+    }
+
+    to {
+        transform: translateY(0%);
+        color: #f5f5f5;
+    }
+}
+
+.cuadro-perfil:hover .perfil {
+    transform: scale(1.2, 1.2);
+    animation: showPerfil 300ms linear;
+}
+
+@keyframes showPerfil {
+    from {
+        transform: translateY(-200%) scale(1.2, 1.2);
+    }
+
+    to {
+        transform: translateY(0%) scale(1.2, 1.2);
+    }
+}
+
+.cuadro-perfil:hover .icons a{
+    color: #333;
+}
+
+.cuadro-perfil:hover h4, .cuadro-perfil:hover .icons{
+    color: #333;
+    animation: showtext 350ms linear;
+}
+
+@keyframes showtext {
+    from {
+        transform: translateX(-200%);
+        color: black;
+    }
+
+    to {
+        transform: translateX(0%);
+    }
+}
+
+.cuadro-perfil:active{
+    transform: scale(0.92, 0.92);
+}
+
+.j-daniel {
+    background-image: url(../img/j-daniel-photo.png);
+    background-position-x: 15px;
+}
+
+.general-perfil{
+    background-size: cover;
+    background-position: center;
+}
+
+.denis{
+    background-image: url(../img/Deniscolor.png);
+}
+
+.allan{
+    background-image: url(../img/AllanFoto.png);
+}
+
+.l-solano{
+    background-image: url(../img/Luis_Solano_Photo.png);
+}
+
+.l-roman{
+    background-image: url(../img/PP_Luis_Roman.png);
+}
+
+.laura{
+    background-image: url(../img/Laura.png);
+}

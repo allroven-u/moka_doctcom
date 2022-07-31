@@ -1,0 +1,50 @@
+[
+    {
+        "NumeroReservacion":1,
+        "IdentificacionUsurio": "113000436",
+        "IdMascota":1,
+        "NombreMascota": "Pinto",
+        "FechaHoraIngreso":"01/08/2022 14:00",
+        "FechaHoraSalida":"01/08/2022 14:00",
+        "Calificacion":0,
+        "Estado":"AGENDADA",
+        "IdentificacionVeterinario":"112020438",
+        "ObservacionesReservacion":""
+    },
+    {
+        "NumeroReservacion":2,
+        "IdentificacionUsurio": "113000436",
+        "IdMascota":1,
+        "NombreMascota": "Pinto",
+        "FechaHoraIngreso":"29/07/2022 14:00",
+        "FechaHoraSalida":"31/07/2022 14:00",
+        "Calificacion":0,
+        "Estado":"AGENDADA",
+        "IdentificacionVeterinario":"112020438",
+        "ObservacionesReservacion":""
+    },
+    {
+        "NumeroReservacion":3,
+        "IdentificacionUsurio": "112020438",
+        "IdMascota":2,
+        "NombreMascota": "Pancho",
+        "FechaHoraIngreso":"25/08/2022 14:00",
+        "FechaHoraSalida":"27/08/2022 14:00",
+        "Calificacion":3,
+        "Estado":"FINALIZADA",
+        "IdentificacionVeterinario":"289348309",
+        "ObservacionesReservacion":""
+    },
+    {
+        "NumeroReservacion":4,
+        "IdentificacionUsurio": "113000436",
+        "IdMascota":3,
+        "NombreMascota": "Negro",
+        "FechaHoraIngreso":"27/0807/2022 14:00",
+        "FechaHoraSalida":"29/07/2022 14:00",
+        "Calificacion":2,
+        "Estado":"FINALIZADA",
+        "IdentificacionVeterinario":"112020438",
+        "ObservacionesReservacion":""
+    }
+]

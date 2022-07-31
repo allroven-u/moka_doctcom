@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moka Veterinaria</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/CrearCita.css">
+    <link rel="stylesheet" href="css/CrearReservacion.css">
+    <link rel="stylesheet" href="css/RegistroMascota.css">
+    <link rel="stylesheet" href="css/MiPerfilEditable.css">
+    <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="menuBars">
+            <a href="App.html" class="menuBars logo">
+                <img src="../public/assets/img/moka-logo.png" alt="">
+            </a>
+            <div class="profile">
+                <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
+                <a class="logout" href="./landing.html">
+                    <i class="fa-solid fa-right-to-bracket fa-2x "></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="bodyContainer">
+        <nav class="nav">
+            <ul class="list">
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <i class="fa-solid fa-angle-right fa-2x list__img "></i>
+                        <a href="App.html" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-user list__img"></i>
+                        <a href="#" class="nav__link">Cuenta</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="MiPerfil.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-address-card" list__arrow></i>
+                                Mi perfil</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-paw" list__arrow></i>
+                                Mis Mascotas</a>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-house-chimney-medical list__img"></i>
+                        <a href="#" class="nav__link">Veterinaria</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+
+                            <a class="nav__link nav__link--inside" id="show-crear-cita">
+                                <i class="fa-solid fa-plus list__arrow"></i>
+                                Crear nueva Cita</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="AppVerCitas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-rectangle-list list__arrow"></i>
+                                Ver Citas</a>
+                        </li>
+                    </ul>
+
+
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-hotel list__img"></i>
+                        <a href="#" class="nav__link">Hotel</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a class="nav__link nav__link--inside" id="show-crear-reservacion">
+                                <i class="fa-solid fa-plus list__arrow"></i>
+                                Crear Reservación</a>
+                        </li>
+
+                        <li class="list__inside">
+
+                            <a href="AppVerReservas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-list-check list__arrow"></i>
+                                Reservaciones</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-file-contract list__img"></i>
+                        <a href="#" class="nav__link">Reportes</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            
+                            <a href="reporteCitas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-file-lines list__arrow"></i>
+                                 Listado de citas</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteReservacion.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-file-lines list__arrow"></i>
+                                 Listado de reservaciones</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-file-lines list__arrow"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                 Calificaciones</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteGanancia.html" class="nav__link nav__link--inside">
+                             
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>
+                                Ganacias</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteUsuario.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-file-lines list__arrow"></i>
+                                 Usuarios Registrados</a>
+                        </li>
+
+                    </ul>
+
+                </li>
+            </ul>
+        </nav>
+
+        <div class="home">
+            <div class="perfil-main">
+                <div class="perfil-contenido">
+                    <div class="box-usuario_img">
+                        <div class="box-img border-radius shadow">
+                            <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                        </div>
+                        <div class="usuario border-radius">
+                            <p id="TxtUsuarioLogueado2"></p>
+                        </div>
+                    </div>
+                    <div class="informacion-personal border-radius shadow">
+                        <div class="titulo-info-usario">
+                            <h2>Editar Informacion Personal</h2>
+                        </div>
+                        <input class="box-info-usuario border-radius" class="cajas" id="txtNombreP" type="text" placeholder="Nombre: " maxlength="30">
+                        <input class="box-info-usuario border-radius" class="cajas" id="txtApellidosP" type="text" placeholder="Apellidos: "  maxlength="30">
+                        <input class="box-info-usuario border-radius" class="cajas" id="txtCedulaP" type="text" placeholder="Cedula: "  maxlength="30">
+                        <input class="box-info-usuario border-radius" class="cajas" id="txtEmailP" type="text" placeholder="Email: "  maxlength="30">
+                        <input class="box-info-usuario border-radius" class="cajas" id="txtUsuarioP" type="text" placeholder="Nombre de Usuario: "  maxlength="30">
+                        <input class="box-info-usuario border-radius" class="cajas" id="txtContraseniaP" type="text" placeholder="Contraseña: "  maxlength="30">
+                        <input class="box-info-usuario border-radius" class="cajas" id="txtDireccionP" type="text" placeholder="Direccion Personal: "  maxlength="30">
+                        <button href="./MiPerfil.html" class="btn-editar border-radius" type="button">Guardar Informacion Personal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="overlay hidden"></div>
+    </div>
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   <!-- <script src="./js/services/demoService.js"></script>-->
+    <script src="./js/services/CitaService.js"></script>
+    <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/controllers/CrearCitaController.js"></script>
+    <script src="./js/controllers/CrearReservaController.js"></script>
+    <script src="./js/controllers/ControllerMiPerfil.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/services/SessionService.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+[
+    {
+        "IdentificacionDuenio": "113000436",
+        "IdMascota":1,
+        "NombreMascota": "Pinto",
+        "CalificacionPromedio":3,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    },
+    {
+        "IdentificacionDuenio": "206790172",
+        "IdMascota":2,
+        "NombreMascota": "Pancho",
+        "CalificacionPromedio":2,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    },
+    {
+        "IdentificacionDuenio": "113000436",
+        "IdMascota":3,
+        "NombreMascota": "Negro",
+        "CalificacionPromedio":3,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    },
+    {
+        "IdentificacionDuenio": "116100306",
+        "IdMascota":4,
+        "NombreMascota": "Masha",
+        "CalificacionPromedio":3,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    },
+    {
+        "IdentificacionDuenio": "206790172",
+        "IdMascota":5,
+        "NombreMascota": "Capito",
+        "CalificacionPromedio":2,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    },
+    {
+        "IdentificacionDuenio": "206690526",
+        "IdMascota":6,
+        "NombreMascota": "Pinta",
+        "CalificacionPromedio":3,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    },
+    {
+        "IdentificacionDuenio": "115270194",
+        "IdMascota":7,
+        "NombreMascota": "Thor",
+        "CalificacionPromedio":3,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    },
+    {
+        "IdentificacionDuenio": "118360868",
+        "IdMascota":8,
+        "NombreMascota": "Max",
+        "CalificacionPromedio":3,
+        "Activo":1,
+        "Estado":"A",
+        "Latitud":"",
+        "Longitud":"",
+        "Foto":""
+    }
+
+
+]

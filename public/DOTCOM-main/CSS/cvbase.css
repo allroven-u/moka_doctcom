@@ -1,0 +1,284 @@
+body {
+    text-align: justify;
+}
+
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #e9e9e9;
+}
+
+.info-rigth,
+.info-left {
+    width: 40%;
+    margin: 35px;
+    border-radius: 10px;
+    background-color: #333;
+}
+
+.container-left {
+    margin: 25px;
+}
+
+.container-rigth {
+    margin: 25px;
+}
+
+.bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.title {
+    border-bottom: 3px solid silver;
+    color: #e9e9e9;
+}
+
+button {
+    background-color: goldenrod;
+    border-radius: 10px; 
+    width: 60px;
+}
+
+.menu-contact {
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(70, 70, 70);
+}
+
+button:hover {
+    transform: scale(1.20, 1.20);
+}
+
+.cont-img {
+    width: 350px;
+    height: 350px;
+    border-radius: 10px;
+    background-color: #777;
+    overflow: hidden;
+    border: 2px solid rgb(70, 70, 70);
+    margin: 0 auto;
+    background-position: center;
+    background-size: cover;
+}
+
+.img-contact {
+    width: 400px;
+    height: 400px;
+}
+
+.name,
+.rol {
+    text-align: center;
+}
+
+.rol {
+    border-bottom: 3px solid rgb(70, 70, 70);
+    padding-bottom: 15px;
+}
+
+.container {
+    background-color: rgb(82, 82, 82);
+    width: 80%;
+    border-radius: 10px;
+    transition: all 350ms;
+}
+
+.container:hover {
+    transform: scale(1.05, 1.05);
+}
+
+.skills {
+    margin: 15px 0px 25px 0px;
+}
+
+.skill {
+    background-color: goldenrod;
+    color: rgb(82, 82, 82);
+    padding: 1%;
+    text-align: right;
+    border-radius: 10px;
+}
+
+.html {
+    width: 50%;
+}
+
+.css {
+    width: 60%;
+}
+
+.java {
+    width: 72%;
+}
+
+.python {
+    width: 85%;
+}
+/* Ajuste de porcentaje skills Denis */
+.html-dns{
+    width:35%;
+}
+.css-dns{
+    width:35%;
+}
+.java-dns{
+    width:45%;
+}
+.python-dns{
+    width:55%;
+}
+
+.html-jdr{
+    width:30%;
+}
+.css-jdr{
+    width:30%;
+}
+.java-jdr{
+    width:50%;
+}
+.python-jdr{
+    width:100%;
+}
+
+.aa-lsm{
+    width:80%;
+}
+.python-lsm{
+    width:80%;
+}
+.macros-lsm{
+    width:80%;
+}
+.html-lsm{
+    width:40%;
+}
+.html-lms{
+    width:40%;
+}
+.css-lms{
+    width:35%;
+}
+.java-lms{
+    width:25%;
+}
+.python-lms{
+    width:55%;
+}
+
+.info-contact {
+    margin-top: 10px;
+    border-top: 3px solid rgb(70, 70, 70);
+}
+
+.info-contact span {
+    margin-left: 10px;
+    line-height: 3;
+}
+
+.title-ritgh {
+    border-top: 3px solid rgb(70, 70, 70);
+    border-bottom: 3px solid rgb(70, 70, 70);
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+h3,
+h4 {
+    font-weight: 400;
+    font-size: 22px;
+}
+
+p,
+span {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+i{
+    margin-right: 10px;
+    font-size: 22px;
+}
+
+
+.plsqlAllan{
+    width: 95%;
+}
+
+.netAllan {
+    width: 90%;
+}
+
+.javaAllan {
+    width: 60%;
+}
+
+.jsAllan {
+    width: 80%;
+}
+
+
+.html-Jose {
+    width: 90%;
+}
+
+.css-Jose {
+    width: 80%;
+}
+
+.java-Jose {
+    width: 45%;
+}
+
+.sass-Jose {
+    width: 65%;
+}
+
+.less-Jose {
+    width: 50%;
+}
+
+.js-Jose {
+    width: 50%;
+}
+
+.bootstrap-Jose {
+    width: 60%;
+}
+
+.sqlServer-Jose {
+    width: 30%;
+}
+
+
+.jose{
+background-image: url(../img/j-daniel-photo.png);
+}
+
+.allan{
+    background-image: url(../img/AllanFoto.png);
+}
+
+.denis{
+    background-image: url(../img/Deniscolor.png);
+}
+
+.laura{
+    background-image: url(../img/laura.png);
+}
+
+.luis-solano{
+    background-image: url(../img/Luis_Solano_Photo.png);
+}
+
+.luis-daniel{
+    background-image: url(../img/PP_Luis_Roman.png);
+}

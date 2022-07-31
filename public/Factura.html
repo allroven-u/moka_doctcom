@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/Facturas.css">
+        <link rel="stylesheet" href="css/PagoTarjeta.css">
+        <title>Factura</title>
+    </head>
+    <body>
+    
+        <div class="btns">
+            <input type="button" class="btnCancelar" value="Cancelar" onclick="location.href='App.html'">
+            <input type="button" id="Pagar" class="btnPagar" value="Pagar">
+            <input  type="button" id="Enviar" class="btnEnviar" value="Enviar" onclick="alert('Enviado al correo');">
+        </div>
+
+        <header>
+            <h1>Factura</h1>
+            <img width="100" src="./assets/img/MOKA Logo.png">
+        </header>
+
+        <div class="cajaPrincipal">
+               
+                <table class="tblinfo1">
+                    <tr>
+                        <td>Nombre Empresa: </td>
+                    </tr>  
+                    <tr>
+                        <td>Cédula Jurídica: </td>
+                    </tr> 
+                    <tr>
+                        <td>Teléfono: </td>
+                    </tr> 
+                    <tr>
+                        <td>Correo Electrónico: </td>
+                    </tr>
+                    <tr>
+                        <td>Dirección: </td>
+                    </tr> 
+                </table>
+
+                <table class="tblinfo2">
+                    <tr>
+                        <td>Documento No.: </td>
+                    </tr>  
+                    <tr>
+                        <td>Fecha: </td>
+                    </tr> 
+                    <tr>
+                        <td>Mascota: </td>
+                    </tr> 
+                    <tr>
+                        <td>Condición: </td>
+                    </tr>
+                    <tr>
+                        <td>Metodo de pago: </td>
+                    </tr> 
+                </table> 
+            
+
+            <table class="tblCliente">
+                <tr>
+                    <td>Nombre Cliente: </td>
+                </tr>  
+                <tr>
+                    <td>Cédula: </td>
+                </tr> 
+                <tr>
+                    <td>Correo Electrónico: </td>
+                </tr> 
+                <tr>
+                    <td>Dirección: </td>
+                </tr> 
+            </table>  
+
+            <table class="tblCliente">
+                <th class="infoTh1">Servicio</th>
+                <th class="infoTh1">No.</th>
+                <th class="infoTh1">Fecha</th>
+                <th class="infoTh1">Descripción</th>
+                <th class="infoTh1">Descuento</th>
+                <th class="infoTh1">Precio</th>
+                <tbody>
+                    <tr>
+                        <td class="infoTd2">Veterinaria</td>
+                        <td class="infoTd2">123456</td>
+                        <td class="infoTd2">25/7/2022</td>
+                        <td class="infoTd2">Chequeo General</td>
+                        <td class="infoTd2">10%</td>
+                        <td class="infoTd2">80000</td>
+                    </tr>
+                    <tr>
+                        <td class="infoTd2">Hospedaje</td>
+                        <td class="infoTd2">123456</td>
+                        <td class="infoTd2">25/7/2022</td>
+                        <td class="infoTd2">2 Noches</td>
+                        <td class="infoTd2">10%</td>
+                        <td class="infoTd2">20000</td>
+                    </tr>
+                    <tr>
+                        <td class="infoTd2">Hospedaje</td>
+                        <td class="infoTd2">123456</td>
+                        <td class="infoTd2">25/7/2022</td>
+                        <td class="infoTd2">2 Noches</td>
+                        <td class="infoTd2">10%</td>
+                        <td class="infoTd2">20000</td>
+                    </tr>
+                    <tr>
+                        <td class="infoTd2">Veterinaria</td>
+                        <td class="infoTd2">123456</td>
+                        <td class="infoTd2">25/7/2022</td>
+                        <td class="infoTd2">Chequeo General</td>
+                        <td class="infoTd2">10%</td>
+                        <td class="infoTd2">80000</td>
+                    </tr>  
+                </tbody>
+            </table> 
+
+
+
+            <div class="tableTotales">
+                <table class="tblMontosTotales">
+                    <tbody>
+                        <tr>
+                            <td class="infoTotales">Subtotales</td>
+                            <td class="infoTotales">₡3450</td>
+                        </tr>
+                        <tr>
+                            
+                            <td class="infoTotales">IVA</td>
+                            <td class="infoTotales">₡345</td>
+                        </tr>
+                        <tr>
+                            
+                            <td class="infoTotales">Total Colones</td>
+                            <td class="infoTotales">₡3795</td>
+                        </tr>
+                        <tr>
+                            
+                            <td class="infoTotales">Total Dolares</td>
+                            <td class="infoTotales">$11.27</td>
+                        </tr> 
+                    </tbody>
+                     
+                </table> 
+            </div>
+        
+            
+        
+        </div>
+        <form class="form-pago-tarjeta hidden">
+            <h1 class="titulo">Pago</h1>
+            <img height="25" src="https://shoplineimg.com/assets/footer/card_visa.png" style="text-align: center; width: 10%">
+            <img height="25" src="https://shoplineimg.com/assets/footer/card_master.png" style="text-align: center; width: 10%">
+            <img height="25" src="https://shoplineimg.com/assets/footer/card_amex.png" style="text-align: center; width: 10%">
+            <input class="cajas" id="txtTitular" type="text" placeholder="Nombre de titular de la tarjeta*"  maxlength="60">
+            <input class="cajas" id="numTarjeta" type="text" placeholder="Número de tarjeta*"  maxlength="20">
+            <input class="cajas" id="txtCvv" type="password" placeholder="CVV*" maxlength="4">
+
+            <label for="mes_vencimiento">Vencimiento:</label>
+                <div class="cajasPContainer">
+                    <select id="mes_vencimiento" class="cajasP" >
+                        <option value="">--Mes--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        </select>
+        
+                        <select id="year_vencimiento" class="cajasP">
+                        <option value="">--Año--</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                        <option value="2029">2029</option>
+                        <option value="2030">2030</option>
+                        <option value="2031">2031</option>
+                        <option value="2032">2032</option>
+                        <option value="2033">2033</option>
+                        <option value="2034">2034</option>
+                        <option value="2035">2035</option>
+                        </select>
+                </div>
+                
+            <input type="button" class="btn-pago-tarjeta" id="btnPagar" value="Pagar">
+            <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cancelar">
+        </form>
+
+        <div class="overlay hidden"></div>
+
+        <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="./js/controllers/controllerFactura.js"></script>
+    </body>
+</html>

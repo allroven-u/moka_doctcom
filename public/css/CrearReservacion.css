@@ -1,0 +1,133 @@
+@import url(./estilosGenerales.css);
+
+* {
+    font-family: Roboto300;
+}
+
+.cuerpoReserva {
+    height: 650px;
+    z-index: 11;
+}
+
+.formReserva {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: var(--verdeagua);
+    width: 450px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 25px;
+    background-color: var(--blanco);
+    border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+label {
+    color: var(--gris);
+}
+
+
+
+.select {
+    width: 250px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+}
+
+.fechas {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--blanco);
+    transition: all .5s ease;
+    font-size: large;
+}
+
+/* .tituloPrincipal {
+    margin: 10px 10px;
+    font-size: larger;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    background-color: var(--silver);
+    border: 2px solid var(--concreto);
+    border-radius: 10px;
+    color: var(--verdeagua);
+} */
+
+.titulo {
+    text-align: center;
+    color: var(--verdeagua);
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--silver);
+}
+
+.cajas {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+    color: gray;
+}
+
+.cajas:hover,
+.cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
+
+.btnsR {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnR {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--verdeagua);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnR:hover {
+    background-color: var(--turquesa);
+}
+
+.btnCancelarR {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnCancelarR:hover {
+    background-color: var(--Roj1);
+}
+
+.error {
+    border: 2px solid var(--Rojo2);
+}

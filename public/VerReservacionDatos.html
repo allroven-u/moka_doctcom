@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moka Veterinaria App</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="./css/VerCita.css">
+    <link rel="stylesheet" href="css/CrearCita.css">
+    <link rel="stylesheet" href="css/CrearReservacion.css">
+    <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="menuBars">
+            <a href="App.html" class="menuBars logo">
+                <img src="../public/assets/img/moka-logo.png" alt="">
+            </a>
+            <div class="profile">
+                <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
+                <a class="logout" href="./landing.html">
+                    <i class="fa-solid fa-right-to-bracket fa-2x "></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="bodyContainer">
+        <nav class="nav">
+            <ul class="list">
+
+                <li class="list__item">
+                    <div class="list__button">
+                        <i class="fa-solid fa-angle-right fa-2x list__img "></i>
+                        <a href="App.html" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-user list__img"></i>
+                        <a href="#" class="nav__link">Cuenta</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="MiPerfil.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-house-chimney-medical list__img"></i>
+                        <a href="#" class="nav__link">Veterinaria</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+
+                            <a class="nav__link nav__link--inside" id="show-crear-cita">
+                                <i class="fa-solid fa-plus list__arrow"></i> Crear nueva Cita</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="AppVerCitas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-rectangle-list list__arrow"></i> Ver Citas</a>
+                        </li>
+                    </ul>
+
+
+                </li>
+
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-hotel list__img"></i>
+                        <a href="#" class="nav__link">Hotel</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a class="nav__link nav__link--inside" id="show-crear-reservacion">
+                                <i class="fa-solid fa-plus list__arrow"></i> Crear Reservación</a>
+                        </li>
+
+                        <li class="list__inside">
+
+                            <a href="AppVerReservas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-list-check list__arrow"></i> Reservaciones
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-file-contract list__img"></i>
+                        <a href="#" class="nav__link">Reportes</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="reporteCitas.html" class="nav__link nav__link--inside">Listado de citas</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteReservacion.html" class="nav__link nav__link--inside">Listado de reservaciones</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteVeterinario.html" class="nav__link nav__link--inside">Calificaciones
+                                Promedio</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteGanancia.html" class="nav__link nav__link--inside">Ganacias</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="reporteUsuario.html" class="nav__link nav__link--inside">Usuarios Registrados</a>
+                        </li>
+
+                        <li class="list__inside">
+                            <a href="#" class="nav__link nav__link--inside">Reporte 6</a>
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Aqui se agrega el contenido de la pagina -->
+
+
+        <!--  -->
+        <div class="home">
+            <div class="tblCaja">
+                <div class="tituloCaja">
+                    <h2>Reserva Número: </h2>
+                    <div id="numCita"> </div>
+                </div>
+
+                <div class="h3">
+                    <label for="txtNombreMascota">Nombre Mascota</label>
+                    <output id="txtNombreMascota" name="txtNombreMascota" class="cajasOut" for="txtNombreMascota"></output>
+
+                </div>
+                <h2>Calificación Mascota</h2>
+                <div class="stars">
+
+
+                    <i class="fa-solid fa-star star"></i>
+                    <i class="fa-solid fa-star star"></i>
+                    <i class="fa-solid fa-star star"></i>
+                    <i class="fa-solid fa-star star"></i>
+                    <i class="fa-solid fa-star star"></i>
+
+                </div>
+
+                <div class="h2">
+                    <h2>Descripción de Reserva
+                    </h2>
+                </div>
+
+                <div class="DescripcionParrafo">
+                    <p id="txtDescripcion" class="cajasOut">
+                    </p>
+
+
+
+                </div>
+
+                <div class="h2">
+
+                    <h2>Observaciones
+                    </h2>
+
+
+                </div>
+
+
+                <div class="DescripcionParrafo">
+                    <p id="txtObservaciones" class="cajasOut">
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="h2">
+                    <h2>Monto Factura
+                    </h2>
+                </div>
+
+                <div class="PagoFacura">
+                    <p id="txtCobro" class="cajasOut"></p>
+
+
+
+                </div>
+                <div class="btns">
+
+                    <input type="button" id="Pagar" class="btn" value="Factura" onclick="location.href='./Factura.html'">
+
+                </div>
+
+
+            </div>
+            <!-------------CREAR CITA--------->
+            <div class="cuerpoCita hidden">
+                <form class="formCita">
+                    <h1 class="titulo">Nueva Cita</h1>
+                    <select class="cajas select" id="selectMascotaCita">
+                        <option value="">------Seleccionar mascota------</option>
+                    </select>
+
+                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
+
+                    <select class="cajas select" id="selectVeterinario">
+                        <option value="">------Seleccionar Veterinario------</option>
+                        
+                    </select>
+
+                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
+
+
+
+
+                    <div class="btnsC">
+                        <input type="button" class="btnCancelarC" value="Cancelar">
+
+                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!---------------CREAR RESERVACION------------------------>
+            <div class="cuerpoReserva hidden">
+                <form class="formReserva">
+                    <h1 class="titulo">Nueva Reservación</h1>
+
+                    <select class="cajas select" id="selectMacota">
+                        <option value="">------Seleccionar mascota------</option>
+
+                    </select>
+                    <div>
+                        <label for="dateCheckIn">Fecha de ingreso</label>
+                        <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
+                    </div>
+
+                    <div>
+                        <label for="dateCheckOut">Fecha de Salida</label>
+                        <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
+                    </div>
+
+
+
+                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
+
+
+
+                    <div class="btnsR">
+                        <input type="button" class="btnCancelarR" value="Cancelar">
+
+                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+        <div class="overlay hidden"></div>
+    </div>
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/services/demoService.js"></script>
+    <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/MascotasService.js"></script>
+    <script src="./js/controllers/CrearCitaController.js"></script>
+    <script src="./js/controllers/CrearReservaController.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/VerCitas.js"></script>
+    <script src="./js/services/SessionService.js"></script>
+</body>
+
+</html>
