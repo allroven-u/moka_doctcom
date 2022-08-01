@@ -35,8 +35,9 @@ const showModalLogin = document.querySelectorAll(".show-modal-login");
 const showModalSignin = document.querySelectorAll(".show-modal-signin");
 
 
-const closeModalLogin = document.querySelector('.lBtnCancelar');
+const closeModalLogin = document.getElementById('cerrarLmodal');
 const closeModalPassword = document.getElementById('cancelPassword');
+const closeModalsignin = document.getElementById("cerrarRmodal")
 const redirectModalPassword = document.querySelector(".redirect-modal-Password");
 const redirectModalLogin = document.querySelector('.rBtnCancelar');
 const redirectModalSiging = document.querySelector('.redirect-modal-sigin');
@@ -123,6 +124,8 @@ for (let i = 0; i < showModalSignin.length; i++) {
             hiddenModalSignin();
             ShowModalLoginFunct();
         });
+        closeModalsignin.addEventListener('click', hiddenModalSignin);
+
         overlay.addEventListener('click', hiddenModalSignin);
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !signinModal.classList.contains('hidden')) {
@@ -269,3 +272,4 @@ function ConfirmarDatosLogin() {
         timer: 1500,
     });
 }
+
