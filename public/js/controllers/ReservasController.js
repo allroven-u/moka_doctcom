@@ -72,6 +72,7 @@ function ImprimirListaReservas(){
         let celdaBoton = fila.insertCell();
         
         let EstadoCitaif = document.querySelectorAll('.Estado');
+        
         if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
         let BotonV = document.createElement('a');
         BotonV.setAttribute('href','/public/VerCitaDatos.html')

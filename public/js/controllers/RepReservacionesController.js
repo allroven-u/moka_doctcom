@@ -31,14 +31,14 @@ function ImprimirListaReservas(){
      let celMascota = thRow.insertCell();
      celMascota.innerHTML = 'Mascota';
  
-     let celFecha = thRow.insertCell();
-     celFecha.innerHTML = 'Fecha';
+     let celFechaIngreso = thRow.insertCell();
+     celFechaIngreso.innerHTML = 'Fecha Ingreso';
+
+     let celFechaSalida = thRow.insertCell();
+     celFechaSalida.innerHTML = 'Fecha Salida';
  
      let celEstado = thRow.insertCell();
      celEstado.innerHTML = 'Estado';
- 
-     let celAcciones = thRow.insertCell();
-     celAcciones.innerHTML = 'Acciones';
 
 
     for (let i = 0; i < listaReservas.length; i++) {
@@ -66,30 +66,30 @@ function ImprimirListaReservas(){
         let celdaEstado = fila.insertCell();
         celdaEstado.innerHTML = reserva.Estado;
         celdaEstado.classList.add('Estado');
-    
+
         
     }
-    let EstadoCita = document.querySelectorAll('.Estado');
-        console.log(EstadoCita.length);
-        VerEstado(EstadoCita);
+    let EstadoReservacion = document.querySelectorAll('.Estado');
+        console.log(EstadoReservacion.length);
+        VerEstadoReservas(EstadoReservacion);
 }
 
 
- function VerEstadoReservas(EstadoCita){
+ function VerEstadoReservas(EstadoReservacion){
     
-     for (let i = 0; i < EstadoCita.length; i++) {
-     let sEstadoCita = EstadoCita[i].innerHTML;    
+     for (let i = 0; i < EstadoReservacion.length; i++) {
+     let sEstadoCita = EstadoReservacion[i].innerHTML;    
      console.log(sEstadoCita)
      if (sEstadoCita == 'AGENDADA'){
-         EstadoCita[i].classList.add("AGENDADA")
+        EstadoReservacion[i].classList.add("AGENDADA")
         
      }
      if (sEstadoCita == 'CANCELADA'){
-         EstadoCita[i].classList.add("CANCELADA")
+        EstadoReservacion[i].classList.add("CANCELADA")
        
      }
      if (sEstadoCita == 'FINALIZADA'){
-         EstadoCita[i].classList.add("FINALIZADA")
+        EstadoReservacion[i].classList.add("FINALIZADA")
         
      }   
      }
