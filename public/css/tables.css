@@ -9,7 +9,6 @@
 /* *{
 	box-sizing: border-box;
 } */
-
 .tContainer{
     display: flex;
 	justify-content: space-between;
@@ -35,11 +34,10 @@
 .tFiltros{
 	width: 100%;
 	display: flex;
-	text-align: center;
-	margin-bottom: 10px;
-	justify-content: space-around;
-	flex-wrap: wrap;
-
+    margin-bottom: 10px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .BtnNuevaCita{
@@ -59,10 +57,11 @@
 
 
 .table td,.table th{
-  padding:12px 15px;
+  padding:7px 15px;
   border:1px solid #ddd;
   text-align: center;
   font-size:16px;
+
 }
 
 .table th{
@@ -78,6 +77,16 @@ label {
     color: var(--gris);
 }
 
+.filtrosCajas{
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+	margin-right: 25px;
+}
+.filtroFecha{
+	flex-direction: row;
+}
+
 
 .select {
     width: 250px;
@@ -88,8 +97,21 @@ label {
     text-align: center;
     display: flex;
 }
+.cajasCitas{
+	width:100%;
+	padding: 5px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	border: none;
+	border-left: 10px solid var(--silver);
+	transition: all .5s ease;
+  }
+  
+  .cajasCitas:hover, .cajas:focus{
+	border-left: 10px solid var(--verdeagua);
+  }
 
-.fechas {
+/* .fechas {
     width: 100%;
     padding: 15px;
     margin-bottom: 20px;
@@ -98,13 +120,13 @@ label {
     border-left: 10px solid var(--blanco);
     transition: all .5s ease;
     font-size: large;
-}
+} */
 
 .btnV,
 .btnEd,
 .btnCa {
 	color: var(--turquesa);
-	margin: 21px;
+	margin: 10px;
 	transform: scale(1.5);
 	transition: all 200ms linear;
 }
@@ -120,6 +142,17 @@ label {
 	color: var(--Rojo2);
 }
 
+#btnFiltroCita{
+	color: var(--turquesa);
+	margin: 10px;
+	transition: all 200ms linear;
+	transform: scale(1.8);
+	cursor: pointer;
+	
+}
+#btnFiltroCita:hover{
+	transform: rotate3d(0,0,4,90deg)
+}
 .AGENDADA {
 	background-color: var(--naranja);
 }
