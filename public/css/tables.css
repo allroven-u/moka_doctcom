@@ -20,38 +20,40 @@
 
 .tTituloContainer {
 	display: flex;
-	flex-direction:row;
-	justify-content: center;
-	width: 100%;
-	text-align: center;
-	margin-bottom: 10px;
-	background-color: var(--verdeagua);
-	color: var(--blanco);
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: var(--verdeagua);
+    color: var(--blanco);
+    align-items: center;
 }
 
 .tTituloContainer h2{
 	padding: 10px; 
-	display: flex;
 }
-
+.iconNuevaCita{
+	transform: scale(2);
+}
 .NuevaCita{
-	display: flex;
-	align-items: center;
-	margin-left: 50px;	
-}
+	transform: scale(0.8);	
+} 
 
-.NuevaCita p{
-	margin-left: 10px;	
-}
 
 .NuevaCita:hover, .cajas:focus{
-	transform: scale(1.2);
+	transform: scale(1.0);
   }
+
+.btnNuevaCitaContainer{
+	display: flex;
+	flex-direction: column;
+}
 
 .tFiltros{
 	width: 100%;
 	display: flex;
-    margin-bottom: 10px;
+	
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
@@ -103,6 +105,32 @@ label {
 	flex-direction: row;
 }
 
+.filtrosCajaschk{
+	border: 1px solid var(--gris);
+	padding: 10px;
+	background-color: white;
+	border-radius: 5px;
+	border-left: 10px solid var(--silver);
+	transition: all .5s ease;
+}
+
+.filtrosCajaschk:hover{
+	border-left: 10px solid var(--verdeagua);
+}
+.filtrosCajaschk p{
+	color: var(--gris);
+	border-bottom: 1px solid var(--gris);
+}
+.filtrosCajaschk label{
+	width: 90px;
+}
+
+.checkEstadoCita{
+	margin: 10px;
+	
+
+}
+
 
 .select {
     width: 250px;
@@ -125,6 +153,10 @@ label {
   
   .cajasCitas:hover, .cajas:focus{
 	border-left: 10px solid var(--verdeagua);
+  }
+
+  #txtNumCita{
+	width: 60%;
   }
 
 /* .fechas {

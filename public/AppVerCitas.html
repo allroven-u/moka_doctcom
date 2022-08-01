@@ -132,12 +132,15 @@
 
             <div class="tContainer">
                 <div class="tTituloContainer">
-                    <h2>Lista de citas</h2>
-                    <a class="NuevaCita">
-                        <i class="fa-solid fa-square-plus fa-3x"></i>
-                        <p>Crear nueva cita</p>
+                    <div><i class="fa-solid fa-list iconNuevaCita"></i></div>
+                    <div class="tituloCitas">
+                        <h2>Lista de citas</h2>
+                    </div>
+                    <div class="btnNuevaCitaContainer">
+                        <a id="btnCreaCita"><i class="fa-solid fa-square-plus fa-3x NuevaCita"  ></i></a>
+                        <p>Crear cita </p>
+                    </div>
 
-                    </a>
                 </div>
 
                 <div class="tFiltros">
@@ -174,14 +177,20 @@
 
 
 
-                    <div for="checkEstadoCita" class="filtrosCajas">
-                        <label for="">Estado Cita</label>
-                        <label for="checkEstadoCita">Agendada</label>
-                        <input class="checkEstadoCita" type="checkbox">
-                        <label for="checkEstadoCita">Finalizada</label>
-                        <input class="checkEstadoCita" type="checkbox">
-                        <label for="checkEstadoCita">Cancelada</label>
-                        <input class="checkEstadoCita" type="checkbox">
+                    <div for="checkEstadoCita" class="filtrosCajaschk">
+                        <p>Estado Cita</p>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoAgendada">Agendada</label>
+                        <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoFinalizada" >Finalizada</label>
+                        <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoCancelada">Cancelada</label>
+                        <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
+                        </div>
                     </div>
 
                     <div class="filtrosCajas">
