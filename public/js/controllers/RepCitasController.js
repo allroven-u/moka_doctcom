@@ -10,35 +10,56 @@ window.addEventListener('load', () =>{
 
 function ImprimirListaCitas(){
 
+    let tThead = document.getElementById('tTheadCitas');
+    let tbody = document.getElementById('tBodyCitas');
+
     listaCitas = getCitasArray();
-    let tbody = document.getElementById('tbdCitas');
+   
 
     tbody.innerHTML = '';
+    tThead.innerHTML = '';
+
+      // thead
+      let thRow = tThead.insertRow();
+
+      let celNumCita = thRow.insertCell();
+      celNumCita.innerHTML = 'Num. Cita';
+  
+      let celMascota = thRow.insertCell();
+      celMascota.innerHTML = 'Mascota';
+  
+      let celVeterinario = thRow.insertCell();
+      celVeterinario.innerHTML = 'Veterinario';
+  
+      let celFecha = thRow.insertCell();
+      celFecha.innerHTML = 'Fecha';
+  
+      let celEstado = thRow.insertCell();
+      celEstado.innerHTML = 'Estado';
+  
 
     for (let i = 0; i < listaCitas.length; i++) {
 
-      let  cita = listaCitas[i];
-      let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
+        let  cita = listaCitas[i];
+        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);  
 
         let fila = tbody.insertRow();
-        let celdaNumCita = fila.insertCell();
-        let celdaMascota = fila.insertCell();
-        let celdaVeterinario = fila.insertCell();
-        let celdaFecha= fila.insertCell();
-        let celdaEstado = fila.insertCell();
-        let celdaBoton = fila.insertCell();
 
-         celdaNumCita.innerHTML = cita.NumeroCita;
-         celdaNumCita.classList.add('infoTd');
-         celdaMascota.innerHTML = cita.NombreMascota;
-         celdaMascota.classList.add('infoTd');
-         celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido1;
-         celdaVeterinario.classList.add('infoTd');
-         celdaFecha.innerHTML = cita.FechaHora;
-         celdaFecha.classList.add('infoTd');
-         celdaEstado.innerHTML = cita.Estado;
-         celdaEstado.classList.add('Estado');
-         celdaEstado.classList.add('infoTd');
+        let celdaNumCita = fila.insertCell();
+        celdaNumCita.innerHTML = cita.NumeroCita;
+
+        let celdaMascota = fila.insertCell();
+        celdaMascota.innerHTML = cita.NombreMascota;
+
+        let celdaVeterinario = fila.insertCell();
+        celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido1;
+
+        let celdaFecha= fila.insertCell();
+        celdaFecha.innerHTML = cita.FechaHora;
+
+        let celdaEstado = fila.insertCell();
+        celdaEstado.innerHTML = cita.Estado;
+        celdaEstado.classList.add('Estado');
         
     }
      let EstadoCita = document.querySelectorAll('.Estado');

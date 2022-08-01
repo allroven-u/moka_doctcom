@@ -54,7 +54,7 @@ function ImprimirListaReservas(){
         celdaNumReserva.innerHTML = reserva.NumeroReservacion;
 
         let celdaPropietario = fila.insertCell();
-        celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1;
+        celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
 
         let celdaMascota = fila.insertCell();
         celdaMascota.innerHTML = reserva.NombreMascota;

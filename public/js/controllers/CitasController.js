@@ -26,6 +26,9 @@ function ImprimirListaCitas(){
     let celNumCita = thRow.insertCell();
     celNumCita.innerHTML = 'Num. Cita';
 
+    let celPropietario= thRow.insertCell();
+    celPropietario.innerHTML = 'Propietario';
+
     let celMascota = thRow.insertCell();
     celMascota.innerHTML = 'Mascota';
 
@@ -46,12 +49,16 @@ function ImprimirListaCitas(){
 
         
         let  cita = listaCitas[i];
-        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);  
+        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
+        let propietario = buscaUsuarioID(cita.IdentificacionUsurio) ;  
 
         let fila = tbody.insertRow();
 
         let celdaNumCita = fila.insertCell();
         celdaNumCita.innerHTML = cita.NumeroCita;
+
+        let celdaPropietario = fila.insertCell();
+        celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
 
         let celdaMascota = fila.insertCell();
         celdaMascota.innerHTML = cita.NombreMascota;
