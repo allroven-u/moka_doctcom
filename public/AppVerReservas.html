@@ -51,14 +51,12 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i>
-                                Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="perfilMascota.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i>
-                                Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
                 </li>
@@ -75,49 +73,46 @@
                         <i class="fa-solid fa-hotel list__img"></i>
                         <a href="AppVerReservas.html" class="nav__link">Reservas Hotel</a>
                     </div>
-       
-                <li class="list__item list__item--click">
-                    <div class="list__button list__button--click">
-                        <i class="fa-solid fa-file-contract list__img"></i>
-                        <a href="#" class="nav__link">Reportes</a>
-                        <i class="fa-solid fa-angle-right list__arrow "></i>
-                    </div>
-                    <ul class="list__show">
-                        <li class="list__inside">
-                            
-                            <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de citas</a>
-                        </li>
 
-                        <li class="list__inside">
-                            <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de reservaciones</a>
-                        </li>
+                    <li class="list__item list__item--click">
+                        <div class="list__button list__button--click">
+                            <i class="fa-solid fa-file-contract list__img"></i>
+                            <a href="#" class="nav__link">Reportes</a>
+                            <i class="fa-solid fa-angle-right list__arrow "></i>
+                        </div>
+                        <ul class="list__show">
+                            <li class="list__inside">
 
-                        <li class="list__inside">
-                            <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-star-half-stroke list__arrow"></i>
-                                 Calificaciones</a>
-                        </li>
+                                <a href="reporteCitas.html" class="nav__link nav__link--inside">
+                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
+                            </li>
 
-                        <li class="list__inside">
-                            <a href="reporteGanancia.html" class="nav__link nav__link--inside">
-                             
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>
-                                Ganacias</a>
-                        </li>
+                            <li class="list__inside">
+                                <a href="reporteReservacion.html" class="nav__link nav__link--inside">
+                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
+                            </li>
 
-                        <li class="list__inside">
-                            <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Usuarios Registrados</a>
-                        </li>
+                            <li class="list__inside">
+                                <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
+                                    <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
+                                </a>
+                            </li>
 
-                    </ul>
+                            <li class="list__inside">
+                                <a href="reporteGanancia.html" class="nav__link nav__link--inside">
 
-                </li>
+                                    <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                                </a>
+                            </li>
+
+                            <li class="list__inside">
+                                <a href="reporteUsuario.html" class="nav__link nav__link--inside">
+                                    <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
+                            </li>
+
+                        </ul>
+
+                    </li>
             </ul>
         </nav>
 
@@ -134,7 +129,7 @@
                 </div>
 
                 <div class="tFiltros">
-                    
+
                     <div for="txtNumCita">Num. Reserva
                         <input id="txtNumCita" type="text">
                     </div>
@@ -162,10 +157,10 @@
                 </div>
 
                 <table id="tReservas" class="table">
-                    <thead id="tTheadReservas" >
+                    <thead id="tTheadReservas">
 
                     </thead>
-                    <tbody id="tBodyReservas", class="tbody">
+                    <tbody id="tBodyReservas" , class="tbody">
 
                     </tbody>
                 </table>
@@ -208,8 +203,7 @@
                         
                     </select>
 
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5"
-                        placeholder="Descripción de la Cita*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
 
 
 
@@ -243,8 +237,7 @@
                         <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
                     </div>
 
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5"
-                        placeholder="Cuidados Especiales*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
 
                     <div class="btnsR">
                         <input type="button" class="btnCancelarR" value="Cancelar">
@@ -266,19 +259,16 @@
                 </div>
                 <div class="Cita">
                     <label for="nombreReservaCancelar">Mascota</label>
-                    <output class="cajasOut" id="nombreReservaCancelar" name="nombreMascotaCancelar"
-                        for="mostrarNombre"></output>
+                    <output class="cajasOut" id="nombreReservaCancelar" name="nombreMascotaCancelar" for="mostrarNombre"></output>
 
 
                 </div>
                 <div>
-                    <textarea class="cajas" id="motivoCancelar" cols="30" rows="10"
-                        placeholder="Motivo de cancelacion"></textarea>
+                    <textarea class="cajas" id="motivoCancelar" cols="30" rows="10" placeholder="Motivo de cancelacion"></textarea>
                 </div>
 
                 <!--BOTON-DE-Cancelar-------------------------->
-                <input type="button" class="btn-cancelar-reserva" id="btnRegistrar" value="Cancelar"
-                    onclick="CancelarReserva()">
+                <input type="button" class="btn-cancelar-reserva" id="btnRegistrar" value="Cancelar" onclick="CancelarReserva()">
 
             </form>
             <div class="overlay hidden"></div>
@@ -294,7 +284,7 @@
     <!-- <script src="./js/controllers/VerReservasController.js"></script> -->
     <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
     <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
-    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/AppController.js"></script>
     <!-- <script src="./js/controllers/CancelarControler.js"></script> -->
 </body>
 

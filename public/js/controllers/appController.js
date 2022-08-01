@@ -52,7 +52,7 @@ const closeReserva = document.querySelector('.btnCancelarR');
 
 
 //SHOW CREAR CITA
-const hiddenCitaModal = function () {
+const hiddenCitaModal = function() {
     modalCita.classList.add('hidden');
     overlay.classList.add('hidden');
 };
@@ -64,20 +64,20 @@ function ShowModalCitaFunct() {
 
     closeCita.addEventListener('click', hiddenCitaModal);
     overlay.addEventListener('click', hiddenCitaModal);
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modalCita.classList.contains('hidden')) {
             hiddenCitaModal();
         }
     });
 };
 
-showModalCita.addEventListener('click', function () {
+showModalCita.addEventListener('click', function() {
     ShowModalCitaFunct();
 });
 
 
 //SHOW CREAR RESERVA 
-const hiddenReservaModal = function () {
+const hiddenReservaModal = function() {
     modalReserva.classList.add('hidden');
     overlay.classList.add('hidden');
 };
@@ -89,7 +89,7 @@ function ShowModalReservaFunct() {
 
     closeReserva.addEventListener('click', hiddenReservaModal);
     overlay.addEventListener('click', hiddenReservaModal);
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modalReserva.classList.contains('hidden')) {
             hiddenReservaModal();
         }
@@ -97,6 +97,6 @@ function ShowModalReservaFunct() {
 };
 
 
-showModalReserva.addEventListener('click', function () {
+showModalReserva.addEventListener('click', function() {
     ShowModalReservaFunct();
 });

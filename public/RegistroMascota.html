@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="Estoy">
+
 <head>
     <meta charset="UTF-8">
     <title>Formulario</title>
     <link rel="stylesheet" href="./CSS/RegistroMascota.css">
     <link rel="stylesheet" href="./css/estilosGenerales.css">
 </head>
+
 <body>
-    
+
     <!--FORMULARIO---->
     <form class="form">
-        
+
         <!--TITULO------------------------>
         <h1 class="titulo">Registrar Mascota</h1>
-        
+
         <!--CAJAS-DE-ENTRADA-DE-DATOS------------------------------------------------>
         <div class="formFoto">
             <label for="imgFotoMascota" class="lblFotoMascota">Foto Mascota</label>
             <input type="file" id="imgFotoMascota" name="fotoPerfil" placeholder="Foto" capture>
         </div>
-        
-        <input class="cajas" id="txtNombre" type="text" placeholder="Nombre mascota*"  maxlength="30">
+
+        <input class="cajas" id="txtNombre" type="text" placeholder="Nombre mascota*" maxlength="30">
         <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Dirección exacta*"></textarea>
-      
-        
-       
-        
+
+
+
+
         <!--BOTON-DE-REGISTRARSE-------------------------->
         <input type="button" class="btn" id="btnRegistroMascota" value="REGISTRAR">
 
-        
+
     </form>
-    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-    <script src="./js/services/demoService.js"></script>
-    <script src="./js/controllers/ControllerRegistroMascota.js"></script>   
-    
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/services/DemoService.js"></script>
+    <script src="./js/controllers/RegistroMascotaController.js"></script>
+
 </body>
+
 </html>

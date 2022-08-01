@@ -13,7 +13,7 @@ window.addEventListener('load', () => {
     console.log(usuario.Identificacion);
     txtUsuarioLogueado2.textContent = usuario.Nombre + ' ' + usuario.Apellido1;
     txtNombreP.textContent = usuario.Nombre;
-    txtApellidosP.textContent = usuario.Apellido1 +  " " + usuario.Apellido2;
+    txtApellidosP.textContent = usuario.Apellido1 + " " + usuario.Apellido2;
     txtEmailP.textContent = usuario.Email;
     txtUsuarioP.textContent = usuario.Usuario;
     txtContraseniaP.textContent = "*********";
@@ -21,11 +21,11 @@ window.addEventListener('load', () => {
     txtCedulaP.textContent = usuario.Identificacion;
 
     cargaJsonCitas();
-    cargaJson(); 
-     setTimeout(() => {ImprimirListaCitas();}, 1000);
+    cargaJson();
+    setTimeout(() => { ImprimirListaCitas(); }, 1000);
 });
 
-function ImprimirListaCitas(){
+function ImprimirListaCitas() {
     let tbody = document.getElementById('tbbody-ultimas-citas');
 
     let listaCitas = getCitasArray();
@@ -36,13 +36,13 @@ function ImprimirListaCitas(){
 
     for (let i = 0; i < listaCitas.length; i++) {
 
-        let  cita = listaCitas[i];
-        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);  
-        
+        let cita = listaCitas[i];
+        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
+
         let fila = tbody.insertRow();
         let celdaMascota = fila.insertCell();
         let celdaVeterinario = fila.insertCell();
-        let celdaFecha= fila.insertCell();
+        let celdaFecha = fila.insertCell();
 
         celdaMascota.innerHTML = cita.NombreMascota;
         celdaMascota.classList.add('h-citas');
@@ -51,5 +51,5 @@ function ImprimirListaCitas(){
         celdaFecha.innerHTML = cita.FechaHora;
         celdaFecha.classList.add('h-citas');
     };
-   
+
 };

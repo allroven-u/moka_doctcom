@@ -14,12 +14,12 @@ let inputDiagnostico = document.getElementById('txtDiagnosticoR');
 let inputCobro = document.getElementById('txtCobroR');
 
 let btnEnviar = document.getElementById('EnviarR');
-btnEnviar.addEventListener('click',GuardarDatosReserva);
+btnEnviar.addEventListener('click', GuardarDatosReserva);
 
 
-function GuardarDatosReserva(){
-    
-    if(validarGuardarDatosR() == true){
+function GuardarDatosReserva() {
+
+    if (validarGuardarDatosR() == true) {
         ConfirmarDatosR()
 
 
@@ -28,49 +28,50 @@ function GuardarDatosReserva(){
 }
 
 
-function validarGuardarDatosR(){
+function validarGuardarDatosR() {
     let sObservacion = inputObservacion.value;
     let sDiagnostico = inputDiagnostico.value;
     let nCobro = inputCobro.value;
 
- 
-    if (sObservacion == null || sObservacion == undefined || sObservacion == ""){
+
+    if (sObservacion == null || sObservacion == undefined || sObservacion == "") {
         inputObservacion.classList.add("error")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputObservacion.classList.remove("error")
     }
-    if (sDiagnostico == null || sDiagnostico == undefined || sDiagnostico == ""){
+    if (sDiagnostico == null || sDiagnostico == undefined || sDiagnostico == "") {
         inputDiagnostico.classList.add("error")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputDiagnostico.classList.remove("error")
     }
-    if (nCobro == null || nCobro == undefined || nCobro == ""){
+    if (nCobro == null || nCobro == undefined || nCobro == "") {
         inputCobro.classList.add("error")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputCobro.classList.remove("error")
     }
     return true;
 }
 
-function MostrarError(){
+function MostrarError() {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Dato Requerido!',
     })
 }
-function ConfirmarDatosR(){
+
+function ConfirmarDatosR() {
     Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Datos guardados',
         showConfirmButton: false,
         timer: 2000
-      })
+    })
 }

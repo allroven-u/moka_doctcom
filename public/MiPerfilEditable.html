@@ -49,14 +49,12 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i>
-                                Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="perfilMascota.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i>
-                                Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
                 </li>
@@ -75,7 +73,7 @@
                     </div>
 
                 </li>
-                
+
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-file-contract list__img"></i>
@@ -84,36 +82,33 @@
                     </div>
                     <ul class="list__show">
                         <li class="list__inside">
-                            
+
                             <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de citas</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de reservaciones</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-file-lines list__arrow"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                                 Calificaciones</a>
+                                <i class="fa-solid fa-star-half-stroke"></i> Calificaciones
+                            </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteGanancia.html" class="nav__link nav__link--inside">
-                             
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>
-                                Ganacias</a>
+
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                            </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Usuarios Registrados</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
                         </li>
 
                     </ul>
@@ -165,7 +160,7 @@
                             <label for="txtUsuarioP">Nombre de Usuario: </label>
                             <input class="cajas" id="txtUsuarioP" type="text" placeholder="Nombre de Usuario: " maxlength="30">
                         </div>
-                        
+
                         <div class="perfilContainer2">
                             <label for="txtDireccionP">Direccion: </label>
                             <textarea class="cajas" id="txtDireccionP" placeholder="Direccion: " cols="30" rows="10"></textarea>
@@ -184,20 +179,20 @@
     <form class="cModal-form hidden" id="formCambioC">
         <div class="InicioSesion-titleContainer">
             <h1 class="cTitulo">Cambiar contraseña</h1>
-            <a href="./MiPerfilEditable.html" ><i class="fa-solid fa-circle-xmark cerrarModalInicio"></i></a>
+            <a href="./MiPerfilEditable.html"><i class="fa-solid fa-circle-xmark cerrarModalInicio"></i></a>
         </div>
-        
+
         <div>
             <label for="txtUsuario-c">Nombre de Usuario / email:</label>
             <input class="cCajas" id="txtUsuario-c" type="text" placeholder="Nombre de Usuario / email" required maxlength="15">
         </div>
-        
-        <div >
+
+        <div>
             <label for="txtContrasenha-l">Contraseña:</label>
             <input class="cCajas" id="txtContrasenha-c" type="password" placeholder="Contraseña" required maxlength="12">
         </div>
 
-        <div >
+        <div>
             <label for="txtContrasenha-l">Confirmar Contraseña:</label>
             <input class="cCajas" id="txtContrasenha2-c" type="password" placeholder="Confirmar contraseña" required maxlength="12">
         </div>
@@ -206,7 +201,7 @@
             <input type="button" class="lBtnCancelar" id="cancelPassword" value="Cancelar">
             <input type="button" id="btnPassword " class="cBtn" value="Cambiar Contraseña">
         </div>
-        
+
     </form>
 
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -214,8 +209,9 @@
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/controllers/CrearCitaController.js"></script>
     <script src="./js/controllers/CrearReservaController.js"></script>
-    <script src="./js/controllers/ControllerMiPerfilEditable.js"></script>
-    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/MiPerfilEditableController.js"></script>
+    <script src="./js/controllers/AppController.js"></script>
     <script src="./js/services/SessionService.js"></script>
 </body>
+
 </html>

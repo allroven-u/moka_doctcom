@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="./css/app.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
+
 <body onload="ImprimirListaCitas();">
 
     <header>
@@ -46,14 +48,12 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i>
-                                Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="perfilMascota.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i>
-                                Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
 
@@ -81,35 +81,32 @@
                     </div>
                     <ul class="list__show">
                         <li class="list__inside">
-                            
+
                             <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de citas</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de reservaciones</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-star-half-stroke list__arrow"></i>
-                                 Calificaciones</a>
+                                <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
+                            </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteGanancia.html" class="nav__link nav__link--inside">
-                             
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>
-                                Ganacias</a>
+
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                            </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Usuarios Registrados</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
                         </li>
 
                     </ul>
@@ -121,90 +118,90 @@
 
         <div class="home">
 
-    <div class="tblCaja">
-        <div class="tituloCaja">
-            <h2>Reporte de Ganancias</h2>
+            <div class="tblCaja">
+                <div class="tituloCaja">
+                    <h2>Reporte de Ganancias</h2>
 
-            <span>Fecha Inicio</span> 
-            <input type="date">
+                    <span>Fecha Inicio</span>
+                    <input type="date">
 
-            <span>Fecha Final</span> 
-            <input type="date">
+                    <span>Fecha Final</span>
+                    <input type="date">
 
-            <span>Mascota</span> 
-            <input type="text">
+                    <span>Mascota</span>
+                    <input type="text">
 
-            <span>Usuario</span> 
-            <input type="text">
+                    <span>Usuario</span>
+                    <input type="text">
 
-            <button>Filtrar</button>
+                    <button>Filtrar</button>
 
-        </div>
-        <table class="tblReporte">
-            <thead class="thTitle">
-                <tr>
-                    <th class="tblTitulo">No.de Factura</th>
-                    <th class="tblTitulo">Nombre del Cliente</th>
-                    <th class="tblTitulo">Servicio</th>
-                    <th class="tblTitulo">Mes</th>
-                    <th class="tblTitulo">Fecha</th>
-                    <th class="tblTitulo">Venta</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="tblContenido">001</td>
-                    <td class="tblContenido"> Luis Salazar</td>
-                    <td class="tblContenido">Veterinaria</td>
-                    <td class="tblContenido">Julio</td>
-                    <td class="tblContenido">25/7/2022</td>
-                    <td class="tblContenido">₡25000</td>
-                    
-                </tr>
-                <tr>
-                    <td class="tblContenido">002</td>
-                    <td class="tblContenido">Jorge Morales</td>
-                    <td class="tblContenido">Veterinaria</td>
-                    <td class="tblContenido">Julio</td>
-                    <td class="tblContenido">20/7/2022</td>
-                    <td class="tblContenido">₡20000</td>
-                    
-                </tr>
-                <tr>
-                    <td class="tblContenido">003</td>
-                    <td class="tblContenido">Isabel Mena</td>
-                    <td class="tblContenido">Veterinaria</td>
-                    <td class="tblContenido">Julio</td>
-                    <td class="tblContenido">15/7/2022</td>
-                    <td class="tblContenido">₡30000</td>   
-                </tr>    
-            </tbody>
-        </table>
-        <div class="tblCajaSecundaria">
-            <table class="tblTotales">
-                <thead class="thTitle2">
-                    <tr>
-                        <th class="tblCajaTotal">SubTotal</th>
-                        <th class="tblCajaTotal">Deducciones</th>
-                        <th class="tblCajaTotal">IVA</th>
-                        <th class="tblCajaTotal">Total de ganancias</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="tblInfoTotal">₡75000</td>
-                        <td class="tblInfoTotal">₡25000</td>
-                        <td class="tblInfoTotal">₡9750</td>
-                        <td class="tblInfoTotal">₡40250</td>
-                    </tr>                    
-                </tbody>
-            </table>
-        </div>                   
-    </div>
+                </div>
+                <table class="tblReporte">
+                    <thead class="thTitle">
+                        <tr>
+                            <th class="tblTitulo">No.de Factura</th>
+                            <th class="tblTitulo">Nombre del Cliente</th>
+                            <th class="tblTitulo">Servicio</th>
+                            <th class="tblTitulo">Mes</th>
+                            <th class="tblTitulo">Fecha</th>
+                            <th class="tblTitulo">Venta</th>
 
-               <!-------------CREAR CITA--------->
-               <div class="cuerpoCita hidden">
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="tblContenido">001</td>
+                            <td class="tblContenido"> Luis Salazar</td>
+                            <td class="tblContenido">Veterinaria</td>
+                            <td class="tblContenido">Julio</td>
+                            <td class="tblContenido">25/7/2022</td>
+                            <td class="tblContenido">₡25000</td>
+
+                        </tr>
+                        <tr>
+                            <td class="tblContenido">002</td>
+                            <td class="tblContenido">Jorge Morales</td>
+                            <td class="tblContenido">Veterinaria</td>
+                            <td class="tblContenido">Julio</td>
+                            <td class="tblContenido">20/7/2022</td>
+                            <td class="tblContenido">₡20000</td>
+
+                        </tr>
+                        <tr>
+                            <td class="tblContenido">003</td>
+                            <td class="tblContenido">Isabel Mena</td>
+                            <td class="tblContenido">Veterinaria</td>
+                            <td class="tblContenido">Julio</td>
+                            <td class="tblContenido">15/7/2022</td>
+                            <td class="tblContenido">₡30000</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="tblCajaSecundaria">
+                    <table class="tblTotales">
+                        <thead class="thTitle2">
+                            <tr>
+                                <th class="tblCajaTotal">SubTotal</th>
+                                <th class="tblCajaTotal">Deducciones</th>
+                                <th class="tblCajaTotal">IVA</th>
+                                <th class="tblCajaTotal">Total de ganancias</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="tblInfoTotal">₡75000</td>
+                                <td class="tblInfoTotal">₡25000</td>
+                                <td class="tblInfoTotal">₡9750</td>
+                                <td class="tblInfoTotal">₡40250</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-------------CREAR CITA--------->
+            <div class="cuerpoCita hidden">
                 <form id="formCrearCita" class="formCita">
                     <h1 class="titulo">Nueva Cita</h1>
                     <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
@@ -222,8 +219,7 @@
                         
                     </select>
 
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5"
-                        placeholder="Descripción de la Cita*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
 
 
 
@@ -259,8 +255,7 @@
 
 
 
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5"
-                        placeholder="Cuidados Especiales*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
 
 
 
@@ -279,9 +274,10 @@
     </div>
 
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/services/demoService.js"></script>
+    <script src="./js/services/DemoService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/AppController.js"></script>
     <script src="./js/services/SessionService.js"></script>
 </body>
-</html> 
+
+</html>

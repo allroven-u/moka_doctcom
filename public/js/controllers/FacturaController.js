@@ -5,7 +5,7 @@ const overlay = document.querySelector('.overlay');
 
 
 
-const hiddenPagar = function () {
+const hiddenPagar = function() {
     modalPago.classList.add('hidden');
     overlay.classList.add('hidden');
 };
@@ -17,13 +17,13 @@ function ShowModalPagoFunct() {
 
     closeModalPago.addEventListener('click', hiddenPagar);
     overlay.addEventListener('click', hiddenPagar);
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modalPago.classList.contains('hidden')) {
             hiddenPagar();
         }
     });
 };
 
-showPagar.addEventListener('click', function () {
+showPagar.addEventListener('click', function() {
     ShowModalPagoFunct();
 });
