@@ -1,5 +1,9 @@
 @import url("estilosGenerales.css");
 
+label {
+    color: black;
+}
+
 .border-radius{
     border-radius: 5px;
 }
@@ -234,7 +238,7 @@ td{
     margin-bottom: 10px;
     border-radius: 5px;
     border: none;
-    border-left: 10px solid var(--silver);
+    border-left: 10px solid var(--blanco);
     transition: all .5s ease;
     color: grey;
 }
@@ -256,3 +260,4 @@ td{
     color: var(--turquesa);
     
 }
+
