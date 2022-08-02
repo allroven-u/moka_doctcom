@@ -12,18 +12,18 @@ window.addEventListener('load', () => {
     txtDuennoM.textContent = usuario.Nombre;
     txtDireccionM.textContent = usuario.Direccion;
     console.log(mascota);
-   //txtMascota.textContent = mascota.NombreMascota;
+    //txtMascota.textContent = mascota.NombreMascota;
 
 
     cargaJsonCitas();
-    cargaJson(); 
-     setTimeout(() => {ImprimirListaCitas();}, 1000);
+    cargaJson();
+    setTimeout(() => { ImprimirListaCitas(); }, 1000);
 });
 
 
 
 
-function ImprimirListaCitas(){
+function ImprimirListaCitas() {
     let tbody = document.getElementById('tbbody-ultimas-citas');
 
     let listaCitas = getCitasArray();
@@ -34,14 +34,14 @@ function ImprimirListaCitas(){
 
     for (let i = 0; i < listaCitas.length; i++) {
 
-        let  cita = listaCitas[i];
-        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);  
-        
+        let cita = listaCitas[i];
+        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
+
         let fila = tbody.insertRow();
         let celdaNumCita = fila.insertCell();
         let celdaMascota = fila.insertCell();
         let celdaVeterinario = fila.insertCell();
-        let celdaFecha= fila.insertCell();
+        let celdaFecha = fila.insertCell();
         let celdaEstado = fila.insertCell();
 
         celdaNumCita.innerHTML = cita.NumeroCita;
@@ -55,29 +55,29 @@ function ImprimirListaCitas(){
         celdaEstado.innerHTML = cita.Estado;
         celdaEstado.classList.add('Estado');
         celdaEstado.classList.add('h-citas');
-        
-        
+
+
     }
     let EstadoCita = document.querySelectorAll('.Estado');
-        VerEstado(EstadoCita);
-   
+    VerEstado(EstadoCita);
+
 };
 
-function VerEstado(EstadoCita){
- 
+function VerEstado(EstadoCita) {
+
     for (let i = 0; i < EstadoCita.length; i++) {
-    let sEstadoCita = EstadoCita[i].innerHTML;    
-    if (sEstadoCita == 'AGENDADA'){
-        EstadoCita[i].classList.add("AGENDADA")  
-    }
-    if (sEstadoCita == 'CANCELADA'){
-        EstadoCita[i].classList.add("CANCELADA")
-       
-    }
-    if (sEstadoCita == 'FINALIZADA'){
-        EstadoCita[i].classList.add("FINALIZADA")
-        
-    }   
+        let sEstadoCita = EstadoCita[i].innerHTML;
+        if (sEstadoCita == 'AGENDADA') {
+            EstadoCita[i].classList.add("AGENDADA")
+        }
+        if (sEstadoCita == 'CANCELADA') {
+            EstadoCita[i].classList.add("CANCELADA")
+
+        }
+        if (sEstadoCita == 'FINALIZADA') {
+            EstadoCita[i].classList.add("FINALIZADA")
+
+        }
     }
 }
 
@@ -90,7 +90,7 @@ const closeModalMascota = document.getElementById('btnCancelarRegistroM');
 
 
 
-const hiddenRegistroM = function () {
+const hiddenRegistroM = function() {
     modalRegisMascot.classList.add('hidden');
     overlayRegistroM.classList.add('hidden');
 };
@@ -102,13 +102,13 @@ function ShowModalRegistroM() {
 
     closeModalMascota.addEventListener('click', hiddenRegistroM);
     overlayRegistroM.addEventListener('click', hiddenRegistroM);
-    document.addEventListener('keydown', function (e) {
+    document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modalRegisMascot.classList.contains('hidden')) {
             hiddenRegistroM();
         }
     });
 };
 
-btnAnnadirMascota.addEventListener('click', function () {
+btnAnnadirMascota.addEventListener('click', function() {
     ShowModalRegistroM();
 });

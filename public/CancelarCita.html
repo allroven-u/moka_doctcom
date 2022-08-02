@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="./css/CancelarCita.css">
     <title>Cancelar Cita</title>
 </head>
-<body >
+
+<body>
     <!--FORMULARIO---->
     <form class="form">
-        
+
         <!--TITULO------------------------>
         <h1 class="titulo">Cancelar Cita</h1>
 
@@ -21,20 +23,21 @@
         <div class="Cita">
             <label for="nombreCitaCancelar">Mascota</label>
             <output class="cajasOut" id="nombreCitaCancelar" name="nombreMascotaCancelar" for="mostrarNombre"></output>
-            
-            
+
+
         </div>
         <div>
-            <textarea class="cajas"  id="motivoCancelar" cols="30" rows="10" placeholder="Motivo de cancelacion"></textarea>
+            <textarea class="cajas" id="motivoCancelar" cols="30" rows="10" placeholder="Motivo de cancelacion"></textarea>
         </div>
 
         <!--BOTON-DE-Cancelar-------------------------->
         <input type="button" class="btn" id="btnRegistrar" value="Cancelar" onclick="CancelarCita();">
 
-    </form> 
-    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-    <script src="./js/services/demoService.js"></script>
-    <script src="./js/controllers/CancelarControler.js"></script>
+    </form>
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/services/DemoService.js"></script>
+    <script src="./js/controllers/CancelarController.js"></script>
 
 </body>
+
 </html>

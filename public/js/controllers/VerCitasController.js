@@ -2,15 +2,15 @@
 
 var listaCitas;
 
-window.addEventListener('load', () =>{
-     cargaJsonCitas();
-     cargaJson(); 
-     
-     setTimeout(() => {ImprimirListaCitas();}, 1000);
+window.addEventListener('load', () => {
+    cargaJsonCitas();
+    cargaJson();
+
+    setTimeout(() => { ImprimirListaCitas(); }, 1000);
 });
 
 
-function ImprimirListaCitas(){
+function ImprimirListaCitas() {
     let tbody = document.getElementById('tbdCitas');
 
     let listaCitas = getCitasArray();
@@ -18,15 +18,15 @@ function ImprimirListaCitas(){
     tbody.innerHTML = '';
 
     for (let i = 0; i < listaCitas.length; i++) {
-        
-        let  cita = listaCitas[i];
-        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);  
+
+        let cita = listaCitas[i];
+        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
 
         let fila = tbody.insertRow();
         let celdaNumCita = fila.insertCell();
         let celdaMascota = fila.insertCell();
         let celdaVeterinario = fila.insertCell();
-        let celdaFecha= fila.insertCell();
+        let celdaFecha = fila.insertCell();
         let celdaEstado = fila.insertCell();
         let celdaBoton = fila.insertCell();
 
@@ -41,57 +41,57 @@ function ImprimirListaCitas(){
         celdaEstado.innerHTML = cita.Estado;
         celdaEstado.classList.add('Estado');
         celdaEstado.classList.add('infoTd');
-        
+
         // let Boton = document.createElement('a');
         // Boton.innerHTML = 'Detalle';
         // Boton.setAttribute('href','#')
         // Boton.classList.add('btn');
         // celdaBoton.appendChild(Boton);
         let EstadoCitaif = document.querySelectorAll('.Estado');
-        if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
-        let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','#')
-        let iconoV =document.createElement('i');
-        iconoV.classList.add("fa-solid")
-        iconoV.classList.add("fa-eye")
-        iconoV.classList.add("btnV")
-        BotonV.appendChild(iconoV);
-        celdaBoton.appendChild(BotonV);
-        
-
-        let Boton = document.createElement('a');
-        Boton.setAttribute('href','#')
-        let icono =document.createElement('i');
-        icono.classList.add("fa-solid")
-        icono.classList.add("fa-pen-to-square")
-        icono.classList.add("btnEd")
-        Boton.appendChild(icono);
-        celdaBoton.appendChild(Boton);
-
-        let BotonC = document.createElement('a');
-        BotonC.setAttribute('onclick','ShowModalCancelFunct()');
-        let iconoC =document.createElement('i');
-        iconoC.classList.add("fa-solid")
-        iconoC.classList.add("fa-circle-xmark")
-        iconoC.classList.add("btnCa")
-        BotonC.appendChild(iconoC);
-        celdaBoton.appendChild(BotonC);
-        }else{
+        if (EstadoCitaif[i].innerHTML == 'AGENDADA') {
             let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','#')
-        let iconoV =document.createElement('i');
-        iconoV.classList.add("fa-solid")
-        iconoV.classList.add("fa-eye")
-        iconoV.classList.add("btnV")
-        BotonV.appendChild(iconoV);
-        celdaBoton.appendChild(BotonV);
+            BotonV.setAttribute('href', '#')
+            let iconoV = document.createElement('i');
+            iconoV.classList.add("fa-solid")
+            iconoV.classList.add("fa-eye")
+            iconoV.classList.add("btnV")
+            BotonV.appendChild(iconoV);
+            celdaBoton.appendChild(BotonV);
+
+
+            let Boton = document.createElement('a');
+            Boton.setAttribute('href', '#')
+            let icono = document.createElement('i');
+            icono.classList.add("fa-solid")
+            icono.classList.add("fa-pen-to-square")
+            icono.classList.add("btnEd")
+            Boton.appendChild(icono);
+            celdaBoton.appendChild(Boton);
+
+            let BotonC = document.createElement('a');
+            BotonC.setAttribute('onclick', 'ShowModalCancelFunct()');
+            let iconoC = document.createElement('i');
+            iconoC.classList.add("fa-solid")
+            iconoC.classList.add("fa-circle-xmark")
+            iconoC.classList.add("btnCa")
+            BotonC.appendChild(iconoC);
+            celdaBoton.appendChild(BotonC);
+        } else {
+            let BotonV = document.createElement('a');
+            BotonV.setAttribute('href', '#')
+            let iconoV = document.createElement('i');
+            iconoV.classList.add("fa-solid")
+            iconoV.classList.add("fa-eye")
+            iconoV.classList.add("btnV")
+            BotonV.appendChild(iconoV);
+            celdaBoton.appendChild(BotonV);
         }
 
-        
+
     }
     let EstadoCita = document.querySelectorAll('.Estado');
-        console.log(EstadoCita.length);
-        VerEstado(EstadoCita);
+    console.log(EstadoCita.length);
+    VerEstado(EstadoCita);
 }
 
 
@@ -106,7 +106,7 @@ function ImprimirListaCitas(){
 //     tbody.innerHTML = '';
 
 //     for (let i = 0; i < listaReservas.length; i++) {
-        
+
 //         let fila = tbody.insertRow();
 //         let celdaNumReserva = fila.insertCell();
 //         let celdaMascota = fila.insertCell();
@@ -126,7 +126,7 @@ function ImprimirListaCitas(){
 //         celdaEstado.innerHTML = listaReservas[i][5];
 //         celdaEstado.classList.add('Estado');
 //         celdaEstado.classList.add('infoTd');
-        
+
 //         let EstadoCitaif = document.querySelectorAll('.Estado');
 //         if (EstadoCitaif[i].innerHTML == 'Pendiente' ) {
 //         let BotonV = document.createElement('a');
@@ -137,7 +137,7 @@ function ImprimirListaCitas(){
 //         iconoV.classList.add("btnV")
 //         BotonV.appendChild(iconoV);
 //         celdaBoton.appendChild(BotonV);
-        
+
 //         let Boton = document.createElement('a');
 //         Boton.setAttribute('href','#')
 //         let icono =document.createElement('i');
@@ -165,8 +165,8 @@ function ImprimirListaCitas(){
 //         BotonV.appendChild(iconoV);
 //         celdaBoton.appendChild(BotonV);
 //         }
-        
-        
+
+
 //     }
 //     let EstadoCita = document.querySelectorAll('.Estado');
 //         console.log(EstadoCita.length);
@@ -174,22 +174,24 @@ function ImprimirListaCitas(){
 // }
 
 
-function VerEstado(EstadoCita){
-    
+function VerEstado(EstadoCita) {
+
     for (let i = 0; i < EstadoCita.length; i++) {
-    let sEstadoCita = EstadoCita[i].innerHTML;    
-    console.log(sEstadoCita)
-    if (sEstadoCita == 'AGENDADA'){
-        EstadoCita[i].classList.add("AGENDADA")
-        
-    }
-    if (sEstadoCita == 'CANCELADA'){
-        EstadoCita[i].classList.add("CANCELADA")
-       
-    }
-    if (sEstadoCita == 'FINALIZADA'){
-        EstadoCita[i].classList.add("FINALIZADA")
-        
-    }   
+        let sEstadoCita = EstadoCita[i].innerHTML;
+        console.log(sEstadoCita)
+        if (sEstadoCita == 'AGENDADA') {
+            EstadoCita[i].classList.add("AGENDADA")
+
+        }
+        if (sEstadoCita == 'CANCELADA') {
+            EstadoCita[i].classList.add("CANCELADA")
+
+        }
+        if (sEstadoCita == 'FINALIZADA') {
+            EstadoCita[i].classList.add("FINALIZADA")
+
+        }
     }
 }
+
+

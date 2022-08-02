@@ -11,15 +11,15 @@ let inputContrasenha1 = document.getElementById("txtContrasenha");
 let inputContrasenha2 = document.getElementById("txtContrasenha2");
 let inputDireccion = document.getElementById("txtDireccion");
 
-btnRegistrar.addEventListener("click",Registrar);
+btnRegistrar.addEventListener("click", Registrar);
 
-function Registrar(){
-    if(ValidarDatos() == true){
+function Registrar() {
+    if (ValidarDatos() == true) {
         ConfirmarDatos();
     }
 }
 
-function ValidarDatos(){
+function ValidarDatos() {
     let sNombre = inputNombre.value;
     let sApellido = inputApellido.value;
     let sCedula = inputCedula.value;
@@ -29,52 +29,52 @@ function ValidarDatos(){
     let pwContrasenha2 = inputContrasenha2.value;
     let sDireccion = inputDireccion.value;
 
-    
 
-    if (sNombre == null || sNombre == undefined || sNombre == ""){
+
+    if (sNombre == null || sNombre == undefined || sNombre == "") {
         inputNombre.classList.add("rError")
         MostrarError();
         return false;
 
-    }else{
+    } else {
         inputNombre.classList.remove("rError")
     }
-    if (sApellido == null || sApellido == undefined || sApellido == ""){
+    if (sApellido == null || sApellido == undefined || sApellido == "") {
         inputApellido.classList.add("rError")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputApellido.classList.remove("rError")
     }
-    if (sCedula == null || sCedula == undefined || sCedula == ""){
+    if (sCedula == null || sCedula == undefined || sCedula == "") {
         inputCedula.classList.add("rError")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputCedula.classList.remove("rError")
     }
-    if (sEmail == null || sEmail == undefined || sEmail == ""){
+    if (sEmail == null || sEmail == undefined || sEmail == "") {
         inputEmail.classList.add("rError")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputEmail.classList.remove("rError")
     }
-    if (sUsuario == null || sUsuario == undefined || sUsuario == ""){
+    if (sUsuario == null || sUsuario == undefined || sUsuario == "") {
         inputUsuario.classList.add("rError")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputUsuario.classList.remove("rError")
     }
-    if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == ""){
+    if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == "") {
         inputContrasenha1.classList.add("rError")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputContrasenha1.classList.remove("rError")
     }
-    if (pwContrasenha2 == null || pwContrasenha2 == undefined || pwContrasenha2 == "" || pwContrasenha != pwContrasenha2){
+    if (pwContrasenha2 == null || pwContrasenha2 == undefined || pwContrasenha2 == "" || pwContrasenha != pwContrasenha2) {
         inputContrasenha2.classList.add("rError")
         Swal.fire({
             icon: 'error',
@@ -82,32 +82,34 @@ function ValidarDatos(){
             text: 'Las contraseñas no son iguales!',
         })
         return false;
-        
-    }else{
+
+    } else {
         inputContrasenha2.classList.remove("rError")
     }
-    if (sDireccion == null || sDireccion == undefined || sDireccion == ""){
+    if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
         inputDireccion.classList.add("rError")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputDireccion.classList.remove("rError")
     }
     return true;
 }
-function MostrarError(){
+
+function MostrarError() {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Dato Requerido!',
     })
 }
-function ConfirmarDatos(){
+
+function ConfirmarDatos() {
     Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Registrado!',
         showConfirmButton: false,
         timer: 1500
-      })
+    })
 }

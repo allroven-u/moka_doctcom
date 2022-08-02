@@ -72,6 +72,13 @@ header {
 .home {
   display: flex;
   width: 85%;
+  flex-direction: column;
+}
+
+.Breadcrumbs{
+  display: flex;
+  padding: 10px;
+  border: solid 1px var(--turquesa);
 }
 
 .nav {

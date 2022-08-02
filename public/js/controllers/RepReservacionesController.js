@@ -4,64 +4,92 @@ var listaReservas;
 
 window.addEventListener('load', () =>{
      cargaJsonReservas();
-     cargaJson();   
+     cargaJson();
+     setTimeout(() => {ImprimirListaReservas();}, 1000);    
 });
 
 
 
 function ImprimirListaReservas(){
-    let tbody = document.getElementById('tbdReservas');
+    let tThead = document.getElementById('tTheadReservas');
+    let tbody = document.getElementById('tBodyReservas');
 
- listaReservas = getReservasArray();
+    let listaReservas = getReservasArray();
 
     tbody.innerHTML = '';
+    tThead.innerHTML = '';
+
+     // thead
+     let thRow = tThead.insertRow();
+
+     let celNumCita = thRow.insertCell();
+     celNumCita.innerHTML = 'Num. Reserva';
+ 
+     let celPropietario = thRow.insertCell();
+     celPropietario.innerHTML = 'Propietario';
+ 
+     let celMascota = thRow.insertCell();
+     celMascota.innerHTML = 'Mascota';
+ 
+     let celFechaIngreso = thRow.insertCell();
+     celFechaIngreso.innerHTML = 'Fecha Ingreso';
+
+     let celFechaSalida = thRow.insertCell();
+     celFechaSalida.innerHTML = 'Fecha Salida';
+ 
+     let celEstado = thRow.insertCell();
+     celEstado.innerHTML = 'Estado';
+
 
     for (let i = 0; i < listaReservas.length; i++) {
         
         let reserva = listaReservas[i];
+        let propietario = buscaUsuarioID(reserva.IdentificacionUsurio) ;
 
         let fila = tbody.insertRow();
-        let celdaNumReserva = fila.insertCell();
-        let celdaMascota = fila.insertCell();
-        let celdafechaEnt = fila.insertCell();
-        let celdaFecha= fila.insertCell();
-        let celdaEstado = fila.insertCell();
-      
 
+        let celdaNumReserva = fila.insertCell();
         celdaNumReserva.innerHTML = reserva.NumeroReservacion;
-        celdaNumReserva.classList.add('infoTd');
+
+        let celdaPropietario = fila.insertCell();
+        celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1;
+
+        let celdaMascota = fila.insertCell();
         celdaMascota.innerHTML = reserva.NombreMascota;
-        celdaMascota.classList.add('infoTd');
+
+        let celdafechaEnt = fila.insertCell();
         celdafechaEnt.innerHTML = reserva.FechaHoraIngreso;
-        celdafechaEnt.classList.add('infoTd');
-        celdaFecha.innerHTML = reserva.FechaHoraSalida;
-        celdaFecha.classList.add('infoTd');
+
+        let celdaFechaSalida= fila.insertCell();
+        celdaFechaSalida.innerHTML = reserva.FechaHoraSalida;
+
+        let celdaEstado = fila.insertCell();
         celdaEstado.innerHTML = reserva.Estado;
         celdaEstado.classList.add('Estado');
-        celdaEstado.classList.add('infoTd');
+
         
     }
-    let EstadoCita = document.querySelectorAll('.Estado');
-        console.log(EstadoCita.length);
-        VerEstadoReservas(EstadoCita);
+    let EstadoReservacion = document.querySelectorAll('.Estado');
+        console.log(EstadoReservacion.length);
+        VerEstadoReservas(EstadoReservacion);
 }
 
 
- function VerEstadoReservas(EstadoCita){
+ function VerEstadoReservas(EstadoReservacion){
     
-     for (let i = 0; i < EstadoCita.length; i++) {
-     let sEstadoCita = EstadoCita[i].innerHTML;    
+     for (let i = 0; i < EstadoReservacion.length; i++) {
+     let sEstadoCita = EstadoReservacion[i].innerHTML;    
      console.log(sEstadoCita)
      if (sEstadoCita == 'AGENDADA'){
-         EstadoCita[i].classList.add("AGENDADA")
+        EstadoReservacion[i].classList.add("AGENDADA")
         
      }
      if (sEstadoCita == 'CANCELADA'){
-         EstadoCita[i].classList.add("CANCELADA")
+        EstadoReservacion[i].classList.add("CANCELADA")
        
      }
      if (sEstadoCita == 'FINALIZADA'){
-         EstadoCita[i].classList.add("FINALIZADA")
+        EstadoReservacion[i].classList.add("FINALIZADA")
         
      }   
      }

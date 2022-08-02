@@ -168,13 +168,16 @@ function ImprimirListaVeterinarios(){
     function AsignarNombreOtro(){
         let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
         let divNombreOtro = document.getElementById('NombreOtro');
+        let countNombreOtro = divNombreOtro.childElementCount;
 
-        if(sIdentificacion == 'Otro' ){
+        if(sIdentificacion == 'Otro' && countNombreOtro == 0){
             let input = document.createElement('input');
         input.classList.add('cajas');
         input.setAttribute('id',"txtNombreOtro");
         input.setAttribute('placeholder',"Nombre mascota (opcional)");
         divNombreOtro.appendChild(input);
+        }else if(sIdentificacion != 'Otro' && countNombreOtro != 0){
+            divNombreOtro.removeChild(document.getElementById('txtNombreOtro'));
         }
     }
 

@@ -48,14 +48,12 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i>
-                                Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="perfilMascota.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i>
-                                Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
 
@@ -64,50 +62,18 @@
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-house-chimney-medical list__img"></i>
-                        <a href="#" class="nav__link">Veterinaria</a>
-                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                        <a href="AppVerCitas.html" class="nav__link">Citas</a>
                     </div>
-
-                    <ul class="list__show">
-                        <li class="list__inside">
-
-                            <a class="nav__link nav__link--inside" id="show-crear-cita">
-                                <i class="fa-solid fa-plus list__arrow"></i>
-                                Crear nueva Cita</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="AppVerCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-rectangle-list list__arrow"></i>
-                                Ver Citas</a>
-                        </li>
-                    </ul>
-
-
                 </li>
 
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
-                        <a href="#" class="nav__link">Hotel</a>
-                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                        <a href="AppVerReservas.html" class="nav__link">Reservas</a>
                     </div>
 
-                    <ul class="list__show">
-                        <li class="list__inside">
-                            <a class="nav__link nav__link--inside" id="show-crear-reservacion">
-                                <i class="fa-solid fa-plus list__arrow"></i>
-                                Crear Reservación</a>
-                        </li>
-
-                        <li class="list__inside">
-
-                            <a href="AppVerReservas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-list-check list__arrow"></i>
-                                Reservaciones</a>
-                        </li>
-                    </ul>
                 </li>
+
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-file-contract list__img"></i>
@@ -116,36 +82,33 @@
                     </div>
                     <ul class="list__show">
                         <li class="list__inside">
-                            
+
                             <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de citas</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Listado de reservaciones</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-file-lines list__arrow"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i>
-                                 Calificaciones</a>
+                                <i class="fa-solid fa-star-half-stroke"></i> Calificaciones
+                            </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteGanancia.html" class="nav__link nav__link--inside">
-                             
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>
-                                Ganacias</a>
+
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                            </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>
-                                 Usuarios Registrados</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
                         </li>
 
                     </ul>
@@ -157,12 +120,14 @@
 
         <div class="home">
 
+            <div class="Breadcrumbs">
 
-         <!-- Aqui se agrega el contenido de la pagina -->
+            </div>
+            <!-- Aqui se agrega el contenido de la pagina -->
 
 
 
-        <!--  -->
+            <!--  -->
             <!-------------CREAR CITA--------->
             <div class="cuerpoCita hidden">
                 <form id="formCrearCita" class="formCita">
@@ -182,8 +147,7 @@
                         
                     </select>
 
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5"
-                        placeholder="Descripción de la Cita*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
 
 
 
@@ -219,8 +183,7 @@
 
 
 
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5"
-                        placeholder="Cuidados Especiales*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
 
 
 
@@ -238,12 +201,12 @@
         <div class="overlay hidden"></div>
     </div>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/services/demoService.js"></script>
+    <script src="./js/services/DemoService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/MascotasService.js"></script>
     <script src="./js/controllers/CrearCitaController.js"></script>
     <script src="./js/controllers/CrearReservaController.js"></script>
-    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/AppController.js"></script>
     <script src="./js/services/SessionService.js"></script>
 </body>
 

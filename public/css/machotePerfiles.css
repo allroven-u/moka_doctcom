@@ -1,0 +1,86 @@
+@import url(./estilosGenerales.css);
+
+*{
+    font-family: Roboto300;  
+}
+
+.cajah2 h2{
+    background-color: var(--verdeagua);
+    cursor: default;
+    border-radius: 5px;
+    width: 230px;
+    margin:5px;
+    text-align: center;
+    font-size: 25px;
+    color: var(--blanco);   
+}
+
+.cajaFotografia{
+    width: 230px;
+    height: 30%;
+    padding: 10px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--silver);
+    border-radius: 5px;
+}
+.cajaTituloInfo{
+    background-color: var(--verdeagua);
+    border-radius: 5px;
+    color: var(--blanco);
+    margin: 5px;
+    text-align: center;
+    width: 60%;
+    font-size: 23px; 
+    margin: 0px 300px;
+}
+.cajaInfo{
+    overflow: hidden;
+    background-color: var(--silver);
+    width: 60%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 5px;
+    margin: 5px 300px;
+}
+
+label{
+    color: var(--azul2);
+}
+
+.infoPerfiles{
+    /*background-color: var(--blanco);
+    width: 40%;
+    height: 10%;
+    margin: 0px 12px;
+    color: var(--blanco);*/
+    display: flex;
+    flex-direction: row;
+    
+}
+ /*.infoPerfiles {
+    color: #333;
+    font-family: Roboto500;
+    text-align: center;
+    padding-top: 10px;
+ } */
+ .cajas{
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--blanco);
+    transition: all .5s ease;
+    background-color: var(--blanco); 
+  }
+  .cajas:hover, .cajas:focus{
+    border-left: 10px solid var(--verdeagua);
+  }
+
+  

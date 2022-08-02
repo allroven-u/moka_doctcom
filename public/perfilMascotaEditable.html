@@ -49,66 +49,33 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i>
-                                Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="perfilMascota.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i>
-                                Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
 
                 </li>
 
+
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-house-chimney-medical list__img"></i>
-                        <a href="#" class="nav__link">Veterinaria</a>
-                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                        <a href="AppVerCitas.html" class="nav__link">Citas</a>
                     </div>
-
-                    <ul class="list__show">
-                        <li class="list__inside">
-
-                            <a class="nav__link nav__link--inside" id="show-crear-cita">
-                                <i class="fa-solid fa-plus list__arrow"></i>
-                                Crear nueva Cita</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="AppVerCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-rectangle-list list__arrow"></i>
-                                Ver Citas</a>
-                        </li>
-                    </ul>
-
-
                 </li>
 
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
-                        <a href="#" class="nav__link">Hotel</a>
-                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                        <a href="AppVerReservas.html" class="nav__link">Reservas</a>
                     </div>
 
-                    <ul class="list__show">
-                        <li class="list__inside">
-                            <a class="nav__link nav__link--inside" id="show-crear-reservacion">
-                                <i class="fa-solid fa-plus list__arrow"></i>
-                                Crear Reservación</a>
-                        </li>
-
-                        <li class="list__inside">
-
-                            <a href="AppVerReservas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-list-check list__arrow"></i>
-                                Reservaciones</a>
-                        </li>
-                    </ul>
                 </li>
+
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-file-contract list__img"></i>
@@ -180,7 +147,7 @@
                             <label for="txtObservacionesM">Observaciones: </label>
                             <textarea class="cajas" id="txtObservacionesM" placeholder="Observaciones: " cols="30" rows="10"></textarea>
                             <button class="btn-editar border-radius" id="btn-guardarMiPerfil2" type="button">Guardar Informacion de Mascota</button>
-                            <button class="btn-cancelar border-radius" type="button" onclick="location.href='./perfilMascota.html'" >CANCELAR</button>
+                            <button class="btn-cancelar border-radius" type="button" onclick="location.href='./perfilMascota.html'">CANCELAR</button>
                         </div>
 
 
@@ -192,15 +159,15 @@
 
     <div class="overlay hidden"></div>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/controllers/ControllerRegistroMascota.js"></script>  
+    <script src="./js/controllers/RegistroMascotaController.js"></script>
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/MascotasService.js"></script>
-    
+
     <script src="./js/controllers/CrearCitaController.js"></script>
     <script src="./js/controllers/CrearReservaController.js"></script>
-    <script src="./js/controllers/ControllerPerfilMascotaEditable.js"></script>
-    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/PerfilMascotaEditableController.js"></script>
+    <script src="./js/controllers/AppController.js"></script>
 
     <script src="./js/services/SessionService.js"></script>
 </body>

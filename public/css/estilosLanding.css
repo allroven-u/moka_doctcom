@@ -481,7 +481,7 @@ h2 {
 
 .box-form input:hover,
 .box-form textarea:hover {
-    border-left: 10px solid var(--gris);
+    border-left: 10px solid var(--turquesa);
 }
 
 #btn-contact {
@@ -772,8 +772,7 @@ input::placeholder , textarea::placeholder{
 }
 
 .lBtnCancelar {
-    width: 100%;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     border: none;
     margin: 20px 0;
@@ -868,8 +867,8 @@ input::placeholder , textarea::placeholder{
 
 /*--BOTON-DE-REGISTRARSE---------*/
 .rBtn {
-    width: 100%;
-    padding: 15px;
+    width: 120px;
+    padding: 10px;
     border-radius: 5px;
     border: none;
     margin: 20px 0;
@@ -901,6 +900,10 @@ input::placeholder , textarea::placeholder{
 .rError {
     border: 2px solid var(--Rojo2);
     border-left: 10px solid var(--Rojo2);
+}
+.btnsRegistro{
+    display: flex;
+    justify-content: space-around;
 }
 
 @keyframes modal-signin {
