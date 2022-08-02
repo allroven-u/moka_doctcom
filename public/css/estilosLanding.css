@@ -481,7 +481,7 @@ h2 {
 
 .box-form input:hover,
 .box-form textarea:hover {
-    border-left: 10px solid var(--gris);
+    border-left: 10px solid var(--turquesa);
 }
 
 #btn-contact {
