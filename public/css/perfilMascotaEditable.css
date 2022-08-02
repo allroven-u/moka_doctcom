@@ -148,10 +148,11 @@ td{
 }
 
 .btn-editar{
+    width: 120px;
     height: 50px;
     margin-bottom: 10px;
     padding: 5px 20px;
-    background-color: var(--celestemar);
+    background-color: var(--verdeagua);
     color: var(--blanco);
     font-size: 15px;
     font-family: Roboto400;
@@ -159,14 +160,15 @@ td{
 }
 
 .btn-editar:hover{
-    background-color: var(--celeste);
+    background-color: var(--turquesa);
 }
 
 .btn-cancelar{
+    width: 120px;
     height: 50px;
     margin-bottom: 10px;
     padding: 5px 20px;
-    background-color: var(--Roj1);
+    background-color: var(--Rojo2);
     color: var(--blanco);
     font-size: 15px;
     font-family: Roboto400;
@@ -174,7 +176,7 @@ td{
 }
 
 .btn-cancelar:hover{
-    background-color: var(--Rojo2);
+    background-color: var(--Roj1);
 }
 
 .edit-icon{
