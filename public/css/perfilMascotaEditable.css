@@ -15,6 +15,7 @@
 
 .perfil-contenido {
     width: 80%;
+    height: 800px;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;

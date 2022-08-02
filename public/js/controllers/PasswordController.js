@@ -10,8 +10,9 @@ btnCambiarC.addEventListener('click',CambiarContrasenha);
 
 function CambiarContrasenha(){
    if(ValidarCambioContrasenha() == true) {
-    ConfirmarDatosC();
-    limpiarForm('formCambioC')
+    ConfirmarDatosCx();
+    limpiarForm('formCambioC');
+    hiddenModalPassword();
    }
 }
 
@@ -22,7 +23,7 @@ function ValidarCambioContrasenha(){
 
     if (sNombre == null || sNombre == undefined || sNombre == ""){
         inputNombreC.classList.add("rError")
-        MostrarErrorC();
+        MostrarErrorCx();
         return false;
 
     }else{
@@ -31,7 +32,7 @@ function ValidarCambioContrasenha(){
 
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == ""){
         inputContrasenha1C.classList.add("rError")
-        MostrarErrorC();
+        MostrarErrorCx();
         return false;
     }else{
         inputContrasenha1C.classList.remove("rError")
@@ -50,14 +51,14 @@ function ValidarCambioContrasenha(){
     }
     return true;
 }
-function MostrarErrorC(){
+function MostrarErrorCx(){
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
         text: 'Dato Requerido!',
     })
 }
-function ConfirmarDatosC(){
+function ConfirmarDatosCx(){
     Swal.fire({
         position: 'center',
         icon: 'success',
