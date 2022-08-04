@@ -154,10 +154,13 @@
     </div>
     <form class="form-pago-tarjeta hidden">
         <h1 class="titulo">Pago</h1>
-        <img height="25" src="https://shoplineimg.com/assets/footer/card_visa.png" style="text-align: center; width: 10%">
-        <img height="25" src="https://shoplineimg.com/assets/footer/card_master.png" style="text-align: center; width: 10%">
-        <img height="25" src="https://shoplineimg.com/assets/footer/card_amex.png" style="text-align: center; width: 10%">
-        <input class="cajas" id="txtTitular" type="text" placeholder="Nombre de titular de la tarjeta*" maxlength="60">
+        <img src="https://shoplineimg.com/assets/footer/card_visa.png"  id="imgVisa" class="hidden">
+
+        <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
+
+        <img src="https://shoplineimg.com/assets/footer/card_amex.png" id="imgAmex" class="hidden">
+
+        <input class="cajas" id="txtTitular" type="text" placeholder="Nombre de titular de la tarjeta*"  maxlength="60">
         <input class="cajas" id="numTarjeta" type="text" placeholder="Número de tarjeta*" maxlength="20">
         <input class="cajas" id="txtCvv" type="password" placeholder="CVV*" maxlength="4">
 
@@ -165,15 +168,15 @@
         <div class="cajasPContainer">
             <select id="mes_vencimiento" class="cajasP">
                         <option value="">--Mes--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
                         <option value="10">10</option>
                         <option value="11">11</option>
                         <option value="12">12</option>
@@ -198,7 +201,7 @@
                         </select>
         </div>
 
-        <input type="button" class="btn-pago-tarjeta" id="btnPagar" value="Pagar">
+        <input type="button" class="btn-pago-tarjeta" id="btnPagar" value="Pagar" onclick="RealizarPago();">
         <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cancelar">
     </form>
 
