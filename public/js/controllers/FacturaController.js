@@ -47,6 +47,7 @@ let tipoAmex = document.getElementById("imgAmex");
 let actualDate = new Date();
 let actualYear = actualDate.getFullYear();
 let actualMonth = actualDate.getMonth();
+var cantCVV;
 
 
 
@@ -85,7 +86,18 @@ function ValidarDatostarjeta(){
         MostrarErrorT();
         return false;
     } else {
-        inputNumCVV.classList.remove("TError");
+        console.log("cvv "+sNumCVV);
+        if(sNumCVV.length!=cantCVV){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'CVV incorrecto',
+            });
+            return false;
+        }else{
+            inputNumCVV.classList.remove("TError");
+        }
+        
     }
     if (nMesV == null || nMesV == undefined || nMesV == "") {
         inputMesVenc.classList.add("TError");
@@ -149,18 +161,21 @@ function ValidarTipoTarjeta(){
         tipoVisa.classList.remove("hidden");
         tipoMaster.classList.add("hidden");
         tipoAmex.classList.add("hidden");
+        cantCVV =3;
         return true;
     ///////mastercard/////////////    
     }else if(nTarjeta.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)){
         tipoVisa.classList.add("hidden");
         tipoMaster.classList.remove("hidden");
         tipoAmex.classList.add("hidden");
+        cantCVV =3;
         return true;
         ///////amex/////////////
     }else if(nTarjeta.match(/^3[4-7]\d{2}-?\d{6}-?\d{5}$/)){
         tipoVisa.classList.add("hidden");
         tipoMaster.classList.add("hidden");
         tipoAmex.classList.remove("hidden");
+        cantCVV =4;
         return true;
     }
     else{
