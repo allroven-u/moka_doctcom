@@ -3,8 +3,12 @@
 .border-radius{
     border-radius: 5px;
 }
-.shadow{
-    box-shadow: -5px 5px 15px var(--gris);
+
+.historial-de-pagos,
+.historial-mascota,
+.informacion-personal,
+.box-usuario_img{
+    margin: 20px;
 }
 
 .perfil-main {
@@ -23,7 +27,7 @@
 
 .box-usuario_img {
     width: 250px;
-    height: 50%;
+    height: 350px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -34,7 +38,7 @@
     background-image: url('../assets/img/default-user-image.jpg');
     background-size: cover;
     width: 90%;
-    height: 50%;
+    height: 200px;
     margin-bottom: 30px;
 }
 
@@ -50,7 +54,7 @@
 .informacion-personal {
     overflow: hidden;
     background-color: var(--silver);
-    width: 60%;
+    width: 70%;
     height: 50%;
     display: flex;
     flex-direction: row;
@@ -69,17 +73,20 @@
 
 .box-info-usuario {
     background-color: var(--blanco);
-    width: 40%;
+    width: 45%;
     height: 10%;
     margin: 0px 12px;
     color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box-info-usuario p{
     color: #333;
     font-family: Roboto500;
-    text-align: center;
-    padding-top: 10px;
+   /* text-align: center;
+    padding-top: 10px;*/
 }
 
 .calificacion {
@@ -153,6 +160,11 @@ td{
 }
 .edit-icon:hover{
     color: var(--verdeagua);
+}
+
+.input-img-user{
+    display: none;
+    
 }
 
 .fa-star{
