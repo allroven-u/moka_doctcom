@@ -131,3 +131,15 @@ label {
 .error {
     border: 2px solid var(--Rojo2);
 }
+.headCompletarCita{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.califContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -6,15 +6,18 @@ const closeCancelarCita = document.querySelector('.btn-cancelar-cita');
 
 //SHOW CREAR CITA
 const hiddenCancelModal = function() {
-    modalCancelarCita.classList.add('hidden');
-    overlayCancelar.classList.add('hidden');
+    modalCancelarCita.classList.add("hidden");
+    overlay.classList.add("hidden");
+    window.removeEventListener("scroll",disableScroll);
 };
 
 // start function show modal
 function ShowModalCancelFunct() {
-    modalCancelarCita.classList.remove('hidden');
-    overlayCancelar.classList.remove('hidden');
-
+    modalCancelarCita.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    location.href = "#top-page";
+    window.addEventListener("scroll",disableScroll);
+window.onscroll
     closeCancelarCita.addEventListener('click', hiddenCancelModal);
     overlayCancelar.addEventListener('click', hiddenCancelModal);
     document.addEventListener('keydown', function(e) {
@@ -33,11 +36,11 @@ function CancelarCita() {
     let sMotivoCancelar = inputCancelar.value;
     if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
         inputCancelar.classList.add("error")
-        MostrarError();
+        MostrarError('Debe ingresar motivo de cancelación');
         return false;
     } else {
         inputCancelar.classList.remove("error")
-        ConfirmarDatos();
+        ConfirmarDatos("Cita cancelada");
     }
 
 
@@ -92,11 +95,11 @@ function CancelarReserva() {
     let sMotivoCancelar = inputCancelar.value;
     if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
         inputCancelar.classList.add("error")
-        MostrarError();
+        MostrarError('Debe ingresar motivo de cancelación');
         return false;
     } else {
         inputCancelar.classList.remove("error")
-        ConfirmarDatos();
+        ConfirmarDatos("Reserva cancelada");
     }
 
 
@@ -111,20 +114,23 @@ function CancelarReserva() {
 
     }
 }
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
 //alarms
-function MostrarError() {
+function MostrarError(txtError) {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Debe ingresar motivo de cancelación',
+        text: txtError,
     })
 }
 
-function ConfirmarDatos() {
+function ConfirmarDatos(txtConfirmar) {
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Cita por cancelar',
+        title: txtConfirmar,
         showConfirmButton: false,
         timer: 1500
     })
