@@ -28,59 +28,72 @@ function ValidarDatos() {
     let pwContrasenha = inputContrasenha1.value;
     let pwContrasenha2 = inputContrasenha2.value;
     let sDireccion = inputDireccion.value;
-
-
+    const ValidarTexto = /^[a-zA-Z,.' -]+$/;
+    const ValidarEmail = /^[a-zA-Z0-9]+\@*[a-zA-Z0-9]*\@{1}[a-zA-Z]+.com$/;
 
     if (sNombre == null || sNombre == undefined || sNombre == "") {
         inputNombre.classList.add("rError")
-        MostrarError();
+        MostrarError("El nombre es requerido!");
         return false;
 
-    } else {
+    }else if(sNombre.match(ValidarTexto)){
         inputNombre.classList.remove("rError")
+        
+    } else {
+        inputNombre.classList.add("rError")
+        MostrarError("El nombre no puede contener caracteres especiales o numeros!");
+        return false;
     }
     if (sApellido == null || sApellido == undefined || sApellido == "") {
         inputApellido.classList.add("rError")
-        MostrarError();
+        MostrarError("Formato de nombre no valido!");
         return false;
-    } else {
+    } else if(sApellido.match(ValidarTexto)) {
         inputApellido.classList.remove("rError")
+    }else{
+        inputApellido.classList.add("rError")
+        MostrarError("Formato de apellido no valido!");
+        return false;
     }
     if (sCedula == null || sCedula == undefined || sCedula == "") {
         inputCedula.classList.add("rError")
-        MostrarError();
+        MostrarError("La cedula es requerida!");
         return false;
     } else {
         inputCedula.classList.remove("rError")
     }
     if (sEmail == null || sEmail == undefined || sEmail == "") {
         inputEmail.classList.add("rError")
-        MostrarError();
+        MostrarError("El correo requerido!");
         return false;
-    } else {
+    } else if(sEmail.match(ValidarEmail)) {
         inputEmail.classList.remove("rError")
+    }else{
+        inputEmail.classList.add("rError")
+        MostrarError("Formato de email no valido!");
+        return false;
     }
     if (sUsuario == null || sUsuario == undefined || sUsuario == "") {
         inputUsuario.classList.add("rError")
-        MostrarError();
+        MostrarError("El nombre de usuario es requerido!");
         return false;
     } else {
         inputUsuario.classList.remove("rError")
     }
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == "") {
         inputContrasenha1.classList.add("rError")
-        MostrarError();
+        MostrarError("La contraseña es requerida!");
         return false;
-    } else {
+    } else if(pwContrasenha.length>=6 && pwContrasenha.length<=15) {
         inputContrasenha1.classList.remove("rError")
+    }else{
+        inputContrasenha1.classList.add("rError")
+        MostrarError("La contraseña debe contener entre 6 y 15 caracteres!");
+        return false;
     }
     if (pwContrasenha2 == null || pwContrasenha2 == undefined || pwContrasenha2 == "" || pwContrasenha != pwContrasenha2) {
         inputContrasenha2.classList.add("rError")
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Las contraseñas no son iguales!',
-        })
+        MostrarError('Las contraseñas no son iguales!');
         return false;
 
     } else {
@@ -88,7 +101,7 @@ function ValidarDatos() {
     }
     if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
         inputDireccion.classList.add("rError")
-        MostrarError();
+        MostrarError('La dirección es requerida!');
         return false;
     } else {
         inputDireccion.classList.remove("rError")
@@ -96,11 +109,11 @@ function ValidarDatos() {
     return true;
 }
 
-function MostrarError() {
+function MostrarError(txtError) {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Dato Requerido!',
+        text: txtError,
     })
 }
 
