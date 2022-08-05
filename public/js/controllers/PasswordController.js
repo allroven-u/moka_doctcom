@@ -10,7 +10,7 @@ btnCambiarC.addEventListener('click',CambiarContrasenha);
 
 function CambiarContrasenha(){
    if(ValidarCambioContrasenha() == true) {
-    ConfirmarDatosCx();
+    ConfirmarDatos('Cambio de Contraseña exitoso!');
     limpiarForm('formCambioC');
     hiddenModalPassword();
    }
@@ -23,7 +23,7 @@ function ValidarCambioContrasenha(){
 
     if (sNombre == null || sNombre == undefined || sNombre == ""){
         inputNombreC.classList.add("rError")
-        MostrarErrorCx();
+        MostrarError("El usuario es requerido!");
         return false;
 
     }else{
@@ -32,18 +32,18 @@ function ValidarCambioContrasenha(){
 
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == ""){
         inputContrasenha1C.classList.add("rError")
-        MostrarErrorCx();
+        MostrarError("La contraseña es requerida!");
         return false;
-    }else{
+    }else if(pwContrasenha.length>=6 && pwContrasenha.length<=15){
         inputContrasenha1C.classList.remove("rError")
+    }else{
+        inputContrasenha1C.classList.add("rError")
+        MostrarError("La contraseña debe contener entre 6 y 15 caracteres!");
+        return false;
     }
     if (pwContrasenha2 == null || pwContrasenha2 == undefined || pwContrasenha2 == "" || pwContrasenha != pwContrasenha2){
         inputContrasenha2C.classList.add("rError")
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Las contraseñas no son iguales!',
-        })
+        MostrarError("Las contraseñas no son iguales!");
         return false;
         
     }else{
@@ -51,18 +51,18 @@ function ValidarCambioContrasenha(){
     }
     return true;
 }
-function MostrarErrorCx(){
+function MostrarError(txtError){
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Dato Requerido!',
+        text: txtError,
     })
 }
-function ConfirmarDatosCx(){
+function ConfirmarDatos(txtConfirmar){
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Cambio de Contraseña exitoso!',
+        title: txtConfirmar,
         showConfirmButton: false,
         timer: 1500
       })

@@ -225,15 +225,14 @@ let inputContEmail = document.getElementById("cont-mail");
 let inputContPhone = document.getElementById("cont-phone");
 let inputContDescrip = document.getElementById("cont-descrip");
 const cleanButton = document.querySelector(".btnCleanForm");
-
-function limpiarFormularioContacto() {
-    document.getElementById("formulario-contancto").reset();
-}
+const ValidarTexto = /^[a-zA-Z,.' -]+$/;
+const ValidarEmail = /^[a-zA-Z0-9]+\@*[a-zA-Z0-9]*\@{1}[a-zA-Z]+.com$/;
+const ValidarNumero = /^[0-9]\d{7}$/;
 
 function EnviarDatosCorreo() {
     if (ValidarDatosContactenos() == true) {
-        ConfirmarDatosLogin();
-        limpiarFormularioContacto();
+        ConfirmarDatos("Datos Enviados!");
+        limpiarFormulario("formulario-contancto");
     }
 }
 
@@ -245,36 +244,51 @@ function ValidarDatosContactenos() {
 
     if (sContName == null || sContName == undefined || sContName == "") {
         resaltarInputInvalido("cont-name");
-        MostrarErrorContactenos();
+        MostrarError("El nombre es requerido!");
+        return false;
+    }else if(!sContName.match(ValidarTexto)){
+        resaltarInputInvalido("cont-name");
+        MostrarError("Formato de nombre invalido!");
         return false;
     }
 
     if (sContEmail == null || sContEmail == undefined || sContEmail == "") {
         resaltarInputInvalido("cont-mail");
-        MostrarErrorContactenos();
+        MostrarError("El email es requerido!");
+        return false;
+    }else if(!sContEmail.match(ValidarEmail)){
+        resaltarInputInvalido("cont-mail");
+        MostrarError("Formato de email invalido!");
         return false;
     }
 
     if (sContPhone == null || sContPhone == undefined || sContPhone == "") {
         resaltarInputInvalido("cont-phone");
-        MostrarErrorContactenos();
+        MostrarError("El numero de teléfono es requerido!");
+        return false;
+    }else if(!sContPhone.match(ValidarNumero)){
+        resaltarInputInvalido("cont-phone");
+        MostrarError("Formato de Teléfono invalido!");
         return false;
     }
 
     if (sContDescip == null || sContDescip == undefined || sContDescip == "") {
         resaltarInputInvalido("cont-descrip");
-        MostrarErrorContactenos();
+        MostrarError("La descripción es requerida!");
         return false;
     }
 
     return true;
 }
+function limpiarFormulario(idForm) {
+    document.getElementById(idForm).reset();
+}
 
-function MostrarErrorContactenos() {
+function MostrarError(txtError) {
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Dato Requerido!",
+        text: txtError,
     });
 }
 
@@ -288,11 +302,11 @@ function resaltarInputInvalido(pinputID) {
     }, 5000);
 }
 
-function ConfirmarDatosLogin() {
+function ConfirmarDatos(txtConfirmar) {
     Swal.fire({
         position: "center",
         icon: "success",
-        title: "Datos Enviados!",
+        title: txtConfirmar,
         showConfirmButton: false,
         timer: 1500,
     });

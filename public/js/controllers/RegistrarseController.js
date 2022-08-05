@@ -15,7 +15,7 @@ btnRegistrar.addEventListener("click", Registrar);
 
 function Registrar() {
     if (ValidarDatos() == true) {
-        ConfirmarDatos();
+        ConfirmarDatos("Registro exitoso!");
     }
 }
 
@@ -117,11 +117,11 @@ function MostrarError(txtError) {
     })
 }
 
-function ConfirmarDatos() {
+function ConfirmarDatos(txtConfirmar) {
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Registrado!',
+        title: txtConfirmar,
         showConfirmButton: false,
         timer: 1500
     })
