@@ -6,7 +6,7 @@ let inputNombre = document.getElementById("txtNombre");
 let inputApellido = document.getElementById("txtApellido");
 let inputCedula = document.getElementById("numCedula");
 let inputEmail = document.getElementById("txtEmail");
-let inputUsuario = document.getElementById("txtUsuario");
+// let inputUsuario = document.getElementById("txtUsuario");
 let inputContrasenha1 = document.getElementById("txtContrasenha");
 let inputContrasenha2 = document.getElementById("txtContrasenha2");
 let inputDireccion = document.getElementById("txtDireccion");
@@ -24,7 +24,7 @@ function ValidarDatos() {
     let sApellido = inputApellido.value;
     let sCedula = inputCedula.value;
     let sEmail = inputEmail.value;
-    let sUsuario = inputUsuario.value;
+    // let sUsuario = inputUsuario.value;
     let pwContrasenha = inputContrasenha1.value;
     let pwContrasenha2 = inputContrasenha2.value;
     let sDireccion = inputDireccion.value;
@@ -57,7 +57,7 @@ function ValidarDatos() {
     }
     if (sCedula == null || sCedula == undefined || sCedula == "") {
         inputCedula.classList.add("rError")
-        MostrarError("La cedula es requerida!");
+        MostrarError("La identificación es requerida!");
         return false;
     } else {
         inputCedula.classList.remove("rError")
@@ -73,13 +73,13 @@ function ValidarDatos() {
         MostrarError("Formato de email no valido!");
         return false;
     }
-    if (sUsuario == null || sUsuario == undefined || sUsuario == "") {
-        inputUsuario.classList.add("rError")
-        MostrarError("El nombre de usuario es requerido!");
-        return false;
-    } else {
-        inputUsuario.classList.remove("rError")
-    }
+    // if (sUsuario == null || sUsuario == undefined || sUsuario == "") {
+    //     inputUsuario.classList.add("rError")
+    //     MostrarError("El nombre de usuario es requerido!");
+    //     return false;
+    // } else {
+    //     inputUsuario.classList.remove("rError")
+    // }
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == "") {
         inputContrasenha1.classList.add("rError")
         MostrarError("La contraseña es requerida!");
