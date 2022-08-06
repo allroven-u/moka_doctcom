@@ -7,6 +7,7 @@ let inputtxtCedulaP = document.getElementById("txtCedulaP");
 let inputtxtEmailP = document.getElementById("txtEmailP");
 let inputtxtUsuarioP = document.getElementById("txtUsuarioP");
 let inputtxtDireccionP = document.getElementById("txtDireccionP");
+const ValidarEmail = /^[a-zA-Z0-9]+\@*[a-zA-Z0-9]*\@{1}[a-zA-Z]+.com$/;
 
 function EnviarDatosCorreo() {
     if (ValidarDatosContactenos() == true) {
@@ -46,6 +47,16 @@ function ValidarDatosContactenos() {
     if (sConttxtEmailP == null || sConttxtEmailP == undefined || sConttxtEmailP == "") {
         resaltarInputInvalido("txtEmailP");
         MostrarErrorContactenos();
+        return false;
+    }
+
+    if (sConttxtEmailP == null || sConttxtEmailP == undefined || sConttxtEmailP == "") {
+        resaltarInputInvalido("txtEmailP");
+        MostrarErrorContactenos("El email es requerido!");
+        return false;
+    }else if(!sConttxtEmailP.match(ValidarEmail)){
+        resaltarInputInvalido("txtEmailP");
+        MostrarErrorContactenos("Formato de email invalido!");
         return false;
     }
 
