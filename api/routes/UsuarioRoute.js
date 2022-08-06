@@ -57,28 +57,28 @@ router.get('/ListarUsuario', (req, res) => {
     });
 });
 
-// router.get('/BuscarUsuario', (req, res) => {
-//     let params = req.query;
-//     Usuario.findOne({ Identificacion: params.Identificacion }, (err, usuarioDB) => {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo obtener datos: ',
-//                 err
-//             });
-//         } else {
+router.get('/BuscarUsuario', (req, res) => {
+    let params = req.query;
+    Usuario.findOne({ Identificacion: params.Identificacion }, (err, usuarioDB) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener datos: ',
+                err
+            });
+        } else {
 
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Los datos se obtuvieron de manera correcta: ',
-//                 usuarioDB
-//             });
-//         }
-//     });
-// });
-// router.get('/BuscarPersonaPorId', (req, res) => {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                usuarioDB
+            });
+        }
+    });
+});
+// router.get('/BuscarUsuarioPorId', (req, res) => {
 //     let params = req.query;
-//     Persona.findOne({_id: params._id}, (err, personaDB) => {
+//     Usuario.findOne({_id: params._id}, (err, UsuarioDB) => {
 //         if (err) {            
 //             res.json({
 //                 resultado: false,
@@ -89,113 +89,113 @@ router.get('/ListarUsuario', (req, res) => {
 //             res.json({
 //                 resultado: true,
 //                 msj: 'Los datos se obtuvieron de manera correcta: ',
-//                 personaDB
+//                 UsuarioDB
 //             });
 //         }
 //     });
 // });
-// router.get('/AutenticarUsuario', (req, res) => {
-//     let params = req.query;
-//     Persona.findOne({
-//         Email: params.Email,
-//         Password: params.Password
-//     }, (err, personaDB) => {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo obtener datos: ',
-//                 err
-//             });
-//         } else {
-//             if (personaDB == null) {
-//                 res.json({
-//                     resultado: false,
-//                     msj: 'Usuario y/o contraseña incorrectos ',
-//                     personaDB
-//                 });
-//             } else if (Number(personaDB.Estado) == 0) {
-//                 //inactivo                
-//                 res.json({
-//                     resultado: false,
-//                     msj: 'Usuario inactivo, por favor comuniquese con el administrador ',
-//                     personaDB
-//                 });
-//             } else {
-//                 res.json({
-//                     resultado: true,
-//                     msj: 'Los datos se obtuvieron de manera correcta: ',
-//                     personaDB
-//                 });
-//             }
-//         }
-//     });
-// });
-// router.delete('/EliminarPersona', function (req, res) {
-//     let body = req.body;
-//     Persona.remove({ _id: body._id }, (err, result) => {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo eliminar los datos: ',
-//                 err
-//             });
-//         } else {
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Los datos se eliminarion de manera correcta',
-//                 result
-//             });
-//         }
-//     });
-// });
-// router.put('/ModificarPersona', function (req, res) {
-//     let body = req.body;
-//     Persona.updateOne({ _id: body._id }, {
-//         $set: req.body 
-//         // $set: {
-//         //     Nombre: body.Nombre,
-//         //     Edad: body.Edad
-//         // }
-//     }, function (err, info) {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
-//                 err
-//             });
-//         } else {
+router.get('/AutenticarUsuario', (req, res) => {
+    let params = req.query;
+    Usuario.findOne({
+        Email: params.Email,
+        Contrasenia: params.Contrasenia//revisar
+    }, (err, UsuarioDB) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener datos: ',
+                err
+            });
+        } else {
+            if (UsuarioDB == null) {
+                res.json({
+                    resultado: false,
+                    msj: 'Usuario y/o contraseña incorrectos ',
+                    UsuarioDB
+                });
+            } else if (Number(UsuarioDB.Estado) == 0) {
+                //inactivo                
+                res.json({
+                    resultado: false,
+                    msj: 'Usuario inactivo, por favor comuniquese con el administrador ',
+                    UsuarioDB
+                });
+            } else {
+                res.json({
+                    resultado: true,
+                    msj: 'Los datos se obtuvieron de manera correcta: ',
+                    UsuarioDB
+                });
+            }
+        }
+    });
+});
+router.delete('/EliminarUsuario', function (req, res) {
+    let body = req.body;
+    Usuario.remove({Identificacion: body.Identificacion}, (err, result) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo eliminar los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se eliminarion de manera correcta',
+                result
+            });
+        }
+    });
+});
+router.put('/ModificarUsuario', function (req, res) {
+    let body = req.body;
+    Usuario.updateOne({ Identificacion: body.Identificacion }, {
+        $set: req.body 
+        // $set: {
+        //     Nombre: body.Nombre,
+        //     Edad: body.Edad
+        // }
+    }, function (err, info) {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
+                err
+            });
+        } else {
 
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Los datos se actualizaron de manera correcta',
-//                 info
-//             });
-//         }
-//     }
-//     );
-// });
-// router.put('/DesactivarPersona', function(req, res){
-//     let body = req.body;
-//     Persona.updateOne({ _id: body._id }, {
-//         $set: {
-//             Estado: 0
-//         }
-//     }, function (err, info) {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
-//                 err
-//             });
-//         } else {
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Persona inactivada de manera correcta',
-//                 info
-//             });
-//         }
-//     });
+            res.json({
+                resultado: true,
+                msj: 'Los datos se actualizaron de manera correcta',
+                info
+            });
+        }
+    }
+    );
+});
+router.put('/DesactivarUsuario', function(req, res){
+    let body = req.body;
+    Usuario.updateOne({ Identificacion: body.Identificacion }, {
+        $set: {
+            Activo: 0
+        }
+    }, function (err, info) {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Usuario inactivada de manera correcta',
+                info
+            });
+        }
+    });
 
-// });
+});
 
 module.exports = router;
