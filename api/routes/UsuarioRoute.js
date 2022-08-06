@@ -6,37 +6,38 @@ const Usuario = require('../models/UsuarioModel');
 
 
 
-// router.post('/RegistrarUsuario', (req, res) => {
-//     let body = req.body;
-//     let nuevaUsuario = new Usuario({
-//         Nombre: body.Nombre,
-//         Apellido: body.Apellido,
-//         Identificacion: body.Identificacion,
-//         Email: body.Email,
-//         Contrasenia: body.Contrasenia,
-//         Direccion: body.Direccion,
-//         CalificacionPromedio: body.CalificacionPromedio,
-//         Foto: body.Foto,
-//         Activo: body.Activo,
-//         Rol: body.Rol
+router.post('/RegistrarUsuario', (req, res) => {
+    let body = req.body;
+    let nuevaUsuario = new Usuario({
+        Nombre: body.Nombre,
+        Apellido: body.Apellido,
+        Identificacion: body.Identificacion,
+        Email: body.Email,
+        Contrasenia: body.Contrasenia,
+        Direccion: body.Direccion,
+        CalificacionPromedio: body.CalificacionPromedio,
+        Foto: body.Foto,
+        Activo: body.Activo,
+        Rol: body.Rol
 
-//     });
-//     nuevaUsuario.save((err, usuarioDB) => {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo registrar el usuario, ocurrio el siguiente error: ',
-//                 err
-//             });
-//         } else {
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Registro realizado de manera correcta',
-//                 usuarioDB
-//             });
-//         }
-//     });
-// });
+    });
+
+    nuevaUsuario.save((err, usuarioDB) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo registrar el usuario, ocurrio el siguiente error: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Registro realizado de manera correcta',
+                usuarioDB
+            });
+        }
+    });
+});
 
 router.get('/ListarUsuario', (req, res) => {
     Usuario.find((err, ListaUsuariosBD) => {
