@@ -14,14 +14,10 @@ window.addEventListener('load', () => {
     console.log(mascota);
     //txtMascota.textContent = mascota.NombreMascota;
 
-
     cargaJsonCitas();
     cargaJson();
     setTimeout(() => { ImprimirListaCitas(); }, 1000);
 });
-
-
-
 
 function ImprimirListaCitas() {
     let tbody = document.getElementById('tbbody-ultimas-citas');
@@ -112,3 +108,6 @@ function ShowModalRegistroM() {
 btnAnnadirMascota.addEventListener('click', function() {
     ShowModalRegistroM();
 });
+
+
+
