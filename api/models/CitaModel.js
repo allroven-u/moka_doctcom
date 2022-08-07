@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 
-const schemaUsuario = new mongoose.Schema(
+const schemaCita = new mongoose.Schema(
     {
         NumeroCita: { type: Number, required: true, unique: true },
         IdentificacionUsuario:{ type: String, required: true, unique: false },
@@ -10,7 +10,7 @@ const schemaUsuario = new mongoose.Schema(
         FechaHora: { type: String, required: true, unique: false },
         Calificacion: { type: Number, required: false, unique: false },
         Estado: { type: String, required: true, unique: false },
-        IdentificacionVeterinario:{ type: Number, required: false, unique: false },
+        IdentificacionVeterinario:{ type: String, required: false, unique: false },
         ObservacionesVeterinario: { type: String, required: false, unique: false },
         ObservacionesCita: { type: String, required: false, unique: false },
     }

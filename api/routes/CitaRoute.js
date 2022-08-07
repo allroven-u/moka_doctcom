@@ -8,7 +8,7 @@ const Cita = require('../models/CitaModel');
 
 router.post('/RegistrarCita', (req, res) => {
     let body = req.body;
-    let nuevaUsuario = new Usuario({
+    let nuevaCita = new Cita({
         NumeroCita: body.NumeroCita,
         IdentificacionUsuario:body.IdentificacionUsuario,
         NombreMascota: body.NombreMascota,
@@ -113,7 +113,7 @@ router.get('/BuscarCitaPorId', (req, res) => {
 
 router.put('/ModificarCita', function (req, res) {
     let body = req.body;
-    Cita.updateOne({ NumeroCita: body.NumeroCita }, {
+    Cita.updateMany({ NumeroCita: body.NumeroCita }, {
         $set: req.body 
         // $set: {
         //     Nombre: body.Nombre,
