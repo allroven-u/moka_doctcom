@@ -9,12 +9,16 @@ const Usuario = require('../models/MascotaModel');
 router.post('/RegistrarMascota', (req, res) => {
     let body = req.body;
     let nuevaMascota = new Mascota({
-        Identificacion: body.Identificacion,
-        Nombre: body.Nombre,
+        IdentificacionDuenio: body.Identificacion,
+        NombreMascota: body.Nombre,
         Direccion: body.Direccion,
         CalificacionPromedio: body.CalificacionPromedio,
-        Foto: body.Foto,
         Activo: body.Activo,
+        Estado: body.Estado,
+        Latitud: body.Latitud,
+        Longitud:body.Longitud,
+        Foto: body.Foto,
+        
 
     });
 
