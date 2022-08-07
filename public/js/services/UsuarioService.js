@@ -48,14 +48,23 @@ function getListaUsuarios(){
 }
 
 //Esta funcion valida si el login es correcto devuelve un booleano.
-function validarLogin(pUsuario, pClave) {
-  let usuario = buscaUsuario(pUsuario);
-  if (usuario != null && usuario.Contrasenia === pClave ){
-    SetSesion(usuario);
-    return true;
-  } else {
-    return false;
-  }
+async function validarLogin(pEmail, pClave) {
+
+  await  axios.get(apiUrl + '/AutenticarUsuario', {
+    params: {
+      Email: pEmail,
+      Contrasenia: pClave
+    }
+  });
+
+  // let usuario = buscaUsuario(pUsuario);
+  // if (usuario != null && usuario.Contrasenia === pClave ){
+  //   SetSesion(usuario);
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  return true;
 }
 
 function getUsuariosArray(){

@@ -98,7 +98,7 @@ router.get('/AutenticarUsuario', (req, res) => {
     let params = req.query;
     Usuario.findOne({
         Email: params.Email,
-        Contrasenia: params.Contrasenia//revisar
+        Contrasenia: params.Contrasenia //revisar
     }, (err, UsuarioDB) => {
         if (err) {
             res.json({

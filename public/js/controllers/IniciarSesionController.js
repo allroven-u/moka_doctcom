@@ -7,7 +7,7 @@ document.addEventListener("load", cargaJson());
 
 btnIniciar.addEventListener("click", IniciarSesion);
 
-function IniciarSesion() {
+async function IniciarSesion() {
     if (ValidarDatosLogin()) {
         if (validarLogin(inputUsuarioLogin.value.toUpperCase(), inputContrasenha1Login.value) == true) {
             ConfirmarDatosLogin();
