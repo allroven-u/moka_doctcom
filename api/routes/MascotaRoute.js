@@ -9,8 +9,8 @@ const Mascota = require('../models/MascotaModel');
 router.post('/RegistrarMascota', (req, res) => {
     let body = req.body;
     let nuevaMascota = new Mascota({
-        IdentificacionDuenio: body.Identificacion,
-        NombreMascota: body.Nombre,
+        IdentificacionDuenio: body.IdentificacionDuenio,
+        NombreMascota: body.NombreMascota,
         Direccion: body.Direccion,
         CalificacionPromedio: body.CalificacionPromedio,
         Activo: body.Activo,
@@ -19,6 +19,7 @@ router.post('/RegistrarMascota', (req, res) => {
         Longitud:body.Longitud,
         Foto: body.Foto,
         
+
 
     });
 
@@ -76,78 +77,8 @@ router.get('/BuscarMascota', (req, res) => {
         }
     });
 });
-// router.get('/BuscarUsuarioPorId', (req, res) => {
-//     let params = req.query;
-//     Usuario.findOne({_id: params._id}, (err, UsuarioDB) => {
-//         if (err) {            
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo obtener datos: ',
-//                 err
-//             });
-//         }else{
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Los datos se obtuvieron de manera correcta: ',
-//                 UsuarioDB
-//             });
-//         }
-//     });
-// });
-// router.get('/AutenticarUsuario', (req, res) => {
-//     let params = req.query;
-//     Usuario.findOne({
-//         Email: params.Email,
-//         Contrasenia: params.Contrasenia//revisar
-//     }, (err, UsuarioDB) => {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo obtener datos: ',
-//                 err
-//             });
-//         } else {
-//             if (UsuarioDB == null) {
-//                 res.json({
-//                     resultado: false,
-//                     msj: 'Usuario y/o contraseña incorrectos ',
-//                     UsuarioDB
-//                 });
-//             } else if (Number(UsuarioDB.Estado) == 0) {
-//                 //inactivo                
-//                 res.json({
-//                     resultado: false,
-//                     msj: 'Usuario inactivo, por favor comuniquese con el administrador ',
-//                     UsuarioDB
-//                 });
-//             } else {
-//                 res.json({
-//                     resultado: true,
-//                     msj: 'Los datos se obtuvieron de manera correcta: ',
-//                     UsuarioDB
-//                 });
-//             }
-//         }
-//     });
-// });
-// router.delete('/EliminarUsuario', function (req, res) {
-//     let body = req.body;
-//     Usuario.remove({Identificacion: body.Identificacion}, (err, result) => {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo eliminar los datos: ',
-//                 err
-//             });
-//         } else {
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Los datos se eliminarion de manera correcta',
-//                 result
-//             });
-//         }
-//     });
-// });
+
+
 router.put('/ModificarMascota', function (req, res) {
     let body = req.body;
     Mascota.updateOne({ Identificacion: body.Identificacion }, {
