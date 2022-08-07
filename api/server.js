@@ -50,3 +50,8 @@ function hadleError(res, reason, message, code) {
 //conexion a todas las rutas del BackEnd
 const usuarios = require('./routes/UsuarioRoute');
 app.use('/api', usuarios);
+
+
+//conexion a todas las rutas del BackEnd
+const mascotas = require('./routes/MascotaRoute');
+app.use('/api', mascotas);
