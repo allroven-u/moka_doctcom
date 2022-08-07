@@ -55,3 +55,7 @@ app.use('/api', usuarios);
 //conexion a todas las rutas del BackEnd
 const mascotas = require('./routes/MascotaRoute');
 app.use('/api', mascotas);
+
+//conexion a todas las rutas del BackEnd
+const citas = require('./routes/CitaRoute');
+app.use('/api', citas);
