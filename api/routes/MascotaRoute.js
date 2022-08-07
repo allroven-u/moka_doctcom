@@ -58,9 +58,29 @@ router.get('/ListarMascota', (req, res) => {
     });
 });
 
-router.get('/BuscarMascota', (req, res) => {
+router.get('/BuscarMascotaIDDuenio', (req, res) => {
     let params = req.query;
-    Mascota.findOne({ Identificacion: params.Identificacion }, (err, MascotaDB) => {
+    Mascota.find({ IdentificacionDuenio: params.IdentificacionDuenio }, (err, MascotaDB) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener datos: ',
+                err
+            });
+        } else {
+
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                MascotaDB
+            });
+        }
+    });
+});
+
+router.get('/BuscarIDMascota', (req, res) => {
+    let params = req.query;
+    Mascota.findOne({ _id: params._id }, (err, MascotaDB) => {
         if (err) {
             res.json({
                 resultado: false,
@@ -81,7 +101,7 @@ router.get('/BuscarMascota', (req, res) => {
 
 router.put('/ModificarMascota', function (req, res) {
     let body = req.body;
-    Mascota.updateOne({ Identificacion: body.Identificacion }, {
+    Mascota.updateOne({ _id: body._id }, {
         $set: req.body 
         // $set: {
         //     Nombre: body.Nombre,
@@ -107,7 +127,7 @@ router.put('/ModificarMascota', function (req, res) {
 });
 router.put('/DesactivarMascota', function(req, res){
     let body = req.body;
-    Mascota.updateOne({ Identificacion: body.Identificacion }, {
+    Mascota.updateOne({ _id: body._id }, {
         $set: {
             Activo: 0
         }
@@ -121,7 +141,7 @@ router.put('/DesactivarMascota', function(req, res){
         } else {
             res.json({
                 resultado: true,
-                msj: 'Usuario inactivada de manera correcta',
+                msj: 'Mascota inactivada de manera correcta',
                 info
             });
         }

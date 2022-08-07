@@ -48,14 +48,18 @@ function hadleError(res, reason, message, code) {
 }
 
 //conexion a todas las rutas del BackEnd
+
 const usuarios = require('./routes/UsuarioRoute');
 app.use('/api', usuarios);
 
-
-//conexion a todas las rutas del BackEnd
 const mascotas = require('./routes/MascotaRoute');
 app.use('/api', mascotas);
 
-//conexion a todas las rutas del BackEnd
 const citas = require('./routes/CitaRoute');
 app.use('/api', citas);
+
+const reservaciones = require('./routes/ReservacionRoute');
+app.use('/api', reservaciones);
+
+const tarjetas = require('./routes/MascotaRoute');
+app.use('/api', tarjetas);
