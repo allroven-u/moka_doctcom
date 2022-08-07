@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moka Veterinaria</title>
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/CrearCita.css">
-    <link rel="stylesheet" href="css/CrearReservacion.css">
-    <link rel="stylesheet" href="css/RegistroMascota.css">
     <link rel="stylesheet" href="css/MiPerfil.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
@@ -31,7 +28,6 @@
     <div class="bodyContainer">
         <nav class="nav">
             <ul class="list">
-
                 <li class="list__item">
                     <div class="list__button">
                         <i class="fa-solid fa-angle-right fa-2x list__img "></i>
@@ -119,19 +115,16 @@
             </ul>
         </nav>
 
-
         <div class="home">
-
-
             <div class="perfil-main">
                 <div class="perfil-contenido">
                     <div class="box-usuario_img">
-                        <div class="box-img border-radius">
-                            
+                        <div class="box-img border-radius">  
                         </div>
                         <div class="usuario border-radius">
                             <p id="TxtUsuarioLogueado2"></p>
                         </div>
+                        <button class="usuario2 border-radius methodos_de_pagos" id="ver_metodo_pago">Mis Metodos de Pago</button>
                     </div>
                     <div class="informacion-personal border-radius">
                         <div class="titulo-info-usario">
@@ -262,31 +255,137 @@
                         <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
                     </div>
 
-
-
                     <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
-
-
 
                     <div class="btnsR">
                         <input type="button" class="btnCancelarR" value="Cancelar">
 
                         <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
                     </div>
-
                 </form>
             </div>
-
         </div>
 
-        <div class="overlay hidden"></div>
+        <form class="form-pago-tarjeta12345 hidden">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <h1 class="titulo">Metodos de Pagos</h1>
+
+            <img src="https://shoplineimg.com/assets/footer/card_visa.png"  id="imgVisa" class="hidden">
+    
+            <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
+    
+            <div class="cajasPContainer">
+                <img src="https://shoplineimg.com/assets/footer/card_visa.png"></img>
+                <h1 class="tarjetas">****4575</h1>
+                <h1>
+                    <span class="trash">
+                    <span></span>
+                    <i></i>
+                </span>
+                </h1>
+            </div>
+    
+            <div class="cajasPContainer">
+                <img src="https://shoplineimg.com/assets/footer/card_amex.png"></img>
+                <h1 class="tarjetas">****4575</h1>
+                <h1>
+                    <span class="trash">
+                    <span></span>
+                    <i></i>
+                </span>
+                </h1>
+            </div>
+
+            <div class="cajasPContainer">
+                <img src="https://shoplineimg.com/assets/footer/card_visa.png"></img>
+                <h1 class="tarjetas">****4575</h1>
+                <h1>
+                    <span class="trash">
+                    <span></span>
+                    <i></i>
+                </span>
+                </h1>
+            </div>
+
+            <div class="cajasPContainer">
+                <img src="https://shoplineimg.com/assets/footer/card_master.png"></img>
+                <h1 class="tarjetas">****4575</h1>
+                <h1>
+                    <span class="trash">
+                    <span></span>
+                    <i></i>
+                </span>
+                </h1>
+            </div>
+
+            <button class="btn-pago-tarjeta" id="agregar_tarjeta12345">Agregar Tarjeta2</button>
+            <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cerrar">
+        </form>
+
+        <div class="overlay1 hidden"></div>
+
+
+        <form class="form-pago-tarjeta2 hidden">
+            <h1 class="titulo">Pago</h1>
+            <img src="https://shoplineimg.com/assets/footer/card_visa.png"  id="imgVisa" class="hidden">
+    
+            <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
+    
+            <img src="https://shoplineimg.com/assets/footer/card_amex.png" id="imgAmex" class="hidden">
+    
+            <input class="cajas" id="txtTitular" type="text" placeholder="Nombre de titular de la tarjeta*"  maxlength="60">
+            <input class="cajas" id="numTarjeta" type="text" placeholder="Número de tarjeta*" maxlength="20">
+            <input class="cajas" id="txtCvv" type="password" placeholder="CVV*" maxlength="4">
+    
+            <label for="mes_vencimiento">Vencimiento:</label>
+            <div class="cajasPContainer">
+                <select id="mes_vencimiento" class="cajasP">
+                            <option value="">--Mes--</option>
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            </select>
+    
+                <select id="year_vencimiento" class="cajasP">
+                            <option value="">--Año--</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+                            </select>
+            </div>
+
+            <input type="button" class="btn-pago-tarjeta2" id="btnPagar" value="Pagar">
+            <input type="button" class="btn2-cancerlar-tarjeta" id="btnCancelar2" value="Cancelar">
+        </form>
+
+        <div class="overlay2 hidden"></div>
+
+
     </div>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="./js/services/demoService.js"></script>-->
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/controllers/CrearCitaController.js"></script>
-    <script src="./js/controllers/CrearReservaController.js"></script>
     <script src="./js/controllers/MiPerfilController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
     <script src="./js/services/SessionService.js"></script>
