@@ -2,13 +2,13 @@
 
 const express = require('express');
 const router = express.Router();
-const Mascota = require('../models/TarjetaModel');
+const Tarjeta = require('../models/TarjetaModel');
 
 
 
 router.post('/RegistrarTarjeta', (req, res) => {
     let body = req.body;
-    let nuevaMascota = new Tarjeta({
+    let nuevaTarjeta = new Tarjeta({
         Identificacion: body.Identificacion,
         NumeroTarjeta: body.NumeroTarjeta,
         MesVenceTarjeta: body.MesVenceTarjeta,
@@ -18,7 +18,7 @@ router.post('/RegistrarTarjeta', (req, res) => {
         Activo: body.Activo,
     });
 
-    nuevaMascota.save((err, MascotaDB) => {
+    nuevaTarjeta.save((err, TarjetaDB) => {
         if (err) {
             res.json({
                 resultado: false,
@@ -29,33 +29,15 @@ router.post('/RegistrarTarjeta', (req, res) => {
             res.json({
                 resultado: true,
                 msj: 'Registro realizado de manera correcta',
-                MascotaDB
+                TarjetaDB
             });
         }
     });
 });
 
-router.get('/ListarMascota', (req, res) => {
-    Mascota.find((err, ListaMascotasBD) => {
-        if (err) {
-            res.json({
-                resultado: false,
-                msj: 'No se pudo obtener los datos: ',
-                err
-            });
-        } else {
-            res.json({
-                resultado: true,
-                msj: 'Los datos se obtuvieron de manera correcta: ',
-                ListaMascotasBD
-            });
-        }
-    });
-});
-
-router.get('/BuscarMascotaIDDuenio', (req, res) => {
+router.get('/BuscarTarjetaIDDuenio', (req, res) => {
     let params = req.query;
-    Mascota.find({ IdentificacionDuenio: params.IdentificacionDuenio }, (err, MascotaDB) => {
+    Tarjeta.find({ Identificacion: params.Identificacion }, (err, TarjetaDB) => {
         if (err) {
             res.json({
                 resultado: false,
@@ -67,15 +49,15 @@ router.get('/BuscarMascotaIDDuenio', (req, res) => {
             res.json({
                 resultado: true,
                 msj: 'Los datos se obtuvieron de manera correcta: ',
-                MascotaDB
+                TarjetaDB
             });
         }
     });
 });
-
-router.get('/BuscarIDMascota', (req, res) => {
+//////////////////preguntar//////////////////////
+router.get('/BuscarIDTarjeta', (req, res) => {
     let params = req.query;
-    Mascota.findOne({ _id: params._id }, (err, MascotaDB) => {
+    Tarjeta.findOne({ _id: params._id }, (err, TarjetaDB) => {
         if (err) {
             res.json({
                 resultado: false,
@@ -87,42 +69,15 @@ router.get('/BuscarIDMascota', (req, res) => {
             res.json({
                 resultado: true,
                 msj: 'Los datos se obtuvieron de manera correcta: ',
-                MascotaDB
+                TarjetaDB
             });
         }
     });
 });
 
-
-router.put('/ModificarMascota', function (req, res) {
+router.put('/DesactivarTarjeta', function(req, res){
     let body = req.body;
-    Mascota.updateOne({ _id: body._id }, {
-        $set: req.body 
-        // $set: {
-        //     Nombre: body.Nombre,
-        //     Edad: body.Edad
-        // }
-    }, function (err, info) {
-        if (err) {
-            res.json({
-                resultado: false,
-                msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
-                err
-            });
-        } else {
-
-            res.json({
-                resultado: true,
-                msj: 'Los datos se actualizaron de manera correcta',
-                info
-            });
-        }
-    }
-    );
-});
-router.put('/DesactivarMascota', function(req, res){
-    let body = req.body;
-    Mascota.updateOne({ _id: body._id }, {
+    Tarjeta.updateOne({ _id: body._id }, {
         $set: {
             Activo: 0
         }
