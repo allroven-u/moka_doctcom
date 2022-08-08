@@ -1,18 +1,18 @@
 'use strict'
-var userSession;
-window.addEventListener('load', () =>{
+
+let listaMascotas = [];
+let userSession;
+window.addEventListener('load', GetlistaMascota());
+
+async function GetlistaMascota() {
     userSession=GetSesion();
-
-    // cargaJson();
-   // cargaJsonMascota();
-
-    setTimeout(function(){
+    listaMascotas = await getMascotasArray(userSession.Identificacion);
+    console.log(userSession)
     
-    ImprimirListaMascotasCita(userSession);
-    ImprimirListaVeterinarios();
-    },500)
-
-});
+    if(listaMascotas.length >0){
+        ImprimirListaCitas(userSession,listaMascotas)
+    }
+}
 
 
 let inputNombreMascota = document.querySelector('#selectMascotaCita');
@@ -116,11 +116,10 @@ function ConfirmarDatosC(){
 
 
 //carga Mascotas
-async function ImprimirListaMascotasCita(user){
+async function ImprimirListaMascotasCita(user,listaMascotas){
         let Select = document.getElementById('selectMascotaCita');
         let idCliente = user.Identificacion;
         console.log(idCliente)
-        let listaMascotas = getMascotasArray(idCliente);
         console.log(listaMascotas)
     
     let opcion;
