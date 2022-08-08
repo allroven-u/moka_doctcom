@@ -58,9 +58,11 @@ async function getMascotasArray(idCliente){
   }).then((res)=>{
     result = res.data;
     console.log(result.MascotaDB)
-    return(result.MascotaDB)
+    return result.MascotaDB;
 
   }).catch((err)=>{
     console.log(err);
   });
+  
 }
+

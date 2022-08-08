@@ -7,7 +7,7 @@ window.addEventListener('load', () =>{
     
     ImprimirListaMascotasCita(userSession);
     ImprimirListaVeterinarios();
-    },3000)
+    },500)
 });
 
 
