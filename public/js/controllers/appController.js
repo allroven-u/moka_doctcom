@@ -20,11 +20,12 @@ listElements.forEach(listElement => {
     })
 });
 
-window.addEventListener('load', () => {
+ window.addEventListener('load',()=>{setTimeout(() => {
     let usuario = GetSesion();
-    console.log(usuario.Nombre + ' ' + usuario.Apellido1);
-    txtUsuarioLogueado.textContent = usuario.Nombre + ' ' + usuario.Apellido1;
-});
+    txtUsuarioLogueado.textContent = usuario.Nombre + ' ' + usuario.Apellido;
+ }, 500)});  
+
+
 
 function cerrar() {
 

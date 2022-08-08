@@ -3,8 +3,8 @@
 var listaCitas;
 
 window.addEventListener('load', () =>{
-     cargaJsonCitas();
-     cargaJson(); 
+     //cargaJsonCitas();
+    // cargaJson(); 
      
      setTimeout(() => {ImprimirListaCitas();}, 1000);
 });

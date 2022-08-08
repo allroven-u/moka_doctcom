@@ -3,22 +3,22 @@ let btnIniciar = document.getElementById("btnIniciar");
 let inputUsuarioLogin = document.getElementById("txtUsuario-l");
 let inputContrasenha1Login = document.getElementById("txtContrasenha-l");
 
-document.addEventListener("load", cargaJson());
-
 btnIniciar.addEventListener("click", IniciarSesion);
 
 async function IniciarSesion() {
     if (ValidarDatosLogin()) {
-        if (validarLogin(inputUsuarioLogin.value.toUpperCase(), inputContrasenha1Login.value) == true) {
+        let Email = inputUsuarioLogin.value;
+        Email = Email.trim();
+         if (validarLogin(Email, inputContrasenha1Login.value)) {
             ConfirmarDatosLogin();
-            location.href = './AppVerCitas.html'
-        } else {
-            ErrorDatosLogin();
-        }
+             location.href = './AppVerCitas.html'
+         } else {
+           ErrorDatosLogin();
+         }
     }
 }
 
-function ValidarDatosLogin() {
+async function ValidarDatosLogin() {
     let sUsuario = inputUsuarioLogin.value;
     let pwContrasenha = inputContrasenha1Login.value;
     if (sUsuario == null || sUsuario == undefined || sUsuario == "") {
@@ -50,7 +50,7 @@ function MostrarErrorLogin() {
     });
 }
 
-function ConfirmarDatosLogin() {
+async function ConfirmarDatosLogin() {
     Swal.fire({
         position: "center",
         icon: "success",
@@ -60,7 +60,7 @@ function ConfirmarDatosLogin() {
     });
 }
 
-function ErrorDatosLogin() {
+async function ErrorDatosLogin() {
     Swal.fire({
         position: "center",
         icon: "error",
