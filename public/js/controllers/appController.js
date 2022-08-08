@@ -25,6 +25,10 @@ listElements.forEach(listElement => {
     txtUsuarioLogueado.textContent = usuario.Nombre + ' ' + usuario.Apellido;
  }, 500)});  
 
+ function logout(){
+    LogoutSesion();
+    location.href = '/public/landing.html';
+ }
 
 
 function cerrar() {
