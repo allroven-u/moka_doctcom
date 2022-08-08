@@ -1,20 +1,19 @@
 'use strict'
 
-var listaCitas = [];
+let listaCitas = [];
 
-window.addEventListener('load',GetListaCitas());
+window.addEventListener('load', GetListaCitas());
 
-async function GetListaCitas(params) {
+async function GetListaCitas() {
     
-    let listaCitas = await getCitasArray();
+    listaCitas = await getCitasArray();
     if(listaCitas.length >0){
-       ImprimirListaCitas();
-       // console.log(listaCitas);
+        ImprimirListaCitas()
     }
 }
 
 
- function ImprimirListaCitas(){
+function ImprimirListaCitas(){
 
     let tThead = document.getElementById('tTheadCitas');
     let tbody = document.getElementById('tBodyCitas');
@@ -45,13 +44,12 @@ async function GetListaCitas(params) {
 
     // let celAcciones = thRow.insertCell();
     // celAcciones.innerHTML = 'Acciones';
-    
 
     for (let i = 0; i < listaCitas.length; i++) {
-
+        
         
         let  cita = listaCitas[i];
-        console.log(cita.NombreMascota);
+        
        // let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
        // let propietario = buscaUsuarioID(cita.IdentificacionUsurio) ;  
 
