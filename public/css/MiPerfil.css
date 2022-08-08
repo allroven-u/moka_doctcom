@@ -173,6 +173,13 @@ td{
     
 }
 
+.imgclass{
+  padding: 5px;
+  height: auto;
+  width: 10%;
+  text-align: center;
+}
+
 .fa-star{
     color: var(--amarillo);
 }
@@ -224,15 +231,8 @@ td{
 }
 
 
-
-
-
-
-
-
-
 .form-pago-tarjeta2 {
-    width: 30%;
+    width: 20%;
     padding: 30px;
     margin: auto;
     margin-top: 40px;
@@ -314,18 +314,7 @@ td{
   }
   
   /*--BOTON-DE-PAGO---------*/
-  .btn-pago-tarjeta {
-    width: 100%;
-    padding: 15px;
-    border-radius: 5px;
-    border: none;
-    margin: 10px 0;
-    font-size: 15px;
-    background-color: var(--verdeagua);
-    color: var(--blanco);
-    cursor: pointer;
-    transition: all .5s ease;
-  }
+
   
   .tarjetas {
     text-align: center;
@@ -333,11 +322,9 @@ td{
   }
   
 
-  .btn-pago-tarjeta:hover {
-    background-color: var(--turquesa);
-  }
+ 
   
-  .btn-cancerlar-tarjeta {
+  .btn2-cancerlar-tarjeta {
     width: 100%;
     padding: 15px;
     border-radius: 5px;
@@ -350,7 +337,7 @@ td{
     transition: all .5s ease;
   }
   
-  .btn-cancerlar-tarjeta:hover {
+  .btn2-cancerlar-tarjeta:hover {
     background-color: var(--Roj1);
   }
   
@@ -549,9 +536,6 @@ section {
   border: none;
   border-left: 10px solid var(--silver);
   transition: all .5s ease;
-
-
-
 }
 
 .cajas:hover,
@@ -574,11 +558,36 @@ section {
   border-left: 10px solid var(--verdeagua);
 }
 
+.mas1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
 .cajasPContainer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.cajasPContainer2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cajasPContainer2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: var(--verdeagua);
+  border: 1px solid var(--silver);
+  align-items: center;
+  margin: 10px;
 }
 
 #mes_vencimiento,
@@ -602,6 +611,34 @@ section {
 }
 
 .btn-pago-tarjeta:hover {
+  background-color: var(--turquesa);
+}
+
+.btn1-pago-tarjeta2,
+.btn2-pago-tarjeta2,
+.btn3-pago-tarjeta2,
+.btn4-pago-tarjeta2 {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0;
+  font-size: 15px;
+  background-color: var(--verdeagua);
+  color: var(--blanco);
+  cursor: pointer;
+  transition: all .5s ease;
+
+}
+
+
+.tarjeta1espacio{
+  height: auto;
+  width: 10%;
+  margin: 5px
+}
+
+.btn-pago-tarjeta2:hover {
   background-color: var(--turquesa);
 }
 
@@ -664,3 +701,18 @@ label {
   border: 2px solid var(--Rojo2);
   border-left: 10px solid var(--Rojo2);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
