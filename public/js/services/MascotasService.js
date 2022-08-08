@@ -47,7 +47,22 @@ function buscaMascotasPorDuenio(pIdentificacion) {
   return result;
 }
 
-function getMascotasArray(){
-  return mascotasArray;
-  };
+async function getMascotasArray(idCliente){
+  let result = {};
+  await  axios.get(apiUrl + '/BuscarMascotaIDDuenio', {
+    responseType: 'json',
+    params: {
+      IdentificacionDuenio: idCliente,
+      
+    }
+  }).then((res)=>{
+    result = res.data;
+    console.log(result.MascotaDB)
+    return result.MascotaDB;
+
+  }).catch((err)=>{
+    console.log(err);
+  });
+  
+}
 
