@@ -9,7 +9,8 @@ async function IniciarSesion() {
     if (ValidarDatosLogin()) {
         let Email = inputUsuarioLogin.value;
         Email = Email.trim();
-         if (validarLogin(Email, inputContrasenha1Login.value)) {
+        let result = await validarLogin(Email, inputContrasenha1Login.value);
+         if (result) {
             ConfirmarDatosLogin();
              location.href = './AppVerCitas.html'
          } else {

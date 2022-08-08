@@ -60,11 +60,13 @@ async function validarLogin(pEmail, pClave) {
     }
   }).then((res)=>{
     result = res.data;
-    SetSesion(result.UsuarioDB);
+    if (result.resultado) {
+      SetSesion(result.UsuarioDB);
+    }
   }).catch((err)=>{
     console.log(err);
   });
-
+return result.resultado;
 }
 
 function getUsuariosArray(){
