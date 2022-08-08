@@ -2,13 +2,13 @@
 var userSession;
 window.addEventListener('load', () =>{
     userSession=GetSesion();
-    cargaJson();
-    cargaJsonMascota();
+    // cargaJson();
+   // cargaJsonMascota();
 
     setTimeout(function(){
     
-    ImprimirListaMascotasCita(userSession.Identificacion);
-    ImprimirListaVeterinarios();
+    // ImprimirListaMascotasCita(userSession.Identificacion);
+    // ImprimirListaVeterinarios();
     },3000)
 });
 
