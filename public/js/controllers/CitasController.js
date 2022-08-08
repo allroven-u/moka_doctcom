@@ -142,3 +142,29 @@ function VerEstado(EstadoCita){
     }   
     }
 }
+let crearCitaModal = document.getElementById('formCrearCita')
+let overlay = document.querySelector('.overlay')
+let btnCrearCita = document.getElementById('show-crear-cita').addEventListener('click',ShowModalCitaFunct);
+let btnCancelarCita = document.querySelector('#CancelarCita');
+btnCancelarCita.addEventListener('click',hiddenModalCitaFunct)
+
+function ShowModalCitaFunct() {
+    crearCitaModal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    location.href = "#top-page";
+    window.addEventListener("scroll", disableScroll);
+};
+
+function hiddenModalCitaFunct() {
+    crearCitaModal.classList.add("hidden");
+    overlay.classList.add("hidden");
+    window.removeEventListener("scroll", disableScroll);
+    limpiarForm();
+};
+
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
+const limpiarForm = function () {
+    crearCitaModal.reset();
+}

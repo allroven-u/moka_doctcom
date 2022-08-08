@@ -211,8 +211,8 @@
                 </table>
 
                 <!-------------CREAR CITA--------->
-                <div class="cuerpoCita hidden">
-                    <form id="formCrearCita" class="formCita">
+                <div class="cuerpoCita">
+                    <form id="formCrearCita" class="formCita hidden ">
                         <h1 class="titulo">Nueva Cita</h1>
 
 
@@ -247,7 +247,7 @@
 
 
                         <div class="btnsC">
-                            <input type="button" class="btnCancelarC" value="Cancelar">
+                            <input type="button" id="CancelarCita" class="btnCancelarC" value="Cancelar">
 
                             <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
                         </div>
@@ -309,12 +309,15 @@
         </div>
     </div>
     <!-- <script src="./js/services/MascotasService.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/CitaService.js"></script>
-    <!-- <script src="./js/services/demoService.js"></script> -->
+    <script src="./js/Constantes.js"></script>
+    <script src="./js/services/MascotasService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
-    <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
+
+    <script src="./js/controllers/CrearCitaController.js"></script>
     <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
     <script src="./js/controllers/CitasController.js"></script>
     <script src="./js/controllers/CancelarController.js"></script>
