@@ -2,15 +2,14 @@
 var userSession;
 window.addEventListener('load', () =>{
     userSession=GetSesion();
-    cargaJson();
-    cargaJsonMascota();
 
     setTimeout(function(){
     
-    ImprimirListaMascotasCita(userSession.Identificacion);
+    ImprimirListaMascotasCita(userSession);
     ImprimirListaVeterinarios();
     },3000)
 });
+
 
 let inputNombreMascota = document.querySelector('#selectMascotaCita');
 let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
@@ -113,10 +112,12 @@ function ConfirmarDatosC(){
 
 
 //carga Mascotas
-function ImprimirListaMascotasCita(user){
-    let Select = document.getElementById('selectMascotaCita');
-    let idCliente = user;
-    let listaMascotas = getMascotasArray();
+async function ImprimirListaMascotasCita(user){
+        let Select = document.getElementById('selectMascotaCita');
+        let idCliente = user.Identificacion;
+        console.log(idCliente)
+        let listaMascotas = getMascotasArray(idCliente);
+        console.log(listaMascotas)
     
     let opcion;
     let valor = 0;
