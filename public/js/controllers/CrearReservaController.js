@@ -1,15 +1,23 @@
 
 'use strict'
-var userSession;
+let listaMascotas = [];
+let userSession;
+
 window.addEventListener('load', () =>{
     userSession=GetSesion();
-    cargaJsonMascota();
+    GetlistaMascota();
 
-    setTimeout(function(){
-    
-        ImprimirListaMascotasReserva(userSession.Identificacion);
-    },3000)
 });
+
+async function GetlistaMascota(){
+
+    let result = await getMascotasArray(userSession.Identificacion);
+    if (result != {} && result.resultado == true) {
+        listaMascotas = result.MascotasDB;
+        console.log(listaMascotas)
+        ImprimirListaMascotasReserva(userSession.Identificacion,listaMascotas);
+    }
+}
 
 let inputNombreMascotaReserva = document.querySelector('#selectMacota');
 let inputEntrada = document.getElementById('dateCheckIn');
@@ -127,10 +135,9 @@ function ConfirmarDatos(){
 }
 
 //carga Mascotas
-function ImprimirListaMascotasReserva(user){
+function ImprimirListaMascotasReserva(user,listaMascotas){
     let Select = document.getElementById('selectMacota');
     let idCliente = user;
-    let listaMascotas = getMascotasArray();
     let opcion;
     let valor;
 

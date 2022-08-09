@@ -2,9 +2,7 @@
 
 var listaReservas;
 
-window.addEventListener('load', () =>{
-    cargaJsonReservas();
-    cargaJson();   
+window.addEventListener('load', () =>{  
      
      setTimeout(() => {ImprimirListaReservas();}, 1000);
 });
@@ -138,4 +136,31 @@ function VerEstado(EstadoCita){
         
     }   
     }
+}
+
+///////////////////modal reserva///////////////////////////
+let crearReservaModal = document.getElementById('formCrearReserva')
+let btnCrearReservas = document.getElementById('show-crear-Reserva').addEventListener('click',ShowModalReservaFunct);
+let btnCancelarReserva = document.querySelector('.btnCancelarR');
+btnCancelarReserva.addEventListener('click',hiddenModalReservaFunct)
+let overlay = document.querySelector('.overlay')
+
+function ShowModalReservaFunct() {
+    crearReservaModal.classList.remove("hidden");
+    overlay.classList.remove("hidden");
+    location.href = "#top-page";
+    window.addEventListener("scroll", disableScroll);
+};
+
+function hiddenModalReservaFunct() {
+    crearReservaModal.classList.add("hidden");
+    overlay.classList.add("hidden");
+    window.removeEventListener("scroll", disableScroll);
+    limpiarForm();
+};
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
+const limpiarForm = function () {
+    crearCitaModal.reset();
 }

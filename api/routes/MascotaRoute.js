@@ -60,7 +60,7 @@ router.get('/ListarMascota', (req, res) => {
 
 router.get('/BuscarMascotaIDDuenio', (req, res) => {
     let params = req.query;
-    Mascota.find({ IdentificacionDuenio: params.IdentificacionDuenio }, (err, MascotaDB) => {
+    Mascota.find({ IdentificacionDuenio: params.IdentificacionDuenio }, (err, MascotasDB) => {
         if (err) {
             res.json({
                 resultado: false,
@@ -72,11 +72,12 @@ router.get('/BuscarMascotaIDDuenio', (req, res) => {
             res.json({
                 resultado: true,
                 msj: 'Los datos se obtuvieron de manera correcta: ',
-                MascotaDB
+                MascotasDB
             });
         }
     });
 });
+
 
 router.get('/BuscarIDMascota', (req, res) => {
     let params = req.query;

@@ -145,7 +145,7 @@ function ImprimirListaCitas(){
 //     }
 // }
 
-
+/////////////////modal cita///////////////////////////////
 let crearCitaModal = document.getElementById('formCrearCita')
 let overlay = document.querySelector('.overlay')
 let btnCrearCita = document.getElementById('show-crear-cita').addEventListener('click',ShowModalCitaFunct);
@@ -161,6 +161,13 @@ function ShowModalCitaFunct() {
 
 function hiddenModalCitaFunct() {
     crearCitaModal.classList.add("hidden");
+    overlay.classList.add("hidden");
+    window.removeEventListener("scroll", disableScroll);
+    limpiarForm();
+};
+
+function hiddenModalReservaFunct() {
+    crearReservaModal.classList.add("hidden");
     overlay.classList.add("hidden");
     window.removeEventListener("scroll", disableScroll);
     limpiarForm();

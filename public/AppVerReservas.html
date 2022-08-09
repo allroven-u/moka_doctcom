@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/tables.css">
     <!-- <link rel="stylesheet" href="css/VerCitas.css"> -->
     <!-- <link rel="stylesheet" href="css/CrearCita.css"> -->
-    <!-- <link rel="stylesheet" href="css/CrearReservacion.css"> -->
+    <link rel="stylesheet" href="css/CrearReservacion.css">
     <link rel="stylesheet" href="./css/estilosGenerales.css">
     <!-- <link rel="stylesheet" href="css/CancelarReserva.css"> -->
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
@@ -127,9 +127,9 @@
             <div class="tContainer">
                 <div class="tTituloContainer">
                     <h2>Lista de Reservas</h2>
-                    <a class="NuevaCita">
-                        <i class="fa-solid fa-square-plus fa-3x"></i>
-                        <p>Crear nueva reserva</p>
+                    <a class="NuevaCita" id="show-crear-Reserva">
+                        <i class="fa-solid fa-square-plus fa-3x" ></i>
+                        <p>Crear reserva</p>
 
                     </a>
                 </div>
@@ -148,14 +148,14 @@
                     <div for="txtPropietario">Propietario
                         <input id="txtPropietario" type="text">
                     </div>
-                    <div for="txtNumCita">Mascota
-                        <input id="txtNumCita" type="text">
+                    <div for="txtMascota">Mascota
+                        <input id="txtMascota" type="text">
                     </div>
-                    <div for="txtNumCita">Veterinario
-                        <input id="txtNumCita" type="text">
+                    <div for="txtVeterinario">Veterinario
+                        <input id="txtVeterinario" type="text">
                     </div>
-                    <div for="txtNumCita">Estado
-                        <input id="txtNumCita" type="checkbox">
+                    <div for="txtEstado">Estado
+                        <input id="txtEstado" type="checkbox">
                     </div>
 
                     <div><input type="button" value="Filtrar"></div>
@@ -192,7 +192,7 @@
                 </table>
             </div> -->
             <!-------------CREAR CITA--------->
-            <div class="cuerpoCita hidden">
+            <!-- <div class="cuerpoCita hidden">
                 <form id="formCrearCita" class="formCita">
                     <h1 class="titulo">Nueva Cita</h1>
                     <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
@@ -222,11 +222,11 @@
 
                 </form>
 
-            </div>
+            </div> -->
 
             <!---------------CREAR RESERVACION------------------------>
-            <div class="cuerpoReserva hidden">
-                <form id="formCrearReserva" class="formReserva">
+            <div class="cuerpoReserva">
+                <form id="formCrearReserva" class="formReserva hidden">
                     <h1 class="titulo">Nueva Reservación</h1>
 
                     <select class="cajas select" id="selectMacota">
@@ -280,17 +280,23 @@
             <div class="overlay hidden"></div>
         </div>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/MascotasService.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/services/ReservaService.js"></script>
+
     <script src="./js/controllers/ReservasController.js"></script>
+    <script src="./js/controllers/CrearReservaController.js"></script>
     <!-- <script src="./js/services/MascotasService.js"></script> -->
     <!-- <script src="./js/services/demoService.js"></script> -->
-    <script src="./js/services/ReservaService.js"></script>
+
     <!-- <script src="./js/controllers/VerReservasController.js"></script> -->
     <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
     <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
-    <script src="./js/controllers/AppController.js"></script>
     <!-- <script src="./js/controllers/CancelarControler.js"></script> -->
 </body>
 

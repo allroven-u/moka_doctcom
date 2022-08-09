@@ -53,16 +53,13 @@ async function getMascotasArray(idCliente){
     responseType: 'json',
     params: {
       IdentificacionDuenio: idCliente,
-      
     }
   }).then((res)=>{
     result = res.data;
-    console.log(result.MascotaDB)
-    return result.MascotaDB;
-
   }).catch((err)=>{
     console.log(err);
   });
-  
+  return result;
 }
+
 

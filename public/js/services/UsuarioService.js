@@ -69,6 +69,14 @@ async function validarLogin(pEmail, pClave) {
 return result.resultado;
 }
 
-function getUsuariosArray(){
-  return usuariosArray;
+async function getUsuariosArray(){
+  let result = {};
+  await  axios.get(apiUrl + '/ListarUsuario', {
+    responseType: 'json',
+  }).then((res)=>{
+    result = res.data;
+  }).catch((err)=>{
+    console.log(err);
+  });
+  return result;
   };
