@@ -39,23 +39,27 @@ async function UltimaCita(){
 
 async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pDescripcionCita) {
     let result ={};
-
+    console.log(pMascota)
     let ultimaCita = await UltimaCita();
 
     if(ultimaCita != {} && ultimaCita.resultado == true){
       axios.post('/RegistrarCita', {
-        NumeroCita: ultimaCita.ListaCitasBD.NumeroCita + 1,
-        IdentificacionUsuario:pIdUsuario,
-        IdMascota:pIdMascota,
-        NombreMascota: pMascota,
-        FechaHora: pFecha,
-        Calificacion: 0,
-        Estado: 'AGENDADA',
-        IdentificacionVeterinario:pIdVeterinario,
-        ObservacionesVeterinario:'',
-        ObservacionesCita: pDescripcionCita,
-        NotasCancelacion:''
-      })
+        responseType: 'json',
+        data: {
+          NumeroCita:ultimaCita.ListaCitasBD.NumeroCita + 1,
+          IdentificacionUsuario:pIdUsuario,
+          IdMascota:pIdMascota,
+          NombreMascota: pMascota,
+          FechaHora: pFecha,
+          Calificacion: 0,
+          Estado: 'AGENDADA',
+          IdentificacionVeterinario:pIdVeterinario,
+          ObservacionesVeterinario:'',
+          ObservacionesCita: pDescripcionCita,
+          NotasCancelacion:''
+        }
+
+       })
       .then(function (res) {
         result = res;
         console.log(res);

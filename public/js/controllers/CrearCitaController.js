@@ -33,26 +33,38 @@ let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedInde
 
 let inputFecha = document.getElementById('txtFecha');
 let inputTipoIdentificacion = document.querySelector('#selectVeterinario');
+
 let inputDireccion = document.getElementById('txtDireccion');
 
 let btnCrear = document.getElementById('btnIniciar');
 btnCrear.addEventListener('click',CrearCita);
-var numCita= 0;//guardar base de datos
+
 
 function CrearCita(){
 
     if(ValidarDatosCita() == true){
         ConfirmarDatosC();
-        numCita++;
-        let pendID= userSession.Identificacion;
-        let pendCalif = 0;
-        let EstadoInicial = "AGENDADA";
-        let sNombreMascota = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-        
-        let dFecha = inputFecha.value;
-        let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-        let sDireccion = inputDireccion.value; 
-        RegistrarCita(pendID,numCita,sNombreMascota,sIdentificacion,dFecha,EstadoInicial,pendCalif,sDireccion);
+        let IdentificacionUsuario= userSession.Identificacion;
+        let IdMascota;
+        let IdentificacionVeterinario;
+        let NombreMascota = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
+        for (let i = 0; i < listaMascotas.length; i++) {
+            if(IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota ){
+                IdMascota = listaMascotas[i]._id;
+                
+            }
+        }
+        let NombreVeterinario = inputTipoIdentificacion.options[inputTipoIdentificacion.selectedIndex].text
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            if(NombreVeterinario == listaUsuarios[i].Nombre ){
+                IdentificacionVeterinario = listaUsuarios[i].Identificacion;
+                
+            }
+        }
+
+        let FechaHora = inputFecha.value;
+        let ObservacionesCita = inputDireccion.value; 
+        crearCita(IdentificacionUsuario,IdMascota,NombreMascota,FechaHora,IdentificacionVeterinario,ObservacionesCita)
         limpiarFormCita();
     }
 }
@@ -137,8 +149,6 @@ async function ImprimirListaMascotasCita(user,listaMascotas){
 
     
     for (let i = 0; i < listaMascotas.length; i++) {
-        
-        
         if(idCliente == listaMascotas[i].IdentificacionDuenio){
             opcion = document.createElement('option');
             valor+=1;
