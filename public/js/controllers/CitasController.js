@@ -1,25 +1,26 @@
 'use strict'
 
-let listaCitas = [];
+
 
 window.addEventListener('load', GetListaCitas());
 
 async function GetListaCitas() {
     
-    listaCitas = await getCitasArray();
-    if(listaCitas.length >0){
-        ImprimirListaCitas()
+    let result = await getCitasArray();
+    if( result != {} && result.resultado == true){
+        ImprimirListaCitas(result.ListaCitasBD)
     }
 }
 
 
-function ImprimirListaCitas(){
+function ImprimirListaCitas(ListaCitasBD){
 
     let tThead = document.getElementById('tTheadCitas');
     let tbody = document.getElementById('tBodyCitas');
 
     tbody.innerHTML = '';
     tThead.innerHTML = '';
+    let listaCitas = ListaCitasBD;
 
     // thead
     let thRow = tThead.insertRow();

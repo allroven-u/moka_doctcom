@@ -11,13 +11,15 @@ router.post('/RegistrarCita', (req, res) => {
     let nuevaCita = new Cita({
         NumeroCita: body.NumeroCita,
         IdentificacionUsuario:body.IdentificacionUsuario,
+        IdMascota: body.IdMascota,
         NombreMascota: body.NombreMascota,
         FechaHora: body.FechaHora,
         Calificacion:body.Calificacion,
         Estado: body.Estado,
         IdentificacionVeterinario: body.IdentificacionVeterinario,
         ObservacionesVeterinario: body.ObservacionesVeterinario,
-        ObservacionesCita: body.ObservacionesCita
+        ObservacionesCita: body.ObservacionesCita,
+        NotasCancelacion : body.NotasCancelacion
     });
 
     nuevaCita.save((err, citaDB) => {
@@ -53,6 +55,24 @@ router.get('/ListarCitas', (req, res) => {
             });
         }
     });
+});
+
+router.get('/UltimaCita', (req, res) => {
+    Cita.find((err, ListaCitasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaCitasBD
+            });
+        }
+    }).sort({$natural:-1}).limit(1);
 });
 
 router.get('/BuscarCita', (req, res) => {
@@ -92,25 +112,6 @@ router.get('/BuscarCitaPorId', (req, res) => {
     });
 });
 
-// router.delete('/EliminarUsuario', function (req, res) {
-//     let body = req.body;
-//     Usuario.remove({Identificacion: body.Identificacion}, (err, result) => {
-//         if (err) {
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo eliminar los datos: ',
-//                 err
-//             });
-//         } else {
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Los datos se eliminarion de manera correcta',
-//                 result
-//             });
-//         }
-//     });
-// });
-
 router.put('/ModificarCita', function (req, res) {
     let body = req.body;
     Cita.updateMany({ NumeroCita: body.NumeroCita }, {
@@ -137,28 +138,28 @@ router.put('/ModificarCita', function (req, res) {
     }
     );
 });
-router.put('/CancelarCita', function(req, res){
-    let body = req.body;
-    Cita.updateOne({ NumeroCita: body.NumeroCita }, {
-        $set: {
-            Estado: 'Cancelado'
-        }
-    }, function (err, info) {
-        if (err) {
-            res.json({
-                resultado: false,
-                msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
-                err
-            });
-        } else {
-            res.json({
-                resultado: true,
-                msj: 'Usuario inactivada de manera correcta',
-                info
-            });
-        }
-    });
+// router.put('/CancelarCita', function(req, res){
+//     let body = req.body;
+//     Cita.updateOne({ NumeroCita: body.NumeroCita }, {
+//         $set: {
+//             Estado: 'Cancelado'
+//         }
+//     }, function (err, info) {
+//         if (err) {
+//             res.json({
+//                 resultado: false,
+//                 msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
+//                 err
+//             });
+//         } else {
+//             res.json({
+//                 resultado: true,
+//                 msj: 'Usuario inactivada de manera correcta',
+//                 info
+//             });
+//         }
+//     });
 
-});
+// });
 
 module.exports = router;

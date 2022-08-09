@@ -1,22 +1,5 @@
 "use strict";
 
-
-let citasArray = []; // arreglo de usuarios
-
-// Esta funcion carga un archivo tipo json y lo carga a un array utilizando un promesa de js
-// function cargaJsonCitas() {
-
-//   fetch("/public/assets/data/infoCitas.json")
-//     .then((response) => response.json())
-//     .then((response) => {
-//         citasArray = response;
-//         console.log(citasArray);
-//     });
-    
-// //   return citasArray;
-// };
-
-
 async function getCitasArray(){
   let result = {};
   await  axios.get(apiUrl + '/ListarCitas', {
@@ -27,7 +10,7 @@ async function getCitasArray(){
     console.log(err);
   });
 
- return result.ListaCitasBD;;
+ return result;
 };
 
 function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
@@ -40,3 +23,47 @@ function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
   return citasArray;
   };
 
+async function UltimaCita(){
+    let result = {};
+    await  axios.get(apiUrl + '/UltimaCita', {
+      responseType: 'json',
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+
+  return result;
+  }
+
+
+async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pDescripcionCita) {
+    let result ={};
+
+    let ultimaCita = await UltimaCita();
+
+    if(ultimaCita != {} && ultimaCita.resultado == true){
+      axios.post('/RegistrarCita', {
+        NumeroCita: ultimaCita.ListaCitasBD.NumeroCita + 1,
+        IdentificacionUsuario:pIdUsuario,
+        IdMascota:pIdMascota,
+        NombreMascota: pMascota,
+        FechaHora: pFecha,
+        Calificacion: 0,
+        Estado: 'AGENDADA',
+        IdentificacionVeterinario:pIdVeterinario,
+        ObservacionesVeterinario:'',
+        ObservacionesCita: pDescripcionCita,
+        NotasCancelacion:''
+      })
+      .then(function (res) {
+        result = res;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    }
+
+    return result;
+  }

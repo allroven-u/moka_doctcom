@@ -28,9 +28,6 @@ async function GetlistaUsuarios(){
     }
 }
 
-
-
-
 let inputNombreMascota = document.querySelector('#selectMascotaCita');
 let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
 
