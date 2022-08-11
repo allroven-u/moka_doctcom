@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 async function getCitasArray(){
   let result = {};
   await  axios.get(apiUrl + '/ListarCitas', {
@@ -39,24 +41,27 @@ async function UltimaCita(){
 
 async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pDescripcionCita) {
     let result ={};
-    console.log(pMascota)
     let ultimaCita = await UltimaCita();
 
     if(ultimaCita != {} && ultimaCita.resultado == true){
-      axios.post('/RegistrarCita', {
+      let NumeroCita=ultimaCita.ListaCitasBD
+      
+      await axios({
+        method:'post',
+        url: apiUrl + '/RegistrarCita',
         responseType: 'json',
         data: {
-          NumeroCita:ultimaCita.ListaCitasBD.NumeroCita + 1,
-          IdentificacionUsuario:pIdUsuario,
-          IdMascota:pIdMascota,
-          NombreMascota: pMascota,
-          FechaHora: pFecha,
-          Calificacion: 0,
-          Estado: 'AGENDADA',
-          IdentificacionVeterinario:pIdVeterinario,
-          ObservacionesVeterinario:'',
-          ObservacionesCita: pDescripcionCita,
-          NotasCancelacion:''
+          'NumeroCita':NumeroCita[0].NumeroCita + 1,
+          'IdentificacionUsuario':pIdUsuario,
+          'IdMascota':pIdMascota,
+          'NombreMascota': pMascota,
+          'FechaHora': pFecha,
+          'Calificacion': 0,
+          'Estado': 'AGENDADA',
+          'IdentificacionVeterinario':pIdVeterinario,
+          'ObservacionesVeterinario':'',
+          'ObservacionesCita': pDescripcionCita,
+          'NotasCancelacion':''
         }
 
        })

@@ -26,7 +26,7 @@ router.post('/RegistrarCita', (req, res) => {
         if (err) {
             res.json({
                 resultado: false,
-                msj: 'No se pudo registrar el usuario, ocurrio el siguiente error: ',
+                msj: 'No se pudo registrar la Cita, ocurrio el siguiente error: ',
                 err
             });
         } else {

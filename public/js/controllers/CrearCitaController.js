@@ -40,7 +40,7 @@ let btnCrear = document.getElementById('btnIniciar');
 btnCrear.addEventListener('click',CrearCita);
 
 
-function CrearCita(){
+async function CrearCita(){
 
     if(ValidarDatosCita() == true){
         ConfirmarDatosC();
@@ -64,7 +64,7 @@ function CrearCita(){
 
         let FechaHora = inputFecha.value;
         let ObservacionesCita = inputDireccion.value; 
-        crearCita(IdentificacionUsuario,IdMascota,NombreMascota,FechaHora,IdentificacionVeterinario,ObservacionesCita)
+        await crearCita(IdentificacionUsuario,IdMascota,NombreMascota,FechaHora,IdentificacionVeterinario,ObservacionesCita)
         limpiarFormCita();
     }
 }
