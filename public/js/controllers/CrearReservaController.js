@@ -6,7 +6,6 @@ let userSession;
 window.addEventListener('load', () =>{
     userSession=GetSesion();
     GetlistaMascota();
-
 });
 
 async function GetlistaMascota(){
@@ -14,7 +13,6 @@ async function GetlistaMascota(){
     let result = await getMascotasArray(userSession.Identificacion);
     if (result != {} && result.resultado == true) {
         listaMascotas = result.MascotasDB;
-        console.log(listaMascotas)
         ImprimirListaMascotasReserva(userSession.Identificacion,listaMascotas);
     }
 }
@@ -26,19 +24,23 @@ let inputCuidadosReserva = document.getElementById('txtCuidadosEsp');
 
 let btnCrearReserva = document.getElementById('btnReserva');
 btnCrearReserva.addEventListener('click',CrearReserva);
-var numReserva = 0;
 function CrearReserva(){
     if(ValidarDatos() ==true){
         ConfirmarDatos();
-        numReserva++;
-        let pendID= userSession.Identificacion;
-        let pendCalif = 0;
-        let EstadoInicial = "AGENDADA";
-        let sNombreMascota = inputNombreMascotaReserva.options[inputNombreMascotaReserva.selectedIndex].text;
+        
+        let IdentificacionUsuario= userSession.Identificacion;
+        let NombreMascota = inputNombreMascotaReserva.options[inputNombreMascotaReserva.selectedIndex].text;
+        let IdMascota;
+        for (let i = 0; i < listaMascotas.length; i++) {
+            if(IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota ){
+                IdMascota = listaMascotas[i]._id;
+            }
+        
+        }
         let dFechaE = inputEntrada.value;
         let dFechaS = inputSalida.value;
-        let sDireccion = inputCuidadosReserva.value; 
-        RegistrarReserva(pendID,numReserva,sNombreMascota,dFechaE,dFechaS,EstadoInicial,pendCalif,sDireccion);
+        let sCiuidadosEsp = inputCuidadosReserva.value; 
+        crearReserva(IdentificacionUsuario,IdMascota,NombreMascota,dFechaE,dFechaS,sCiuidadosEsp)
         limpiarFormReserva();
     }
 }

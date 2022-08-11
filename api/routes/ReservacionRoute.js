@@ -11,12 +11,14 @@ router.post('/RegistrarReservacion', (req, res) => {
     let nuevaReservacion = new Reservacion({
         NumeroReservacion: body.NumeroReservacion,
         IdentificacionUsuario:body.IdentificacionUsuario,
+        IdMascota: body.IdMascota,
         NombreMascota: body.NombreMascota,
         FechaHoraIngreso: body.FechaHoraIngreso,
         FechaHoraSalida: body.FechaHoraSalida,
         Calificacion:body.Calificacion,
         Estado: body.Estado,
-        ObservacionesReservacion: body.ObservacionesReservacion
+        ObservacionesReservacion: body.ObservacionesReservacion,
+        NotasCancelacion : body.NotasCancelacion
     });
 
     nuevaReservacion.save((err, reservacionDB) => {
@@ -53,6 +55,25 @@ router.get('/ListarReservaciones', (req, res) => {
         }
     });
 });
+
+router.get('/UltimaReserva', (req, res) => {
+    Reservacion.find((err, ListaReservasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaReservasBD
+            });
+        }
+    }).sort({$natural:-1}).limit(1);
+});
+
 
 router.get('/BuscarReservacion', (req, res) => {
     let params = req.query;
