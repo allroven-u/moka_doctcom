@@ -1,22 +1,5 @@
 "use strict";
 
-// const { json } = require("body-parser");
-
-let usuariosArray = []; // arreglo de usuarios
-
-// Esta funcion carga un archivo tipo json y lo carga a un array utilizando un promesa de js
-// function cargaJson() {
-
-//   fetch("/public/assets/data/infoUsuarios.json")
-//     .then((response) => response.json())
-//     .then((response) => {
-//       usuariosArray = response;
-//       console.log(usuariosArray);
-//     });
-//   return usuariosArray;
-// }
-
-//Esta funcion busca un objeto dentro del arreglo de usuario segun el campo de usurio y lo devuelve en formato object.
 function buscaUsuario(pUsuario) {
   let result = null;
   for (let i = 0; i < usuariosArray.length; i++) {
@@ -80,3 +63,35 @@ async function getUsuariosArray(){
   });
   return result;
   };
+
+
+  async function RegistrarUsuario(pNombre,pApellido,pIdUsuario,pEmail,pPassword,pDireccion,pFoto) {
+    let result ={};
+      await axios({
+        method:'post',
+        url: apiUrl + '/RegistrarUsuario',
+        responseType: 'json',
+        data: {
+          'Nombre': pNombre,
+          'Apellido': pApellido,
+          'Identificacion': pIdUsuario,
+          'Email': pEmail,
+          'Contrasenia': pPassword,
+          'Direccion': pDireccion,
+          'CalificacionPromedio': 0,
+          'Foto': pFoto,
+          'Activo': 1,
+          'Rol': 2
+        }
+
+       })
+      .then(function (res) {
+        result = res;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+    return result;
+  }
