@@ -7,12 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moka Veterinaria Reservas</title>
     <link rel="stylesheet" href="./css/app.css">
-    <link rel="stylesheet" href="./css/tables.css">
-    <!-- <link rel="stylesheet" href="css/VerCitas.css"> -->
-    <!-- <link rel="stylesheet" href="css/CrearCita.css"> -->
-    <link rel="stylesheet" href="css/CrearReservacion.css">
-    <link rel="stylesheet" href="./css/estilosGenerales.css">
-    <!-- <link rel="stylesheet" href="css/CancelarReserva.css"> -->
+    <link rel="stylesheet" href="./css/VerCitas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
@@ -55,7 +50,7 @@
                         </li>
 
                         <li class="list__inside">
-                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
+                            <a href="mascotas.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
@@ -76,89 +71,113 @@
 
                 </li>
 
-                    <li class="list__item list__item--click">
-                        <div class="list__button list__button--click">
-                            <i class="fa-solid fa-file-contract list__img"></i>
-                            <a href="#" class="nav__link">Reportes</a>
-                            <i class="fa-solid fa-angle-right list__arrow "></i>
-                        </div>
-                        <ul class="list__show">
-                            <li class="list__inside">
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <i class="fa-solid fa-file-contract list__img"></i>
+                        <a href="#" class="nav__link">Reportes</a>
+                        <i class="fa-solid fa-angle-right list__arrow "></i>
+                    </div>
+                    <ul class="list__show">
+                        <li class="list__inside">
 
-                                <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
-                            </li>
+                            <a href="reporteCitas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
+                        </li>
 
-                            <li class="list__inside">
-                                <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
-                            </li>
+                        <li class="list__inside">
+                            <a href="reporteReservacion.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
+                        </li>
 
-                            <li class="list__inside">
-                                <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
-                                </a>
-                            </li>
+                        <li class="list__inside">
+                            <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
+                            </a>
+                        </li>
 
-                            <li class="list__inside">
-                                <a href="reporteGanancia.html" class="nav__link nav__link--inside">
+                        <li class="list__inside">
+                            <a href="reporteGanancia.html" class="nav__link nav__link--inside">
 
-                                    <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
-                                </a>
-                            </li>
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                            </a>
+                        </li>
 
-                            <li class="list__inside">
-                                <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
-                            </li>
+                        <li class="list__inside">
+                            <a href="reporteUsuario.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
+                        </li>
 
-                        </ul>
+                    </ul>
 
-                    </li>
+                </li>
             </ul>
         </nav>
 
         <div class="home">
 
-            <div class="Breadcrumbs">
-
-            </div>
-
             <div class="tContainer">
                 <div class="tTituloContainer">
-                    <h2>Lista de Reservas</h2>
-                    <a class="NuevaCita" id="show-crear-Reserva">
-                        <i class="fa-solid fa-square-plus fa-3x" ></i>
-                        <p>Crear reserva</p>
-
-                    </a>
+                    <div><i class="fa-solid fa-list iconNuevaCita"></i></div>
+                    <div class="tituloCitas">
+                        <h2>Lista de Reservas</h2>
+                    </div>
+                    <div class="btnNuevaCitaContainer">
+                        <a id="show-crear-reserva"><i class="fa-solid fa-square-plus fa-3x NuevaCita"></i></a>
+                        <p>Crear Reserva</p>
+                    </div>
                 </div>
 
                 <div class="tFiltros">
 
-                    <div for="txtNumCita">Num. Reserva
-                        <input id="txtNumCita" type="text">
+                    <div for="txtNumCita" class="filtrosCajas">
+                        <label for="txtNumCita">No.Reserva</label>
+                        <input id="txtNumReserva" class="cajasCitas" type="text">
                     </div>
-                    <div for="DateFecha1">Fecha Inicio
-                        <input id="DateFecha1" type="date" class="fechas">
+                    <div for="txtDuenhoCita" class="filtrosCajas">
+                        <label for="txtDuenhoCita">Propietario</label>
+                        <input id="txtDuenhoCita" class="cajasCitas" type="text">
                     </div>
-                    <div for="DateFecha2">Fecha Fin
-                        <input id="DateFecha2" type="date" class="fechas">
-                    </div>
-                    <div for="txtPropietario">Propietario
-                        <input id="txtPropietario" type="text">
-                    </div>
-                    <div for="txtMascota">Mascota
-                        <input id="txtMascota" type="text">
-                    </div>
-                    <div for="txtVeterinario">Veterinario
-                        <input id="txtVeterinario" type="text">
-                    </div>
-                    <div for="txtEstado">Estado
-                        <input id="txtEstado" type="checkbox">
+                    <div for="txtMascotaCita" class="filtrosCajas">
+                        <label for="txtMascotaCita">Mascota</label>
+                        <input id="txtMascotaCita" class="cajasCitas" type="text">
                     </div>
 
-                    <div><input type="button" value="Filtrar"></div>
+                    <div for="txtVeterinarioCita" class="filtrosCajas">
+                        <label for="txtVeterinarioCita">Veterinario</label>
+                        <input id="txtVeterinarioCita" class="cajasCitas" type="text">
+                    </div>
+                    <div class="filtroFecha">
+                        <div for="DateFecha1" class="filtrosCajas">
+                            <label for="DateFecha1">Fecha Inicio</label>
+                            <input id="DateFecha1" type="date" class="cajasCitas">
+                        </div>
+                        <div for="DateFecha2" class="filtrosCajas">
+                            <label for="DateFecha2">Fecha Final</label>
+                            <input id="DateFecha2" type="date" class="cajasCitas">
+                        </div>
+                    </div>
+
+                    <div for="checkEstadoCita" class="filtrosCajaschk">
+                        <p>Estado Cita</p>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoAgendada">Agendada</label>
+                        <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoFinalizada" >Finalizada</label>
+                        <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoCancelada">Cancelada</label>
+                        <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="filtrosCajas">
+                        <!-- <input type="button" value="Filtrar" > -->
+                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita"></i></a>
+                        <label for="btnFiltroCita">Filtrar</label>
+                    </div>
 
                 </div>
 
@@ -171,63 +190,12 @@
                     </tbody>
                 </table>
             </div>
-            <!-- <div class="tblCaja">
-                <div class="tituloCaja">
-                    <h2>Mis Reservaciones</h2>
-                </div>
-                <table class="tblCitas">
-                    <thead class="thTitle">
-                        <tr>
-                            <th class="tblTitle">No.Reserva</th>
-                            <th class="tblTitle">Mascota</th>
-                            <th class="tblTitle">check-in</th>
-                            <th class="tblTitle">check-out</th>
-                            <th class="tblTitle">Estado</th>
-                            <th class="tblTitle">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tbdReservas">
 
-                    </tbody>
-                </table>
-            </div> -->
-            <!-------------CREAR CITA--------->
-            <!-- <div class="cuerpoCita hidden">
-                <form id="formCrearCita" class="formCita">
-                    <h1 class="titulo">Nueva Cita</h1>
-                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
-                        <option value="">------Seleccionar mascota------</option>
-
-                    </select>
-                    <div id="NombreOtro">
-
-                    </div>
-                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-
-                    <select class="cajas select" id="selectVeterinario">
-                        <option value="">------Seleccionar Veterinario------</option>
-                        
-                    </select>
-
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
-
-
-
-
-                    <div class="btnsC">
-                        <input type="button" class="btnCancelarC" value="Cancelar">
-
-                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
-                    </div>
-
-                </form>
-
-            </div> -->
 
             <!---------------CREAR RESERVACION------------------------>
-            <div class="cuerpoReserva">
-                <form id="formCrearReserva" class="formReserva hidden">
+                <form id="formCrearReserva" class="formCrearReserva hidden">
                     <h1 class="titulo">Nueva Reservación</h1>
+                    <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCrearR"></i>
 
                     <select class="cajas select" id="selectMacota">
                         <option value="">------Seleccionar mascota------</option>
@@ -243,21 +211,21 @@
                         <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
                     </div>
 
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5"
+                        placeholder="Cuidados Especiales*"></textarea>
 
-                    <div class="btnsR">
-                        <input type="button" class="btnCancelarR" value="Cancelar">
-
-                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
+                    <div class="btnsC">
+                        <input type="button" class="btnCancelarC" id="cerrarModalReserva" value="Cancelar">
+                        <input type="button" id="btnReserva" class="btnC" value="Crear Reserva">
                     </div>
                 </form>
-            </div>
 
-            <!--FORMULARIO---->
-            <form class="form-cancelar-reserva hidden">
+            <!--FORMULARIO CANCELAR RESERVA---->
+            <form class="form-cancelar-reserva hidden" id="formCancelarReserva">
 
                 <!--TITULO------------------------>
                 <h1 class="titulo">Cancelar Reserva</h1>
+                <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCancelarR"></i>
 
                 <div class="Cita">
                     <label for="numReservaCancelar">No.Reserva</label>
@@ -265,39 +233,32 @@
                 </div>
                 <div class="Cita">
                     <label for="nombreReservaCancelar">Mascota</label>
-                    <output class="cajasOut" id="nombreReservaCancelar" name="nombreMascotaCancelar" for="mostrarNombre"></output>
-
-
+                    <output class="cajasOut" id="nombreReservaCancelar" name="nombreMascotaCancelar"
+                        for="mostrarNombre"></output>
                 </div>
                 <div>
-                    <textarea class="cajas" id="motivoCancelar" cols="30" rows="10" placeholder="Motivo de cancelacion"></textarea>
+                    <textarea class="cajas" id="motivoCancelar" cols="30" rows="10"
+                        placeholder="Motivo de cancelacion"></textarea>
                 </div>
 
                 <!--BOTON-DE-Cancelar-------------------------->
-                <input type="button" class="btn-cancelar-reserva" id="btnRegistrar" value="Cancelar" onclick="CancelarReserva()">
+                <div class="btnsC">
+                    <input type="button" class="btn-cancelar-cita" id="btnRegistrar" value="Cancelar Reserva"
+                    onclick="CancelarReserva()">
+                </div>
+               
 
             </form>
             <div class="overlay hidden"></div>
         </div>
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/Constantes.js"></script>
     <script src="./js/services/SessionService.js"></script>
-    <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/services/MascotasService.js"></script>
-    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/services/UsuarioService.js"></script>    
     <script src="./js/services/ReservaService.js"></script>
-
     <script src="./js/controllers/ReservasController.js"></script>
-    <script src="./js/controllers/CrearReservaController.js"></script>
-    <!-- <script src="./js/services/MascotasService.js"></script> -->
-    <!-- <script src="./js/services/demoService.js"></script> -->
-
-    <!-- <script src="./js/controllers/VerReservasController.js"></script> -->
-    <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
-    <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
-    <!-- <script src="./js/controllers/CancelarControler.js"></script> -->
+    <script src="./js/controllers/ReservasControllerCrear.js"></script>
+    <script src="./js/controllers/AppController.js"></script>
 </body>
 
 

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/Facturas.css">
     <link rel="stylesheet" href="css/PagoTarjeta.css">
+    <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
     <title>Factura</title>
 </head>
 
@@ -154,6 +155,7 @@
     </div>
     <form class="form-pago-tarjeta hidden">
         <h1 class="titulo">Pago</h1>
+        <i class="fa-solid fa-circle-xmark cerrarModalX-pago" id="cerrarPago"></i>
         <img src="https://shoplineimg.com/assets/footer/card_visa.png"  id="imgVisa" class="hidden">
 
         <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
@@ -201,8 +203,11 @@
                         </select>
         </div>
 
-        <input type="button" class="btn-pago-tarjeta" id="btnPagar" value="Pagar" onclick="RealizarPago();">
-        <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cancelar">
+        <div class="btnsC">
+            <input type="button" class="btn-pago-tarjeta" id="btnPagar" value="Pagar" onclick="RealizarPago();">
+            <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cancelar">
+        </div>
+       
     </form>
 
     <div class="overlay hidden"></div>
