@@ -1,0 +1,258 @@
+@import url('./estilosGenerales.css');
+
+.contenido-metodos {
+    width: 100%;
+}
+
+.title-metodos-pago {
+    width: 100%;
+    height: 70px;
+    background-color: var(--verdeagua);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--blanco);
+}
+
+.caja-metodos-pago {
+    margin: 80px auto;
+    width: 65%;
+    height: auto;
+    padding-left: 30px;
+}
+
+.btn-agregar-metodo-pago {
+    border: none;
+    padding: 20px;
+    background-color: var(--celestemar);
+    border-radius: 5px;
+    color: var(--blanco);
+    font-size: 15px;
+    margin: 20px 0px;
+    transition: all 500ms ease;
+}
+
+.btn-agregar-metodo-pago:hover {
+    background-color: var(--celeste);
+    box-shadow: -5px 5px 15px var(--silver);
+}
+
+
+.tarjeta-por-agregar {
+    width: 400px;
+    height: 250px;
+    background-color: var(--headerApp);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.numero-tajeta {
+    color: var(--blanco);
+    padding: 30px;
+    letter-spacing: 5px;
+}
+
+.logo-tarjeta {
+    width: 50px;
+    height: auto;
+    margin: 25px 30px;
+}
+
+.fa-arrow-left:hover {
+    color: var(--headerApp);
+}
+
+.back-mi-perfil {
+    font-size: 25px;
+    position: absolute;
+    left: 20%
+}
+
+
+/***********MODAL AGREGAR TARJETA*************/
+
+@import url(./estilosGenerales.css);
+
+* {
+    font-family: Roboto300;
+}
+
+.form-pago-tarjeta {
+    width: 450px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 25px;
+    background-color: var(--blanco);
+    border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+}
+
+/*--TITULO-----------------------*/
+.titulo {
+    text-align: center;
+    color: var(--verdeagua);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--silver);
+
+}
+
+/*--CAJAS-DE-DATOS---------------*/
+.cajas {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+
+
+
+}
+
+.cajas:hover,
+.cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
+
+.cajasP {
+    width: 30%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+}
+
+.cajasP:hover,
+.cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
+
+.cajasPContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#mes_vencimiento,
+#year_vencimiento {
+    color: var(--gris);
+}
+
+/*--BOTON-DE-PAGO---------*/
+.btn-agregar-tarjeta {
+    width: 40%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    background-color: var(--verdeagua);
+    color: var(--blanco);
+    cursor: pointer;
+    transition: all .5s ease;
+
+}
+
+.btn-agregar-tarjeta:hover {
+    background-color: var(--turquesa);
+}
+
+.btn-cancerlar-tarjeta {
+    width: 40%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: var(--blanco);
+    cursor: pointer;
+    transition: all .5s ease;
+
+}
+
+.btn-cancerlar-tarjeta:hover {
+    background-color: var(--Roj1);
+}
+
+.tengo-cuenta {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+
+
+}
+
+.tengo-cuenta:hover {
+    color: var(--turquesa);
+}
+
+.error {
+    border: 2px solid var(--Rojo2);
+}
+
+label {
+    color: var(--gris);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.hidden {
+    display: none;
+    transition: all 600ms linear;
+}
+
+#imgVisa,
+#imgMaster,
+#imgAmex {
+    height: 25px;
+    width: 10%;
+    text-align: center;
+}
+
+.TError {
+    border: 2px solid var(--Rojo2);
+    border-left: 10px solid var(--Rojo2);
+}
+
+.cerrarModalX-tarjeta {
+    font-size: 22px;
+    color: var(--Rojo2);
+    transition: all 200ms linear;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+
+}
+
+.cerrarModalX-tarjeta:hover {
+    color: var(--Roj1);
+}
+
+.lBtns {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/***********FIN MODAL AGREGAR TARJETA*************/
