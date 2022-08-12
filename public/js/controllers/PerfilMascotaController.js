@@ -14,10 +14,14 @@ window.addEventListener('load', () => {
     console.log(mascota);
     //txtMascota.textContent = mascota.NombreMascota;
 
+
     cargaJsonCitas();
     cargaJson();
     setTimeout(() => { ImprimirListaCitas(); }, 1000);
 });
+
+
+
 
 function ImprimirListaCitas() {
     let tbody = document.getElementById('tbbody-ultimas-citas');
@@ -78,10 +82,15 @@ function VerEstado(EstadoCita) {
 }
 
 
-const btnAnnadirMascota = document.getElementById('annadir-mascota');
+const btnAnnadirMascota = document.getElementById('registerMascota');
 const modalRegisMascot = document.querySelector('.form-registro-mascota');
 const overlayRegistroM = document.querySelector('.overlay');
 const closeModalMascota = document.getElementById('btnCancelarRegistroM');
+const closeModalMascota2 = document.getElementById('cerrarAnnadirM');
+
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
 
 
 
@@ -89,14 +98,17 @@ const closeModalMascota = document.getElementById('btnCancelarRegistroM');
 const hiddenRegistroM = function() {
     modalRegisMascot.classList.add('hidden');
     overlayRegistroM.classList.add('hidden');
+    window.removeEventListener("scroll", disableScroll);
 };
 
 // start function show modal
 function ShowModalRegistroM() {
     modalRegisMascot.classList.remove('hidden');
     overlayRegistroM.classList.remove('hidden');
+    window.addEventListener("scroll", disableScroll);
 
     closeModalMascota.addEventListener('click', hiddenRegistroM);
+    closeModalMascota2.addEventListener('click', hiddenRegistroM);
     overlayRegistroM.addEventListener('click', hiddenRegistroM);
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modalRegisMascot.classList.contains('hidden')) {
@@ -108,6 +120,3 @@ function ShowModalRegistroM() {
 btnAnnadirMascota.addEventListener('click', function() {
     ShowModalRegistroM();
 });
-
-
-

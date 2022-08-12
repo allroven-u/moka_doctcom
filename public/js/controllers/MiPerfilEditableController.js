@@ -7,10 +7,9 @@ let inputtxtCedulaP = document.getElementById("txtCedulaP");
 let inputtxtEmailP = document.getElementById("txtEmailP");
 let inputtxtUsuarioP = document.getElementById("txtUsuarioP");
 let inputtxtDireccionP = document.getElementById("txtDireccionP");
-const ValidarEmail = /^[a-zA-Z0-9]+\@*[a-zA-Z0-9]*\@{1}[a-zA-Z]+.com$/;
 
 function EnviarDatosCorreo() {
-    if (ValidarDatosContactenos() == true) {
+    if (ValidarDatosEditarPerfil() == true) {
         ConfirmarDatosLogin();
         setTimeout(function() {
             window.location.pathname = "/public/MiPerfil.html";
@@ -18,7 +17,7 @@ function EnviarDatosCorreo() {
     }
 }
 
-function ValidarDatosContactenos() {
+function ValidarDatosEditarPerfil() {
     let sConttxtNombreP = inputtxtNombreP.value;
     let sConttxtApellidosP = inputtxtApellidosP.value;
     let sConttxtCedulaP = inputtxtCedulaP.value;
@@ -47,16 +46,6 @@ function ValidarDatosContactenos() {
     if (sConttxtEmailP == null || sConttxtEmailP == undefined || sConttxtEmailP == "") {
         resaltarInputInvalido("txtEmailP");
         MostrarErrorContactenos();
-        return false;
-    }
-
-    if (sConttxtEmailP == null || sConttxtEmailP == undefined || sConttxtEmailP == "") {
-        resaltarInputInvalido("txtEmailP");
-        MostrarErrorContactenos("El email es requerido!");
-        return false;
-    }else if(!sConttxtEmailP.match(ValidarEmail)){
-        resaltarInputInvalido("txtEmailP");
-        MostrarErrorContactenos("Formato de email invalido!");
         return false;
     }
 
@@ -101,30 +90,121 @@ function ConfirmarDatosLogin() {
         showConfirmButton: false,
         timer: 1500,
     });
+
 }
 
-////////////////////// cambiar Contrasenha //////////////////////////
-const passwordModal = document.querySelector('.cModal-form');
-const redirectModalPassword = document.querySelector(".redirect-modal-Password");
-const closeModalPassword = document.getElementById('cancelPassword');
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
 
+
+////////////////////// cambiar Contrasenha MODAL //////////////////////////
+const passwordModal = document.querySelector('.cModal-form');
+const openModalPassword = document.querySelector(".redirect-modal-Password");
+const closeModalPassword = document.getElementById('cancelPassword');
+const overlayPE = document.querySelector('.overlay');
+const cerrarButton = document.querySelector('.cerrarModalInicio');
+
+const limpiarFormRecovery = function () {
+    passwordModal.reset();
+}
 
 const hiddenModalPassword = function() {
     passwordModal.classList.add('hidden');
-    overlay.classList.add('hidden');
+    overlayPE.classList.add('hidden');
     window.removeEventListener('scroll', disableScroll);
+    limpiarFormRecovery();
 };
 
 // start function show modal
 function ShowModalPasswordFunct() {
     passwordModal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
+    overlayPE.classList.remove('hidden');
     location.href = "#top-page";
     window.addEventListener('scroll', disableScroll);
 }
 closeModalPassword.addEventListener('click', function() {
     hiddenModalPassword();
 });
-redirectModalPassword.addEventListener('click', function() {
+cerrarButton.addEventListener('click', function() {
+    hiddenModalPassword();
+});
+overlayPE.addEventListener("click", hiddenModalPassword);
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !passwordModal.classList.contains("hidden")) {
+        hiddenModalPassword();
+    }
+});
+openModalPassword.addEventListener('click', function() {
     ShowModalPasswordFunct();
 });
+
+
+/// RESETEAR CONTRASENHA VALIDACION
+
+let inputActualContra = document.getElementById('txtContrasenha-antigua-c');
+let inputContrasenha1C = document.getElementById('txtContrasenha-c');
+let inputContrasenha2C = document.getElementById('txtContrasenha2-c');
+
+
+let btnCambiarC = document.getElementById('btnPassword');
+btnCambiarC.addEventListener('click',CambiarContrasenha);
+
+function CambiarContrasenha(){
+   if(ValidarCambioContrasenha() == true) {
+    ConfirmarDatos('Cambio de Contraseña exitoso!');
+    hiddenModalPassword();
+   }
+}
+
+function ValidarCambioContrasenha(){
+    let sActualContra = inputActualContra.value;
+    let pwContrasenha = inputContrasenha1C.value;
+    let pwContrasenha2 = inputContrasenha2C.value;
+
+    if (sActualContra == null || sActualContra == undefined || sActualContra == ""){
+        inputActualContra.classList.add("rError");
+        MostrarError("La actual contraseña es requerida!");
+        return false;
+
+    }else{
+        inputActualContra.classList.remove("rError");
+    }
+
+    if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == ""){
+        inputContrasenha1C.classList.add("rError")
+        MostrarError("La contraseña es requerida!");
+        return false;
+    }else if(pwContrasenha.length>=6 && pwContrasenha.length<=15){
+        inputContrasenha1C.classList.remove("rError")
+    }else{
+        inputContrasenha1C.classList.add("rError")
+        MostrarError("La contraseña debe contener entre 6 y 15 caracteres!");
+        return false;
+    }
+    if (pwContrasenha2 == null || pwContrasenha2 == undefined || pwContrasenha2 == "" || pwContrasenha != pwContrasenha2){
+        inputContrasenha2C.classList.add("rError")
+        MostrarError("Las contraseñas no son iguales!");
+        return false;
+        
+    }else{
+        inputContrasenha2C.classList.remove("rError")
+    }
+    return true;
+}
+function MostrarError(txtError){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: txtError,
+    })
+}
+function ConfirmarDatos(txtConfirmar){
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: txtConfirmar,
+        showConfirmButton: false,
+        timer: 1500
+      })
+}

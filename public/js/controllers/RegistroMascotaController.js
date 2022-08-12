@@ -1,10 +1,5 @@
 'use strict'
-let userSession;
 
-
-window.addEventListener('load', () =>{
-    userSession=GetSesion();
-});
 
 let btnRegistroMascota = document.getElementById("btnRegistroMascota");
 let inputNombre = document.getElementById("txtNombre");
@@ -15,13 +10,10 @@ btnRegistroMascota.addEventListener("click", Registrar);
 function Registrar() {
     if (ValidarDatosRegMascota() == true) {
         ConfirmarDatos();
-        let IDcliente = userSession.Identificacion;
-        let sNombre = inputNombre.value;
-        let sDireccion = inputDireccionRegistroM.value;
-        let sLatitud ='';
-        let sLongitud ='';
-        let sFoto='';
-        RegistrarMascota(IDcliente,sNombre,sDireccion,sLatitud,sLongitud,sFoto);
+        // let IDcliente = '206790172'
+        // let sNombre = inputNombre.value;
+        // let sDireccion = inputDireccionRegistroM.value;
+        // RegistrarMascota(IDcliente,sNombre,sDireccion)
         limpiarFormRegMascota();
     }
 }

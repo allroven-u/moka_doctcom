@@ -20,16 +20,11 @@ listElements.forEach(listElement => {
     })
 });
 
- window.addEventListener('load',()=>{setTimeout(() => {
+window.addEventListener('load', () => {
     let usuario = GetSesion();
-    txtUsuarioLogueado.textContent = usuario.Nombre + ' ' + usuario.Apellido;
- }, 500)});  
-
- function logout(){
-    LogoutSesion();
-    location.href = '/public/landing.html';
- }
-
+    console.log(usuario.Nombre + ' ' + usuario.Apellido1);
+    txtUsuarioLogueado.textContent = usuario.Nombre + ' ' + usuario.Apellido1;
+});
 
 function cerrar() {
 
@@ -40,4 +35,6 @@ function cerrar() {
         sidebar.classList.remove("nav");
         sidebar.classList.add("navClose");
     }
+
+
 }

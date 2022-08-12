@@ -16,16 +16,6 @@ btnRegistrar.addEventListener("click", Registrar);
 function Registrar() {
     if (ValidarDatos() == true) {
         ConfirmarDatos("Registro exitoso!");
-        let sNombre = inputNombre.value;
-        let sApellido = inputApellido.value;
-        let sCedula = inputCedula.value;
-        let sEmail = inputEmail.value;
-        let pwContrasenha = inputContrasenha1.value;
-        let sDireccion = inputDireccion.value;
-        let sFoto='';
-
-        RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,pwContrasenha,sDireccion,sFoto)
-        limpiarForm('formRegistroUser')
     }
 }
 
@@ -34,6 +24,7 @@ function ValidarDatos() {
     let sApellido = inputApellido.value;
     let sCedula = inputCedula.value;
     let sEmail = inputEmail.value;
+    // let sUsuario = inputUsuario.value;
     let pwContrasenha = inputContrasenha1.value;
     let pwContrasenha2 = inputContrasenha2.value;
     let sDireccion = inputDireccion.value;
@@ -82,6 +73,13 @@ function ValidarDatos() {
         MostrarError("Formato de email no valido!");
         return false;
     }
+    // if (sUsuario == null || sUsuario == undefined || sUsuario == "") {
+    //     inputUsuario.classList.add("rError")
+    //     MostrarError("El nombre de usuario es requerido!");
+    //     return false;
+    // } else {
+    //     inputUsuario.classList.remove("rError")
+    // }
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == "") {
         inputContrasenha1.classList.add("rError")
         MostrarError("La contraseña es requerida!");
@@ -127,8 +125,4 @@ function ConfirmarDatos(txtConfirmar) {
         showConfirmButton: false,
         timer: 1500
     })
-}
-
-function limpiarForm(idform){
-    document.getElementById(idform).reset();
 }

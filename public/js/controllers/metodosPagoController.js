@@ -1,33 +1,41 @@
-const showPagar = document.getElementById('Pagar');
-const modalPago = document.querySelector('.form-pago-tarjeta');
-const closeModalPago = document.querySelector('.btn-cancerlar-tarjeta');
+const showAgregarTajeta = document.querySelector('.btn-agregar-metodo-pago');
+const modalAgregarTarjeta = document.querySelector('.form-pago-tarjeta');
+const closeModalAgregarTarjeta = document.querySelector('.btn-cancerlar-tarjeta');
 const overlay = document.querySelector('.overlay');
-const closeModalPago2 = document.getElementById('cerrarPago');
+const cerrarModalIcon = document.querySelector('.cerrarModalX-tarjeta');
 
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
+const limpiarFormAgregar = function () {
+    modalAgregarTarjeta.reset();
+}
 
-
-const hiddenPagar = function() {
-    modalPago.classList.add('hidden');
+const hiddenAgregar = function() {
+    modalAgregarTarjeta.classList.add('hidden');
     overlay.classList.add('hidden');
+    window.removeEventListener("scroll", disableScroll);
+    limpiarFormAgregar();
 };
 
 // start function show modal
-function ShowModalPagoFunct() {
-    modalPago.classList.remove('hidden');
+function ShowModalAgregarTarjetaFunct() {
+    modalAgregarTarjeta.classList.remove('hidden');
     overlay.classList.remove('hidden');
+    window.addEventListener("scroll", disableScroll);
 
-    closeModalPago.addEventListener('click', hiddenPagar);
-    closeModalPago2.addEventListener('click', hiddenPagar);
-    overlay.addEventListener('click', hiddenPagar);
+    closeModalAgregarTarjeta.addEventListener('click', hiddenAgregar);
+    cerrarModalIcon.addEventListener('click', hiddenAgregar);
+    overlay.addEventListener('click', hiddenAgregar);
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !modalPago.classList.contains('hidden')) {
-            hiddenPagar();
+        if (e.key === 'Escape' && !modalAgregarTarjeta.classList.contains('hidden')) {
+            hiddenAgregar();
         }
     });
 };
 
-showPagar.addEventListener('click', function() {
-    ShowModalPagoFunct();
+showAgregarTajeta.addEventListener('click', function() {
+    ShowModalAgregarTarjetaFunct();
 });
 
 
@@ -212,5 +220,3 @@ function ConfirmarDatosT() {
         timer: 1500
     })
 }
-
-
