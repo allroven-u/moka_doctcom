@@ -62,4 +62,34 @@ async function getMascotasArray(idCliente){
   return result;
 }
 
+async function RegistrarMascota(pIdUsuario,pMascota,pDireccion,platitud,plongitud,pFoto) {
+  let result ={};
+    await axios({
+      method:'post',
+      url: apiUrl + '/RegistrarMascota',
+      responseType: 'json',
+      data: {
+        'IdentificacionDuenio': pIdUsuario,
+        'NombreMascota': pMascota,
+        'Direccion': pDireccion,
+        CalificacionPromedio: 0,
+        Activo: 1,
+        Estado: "Normal",
+        Latitud: platitud,
+        Longitud:plongitud,
+        Foto: pFoto,
+      }
+
+     })
+    .then(function (res) {
+      result = res;
+      console.log(res);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+
+  return result;
+}
+
 
