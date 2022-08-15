@@ -136,29 +136,52 @@
 
                 <div class="tFiltros">
 
-                    <div for="txtNumCita">Num. Reserva
-                        <input id="txtNumCita" type="text">
-                    </div>
-                    <div for="DateFecha1">Fecha Inicio
-                        <input id="DateFecha1" type="date" class="fechas">
-                    </div>
-                    <div for="DateFecha2">Fecha Fin
-                        <input id="DateFecha2" type="date" class="fechas">
-                    </div>
-                    <div for="txtPropietario">Propietario
-                        <input id="txtPropietario" type="text">
-                    </div>
-                    <div for="txtMascota">Mascota
-                        <input id="txtMascota" type="text">
-                    </div>
-                    <div for="txtVeterinario">Veterinario
-                        <input id="txtVeterinario" type="text">
-                    </div>
-                    <div for="txtEstado">Estado
-                        <input id="txtEstado" type="checkbox">
+                    <div for="txtNumCita" class="filtrosCajas">
+                        <label for="txtNumReserva">No.Reserva</label>
+                        <input id="txtNumReserva" type="text" class="cajasCitas">
                     </div>
 
-                    <div><input type="button" value="Filtrar"></div>
+                    <div for="txtMascota" class="filtrosCajas">
+                        <label for="txtMascotaReserva">Mascota</label>
+                        <input id="txtMascotaReserva" type="text" class="cajasCitas">
+                    </div>
+
+
+                    <div for="DateFecha1" class="filtrosCajas">
+                        <label for="DateFecha1Reserva">Fecha Inicio</label>
+                        <input id="DateFecha1Reserva" type="date" class="cajasCitas">
+                    </div>
+                    <div for="DateFecha2" class="filtrosCajas">
+                        <label for="DateFecha2Reserva">Fecha Final</label>
+                        <input id="DateFecha2Reserva" type="date" class="cajasCitas">
+                    </div>
+                    <!-- <div for="txtPropietario">Propietario
+                        <input id="txtPropietario" type="text">
+                    </div> -->
+
+                    <!-- <div for="txtVeterinario">Veterinario
+                        <input id="txtVeterinario" type="text">
+                    </div> -->
+                    <div for="checkEstadoReserva" class="filtrosCajaschk">
+                        <p>Estado Reserva</p>
+                        <div class="estadoChkCajas">
+                            <label for="chkAgendada">Agendada</label>
+                        <input class="checkEstadoCita" id="chkAgendada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkFinalizada" >Finalizada</label>
+                        <input class="checkEstadoCita" id="chkFinalizada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkCancelada">Cancelada</label>
+                        <input class="checkEstadoCita" id="chkCancelada" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="filtrosCajas">
+                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroReserva" onclick="ImprimirListaReservas()"></i></a>
+                        <label for="btnFiltroReserva">Filtrar</label>
+                    </div>
 
                 </div>
 

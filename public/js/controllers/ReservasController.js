@@ -1,19 +1,24 @@
 'use strict'
 
-var listaReservas;
+window.addEventListener('load', GetListaReservas());
 
-window.addEventListener('load', () =>{  
-     
-     setTimeout(() => {ImprimirListaReservas();}, 1000);
-});
+async function GetListaReservas() {
+
+    let result = await getReservasArray();
+    if( result != {} && result.resultado == true){
+        
+        ImprimirListaReservas(result.ListaReservasBD)
+
+    }
+}
 
 
-function ImprimirListaReservas(){
+function ImprimirListaReservas(ListaReservasBD){
 
     let tThead = document.getElementById('tTheadReservas');
     let tbody = document.getElementById('tBodyReservas');
 
-    let listaReservas = getReservasArray();
+    let listaReservas = ListaReservasBD;
 
     tbody.innerHTML = '';
     tThead.innerHTML = '';
@@ -24,14 +29,17 @@ function ImprimirListaReservas(){
     let celNumCita = thRow.insertCell();
     celNumCita.innerHTML = 'Num. Reserva';
 
-    let celPropietario = thRow.insertCell();
-    celPropietario.innerHTML = 'Propietario';
+    // let celPropietario = thRow.insertCell();
+    // celPropietario.innerHTML = 'Propietario';
 
     let celMascota = thRow.insertCell();
     celMascota.innerHTML = 'Mascota';
 
-    let celFecha = thRow.insertCell();
-    celFecha.innerHTML = 'Fecha';
+    let celFechaEnt = thRow.insertCell();
+    celFechaEnt.innerHTML = 'Fecha entrada';
+
+    let celFechaSal = thRow.insertCell();
+    celFechaSal.innerHTML = 'Fecha salida';
 
     let celEstado = thRow.insertCell();
     celEstado.innerHTML = 'Estado';
@@ -44,15 +52,15 @@ function ImprimirListaReservas(){
 
         
         let  reserva = listaReservas[i];
-        let propietario = buscaUsuarioID(reserva.IdentificacionUsurio) ;
+        // let propietario = buscaUsuarioID(reserva.IdentificacionUsurio) ;
 
         let fila = tbody.insertRow();
 
         let celdaNumReserva = fila.insertCell();
         celdaNumReserva.innerHTML = reserva.NumeroReservacion;
 
-        let celdaPropietario = fila.insertCell();
-        celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
+        // let celdaPropietario = fila.insertCell();
+        // celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
 
         let celdaMascota = fila.insertCell();
         celdaMascota.innerHTML = reserva.NombreMascota;
@@ -162,5 +170,5 @@ function disableScroll() {
     window.scrollTo(0, 0);
 }
 const limpiarForm = function () {
-    crearCitaModal.reset();
+    crearReservaModal.reset();
 }

@@ -264,9 +264,9 @@ closeModalPago2.addEventListener('click', function() {
 window.addEventListener('load', () => {
     let usuario = GetSesion();
     console.log(usuario.Identificacion);
-    txtUsuarioLogueado2.textContent = usuario.Nombre + ' ' + usuario.Apellido1;
+    txtUsuarioLogueado2.textContent = usuario.Nombre + ' ' + usuario.Apellido;
     txtNombreP.textContent = usuario.Nombre;
-    txtApellidosP.textContent = usuario.Apellido1 + " " + usuario.Apellido2;
+    txtApellidosP.textContent = usuario.Apellido;
     txtEmailP.textContent = usuario.Email;
     txtUsuarioP.textContent = usuario.Usuario;
     txtContraseniaP.textContent = "*********";
