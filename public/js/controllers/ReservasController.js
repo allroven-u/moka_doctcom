@@ -2,9 +2,7 @@
 
 var listaReservas;
 
-window.addEventListener('load', () =>{
-    cargaJsonReservas();
-    cargaJson();   
+window.addEventListener('load', () =>{  
      
      setTimeout(() => {ImprimirListaReservas();}, 1000);
 });
@@ -32,11 +30,8 @@ function ImprimirListaReservas(){
     let celMascota = thRow.insertCell();
     celMascota.innerHTML = 'Mascota';
 
-    let celFechaIn = thRow.insertCell();
-    celFechaIn.innerHTML = 'Fecha de Entrada';
-    
-    let celFechaOut = thRow.insertCell();
-    celFechaOut.innerHTML = 'Fecha de Salida';
+    let celFecha = thRow.insertCell();
+    celFecha.innerHTML = 'Fecha';
 
     let celEstado = thRow.insertCell();
     celEstado.innerHTML = 'Estado';
@@ -78,7 +73,7 @@ function ImprimirListaReservas(){
         
         if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
         let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','/public/VerReservacionDatos.html')
+        BotonV.setAttribute('href','/public/VerCitaDatos.html')
         let iconoV =document.createElement('i');
         iconoV.classList.add("fa-solid")
         iconoV.classList.add("fa-eye")
@@ -88,7 +83,7 @@ function ImprimirListaReservas(){
         
 
         let Boton = document.createElement('a');
-        Boton.setAttribute('href','/public/CompletarReservacion.html')
+        Boton.setAttribute('href','/public/CompletarCita.html')
         let icono =document.createElement('i');
         icono.classList.add("fa-solid")
         icono.classList.add("fa-pen-to-square")
@@ -97,7 +92,7 @@ function ImprimirListaReservas(){
         celdaBoton.appendChild(Boton);
 
         let BotonC = document.createElement('a');
-        BotonC.setAttribute('onclick','ShowModalCancelReservaFunct()');
+        BotonC.setAttribute('onclick','ShowModalCancelFunct()');
         let iconoC =document.createElement('i');
         iconoC.classList.add("fa-solid")
         iconoC.classList.add("fa-circle-xmark")
@@ -143,126 +138,29 @@ function VerEstado(EstadoCita){
     }
 }
 
+///////////////////modal reserva///////////////////////////
+let crearReservaModal = document.getElementById('formCrearReserva')
+let btnCrearReservas = document.getElementById('show-crear-Reserva').addEventListener('click',ShowModalReservaFunct);
+let btnCancelarReserva = document.querySelector('.btnCancelarR');
+btnCancelarReserva.addEventListener('click',hiddenModalReservaFunct)
+let overlay = document.querySelector('.overlay')
 
-function disableScroll() {
-    window.scrollTo(0, 0);
-}
-
-// MODAL CANCELAR RESERVA
-
-//Cancelar Reserva
-const modalCancelarReserva = document.querySelector('#formCancelarReserva');
-const overlayCancelarReserva = document.querySelector('.overlay');
-const closeCancelarReserva = document.querySelector('#cerrarCancelarR');
-
-
-// start function show modal
-const hiddenCancelModalReserva = function() {
-    modalCancelarReserva.classList.add('hidden');
-    overlayCancelarReserva.classList.add('hidden');
-    window.removeEventListener("scroll", disableScroll);
-};
-
-
-function ShowModalCancelReservaFunct() {
-    modalCancelarReserva.classList.remove('hidden');
-    overlayCancelarReserva.classList.remove('hidden');
-    window.addEventListener("scroll", disableScroll);
-
-    closeCancelarReserva.addEventListener('click', hiddenCancelModalReserva);
-    overlayCancelarReserva.addEventListener('click', hiddenCancelModalReserva);
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !modalCancelarReserva.classList.contains('hidden')) {
-            hiddenCancelModalReserva();
-        }
-    });
-};
-
-// FIN MODAL CANCELAR RESERVA
-
-
-function CancelarReserva() {
-    let listaReservas = ObtenerListaReservas();
-    let numReserva = 0; //llamar datos
-    let nombreMascota = 'bobo'; //llamar datos
-    let inputCancelar = document.getElementById('motivoCancelar');
-    let sMotivoCancelar = inputCancelar.value;
-    if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
-        inputCancelar.classList.add("error")
-        MostrarError('Debe ingresar motivo de cancelación');
-        return false;
-    } else {
-        inputCancelar.classList.remove("error")
-        ConfirmarDatos("Reserva cancelada");
-    }
-
-
-    document.getElementById('numReservaCancelar').innerHTML = numReserva;
-    document.getElementById('nombreReservaCancelar').innerHTML = nombreMascota;
-
-
-    for (let i = 0; i < listaReservas.length; i++) {
-        if (listaCitas[i][1] == numReserva) {
-            listaCitas[i][5] = "Cancelar"
-        }
-
-    }
-}
-
-//alarms
-function MostrarError(txtError) {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: txtError,
-    })
-}
-
-function ConfirmarDatos(txtConfirmar) {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: txtConfirmar,
-        showConfirmButton: false,
-        timer: 1500
-    })
-}
-
-
-
-
-//MODAL CREAR RESERVA
-
-const modalCrearReserva = document.querySelector('#formCrearReserva');
-const overlay = document.querySelector('.overlay');
-const closeCrearReserva = document.querySelector('#cerrarModalReserva');
-const showCrearReserva = document.getElementById('show-crear-reserva');
-const closeCrearReserva2 = document.querySelector('#cerrarCrearR');
-
-
-const hiddenCrearModal = function() {
-    modalCrearReserva.classList.add("hidden");
-    overlay.classList.add("hidden");
-    window.removeEventListener("scroll", disableScroll);
-};
-
-// start function show modal
-function ShowModalCrearFunct() {
-    modalCrearReserva.classList.remove("hidden");
+function ShowModalReservaFunct() {
+    crearReservaModal.classList.remove("hidden");
     overlay.classList.remove("hidden");
     location.href = "#top-page";
     window.addEventListener("scroll", disableScroll);
-
-    closeCrearReserva.addEventListener('click', hiddenCrearModal);
-    closeCrearReserva2.addEventListener('click', hiddenCrearModal);
-    overlay.addEventListener('click', hiddenCrearModal);
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && !modalCrearReserva.classList.contains('hidden')) {
-            hiddenCrearModal();
-        }
-    });
 };
 
-showCrearReserva.addEventListener('click', ShowModalCrearFunct);
-
-// FIN MODAL CREAR RESERVA
+function hiddenModalReservaFunct() {
+    crearReservaModal.classList.add("hidden");
+    overlay.classList.add("hidden");
+    window.removeEventListener("scroll", disableScroll);
+    limpiarForm();
+};
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
+const limpiarForm = function () {
+    crearCitaModal.reset();
+}

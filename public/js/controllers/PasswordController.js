@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 let inputNombreC = document.getElementById('txtUsuario-c');
 let inputContrasenha1C = document.getElementById('txtContrasenha-c');

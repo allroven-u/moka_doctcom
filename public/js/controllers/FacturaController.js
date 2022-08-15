@@ -2,7 +2,6 @@ const showPagar = document.getElementById('Pagar');
 const modalPago = document.querySelector('.form-pago-tarjeta');
 const closeModalPago = document.querySelector('.btn-cancerlar-tarjeta');
 const overlay = document.querySelector('.overlay');
-const closeModalPago2 = document.getElementById('cerrarPago');
 
 
 
@@ -17,7 +16,6 @@ function ShowModalPagoFunct() {
     overlay.classList.remove('hidden');
 
     closeModalPago.addEventListener('click', hiddenPagar);
-    closeModalPago2.addEventListener('click', hiddenPagar);
     overlay.addEventListener('click', hiddenPagar);
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !modalPago.classList.contains('hidden')) {
