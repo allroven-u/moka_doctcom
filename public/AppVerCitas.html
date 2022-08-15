@@ -7,7 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moka Veterinaria Citas</title>
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/VerCitas.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <!-- <link rel="stylesheet" href="css/VerCitas.css"> -->
+    <link rel="stylesheet" href="css/CrearCita.css">
+    <link rel="stylesheet" href="css/CrearReservacion.css">
+    <link rel="stylesheet" href="css/estilosGenerales.css">
+    <link rel="stylesheet" href="css/CancelarCita.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
@@ -19,7 +24,7 @@
             </a>
             <div class="profile">
                 <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
-                <a class="logout" href="./landing.html">
+                <a class="logout" onclick="logout()">
                     <i class="fa-solid fa-right-to-bracket fa-2x "></i>
                 </a>
             </div>
@@ -51,7 +56,7 @@
                         </li>
 
                         <li class="list__inside">
-                            <a href="mascotas.html" class="nav__link nav__link--inside">
+                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
@@ -121,6 +126,10 @@
 
         <div class="home">
 
+            <div class="Breadcrumbs">
+
+            </div>
+
             <div class="tContainer">
                 <div class="tTituloContainer">
                     <div><i class="fa-solid fa-list iconNuevaCita"></i></div>
@@ -128,9 +137,10 @@
                         <h2>Lista de citas</h2>
                     </div>
                     <div class="btnNuevaCitaContainer">
-                        <a id="showCrearCita"><i class="fa-solid fa-square-plus fa-3x NuevaCita"></i></a>
-                        <p>Crear cita</p>
+                        <a id="show-crear-cita"><i class="fa-solid fa-square-plus fa-3x NuevaCita"  ></i></a>
+                        <p>Crear cita </p>
                     </div>
+
                 </div>
 
                 <div class="tFiltros">
@@ -171,21 +181,21 @@
                         <p>Estado Cita</p>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoAgendada">Agendada</label>
-                            <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
                         </div>
                         <div class="estadoChkCajas">
-                            <label for="chkEstadoFinalizada">Finalizada</label>
-                            <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                            <label for="chkEstadoFinalizada" >Finalizada</label>
+                        <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
                         </div>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoCancelada">Cancelada</label>
-                            <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
+                        <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
                         </div>
                     </div>
 
                     <div class="filtrosCajas">
                         <!-- <input type="button" value="Filtrar" > -->
-                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita"></i></a>
+                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita" onclick="ImprimirListaCitas()"></i></a>
                         <label for="btnFiltroCita">Filtrar</label>
                     </div>
 
@@ -200,82 +210,136 @@
                     </tbody>
                 </table>
 
-
-
                 <!-------------CREAR CITA--------->
-                <form id="formCrearCita" class="formCita hidden">
-                    <h1 class="titulo">Nueva Cita</h1>
-                    <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCrearC"></i>
-                    <label for="selectMascotaCita">Seleccione Mascota</label>
-                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
-                        <option value="">------Seleccionar mascota------</option>
-                    </select>
-                    <div id="NombreOtro">
-                    </div>
-                    <label for="txtFecha">Seleccione Fecha y Hora</label>
-                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-                    <label for="selectVeterinario">Seleccione Veterinario</label>
-                    <select class="cajas select" id="selectVeterinario">
-                        <option value="">------Seleccionar Veterinario------</option>
-                    </select>
-                    <label for="txtDireccion">Descripción de la Cita</label>
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5"
-                        placeholder="Descripción de la Cita*"></textarea>
-                    <div class="btnsC">
-                        <input type="button" class="btnCancelarC" value="Cancelar" id="cerrarModalCita">
-                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
-                    </div>
-                </form>
+                <div class="cuerpoCita">
+                    <form id="formCrearCita" class="formCita hidden ">
+                        <h1 class="titulo">Nueva Cita</h1>
+
+
+                        <label for="selectMascotaCita">Seleccione Mascota</label>
+                        <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
+
+
+                            <option value="">------Seleccionar mascota------</option>
+
+
+
+                        </select>
+                        <div id="NombreOtro">
+
+                        </div>
+
+                        <label for="txtFecha">Seleccione Fecha y Hora</label>
+
+                        <input class="cajas" id="txtFecha" type="datetime-local" value="" />
+
+                        <label for="selectVeterinario">Seleccione Veterinario</label>
+
+                        <select class="cajas select" id="selectVeterinario">
+                            <option value="">------Seleccionar Veterinario------</option>
+
+                        </select>
+                        <label for="txtDireccion">Descripción de la Cita</label>
+
+                        <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
 
 
 
 
+                        <div class="btnsC">
+                            <input type="button" id="CancelarCita" class="btnCancelarC" value="Cancelar">
 
+                            <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
+                        </div>
 
+                    </form>
+                </div>
+
+                <!---------------CREAR RESERVACION------------------------>
+                <div class="cuerpoReserva hidden">
+                    <form id="formCrearReserva" class="formReserva">
+                        <h1 class="titulo">Nueva Reservación</h1>
+
+                        <select class="cajas select" id="selectMacota">
+                            <option value="">------Seleccionar mascota------</option>
+
+                        </select>
+                        <div>
+                            <label for="dateCheckIn">Fecha de ingreso</label>
+                            <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
+                        </div>
+
+                        <div>
+                            <label for="dateCheckOut">Fecha de Salida</label>
+                            <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
+                        </div>
+
+                        <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
+
+                        <div class="btnsR">
+                            <input type="button" class="btnCancelarR" value="Cancelar">
+
+                            <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
+                        </div>
+
+                    </form>
+                </div>
                 <!--Cancelar cita---->
-                <form class="form-cancelar-cita hidden" id="formCancelarCita">
+                <form class="form-cancelar-cita hidden">
                     <!--TITULO------------------------>
                     <h1 class="titulo">Cancelar Cita</h1>
-                    <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCancelarC"></i>
+
                     <div class="Cita">
                         <label for="numCitaCancelar">No.Cita</label>
                         <output class="cajasOut" id="numCitaCancelar" name="NumeroCita" for="mostarNum"></output>
                     </div>
                     <div class="Cita">
                         <label for="nombreCitaCancelar">Mascota</label>
-                        <output class="cajasOut" id="nombreCitaCancelar" name="nombreMascotaCancelar"
-                            for="mostrarNombre"></output>
+                        <output class="cajasOut" id="nombreCitaCancelar" name="nombreMascotaCancelar" for="mostrarNombre"></output>
                     </div>
                     <div>
-                        <textarea class="cajas" id="motivoCancelar" cols="30" rows="10"
-                            placeholder="Motivo de cancelacion"></textarea>
+                        <textarea class="cajas" id="motivoCancelar" cols="30" rows="10" placeholder="Motivo de cancelacion"></textarea>
                     </div>
+
                     <!--BOTON-DE-Cancelar-------------------------->
-                    <div class="btnsC">
-                        <input type="button" class="btn-cancelar-cita" id="btnRegistrar" value="Cancelar Cita"
-                        onclick="CancelarCita();">
-                    </div>
-                   
+                    <input type="button" class="btn-cancelar-cita" id="btnRegistrar" value="Cancelar Cita" onclick="CancelarCita();">
                 </form>
-
-
-
-
-
-
-
                 <div class="overlay hidden"></div>
             </div>
         </div>
     </div>
     <!-- <script src="./js/services/MascotasService.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
+
     <script src="./js/services/SessionService.js"></script>
-    <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/controllers/CitasController.js"></script>
-    <script src="./js/controllers/CitasControllerCrear.js"></script>
+    <script src="./js/services/MascotasService.js"></script>
     <script src="./js/controllers/appController.js"></script>
+    <script src="./js/services/CitaService.js"></script>
+    <script src="./js/controllers/CitasController.js"></script>
+
+    
+    
+    <!-- <script src="./js/services/MascotasService.js"></script> -->
+    <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
+    <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
+    
+    <!-- <script src="./js/controllers/CancelarController.js"></script> -->
+    <!-- <script src="./js/controllers/ControllerVerCitas.js"></script> -->
+
+    
+
+
+    
+    <script src="./js/controllers/CrearCitaController.js"></script>
+    <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
+    <script src="./js/controllers/CancelarController.js"></script>
+    <!-- <script src="./js/controllers/ControllerVerCitas.js"></script> -->
+
+
+    <!-- <script src="./js/controllers/CancelarControler.js"></script> -->
 </body>
 
 </html>

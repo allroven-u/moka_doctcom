@@ -3,9 +3,13 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moka Veterinaria App</title>
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/VerCitas.css">
+    <link rel="stylesheet" href="css/CrearCita.css">
+    <link rel="stylesheet" href="css/CrearReservacion.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
@@ -17,9 +21,9 @@
             </a>
             <div class="profile">
                 <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
-                <a class="logout" href="./landing.html">
+                <a class="logout" onclick="logout()">
                     <i class="fa-solid fa-right-to-bracket fa-2x "></i>
-                </a>
+                </a>    
             </div>
         </div>
     </header>
@@ -48,7 +52,7 @@
                         </li>
 
                         <li class="list__inside">
-                            <a href="mascotas.html" class="nav__link nav__link--inside">
+                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
@@ -114,17 +118,100 @@
         </nav>
 
 
-        <div class="home"></div>
+        <div class="home">
 
+            <div class="Breadcrumbs">
+
+            </div>
+            <!-- Aqui se agrega el contenido de la pagina -->
+
+
+
+            <!--  -->
+            <!-------------CREAR CITA--------->
+            <div class="cuerpoCita hidden">
+                <form id="formCrearCita" class="formCita">
+                    <h1 class="titulo">Nueva Cita</h1>
+                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
+                        <option value="">------Seleccionar mascota------</option>
+                    </select>
+
+                    <div id="NombreOtro">
+
+                    </div>
+
+                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
+
+                    <select class="cajas select" id="selectVeterinario">
+                        <option value="">------Seleccionar Veterinario------</option>
+                        
+                    </select>
+
+                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
+
+
+
+
+                    <div class="btnsC">
+                        <input type="button" class="btnCancelarC" value="Cancelar">
+
+                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!---------------CREAR RESERVACION------------------------>
+            <div class="cuerpoReserva hidden">
+                <form id="formCrearReserva" class="formReserva">
+                    <h1 class="titulo">Nueva Reservación</h1>
+
+                    <select class="cajas select" id="selectMacota">
+                        <option value="">------Seleccionar mascota------</option>
+
+                    </select>
+                    <div>
+                        <label for="dateCheckIn">Fecha de ingreso</label>
+                        <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
+                    </div>
+
+                    <div>
+                        <label for="dateCheckOut">Fecha de Salida</label>
+                        <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
+                    </div>
+
+
+
+                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
+
+
+
+                    <div class="btnsR">
+                        <input type="button" class="btnCancelarR" value="Cancelar">
+
+                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
 
         <div class="overlay hidden"></div>
     </div>
+    
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/services/DemoService.js"></script>
+    <script src="./js/Constantes.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/services/MascotasService.js"></script>
-    <script src="./js/controllers/appController.js"></script>
     <script src="./js/services/SessionService.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    
+    <script src="./js/services/MascotasService.js"></script>
+    <script src="./js/controllers/CrearCitaController.js"></script>
+    <script src="./js/controllers/CrearReservaController.js"></script>
+   
+    
 </body>
 
 </html>

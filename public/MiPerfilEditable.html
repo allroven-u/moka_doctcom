@@ -54,7 +54,7 @@
                         </li>
 
                         <li class="list__inside">
-                            <a href="mascotas.html" class="nav__link nav__link--inside">
+                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
@@ -183,22 +183,22 @@
     <form class="cModal-form hidden" id="formCambioC">
         <div class="InicioSesion-titleContainer">
             <h1 class="cTitulo">Cambiar contraseña</h1>
-          <i class="fa-solid fa-circle-xmark cerrarModalInicio"></i>
+            <a href="./MiPerfilEditable.html"><i class="fa-solid fa-circle-xmark cerrarModalInicio"></i></a>
         </div>
 
         <div>
-            <label for="txtUsuario-c">Contraseña actual:</label>
-            <input class="cCajas" id="txtContrasenha-antigua-c" type="text" placeholder="Contraseña Actual" required >
+            <label for="txtUsuario-c">Nombre de Usuario / email:</label>
+            <input class="cCajas" id="txtUsuario-c" type="text" placeholder="Nombre de Usuario / email" required maxlength="15">
         </div>
 
         <div>
-            <label for="txtContrasenha-l">Nueva contraseña:</label>
-            <input class="cCajas" id="txtContrasenha-c" type="password" placeholder="Nueva contraseña" required >
+            <label for="txtContrasenha-l">Contraseña:</label>
+            <input class="cCajas" id="txtContrasenha-c" type="password" placeholder="Contraseña" required maxlength="12">
         </div>
 
         <div>
-            <label for="txtContrasenha-l">Confirmar contraseña:</label>
-            <input class="cCajas" id="txtContrasenha2-c" type="password" placeholder="Confirmar contraseña" required >
+            <label for="txtContrasenha-l">Confirmar Contraseña:</label>
+            <input class="cCajas" id="txtContrasenha2-c" type="password" placeholder="Confirmar contraseña" required maxlength="12">
         </div>
 
         <div class="lBtns">
@@ -211,6 +211,9 @@
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/controllers/PasswordController.js"></script>
+    <script src="./js/controllers/CrearCitaController.js"></script>
+    <script src="./js/controllers/CrearReservaController.js"></script>
     <script src="./js/controllers/MiPerfilEditableController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
     <script src="./js/services/SessionService.js"></script>

@@ -1,195 +1,224 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria</title>
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/CrearCita.css">
-    <link rel="stylesheet" href="css/CrearReservacion.css">
-    <link rel="stylesheet" href="css/RegistroMascota.css">
-    <link rel="stylesheet" href="css/perfilMascota.css">
-    <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <header>
-        <div class="menuBars">
-            <a href="App.html" class="menuBars logo">
-                <img src="../public/assets/img/moka-logo.png" alt="foto de usuario" width="200">
-            </a>
-            <div class="profile">
-                <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
-                <a class="logout" href="./landing.html">
-                    <i class="fa-solid fa-right-to-bracket fa-size"></i>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Moka Veterinaria</title>
+        <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/CrearCita.css">
+        <link rel="stylesheet" href="css/CrearReservacion.css">
+        <link rel="stylesheet" href="css/RegistroMascota.css">
+        <link rel="stylesheet" href="css/perfilMascota.css">
+        <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <div class="menuBars">
+                <a href="App.html" class="menuBars logo">
+                    <img src="../public/assets/img/moka-logo.png" alt="foto de usuario" width="200">
                 </a>
-            </div>
-        </div>
-    </header>
-    <div class="bodyContainer">
-        <nav class="nav">
-            <ul class="list">
-
-                <li class="list__item">
-                    <div class="list__button">
-                        <i class="fa-solid fa-angle-right fa-2x list__img "></i>
-                        <a href="App.html" class="nav__link">Inicio</a>
-                    </div>
-                </li>
-
-                <li class="list__item list__item--click">
-                    <div class="list__button list__button--click">
-                        <i class="fa-solid fa-user list__img"></i>
-                        <a href="#" class="nav__link">Cuenta</a>
-                        <i class="fa-solid fa-angle-right list__arrow "></i>
-                    </div>
-
-                    <ul class="list__show">
-                        <li class="list__inside">
-                            <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="mascotas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
-                        </li>
-                    </ul>
-
-                </li>
-
-
-                <li class="list__item list__item--click">
-                    <div class="list__button list__button--click">
-                        <i class="fa-solid fa-house-chimney-medical list__img"></i>
-                        <a href="AppVerCitas.html" class="nav__link">Citas</a>
-                    </div>
-                </li>
-
-                <li class="list__item list__item--click">
-                    <div class="list__button list__button--click">
-                        <i class="fa-solid fa-hotel list__img"></i>
-                        <a href="AppVerReservas.html" class="nav__link">Reservas</a>
-                    </div>
-
-                </li>
-
-                <li class="list__item list__item--click">
-                    <div class="list__button list__button--click">
-                        <i class="fa-solid fa-file-contract list__img"></i>
-                        <a href="#" class="nav__link">Reportes</a>
-                        <i class="fa-solid fa-angle-right list__arrow "></i>
-                    </div>
-                    <ul class="list__show">
-                        <li class="list__inside">
-                            <a href="reporteCitas.html" class="nav__link nav__link--inside">Listado de citas</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="reporteReservacion.html" class="nav__link nav__link--inside">Listado de reservaciones</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="reporteVeterinario.html" class="nav__link nav__link--inside">Calificaciones</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="reporteGanancia.html" class="nav__link nav__link--inside">Ganacias</a>
-                        </li>
-
-                        <li class="list__inside">
-                            <a href="reporteUsuario.html" class="nav__link nav__link--inside">Usuarios Registrados</a>
-                        </li>
-
-                    </ul>
-
-                </li>
-            </ul>
-        </nav>
-
-
-        <div class="home">
-
-            <div class="perfil-main">
-                <div class="perfil-contenido">
-                    <a href="./mascotas.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
-                    <div class="box-usuario_img">
-                        <div class="box-img border-radius">
-                        </div>
-                        <div class="usuario border-radius name-mascota">
-
-                            <p id="TxtMascotaM">Pinto</p>
-                        </div>
-                        <button class="usuario border-radius remover" id="remover-mascota">Remover mascota</button>
-
-                    </div>
-                    <div class="informacion-personal border-radius">
-                        <div class="titulo-info-usario">
-                            <h2>Informacion General</h2>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Dueño: <span id="txtDuennoM"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Direccion: <span id="txtDireccionM"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Edad: <span id="txtEdadM">4 años</span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Calificacion: <span id="txtCalificacionM"><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
-                                        class="fa-solid fa-star"></i></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius observaciones">
-                            <p>Observaciones: <span id="txtObservacionesM">Tiene Pulgas y garrapatas</span></p>
-                        </div>
-                        <button class="btn-editar border-radius" type="button" onclick="location.href='./perfilMascotaEditable.html'">Editar Informacion</button>
-
-                    </div>
-                    <div class="historial-mascota border-radius">
-                        <div class="titulo-lastCitas">
-                            <h2>Ultimas citas</h2>
-                        </div>
-                        <table>
-                            <thead class="thTitle">
-                                <tr>
-                                    <th class="tblTitle">No.Cita</th>
-                                    <th class="tblTitle">Mascota</th>
-                                    <th class="tblTitle">Veterinario(a)</th>
-                                    <th class="tblTitle">Fecha</th>
-                                    <th class="tblTitle">Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbbody-ultimas-citas">
-                            </tbody>
-
-                        </table>
-                    </div>
+                <div class="profile">
+                    <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
+                    <a class="logout" href="./landing.html">
+                        <i class="fa-solid fa-right-to-bracket fa-size"></i>
+                    </a>
                 </div>
             </div>
-            <!--PERFIL USUSARIO-->
+        </header>
+        <div class="bodyContainer">
+            <nav class="nav">
+                <ul class="list">
+                    <li class="list__item">
+                        <div class="list__button">
+                            <i class="fa-solid fa-angle-right fa-2x list__img "></i>
+                            <a href="App.html" class="nav__link">Inicio</a>
+                        </div>
+                    </li>
+                    <li class="list__item list__item--click">
+                        <div class="list__button list__button--click">
+                            <i class="fa-solid fa-user list__img"></i>
+                            <a href="#" class="nav__link">Cuenta</a>
+                            <i class="fa-solid fa-angle-right list__arrow "></i>
+                        </div>
+                        <ul class="list__show">
+                            <li class="list__inside">
+                                <a href="MiPerfil.html" class="nav__link nav__link--inside">
+                                    <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
+                            </li>
+                            <li class="list__inside">
+                                <a href="perfilMascota.html" class="nav__link nav__link--inside">
+                                    <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list__item list__item--click">
+                        <div class="list__button list__button--click">
+                            <i class="fa-solid fa-house-chimney-medical list__img"></i>
+                            <a href="AppVerCitas.html" class="nav__link">Citas</a>
+                        </div>
+                    </li>
+                    <li class="list__item list__item--click">
+                        <div class="list__button list__button--click">
+                            <i class="fa-solid fa-hotel list__img"></i>
+                            <a href="AppVerReservas.html" class="nav__link">Reservas</a>
+                        </div>
+                    </li>
+                    <li class="list__item list__item--click">
+                        <div class="list__button list__button--click">
+                            <i class="fa-solid fa-file-contract list__img"></i>
+                            <a href="#" class="nav__link">Reportes</a>
+                            <i class="fa-solid fa-angle-right list__arrow "></i>
+                        </div>
+                        <ul class="list__show">
+                            <li class="list__inside">
+                                <a href="reporteCitas.html" class="nav__link nav__link--inside">Listado de citas</a>
+                            </li>
+                            <li class="list__inside">
+                                <a href="reporteReservacion.html" class="nav__link nav__link--inside">Listado de reservaciones</a>
+                            </li>
+                            <li class="list__inside">
+                                <a href="reporteVeterinario.html" class="nav__link nav__link--inside">Calificaciones</a>
+                            </li>
+                            <li class="list__inside">
+                                <a href="reporteGanancia.html" class="nav__link nav__link--inside">Ganacias</a>
+                            </li>
+                            <li class="list__inside">
+                                <a href="reporteUsuario.html" class="nav__link nav__link--inside">Usuarios Registrados</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="home">
+                <div class="perfil-main">
+                    <div class="perfil-contenido">
+                        <div class="box-usuario_img">
+                            <div class="box-img border-radius shadow">
+                                <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                            </div>
+                            <div class="usuario border-radius name-mascota">
+                                <p id="TxtMascotaM">Pinto</p>
+                            </div>
+                            <button class="usuario border-radius annadir" id="annadir-mascota">Añadir mascota</button>
+                            <button class="usuario border-radius remover" id="remover-mascota">Remover mascota</button>
+                        </div>
+                        <div class="informacion-personal border-radius shadow">
+                            <div class="titulo-info-usario">
+                                <h2>Informacion General de Mascota</h2>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Dueño: <span id="txtDuennoM"></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Direccion: <span id="txtDireccionM"></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Edad: <span id="txtEdadM">4 años</span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Calificacion: <span id="txtCalificacionM"><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                            class="fa-solid fa-star"></i></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius observaciones">
+                                <p>Observaciones: <span id="txtObservacionesM">Tiene Pulgas y garrapatas</span></p>
+                            </div>
+                            <button class="btn-editar border-radius" type="button" onclick="location.href='./perfilMascotaEditable.html'">Editar Informacion</button>
+                        </div>
+                        <div class="historial-mascota border-radius shadow">
+                            <div class="titulo-lastCitas">
+                                <h2>Ultimas citas</h2>
+                            </div>
+                            <table>
+                                <thead class="thTitle">
+                                    <tr>
+                                        <th class="tblTitle">No.Cita</th>
+                                        <th class="tblTitle">Mascota</th>
+                                        <th class="tblTitle">Veterinario(a)</th>
+                                        <th class="tblTitle">Fecha</th>
+                                        <th class="tblTitle">Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbbody-ultimas-citas">
+                                </tbody>
 
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!--PERFIL USUSARIO-->
+                <!-------------CREAR CITA--------->
+                <div class="cuerpoCita hidden">
+                    <form id="formCrearCita" class="formCita">
+                        <h1 class="titulo">Nueva Cita</h1>
+                        <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
+                            <option value="">------Seleccionar mascota------</option>
+                        </select>
 
-           
+                        <div id="NombreOtro"></div>
+
+                        <input class="cajas" id="txtFecha" type="datetime-local" value="" />
+
+                        <select class="cajas select" id="selectVeterinario">
+                            <option value="">------Seleccionar Veterinario------</option>
+                        </select>
+
+                        <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
+
+                        <div class="btnsC">
+                            <input type="button" class="btnCancelarC" value="Cancelar">
+
+                            <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
+                        </div>
+                    </form>
+                </div>
+                <!---------------CREAR RESERVACION------------------------>
+                <div class="cuerpoReserva hidden">
+                    <form id="formCrearReserva" class="formReserva">
+                        <h1 class="titulo">Nueva Reservación</h1>
+                        <select class="cajas select" id="selectMacota">
+                            <option value="">------Seleccionar mascota------</option>
+                        </select>
+                        <div>
+                            <label for="dateCheckIn">Fecha de ingreso</label>
+                            <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
+                        </div>
+                        <div>
+                            <label for="dateCheckOut">Fecha de Salida</label>
+                            <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
+                        </div>
+                        <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
+                        <div class="btnsR">
+                            <input type="button" class="btnCancelarR" value="Cancelar">
+                            <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
+                        </div>
+                    </form>
+                </div>
+                <form id="FormRegistroMascota" class="form-registro-mascota hidden">
+                    <!--TITULO------------------------>
+                    <h1 class="titulo">Registrar Mascota</h1>
+                    <!--CAJAS-DE-ENTRADA-DE-DATOS------------------------------------------------>
+                    <div class="formFoto">
+                        <label for="imgFotoMascota" class="lblFotoMascota">Foto Mascota</label>
+                        <input type="file" id="imgFotoMascota" name="fotoPerfil" placeholder="Foto" capture>
+                    </div>
+                    <input class="cajas" id="txtNombre" type="text" placeholder="Nombre mascota*" maxlength="30">
+                    <textarea class="cajas" name="Dirección" id="txtDireccionRegistroM" cols="30" rows="5" placeholder="Dirección exacta*"></textarea>
+                    <!--BOTON-DE-REGISTRARSE-------------------------->
+                    <input type="button" class="btn-registro-m" id="btnRegistroMascota" value="Registrar">
+                    <input type="button" class="btn-cancerlar-m" id="btnCancelarRegistroM" value="Cancelar">
+                </form>
+            </div>
         </div>
 
-
-    </div>
-
-
-
-
-    <div class="overlay hidden"></div>
-    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/services/CitaService.js"></script>
-    <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/services/MascotasService.js"></script>
-    <script src="./js/controllers/PerfilMascotaController.js"></script>
-    <script src="./js/controllers/AppController.js"></script>
-    <script src="./js/services/SessionService.js"></script>
-</body>
-
+        <div class="overlay hidden"></div>
+        <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="./js/controllers/RegistroMascotaController.js"></script>
+        <script src="./js/services/CitaService.js"></script>
+        <script src="./js/services/UsuarioService.js"></script>
+        <script src="./js/services/MascotasService.js"></script>
+        <script src="./js/controllers/PerfilMascotaController.js"></script>
+        <script src="./js/controllers/AppController.js"></script>
+        <script src="./js/services/SessionService.js"></script>
+    </body>
 </html>
