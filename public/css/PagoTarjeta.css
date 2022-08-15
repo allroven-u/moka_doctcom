@@ -23,7 +23,6 @@
   text-align: center;
   color: var(--verdeagua);
   margin-bottom: 20px;
-  padding-bottom: 20px;
   border-bottom: 2px solid var(--silver);
 
 }
@@ -37,6 +36,9 @@
   border: none;
   border-left: 10px solid var(--silver);
   transition: all .5s ease;
+
+
+
 }
 
 .cajas:hover,
@@ -73,7 +75,8 @@
 
 /*--BOTON-DE-PAGO---------*/
 .btn-pago-tarjeta {
-  padding: 13px 40px;
+  width: 100%;
+  padding: 15px;
   border-radius: 5px;
   border: none;
   margin: 10px 0;
@@ -90,7 +93,8 @@
 }
 
 .btn-cancerlar-tarjeta {
-  padding: 13px 30px;
+  width: 100%;
+  padding: 15px;
   border-radius: 5px;
   border: none;
   margin: 10px 0;
@@ -104,11 +108,6 @@
 
 .btn-cancerlar-tarjeta:hover {
   background-color: var(--Roj1);
-}
-
-.btnsC{
-  display: flex;
-  justify-content: space-around;
 }
 
 .tengo-cuenta {
@@ -147,26 +146,12 @@ label {
   display: none;
   transition: all 600ms linear;
 }
-
-img {
+img{
   height: 25px;
   width: 10%;
   text-align: center;
 }
-
 .TError {
   border: 2px solid var(--Rojo2);
   border-left: 10px solid var(--Rojo2);
-}
-
-
-
-.cerrarModalX-pago {
-  font-size: 22px;
-  color: var(--Rojo2);
-  transition: all 200ms linear;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  cursor: pointer;
 }

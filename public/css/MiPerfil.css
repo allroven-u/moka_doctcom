@@ -6,9 +6,8 @@
 
 .historial-de-pagos,
 .historial-mascota,
-.informacion-personal,
-.box-usuario_img{
-    margin: 20px;
+.informacion-personal{
+    margin: 5px;
 }
 
 .perfil-main {
@@ -27,7 +26,7 @@
 
 .box-usuario_img {
     width: 250px;
-    height: 350px;
+    height: 50%;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -44,7 +43,7 @@
 
 .usuario {
     background-color: var(--navApp);
-    width: 90%;
+    width: 110%;
     color: var(--blanco);
     font-size: 22px;
     text-align: center;
@@ -55,7 +54,7 @@
     overflow: hidden;
     background-color: var(--silver);
     width: 70%;
-    height: 50%;
+    height: 70%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -68,7 +67,6 @@
     height: 12%;
     color: var(--blanco);
     text-align: center;
-    padding: 10px;
 }
 
 .box-info-usuario {
@@ -104,24 +102,32 @@
     flex-direction: column;
 }
 
-.titulo-historial,
+.titulo-historial {
+    background-color: var(--verdeagua);
+    width: 100%;
+    height: 20%;
+    color: var(--blanco);
+    text-align: center;
+}
+
 .titulo-lastCitas {
     background-color: var(--verdeagua);
     width: 100%;
+    height: 50%;
     color: var(--blanco);
     text-align: center;
-    padding: 15px;
 }
 
 table {
+    padding: 30%;
     margin: 5%;
     width: 90%;
     border-spacing: 10px;
 }
 
 td{
-    border-radius: 5px;
-   text-align: center;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .detalle {
@@ -131,7 +137,8 @@ td{
 }
 
 .precio {
-    background-color: var(--blanco);
+    background-color: var(--headerApp);
+    color: var(--blanco);
 }
 
 .h-citas {
@@ -144,6 +151,7 @@ td{
     background-color: var(--celestemar);
     color: var(--blanco);
     font-size: 15px;
+    font-family: Roboto400;
     border: none;
 }
 
@@ -163,6 +171,13 @@ td{
 .input-img-user{
     display: none;
     
+}
+
+.imgclass{
+  padding: 5px;
+  height: auto;
+  width: 10%;
+  text-align: center;
 }
 
 .fa-star{
@@ -192,21 +207,512 @@ td{
     width: 82%;
 }
 
-.metodos-de-pago{
-    width: 90%;
-    margin-top: 10px;
+.usuario2 {
+    width: 110%;
+    color: var(--blanco);
+    font-size: 22px;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border: none;
 }
 
-.agregar-metodos{
-    display: block;
-    width: 100%;
-    padding: 15px 0px;
-    color: var(--blanco);
-    background-color: var(--celestemar);
-    border: none;
-    font-size: 15px;
+
+.methodos_de_pagos,.remover{
+    transition: all 300ms ease;
+}
+
+.methodos_de_pagos{
+    background-color: var(--verdeagua) !important;
+}
+
+.methodos_de_pagos:hover{
+    background-color: var(--esmeralda) !important;
+}
+
+
+.form-pago-tarjeta2 {
+    width: 20%;
+    padding: 30px;
+    margin: auto;
+    margin-top: 40px;
+    background-color: var(--blanco);
+    border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+  }
+
+.form-pago-tarjeta12345 {
+    width: 30%;
+    padding: 30px;
+    margin: auto;
+    margin-top: 40px;
+    background-color: var(--blanco);
+    border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+  }
+  
+  /*--TITULO-----------------------*/
+  .titulo {
     text-align: center;
+    color: var(--verdeagua);
+    margin: 50px;
+    border-bottom: 2px solid var(--silver);
+  }
+
+  .cajasPContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: var(--verdeagua);
+    border: 1px solid var(--silver);
+    align-items: center;
+    margin: 10px;
+  }
+
+  /*--CAJAS-DE-DATOS---------------*/
+  .cajas {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+  }
+  
+  .cajas:hover,
+  .cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+  }
+  
+  .cajasP {
+    width: 30%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+  }
+  
+  .cajasP:hover {
+    border-left: 10px solid var(--verdeagua);
+  }
+  
+  #mes_vencimiento,
+  #year_vencimiento {
+    color: var(--gris);
+  }
+  
+  /*--BOTON-DE-PAGO---------*/
+
+  
+  .tarjetas {
+    text-align: center;
+    color: black;
+  }
+  
+
+ 
+  
+  .btn2-cancerlar-tarjeta {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: none;
+    margin: 10px 0;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: var(--blanco);
+    cursor: pointer;
+    transition: all .5s ease;
+  }
+  
+  .btn2-cancerlar-tarjeta:hover {
+    background-color: var(--Roj1);
+  }
+  
+  .tengo-cuenta {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+  }
+  
+  .tengo-cuenta:hover {
+    color: var(--turquesa);
+  }
+  
+  .error {
+    border: 2px solid var(--Rojo2);
+  }
+  
+  label {
+    color: var(--gris);
+  }
+  
+  .overlay1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+  }
+  
+  .overlay2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+  }
+
+  .hidden {
+    display: none;
+    transition: all 600ms linear;
+  }
+
+  .TError {
+    border: 2px solid var(--Rojo2);
+    border-left: 10px solid var(--Rojo2);
+  }
+
+
+
+
+
+
+section {
+	/* background: #dce7eb; */
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
-.agregar-metodos:hover{
-    background-color: var(--celeste);
+
+.trash {
+	background:#ff6873;
+	width: 40px;
+	height: 50px;
+	display: inline-block;
+	margin:0 auto;
+	
+	position: relative;
+	-webkit-border-bottom-right-radius: 6px;
+	-webkit-border-bottom-left-radius: 6px;
+	-moz-border-radius-bottomright: 6px;
+	-moz-border-radius-bottomleft: 6px;
+	border-bottom-right-radius: 6px;
+	border-bottom-left-radius: 6px;
 }
+.trash:after {
+	position: absolute;
+	left: -99px;
+	right: 0;
+	bottom: -500px;
+	width: 300px;
+}
+.trash span {
+	position: absolute;
+	height: 12px;
+	background: #ff6873;
+	top: -15px;
+	left: -10px;
+	right: -10px;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+}
+.trash span:after {
+  content: '';
+	position: absolute;
+	width: 40px;
+	height: 7px;
+	background: #ff6873;
+	top: -10px;
+	
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	transform: rotate(0deg);
+	transition: transform 250ms;
+	transform-origin: 19% 100%;
+	left: 10px;
+}
+
+
+.trash i {
+	position:relative;
+	width: 5px;
+	height:20px;
+	background:#fff;
+	display:block;
+	margin:14px auto;
+	border-radius: 5px;
+}
+.trash i:after {
+	content: '';
+	width: 5px;
+	height: 20px;
+	background: #fff;
+	position: absolute;
+	left: -10px;
+	border-radius: 5px;
+}
+.trash i:before {
+	content: '';
+	width: 5px;
+	height: 20px;
+	background: #fff;
+	position: absolute;
+	right: -10px;
+	border-radius: 5px;
+}
+
+.trash:hover span {
+	transform: rotate(-45deg);
+	transition: transform 250ms;
+}
+
+
+
+
+
+
+
+
+
+@import url(./estilosGenerales.css);
+
+* {
+  font-family: Roboto300;
+}
+
+.form-pago-tarjeta {
+  width: 450px;
+  padding: 30px;
+  margin: auto;
+  margin-top: 25px;
+  background-color: var(--blanco);
+  border-radius: 5px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 11;
+}
+
+/*--TITULO-----------------------*/
+.titulo {
+  text-align: center;
+  color: var(--verdeagua);
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--silver);
+
+}
+
+/*--CAJAS-DE-DATOS---------------*/
+.cajas {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  border-left: 10px solid var(--silver);
+  transition: all .5s ease;
+}
+
+.cajas:hover,
+.cajas:focus {
+  border-left: 10px solid var(--verdeagua);
+}
+
+.cajasP {
+  width: 30%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: none;
+  border-left: 10px solid var(--silver);
+  transition: all .5s ease;
+}
+
+.cajasP:hover,
+.cajas:focus {
+  border-left: 10px solid var(--verdeagua);
+}
+
+.mas1 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cajasPContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cajasPContainer2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.cajasPContainer2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: var(--verdeagua);
+  border: 1px solid var(--silver);
+  align-items: center;
+  margin: 10px;
+}
+
+#mes_vencimiento,
+#year_vencimiento {
+  color: var(--gris);
+}
+
+/*--BOTON-DE-PAGO---------*/
+.btn-pago-tarjeta {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0;
+  font-size: 15px;
+  background-color: var(--verdeagua);
+  color: var(--blanco);
+  cursor: pointer;
+  transition: all .5s ease;
+
+}
+
+.btn-pago-tarjeta:hover {
+  background-color: var(--turquesa);
+}
+
+.btn1-pago-tarjeta2,
+.btn2-pago-tarjeta2,
+.btn3-pago-tarjeta2,
+.btn4-pago-tarjeta2 {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0;
+  font-size: 15px;
+  background-color: var(--verdeagua);
+  color: var(--blanco);
+  cursor: pointer;
+  transition: all .5s ease;
+
+}
+
+
+.tarjeta1espacio{
+  height: auto;
+  width: 10%;
+  margin: 5px
+}
+
+.btn-pago-tarjeta2:hover {
+  background-color: var(--turquesa);
+}
+
+.btn-cancerlar-tarjeta {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0;
+  font-size: 15px;
+  background-color: var(--Rojo2);
+  color: var(--blanco);
+  cursor: pointer;
+  transition: all .5s ease;
+
+}
+
+.btn-cancerlar-tarjeta:hover {
+  background-color: var(--Roj1);
+}
+
+.tengo-cuenta {
+  text-align: center;
+  color: #000000;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 15px;
+
+
+}
+
+.tengo-cuenta:hover {
+  color: var(--turquesa);
+}
+
+.error {
+  border: 2px solid var(--Rojo2);
+}
+
+label {
+  color: var(--gris);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.hidden {
+  display: none;
+  transition: all 600ms linear;
+}
+
+.TError {
+  border: 2px solid var(--Rojo2);
+  border-left: 10px solid var(--Rojo2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,437 +1,295 @@
-@import url('./estilosGenerales.css');
-.tContainer{
+@import url(./estilosGenerales.css);
+* {
+    font-family: Roboto300;
+    margin: 0px auto;
+    padding: 0px;
+}
+
+.infoTd {
+    border: 1px solid var(--silver);
+    border-radius: 5px;
+    text-align: center;
+    padding: 3px;
+    background-color: var(--blanco);
+    cursor: default;
+    width: 180px;
+    margin: 5px;
+}
+
+.tblTitle {
+    background-color: var(--azul2);
+    color: var(--blanco);
+    cursor: default;
+    border-radius: 5px;
+    width: 180px;
+    margin: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.btn {
+    text-align: center;
+    background-color: var(--blanco);
+    color: var(--turquesa);
+    border: 2px solid var(--turquesa);
+    padding: 2px 5px;
+    border-radius: 5px;
+    top: 2px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    width: 180px;
+}
+
+.btn:hover {
+    color: var(--blanco);
+}
+
+.btn::after {
+    content: '';
+    background-color: var(--turquesa);
+    position: absolute;
+    z-index: -1;
+    padding: 5px 8px;
+    display: block;
+    border-radius: 50%;
+    left: -50%;
+    right: -50%;
+    top: -150%;
+    bottom: -150%;
+    transform: scale(0, 0);
+    transition: all 0.4s ease;
+}
+
+.btn:hover::after {
+    transition: all 0.6s ease-out;
+    transform: scale(1, 1);
+}
+
+.thTitle {
+    border: 1px solid var(--azul2);
+    background-color: var(--azul2);
+    border-radius: 0 0 5px 5px;
+    padding: 5px;
+    width: fit-content;
+}
+
+#tbdCitas {
+    margin-top: 15px;
     display: flex;
-	justify-content: space-between;
-    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#tbdReservas {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tblCitas {
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-}
-
-.tTituloContainer {
-	display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    border-radius: 5px;
     width: 100%;
-	height: 70px;
+}
+
+.tituloCaja {
     text-align: center;
-    margin-bottom: 10px;
-    background-color: var(--verdeagua);
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
     color: var(--blanco);
-    align-items: center;
+    width: 100%;
+    margin-top: 2px;
 }
 
-.tTituloContainer h2{
-	padding: 10px; 
-}
-.iconNuevaCita{
-	transform: scale(2);
-}
-.NuevaCita{
-	transform: scale(0.5);	
-	transition: all 300ms linear;
-} 
-
-
-.NuevaCita:hover, .cajas:focus{
-	transform: scale(0.6);
-  }
-
-.btnNuevaCitaContainer{
-	display: flex;
-	align-items: center;
-}
-
-.tFiltros{
-	width: 100%;
-	display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-	padding: 10px;
-}
-
-
-.table{
-	width: 100%;
-	border-collapse: collapse;
-}
-
-.table thead{
-	background-color: var(--azul2);
-	color: var(--blanco);
-}
-
-
-.table td,.table th{
-  padding:7px 15px;
-  border:1px solid #ddd;
-  text-align: center;
-  font-size:16px;
-
-}
-
-.table th{
-	background-color: var(--azul2);
-	color:#ffffff;
-}
-
-.table tbody tr:nth-child(even){
-	background-color: #f5f5f5;
-}
-
-label {
-    color: var(--gris);
-}
-
-.filtrosCajas{
-	display: flex;
-	flex-direction: column;
-    align-items: center;
-	margin-right: 25px;
-}
-.filtroFecha{
-	flex-direction: row;
-}
-
-.filtrosCajaschk{
-	border: 1px solid var(--gris);
-	padding: 10px;
-	background-color: white;
-	border-radius: 5px;
-	border-left: 10px solid var(--silver);
-	transition: all .5s ease;
-}
-
-.filtrosCajaschk:hover{
-	border-left: 10px solid var(--verdeagua);
-}
-.filtrosCajaschk p{
-	color: var(--gris);
-	border-bottom: 1px solid var(--gris);
-}
-.filtrosCajaschk label{
-	width: 90px;
-}
-
-.checkEstadoCita{
-	margin: 10px;
-	
-
-}
-
-.select {
-    width: 250px;
-    padding: 30px;
-    margin: auto;
-    margin-top: 15px;
-    border-radius: 5px;
-    text-align: center;
+.tblCaja {
     display: flex;
-}
-.cajasCitas{
-	width:100%;
-	padding: 5px;
-	margin-bottom: 20px;
-	border-radius: 5px;
-	border: none;
-	border-left: 10px solid var(--silver);
-	transition: all .5s ease;
-  }
-  
-  .cajasCitas:hover, .cajas:focus{
-	border-left: 10px solid var(--verdeagua);
-  }
-
-  #txtNumCita{
-	width: 60%;
-  }
-
-.btnV,
-.btnEd,
-.btnCa {
-	color: var(--turquesa);
-	margin: 10px;
-	transform: scale(1.5);
-	transition: all 200ms linear;
-}
-.btnV:hover,
-.btnEd:hover,
-.btnCa:hover {
-	transform: scale(1.6);
-}
-.btnEd {
-	color: var(--naranja);
-}
-.btnCa {
-	color: var(--Rojo2);
+    width: 100%;
+    margin: 0;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-#btnFiltroCita{
-	color: var(--turquesa);
-	margin: 10px;
-	transition: all 200ms linear;
-	transform: scale(1.8);
-	cursor: pointer;
-	
-}
-#btnFiltroCita:hover{
-	transform: rotate3d(0,0,4,90deg)
-}
-.AGENDADA {
-	background-color: var(--naranja);
-}
-.CANCELADA {
-	background-color: var(--Rojo2);
-}
-.FINALIZADA {
-	background-color: var(--verdeagua);
+.Pendiente {
+    background-color: var(--naranja);
 }
 
-
-
-
-/*responsive*/
-
-@media(max-width: 500px){
-	.table thead{
-		display: none;
-	}
-
-	.table, .table tbody, .table tr, .table td{
-		display: block;
-		width: 100%;
-	}
-	.table tr{
-		margin-bottom:15px;
-	}
-	.table td{
-		text-align: right;
-		padding-left: 50%;
-		text-align: right;
-		position: relative;
-	}
-	.table td::before{
-		content: attr(data-label);
-		position: absolute;
-		left:0;
-		width: 50%;
-		padding-left:15px;
-		font-size:15px;
-		font-weight: bold;
-		text-align: left;
-	}
+.Cancelada {
+    background-color: var(--Rojo2);
 }
 
+.Finalizada {
+    background-color: var(--verdeagua);
+}
 
-/*CANCELAR RESERVA*/
-
-.form-cancelar-reserva{
-    width: 450px;
-    padding: 30px;
-    margin: auto;
-    margin-top: 25px;
-    background-color: var(--blanco);
-    border-radius: 5px;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    z-index: 11;
-  }
-  /*--TITULO-----------------------*/
-  .titulo{
+.h2 {
     text-align: center;
-    color: var(--verdeagua);
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--silver);
-  
-  }
-  /*--CAJAS-DE-DATOS---------------*/
-  .cajas{
-      width: 100%;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: none;
-      border-left: 10px solid var(--silver);
-      transition: all .5s ease;
-  }
-  
-  label{
-      color: var(--gris);
-  }
-  
-  .cajas:hover, .cajas:focus{
-    border-left: 10px solid var(--verdeagua);
-  }
-  .Cita{
-      display: flex;
-      flex-direction: column;
-  }
-  
-  .cajasOut{
-  background-color: white;
-  width: 100%;
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 80%;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.DescripcionParrafo {
+    text-align: center;
+    background-color: var(--silver);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 80%;
+    padding: 50px;
+    margin-top: 0%;
+}
+
+.h3 {
+    text-align: center;
+    background-color: var(--azul2);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 300px;
+    margin-right: 5%;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btns {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--azul2);
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--naranja);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnEnviar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--turquesa);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btn:hover {
+    background-color: var(--naranja);
+}
+
+.btnEnviar:hover {
+    background-color: var(--turquesa);
+}
+
+.btnCancelar {
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: white;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.btnCancelar:hover {
+    background-color: var(--Roj1);
+}
+
+.PagoFacura {
+    text-align: center;
+    background-color: var(--silver);
+    border: 1px solid var(--concreto);
+    border-radius: 0 0 5px 5px;
+    color: var(--blanco);
+    width: 80%;
+    padding: 20px;
+    margin-top: 0%;
+}
+
+.cajas {
+    width: 100%;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
     border: none;
     border-left: 10px solid var(--silver);
     transition: all .5s ease;
-  }
-  .cajasOut:hover, .cajasOut:focus{
-      border-left: 10px solid var(--verdeagua);
-    }
-  
-  .btn-cancelar-reserva{
-      width: 100%;
-      padding: 15px;
-      border-radius: 5px;
-      border: none;
-      margin: 20px 0;
-      font-size: 15px;
-      background-color: var(--Rojo2);
-      color: var(--blanco);
-      cursor: pointer;
-      transition: all .5s ease;
-      
-    }
-    .btn-cancelar-reserva:hover{
-      background-color: var(--Roj1);
-    }
-   
-    .error{
-      border: 2px solid var(--Rojo2);
-    }
+}
 
+.cajas:hover,
+.cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
 
-	/*CREAR RESERVA*/
+.stars {
+    height: 100px;
+    width: 500px;
+    font-size: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
 
-	.cuerpoReserva {
-        height: 650px;
-        z-index: 11;
-    }
-    
-    .formReserva {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        color: var(--verdeagua);
-        width: 450px;
-        padding: 30px;
-        margin: auto;
-        margin-top: 25px;
-        background-color: var(--blanco);
-        border-radius: 5px;
-        position: absolute;
-        top: 40%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    label {
-        color: var(--gris);
-    }
-    
-    
-    .select {
-        width: 250px;
-        padding: 30px;
-        margin: auto;
-        margin-top: 15px;
-        border-radius: 5px;
-        text-align: center;
-        display: flex;
-    }
-    
-    .fechas {
-        width: 100%;
-        padding: 15px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        border: none;
-        border-left: 10px solid var(--blanco);
-        transition: all .5s ease;
-        font-size: large;
-    }
-    
-    
-    .titulo {
-        text-align: center;
-        color: var(--verdeagua);
-        margin-bottom: 20px;
-        border-bottom: 2px solid var(--silver);
-    }
-    
-    .cajas {
-        margin-top: 20px;
-        width: 100%;
-        padding: 15px;
-        margin-bottom: 20px;
-        border-radius: 5px;
-        border: none;
-        border-left: 10px solid var(--silver);
-        transition: all .5s ease;
-        color: gray;
-    }
-    
-    .cajas:hover,
-    .cajas:focus {
-        border-left: 10px solid var(--verdeagua);
-    }
-    
-    .btnsR {
-        display: flex;
-        justify-content: space-around;
-    }
-    
-    .btnR {
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        border: none;
-        margin: 20px 0;
-        width: 120px;
-        font-size: 15px;
-        background-color: var(--verdeagua);
-        color: white;
-        cursor: pointer;
-        transition: all .5s ease;
-    }
-    
-    .btnR:hover {
-        background-color: var(--turquesa);
-    }
-    
-    .btnCancelarR {
-        width: 100%;
-        padding: 5px;
-        border-radius: 5px;
-        border: none;
-        margin: 20px 0;
-        width: 120px;
-        font-size: 15px;
-        background-color: var(--Rojo2);
-        color: white;
-        cursor: pointer;
-        transition: all .5s ease;
-    }
-    
-    .btnCancelarR:hover {
-        background-color: var(--Roj1);
-    }
-    
-    .error {
-        border: 2px solid var(--Rojo2);
-    }
-    .headCompletarCita{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .califContainer{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.star {
+    color: rgb(22, 17, 17);
+}
+
+.color {
+    color: rgb(192, 192, 11);
+}
+
+.cajasOut {
+    background-color: white;
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--blanco);
+    transition: all .5s ease;
+}
+
+.cajasOut:hover,
+.cajasOut:focus {
+    border-left: 10px solid var(--verdeagua);
+}

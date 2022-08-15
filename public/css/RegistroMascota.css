@@ -21,7 +21,6 @@
   text-align: center;
   color: var(--verdeagua);
   margin-bottom: 20px;
-  padding-bottom: 20px;
   border-bottom: 2px solid var(--silver);
 
 }
@@ -43,7 +42,8 @@
 
 /*--BOTON-DE-REGISTRARSE---------*/
 .btn-registro-m{
-  padding: 10px 25px;
+  width: 100%;
+  padding: 15px;
   border-radius: 5px;
   border: none;
   margin: 10px 0;
@@ -58,7 +58,8 @@
   background-color: var(--turquesa);
 }
 .btn-cancerlar-m {
-  padding: 10px 25px;
+  width: 100%;
+  padding: 15px;
   border-radius: 5px;
   border: none;
   margin: 5px 0;
@@ -120,25 +121,4 @@
 }
 #imgFotoMascota:hover, #imgFotoMascotas:focus{
   border-left: 10px solid var(--verdeagua);
-}
-
-.modal-btns{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.cerrarModalX{
-  font-size: 22px;
-  color: var(--Rojo2);
-  transition: all 200ms linear;
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  cursor: pointer;
-}
-
-.cerrarModalX:hover{
-  color: var(--Roj1);
 }
