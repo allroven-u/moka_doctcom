@@ -123,6 +123,7 @@ table {
     margin: 5%;
     width: 90%;
     border-spacing: 10px;
+
 }
 
 td{
@@ -199,6 +200,7 @@ td{
     background-color: var(--azul2);
     border-radius: 5px;
     padding: 5px;
+    margin: 5px;
 }
 .thTitle th{
     padding: 5px;

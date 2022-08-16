@@ -1,16 +1,55 @@
 let btnGuardarCambios = document.getElementById("btn-guardarMiPerfil2")
-btnGuardarCambios.addEventListener('click', EnviarDatosCorreo)
+btnGuardarCambios.addEventListener('click', EditarDatosUser)
 
 let inputtxtNombreP = document.getElementById("txtNombreP");
+
 let inputtxtApellidosP = document.getElementById("txtApellidosP");
 let inputtxtCedulaP = document.getElementById("txtCedulaP");
 let inputtxtEmailP = document.getElementById("txtEmailP");
-let inputtxtUsuarioP = document.getElementById("txtUsuarioP");
-let inputtxtDireccionP = document.getElementById("txtDireccionP");
-const ValidarEmail = /^[a-zA-Z0-9]+\@*[a-zA-Z0-9]*\@{1}[a-zA-Z]+.com$/;
+// let inputtxtPasswordP=document.getElementById('txtPassword');
 
-function EnviarDatosCorreo() {
-    if (ValidarDatosContactenos() == true) {
+let inputtxtDireccionP = document.getElementById("txtDireccionP");
+const ValidarEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+let userSession;
+let listaUsuarios;
+window.addEventListener('load', async() =>{
+    userSession=GetSesion();
+    await GetlistaUsuarios();
+    CargarDatosUser(userSession)
+});
+
+async function GetlistaUsuarios(){
+    let result = await getUsuariosArray();
+    if (result != {} && result.resultado == true) {
+       listaUsuarios = result.ListaUsuariosBD;
+    }
+  }
+
+function CargarDatosUser(userSession){
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        
+        if (listaUsuarios[i].Identificacion == userSession.Identificacion){
+            console.log("_id: "+userSession._id);
+            inputtxtNombreP.value= listaUsuarios[i].Nombre;
+            inputtxtApellidosP.value = listaUsuarios[i].Apellido;
+            inputtxtCedulaP.value = listaUsuarios[i].Identificacion;
+            inputtxtEmailP.value=listaUsuarios[i].Email;
+            // inputtxtPasswordP.value = listaUsuarios[i].Contrasenia;
+            inputtxtDireccionP.value = listaUsuarios[i].Direccion;
+        }
+        
+    }
+}
+
+
+function EditarDatosUser() {
+    if (ValidarDatosUser()) {
+
+        ActualizarDatos();
+
+
+
+
         ConfirmarDatosLogin();
         setTimeout(function() {
             window.location.pathname = "/public/MiPerfil.html";
@@ -18,12 +57,11 @@ function EnviarDatosCorreo() {
     }
 }
 
-function ValidarDatosContactenos() {
+function ValidarDatosUser() {
     let sConttxtNombreP = inputtxtNombreP.value;
     let sConttxtApellidosP = inputtxtApellidosP.value;
     let sConttxtCedulaP = inputtxtCedulaP.value;
     let sConttxtEmailP = inputtxtEmailP.value;
-    let sConttxtUsuarioP = inputtxtUsuarioP.value;
     let sConttxtDireccionP = inputtxtDireccionP.value;
 
     if (sConttxtNombreP == null || sConttxtNombreP == undefined || sConttxtNombreP == "") {
@@ -60,12 +98,6 @@ function ValidarDatosContactenos() {
         return false;
     }
 
-    if (sConttxtUsuarioP == null || sConttxtUsuarioP == undefined || sConttxtUsuarioP == "") {
-        resaltarInputInvalido("txtUsuarioP");
-        MostrarErrorContactenos();
-        return false;
-    }
-
     if (sConttxtDireccionP == null || sConttxtDireccionP == undefined || sConttxtDireccionP == "") {
         resaltarInputInvalido("txtDireccionP");
         MostrarErrorContactenos();
@@ -74,6 +106,28 @@ function ValidarDatosContactenos() {
 
     return true;
 }
+
+
+function ActualizarDatos(){
+    let sID= userSession._id;
+    let sConttxtNombreP = inputtxtNombreP.value;
+    let sConttxtApellidosP = inputtxtApellidosP.value;
+    let sConttxtCedulaP = inputtxtCedulaP.value;
+    let sConttxtEmailP = inputtxtEmailP.value;
+    let sConttxtDireccionP = inputtxtDireccionP.value;
+    let sFoto = "";
+    EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto);
+}
+
+function CambiarContrasenha(){
+    
+}
+
+
+
+
+
+
 
 function MostrarErrorContactenos() {
     Swal.fire({
@@ -107,7 +161,7 @@ function ConfirmarDatosLogin() {
 const passwordModal = document.querySelector('.cModal-form');
 const redirectModalPassword = document.querySelector(".redirect-modal-Password");
 const closeModalPassword = document.getElementById('cancelPassword');
-
+let overlay= document.querySelector('.overlay');
 
 const hiddenModalPassword = function() {
     passwordModal.classList.add('hidden');
@@ -128,3 +182,6 @@ closeModalPassword.addEventListener('click', function() {
 redirectModalPassword.addEventListener('click', function() {
     ShowModalPasswordFunct();
 });
+function disableScroll() {
+    window.scrollTo(0, 0);
+}

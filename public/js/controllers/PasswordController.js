@@ -1,5 +1,13 @@
 'use strict'
 
+let userSessionC;
+let listaUsuariosC;
+window.addEventListener('load', async() =>{
+    userSessionC=GetSesion();
+    await GetlistaUsuariosC();
+
+});
+
 let inputNombreC = document.getElementById('txtUsuario-c');
 let inputContrasenha1C = document.getElementById('txtContrasenha-c');
 let inputContrasenha2C = document.getElementById('txtContrasenha2-c');
@@ -10,9 +18,17 @@ btnCambiarC.addEventListener('click',CambiarContrasenha);
 
 function CambiarContrasenha(){
    if(ValidarCambioContrasenha() == true) {
-    ConfirmarDatos('Cambio de Contraseña exitoso!');
-    limpiarForm('formCambioC');
-    hiddenModalPassword();
+        if(CambiarPassword() == false){
+            MostrarError("Error no se pudo cambiar la contraseña")
+
+        }else{
+            ConfirmarDatos('Cambio de Contraseña exitoso!');
+            limpiarForm('formCambioC');
+            hiddenModalPassword();            
+        }
+
+
+
    }
 }
 
@@ -51,6 +67,39 @@ function ValidarCambioContrasenha(){
     }
     return true;
 }
+
+
+
+
+
+
+
+async function GetlistaUsuariosC(){
+    let result = await getUsuariosArray();
+    if (result != {} && result.resultado == true) {
+       listaUsuariosC = result.ListaUsuariosBD;
+       console.log(listaUsuariosC);
+    }
+  }
+
+async function CambiarPassword(){
+    let sEmail = inputNombreC.value;
+    let sPassword = inputContrasenha1C.value;
+    let sId;
+    let result= false;
+    for (let i = 0; i < listaUsuariosC.length; i++) {
+            if(listaUsuariosC[i].Email == sEmail ){
+                sId =listaUsuariosC[i]._id; 
+                result= await CambiarCotrasenhaUsuario(sId,sPassword);
+                if (result != {} && result.resultado == true) {
+                    result = true;
+                }
+            }   
+    }
+    return result;
+}
+
+
 function MostrarError(txtError){
     Swal.fire({
         icon: 'error',

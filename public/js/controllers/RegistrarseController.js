@@ -38,7 +38,7 @@ function ValidarDatos() {
     let pwContrasenha2 = inputContrasenha2.value;
     let sDireccion = inputDireccion.value;
     const ValidarTexto = /^[a-zA-Z,.' -]+$/;
-    const ValidarEmail = /^[a-zA-Z0-9]+\@*[a-zA-Z0-9]*\@{1}[a-zA-Z]+.com$/;
+    const ValidarEmail =/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 
     if (sNombre == null || sNombre == undefined || sNombre == "") {
         inputNombre.classList.add("rError")

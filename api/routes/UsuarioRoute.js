@@ -150,7 +150,7 @@ router.delete('/EliminarUsuario', function (req, res) {
 });
 router.put('/ModificarUsuario', function (req, res) {
     let body = req.body;
-    Usuario.updateOne({ Identificacion: body.Identificacion }, {
+    Usuario.updateOne({ _id: body._id}, {
         $set: req.body 
         // $set: {
         //     Nombre: body.Nombre,

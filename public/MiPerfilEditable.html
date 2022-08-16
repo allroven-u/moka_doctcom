@@ -127,7 +127,7 @@
                         </div>
                         
                         <div class="resetearcontrasena border-radius">
-                            <button class="btn-editar border-radius redirect-modal-Password" type="button">Resetear Contraseña</button>
+                            <button class="btn-editar border-radius redirect-modal-Password" type="button">Cambiar Contraseña</button>
                         </div>
 
                     </div>
@@ -154,11 +154,10 @@
                             <label for="txtEmailP">Email: </label>
                             <input class="cajas" id="txtEmailP" type="text" placeholder="Email: " maxlength="30">
                         </div>
-
-                        <div class="perfilContainer2">
-                            <label for="txtUsuarioP">Nombre de Usuario: </label>
-                            <input class="cajas2" id="txtUsuarioP" type="text" placeholder="Nombre de Usuario: " maxlength="30">
+                        <div class="perfilContainer hidden"> 
+                            <label for="txtPassword">Password: </label> <input class="cajas" id="txtPassword" type="text" placeholder="password " maxlength="30"> 
                         </div>
+
 
                         <div class="perfilContainer2">
                             <label for="txtDireccionP">Direccion: </label>
@@ -187,8 +186,8 @@
         </div>
 
         <div>
-            <label for="txtUsuario-c">Nombre de Usuario / email:</label>
-            <input class="cCajas" id="txtUsuario-c" type="text" placeholder="Nombre de Usuario / email" required maxlength="15">
+            <label for="txtUsuario-c">email:</label>
+            <input class="cCajas" id="txtUsuario-c" type="text" placeholder="email">
         </div>
 
         <div>
@@ -207,16 +206,16 @@
         </div>
 
     </form>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/services/CitaService.js"></script>
+    <script src="./js/Constantes.js"></script>
+ 
+    <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/controllers/PasswordController.js"></script>
-    <script src="./js/controllers/CrearCitaController.js"></script>
-    <script src="./js/controllers/CrearReservaController.js"></script>
     <script src="./js/controllers/MiPerfilEditableController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
-    <script src="./js/services/SessionService.js"></script>
+
 </body>
 
 </html>

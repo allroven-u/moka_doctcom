@@ -142,12 +142,12 @@
                         <div class="box-info-usuario border-radius">
                             <p>Email: <span id="txtEmailP"></span></p>
                         </div>
-                        <div class="box-info-usuario border-radius">
+                        <!-- <div class="box-info-usuario border-radius">
                             <p>Nombre de Usuario: <span id="txtUsuarioP"></span></p>
                         </div>
                         <div class="box-info-usuario border-radius">
                             <p>Contraseña: <span id="txtContraseniaP"></span></p>
-                        </div>
+                        </div> -->
                         <div class="box-info-usuario border-radius direccion">
                             <p>Direccion: <span id="txtDireccionP"></span></p>
                         </div>
@@ -188,6 +188,7 @@
                         <table>
                             <thead class="thTitle">
                                 <tr>
+                                    <th class="tblTitle">No.Cita</th>
                                     <th class="tblTitle">Mascota</th>
                                     <th class="tblTitle">Veterinario(a)</th>
                                     <th class="tblTitle">Fecha</th>
@@ -396,10 +397,13 @@
         </form>
         <div class="overlay2 hidden"></div>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
     <!-- <script src="./js/services/demoService.js"></script>-->
-    <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/CitaService.js"></script>
+
     <script src="./js/controllers/MiPerfilController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
     <script src="./js/services/SessionService.js"></script>
