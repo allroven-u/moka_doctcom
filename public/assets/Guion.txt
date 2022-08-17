@@ -11,6 +11,7 @@ Services:
 Manejo de reservas
 Htmls:
 AppVerReservas.html
+VerReservacionDatos.html
 Controllers:
 ReservaController.js
 Services:
