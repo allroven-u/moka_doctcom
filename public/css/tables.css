@@ -190,7 +190,7 @@ label {
 	color: var(--Rojo2);
 }
 
-#btnFiltroCita{
+#btnFiltroCita,#btnFiltroReserva{
 	color: var(--turquesa);
 	margin: 10px;
 	transition: all 200ms linear;
@@ -198,7 +198,7 @@ label {
 	cursor: pointer;
 	
 }
-#btnFiltroCita:hover{
+#btnFiltroCita:hover,#btnFiltroReserva:hover{
 	transform: rotate3d(0,0,4,90deg)
 }
 .AGENDADA {
