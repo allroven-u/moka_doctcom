@@ -22,15 +22,6 @@ function ImprimirListaReservas(ListaReservasBD){
     let tThead = document.getElementById('tTheadReservas');
     let tbody = document.getElementById('tBodyReservas');
 
-    let listaReservas = [];
-
-    ///////////citas Usuario/////////////////
-    for (let i = 0; i < ListaReservasBD.length; i++) {
-        if (ListaReservasBD[i].IdentificacionUsuario == userSessionR.Identificacion){
-            listaReservas.push(ListaReservasBD[i]);
-            listaReservas.reverse()
-        }
-    }
 
     tbody.innerHTML = '';
     tThead.innerHTML = '';
@@ -58,6 +49,30 @@ function ImprimirListaReservas(ListaReservasBD){
 
     let celAcciones = thRow.insertCell();
     celAcciones.innerHTML = 'Acciones';
+    let listaReservas = [];
+
+    ///////////citas Usuario/////////////////
+    for (let i = 0; i < ListaReservasBD.length; i++) {
+        if (ListaReservasBD[i].IdentificacionUsuario == userSessionR.Identificacion){
+            listaReservas.push(ListaReservasBD[i]);
+            listaReservas.reverse()
+        }
+    }
+
+
+    function compare_numCita( a, b )
+    {
+    if ( a.celNumCita < b.celNumCita){
+      return -1;
+    }
+    if ( a.celNumCita  > b.celNumCita){
+      return 1;
+    }
+    return 0;
+  }
+  
+  listaReservas.sort(compare_numCita);
+  listaReservas.reverse()
     
 
     for (let i = 0; i < listaReservas.length; i++) {

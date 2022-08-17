@@ -23,14 +23,7 @@ function ImprimirListaCitas(ListaCitasBD){
 
     tbody.innerHTML = '';
     tThead.innerHTML = '';
-    let listaCitas = [];
-///////////citas Usuario/////////////////
-    for (let i = 0; i < ListaCitasBD.length; i++) {
-        if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion){
-            listaCitas.push(ListaCitasBD[i]);
-            listaCitas.reverse();
-        }
-    }
+
 
     // thead
     let thRow = tThead.insertRow();
@@ -55,6 +48,30 @@ function ImprimirListaCitas(ListaCitasBD){
 
     let celAcciones = thRow.insertCell();
     celAcciones.innerHTML = 'Acciones';
+    let listaCitas = [];
+    ///////////citas Usuario/////////////////
+        for (let i = 0; i < ListaCitasBD.length; i++) {
+            if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion){
+                listaCitas.push(ListaCitasBD[i]);
+
+            }
+        }
+
+    function compare_numCita( a, b )
+        {
+        if ( a.celNumCita < b.celNumCita){
+          return -1;
+        }
+        if ( a.celNumCita  > b.celNumCita){
+          return 1;
+        }
+        return 0;
+      }
+      
+      listaCitas.sort(compare_numCita);
+      listaCitas.reverse()
+
+        
 
     for (let i = 0; i < listaCitas.length; i++) {
 
