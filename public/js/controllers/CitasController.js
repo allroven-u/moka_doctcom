@@ -1,209 +1,209 @@
-'use strict'
+// 'use strict'
 
 
-let userSessionC;
-window.addEventListener('load', () =>{
-    userSessionC=GetSesion();
-    GetListaCitas()
-});
+// let userSessionC;
+// window.addEventListener('load', () =>{
+//     userSessionC=GetSesion();
+//     GetListaCitas()
+// });
 
-async function GetListaCitas() {
+// async function GetListaCitas() {
 
-    let result = await getCitasArray();
-    if( result != {} && result.resultado == true){
-        ImprimirListaCitas(result.ListaCitasBD)
-    }
-}
-
-
-function ImprimirListaCitas(ListaCitasBD){
-
-    let tThead = document.getElementById('tTheadCitas');
-    let tbody = document.getElementById('tBodyCitas');
-
-    tbody.innerHTML = '';
-    tThead.innerHTML = '';
+//     let result = await getCitasArray();
+//     if( result != {} && result.resultado == true){
+//         ImprimirListaCitas(result.ListaCitasBD)
+//     }
+// }
 
 
-    // thead
-    let thRow = tThead.insertRow();
+// function ImprimirListaCitas(ListaCitasBD){
 
-    let celNumCita = thRow.insertCell();
-    celNumCita.innerHTML = 'Num. Cita';
+//     let tThead = document.getElementById('tTheadCitas');
+//     let tbody = document.getElementById('tBodyCitas');
 
-    // let celPropietario= thRow.insertCell();
-    // celPropietario.innerHTML = 'Propietario';
+//     tbody.innerHTML = '';
+//     tThead.innerHTML = '';
 
-    let celMascota = thRow.insertCell();
-    celMascota.innerHTML = 'Mascota';
 
-    // let celVeterinario = thRow.insertCell();
-    // celVeterinario.innerHTML = 'Veterinario';
+//     // thead
+//     let thRow = tThead.insertRow();
 
-    let celFecha = thRow.insertCell();
-    celFecha.innerHTML = 'Fecha';
+//     let celNumCita = thRow.insertCell();
+//     celNumCita.innerHTML = 'Num. Cita';
 
-    let celEstado = thRow.insertCell();
-    celEstado.innerHTML = 'Estado';
+//     // let celPropietario= thRow.insertCell();
+//     // celPropietario.innerHTML = 'Propietario';
 
-    let celAcciones = thRow.insertCell();
-    celAcciones.innerHTML = 'Acciones';
-    let listaCitas = [];
-    ///////////citas Usuario/////////////////
-        for (let i = 0; i < ListaCitasBD.length; i++) {
-            if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion){
-                listaCitas.push(ListaCitasBD[i]);
+//     let celMascota = thRow.insertCell();
+//     celMascota.innerHTML = 'Mascota';
 
-            }
-        }
+//     // let celVeterinario = thRow.insertCell();
+//     // celVeterinario.innerHTML = 'Veterinario';
 
-    function compare_numCita( a, b )
-        {
-        if ( a.celNumCita < b.celNumCita){
-          return -1;
-        }
-        if ( a.celNumCita  > b.celNumCita){
-          return 1;
-        }
-        return 0;
-      }
+//     let celFecha = thRow.insertCell();
+//     celFecha.innerHTML = 'Fecha';
+
+//     let celEstado = thRow.insertCell();
+//     celEstado.innerHTML = 'Estado';
+
+//     let celAcciones = thRow.insertCell();
+//     celAcciones.innerHTML = 'Acciones';
+//     let listaCitas = [];
+//     ///////////citas Usuario/////////////////
+//         for (let i = 0; i < ListaCitasBD.length; i++) {
+//             if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion){
+//                 listaCitas.push(ListaCitasBD[i]);
+
+//             }
+//         }
+
+//     function compare_numCita( a, b )
+//         {
+//         if ( a.celNumCita < b.celNumCita){
+//           return -1;
+//         }
+//         if ( a.celNumCita  > b.celNumCita){
+//           return 1;
+//         }
+//         return 0;
+//       }
       
-      listaCitas.sort(compare_numCita);
-      listaCitas.reverse()
+//       listaCitas.sort(compare_numCita);
+//       listaCitas.reverse()
 
         
 
-    for (let i = 0; i < listaCitas.length; i++) {
+//     for (let i = 0; i < listaCitas.length; i++) {
 
 
-        let  cita = listaCitas[i];
+//         let  cita = listaCitas[i];
 
-       // let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
-       // let propietario = buscaUsuarioID(cita.IdentificacionUsurio) ;
+//        // let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
+//        // let propietario = buscaUsuarioID(cita.IdentificacionUsurio) ;
 
-        let fila = tbody.insertRow();
+//         let fila = tbody.insertRow();
 
-        let celdaNumCita = fila.insertCell();
-        celdaNumCita.innerHTML = cita.NumeroCita;
+//         let celdaNumCita = fila.insertCell();
+//         celdaNumCita.innerHTML = cita.NumeroCita;
 
-        // let celdaPropietario = fila.insertCell();
-        // celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
+//         // let celdaPropietario = fila.insertCell();
+//         // celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
 
-        let celdaMascota = fila.insertCell();
-        celdaMascota.innerHTML = cita.NombreMascota;
+//         let celdaMascota = fila.insertCell();
+//         celdaMascota.innerHTML = cita.NombreMascota;
 
-        // let celdaVeterinario = fila.insertCell();
-        // celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido1;
+//         // let celdaVeterinario = fila.insertCell();
+//         // celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido1;
 
-        let celdaFecha= fila.insertCell();
-        celdaFecha.innerHTML = cita.FechaHora;
+//         let celdaFecha= fila.insertCell();
+//         celdaFecha.innerHTML = cita.FechaHora;
 
-        let celdaEstado = fila.insertCell();
-        celdaEstado.innerHTML = cita.Estado;
-        celdaEstado.classList.add('Estado');
+//         let celdaEstado = fila.insertCell();
+//         celdaEstado.innerHTML = cita.Estado;
+//         celdaEstado.classList.add('Estado');
 
-         let celdaBoton = fila.insertCell();
+//          let celdaBoton = fila.insertCell();
 
-         let EstadoCitaif = document.querySelectorAll('.Estado');
-         if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
-         let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','/public/VerCitaDatos.html')
-         let iconoV =document.createElement('i');
-         iconoV.classList.add("fa-solid")
-         iconoV.classList.add("fa-eye")
-         iconoV.classList.add("btnV")
-         BotonV.appendChild(iconoV);
-         celdaBoton.appendChild(BotonV);
-
-
-         let Boton = document.createElement('a');
-         Boton.setAttribute('href','/public/CompletarCita.html')
-         let icono =document.createElement('i');
-         icono.classList.add("fa-solid")
-         icono.classList.add("fa-pen-to-square")
-         icono.classList.add("btnEd")
-         Boton.appendChild(icono);
-         celdaBoton.appendChild(Boton);
-
-         let BotonC = document.createElement('a');
-         BotonC.setAttribute('onclick','ShowModalCancelFunct()');
-         let iconoC =document.createElement('i');
-         iconoC.classList.add("fa-solid")
-         iconoC.classList.add("fa-circle-xmark")
-         iconoC.classList.add("btnCa")
-         BotonC.appendChild(iconoC);
-         celdaBoton.appendChild(BotonC);
-         }else{
-         let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','#')
-         let iconoV =document.createElement('i');
-         iconoV.classList.add("fa-solid")
-         iconoV.classList.add("fa-eye")
-         iconoV.classList.add("btnV")
-         BotonV.appendChild(iconoV);
-         celdaBoton.appendChild(BotonV);
-         }
+//          let EstadoCitaif = document.querySelectorAll('.Estado');
+//          if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
+//          let BotonV = document.createElement('a');
+//          BotonV.setAttribute('href','/public/VerCitaDatos.html')
+//          let iconoV =document.createElement('i');
+//          iconoV.classList.add("fa-solid")
+//          iconoV.classList.add("fa-eye")
+//          iconoV.classList.add("btnV")
+//          BotonV.appendChild(iconoV);
+//          celdaBoton.appendChild(BotonV);
 
 
-     }
-     let EstadoCita = document.querySelectorAll('.Estado');
-         console.log(EstadoCita.length);
-         VerEstado(EstadoCita);
-  }
+//          let Boton = document.createElement('a');
+//          Boton.setAttribute('href','/public/CompletarCita.html')
+//          let icono =document.createElement('i');
+//          icono.classList.add("fa-solid")
+//          icono.classList.add("fa-pen-to-square")
+//          icono.classList.add("btnEd")
+//          Boton.appendChild(icono);
+//          celdaBoton.appendChild(Boton);
+
+//          let BotonC = document.createElement('a');
+//          BotonC.setAttribute('onclick','ShowModalCancelFunct()');
+//          let iconoC =document.createElement('i');
+//          iconoC.classList.add("fa-solid")
+//          iconoC.classList.add("fa-circle-xmark")
+//          iconoC.classList.add("btnCa")
+//          BotonC.appendChild(iconoC);
+//          celdaBoton.appendChild(BotonC);
+//          }else{
+//          let BotonV = document.createElement('a');
+//          BotonV.setAttribute('href','#')
+//          let iconoV =document.createElement('i');
+//          iconoV.classList.add("fa-solid")
+//          iconoV.classList.add("fa-eye")
+//          iconoV.classList.add("btnV")
+//          BotonV.appendChild(iconoV);
+//          celdaBoton.appendChild(BotonV);
+//          }
 
 
- function VerEstado(EstadoCita){
-
-     for (let i = 0; i < EstadoCita.length; i++) {
-     let sEstadoCita = EstadoCita[i].innerHTML;
-     console.log(sEstadoCita)
-     if (sEstadoCita == 'AGENDADA'){
-         EstadoCita[i].classList.add("AGENDADA")
-
-     }
-     if (sEstadoCita == 'CANCELADA'){
-         EstadoCita[i].classList.add("CANCELADA")
-
-     }
-     if (sEstadoCita == 'FINALIZADA'){
-         EstadoCita[i].classList.add("FINALIZADA")
+//      }
+//      let EstadoCita = document.querySelectorAll('.Estado');
+//          console.log(EstadoCita.length);
+//          VerEstado(EstadoCita);
+//   }
 
 
-     }
-     }
- }
+//  function VerEstado(EstadoCita){
 
-/////////////////modal cita///////////////////////////////
-let crearCitaModal = document.getElementById('formCrearCita')
-let overlay = document.querySelector('.overlay')
-let btnCrearCita = document.getElementById('show-crear-cita').addEventListener('click',ShowModalCitaFunct);
-let btnCancelarCita = document.querySelector('#CancelarCita');
-btnCancelarCita.addEventListener('click',hiddenModalCitaFunct)
+//      for (let i = 0; i < EstadoCita.length; i++) {
+//      let sEstadoCita = EstadoCita[i].innerHTML;
+//      console.log(sEstadoCita)
+//      if (sEstadoCita == 'AGENDADA'){
+//          EstadoCita[i].classList.add("AGENDADA")
 
-function ShowModalCitaFunct() {
-    crearCitaModal.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-    location.href = "#top-page";
-    window.addEventListener("scroll", disableScroll);
-};
+//      }
+//      if (sEstadoCita == 'CANCELADA'){
+//          EstadoCita[i].classList.add("CANCELADA")
 
-function hiddenModalCitaFunct() {
-    crearCitaModal.classList.add("hidden");
-    overlay.classList.add("hidden");
-    window.removeEventListener("scroll", disableScroll);
-    limpiarForm();
-};
+//      }
+//      if (sEstadoCita == 'FINALIZADA'){
+//          EstadoCita[i].classList.add("FINALIZADA")
 
-function hiddenModalReservaFunct() {
-    crearReservaModal.classList.add("hidden");
-    overlay.classList.add("hidden");
-    window.removeEventListener("scroll", disableScroll);
-    limpiarForm();
-};
 
-function disableScroll() {
-    window.scrollTo(0, 0);
-}
-const limpiarForm = function () {
-    crearCitaModal.reset();
-}
+//      }
+//      }
+//  }
+
+// /////////////////modal cita///////////////////////////////
+// let crearCitaModal = document.getElementById('formCrearCita')
+// let overlay = document.querySelector('.overlay')
+// let btnCrearCita = document.getElementById('show-crear-cita').addEventListener('click',ShowModalCitaFunct);
+// let btnCancelarCita = document.querySelector('#CancelarCita');
+// btnCancelarCita.addEventListener('click',hiddenModalCitaFunct)
+
+// function ShowModalCitaFunct() {
+//     crearCitaModal.classList.remove("hidden");
+//     overlay.classList.remove("hidden");
+//     location.href = "#top-page";
+//     window.addEventListener("scroll", disableScroll);
+// };
+
+// function hiddenModalCitaFunct() {
+//     crearCitaModal.classList.add("hidden");
+//     overlay.classList.add("hidden");
+//     window.removeEventListener("scroll", disableScroll);
+//     limpiarForm();
+// };
+
+// function hiddenModalReservaFunct() {
+//     crearReservaModal.classList.add("hidden");
+//     overlay.classList.add("hidden");
+//     window.removeEventListener("scroll", disableScroll);
+//     limpiarForm();
+// };
+
+// function disableScroll() {
+//     window.scrollTo(0, 0);
+// }
+// const limpiarForm = function () {
+//     crearCitaModal.reset();
+// }

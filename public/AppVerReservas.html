@@ -7,12 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moka Veterinaria Reservas</title>
     <link rel="stylesheet" href="./css/app.css">
-    <link rel="stylesheet" href="./css/tables.css">
-    <!-- <link rel="stylesheet" href="css/VerCitas.css"> -->
-    <!-- <link rel="stylesheet" href="css/CrearCita.css"> -->
-    <link rel="stylesheet" href="css/CrearReservacion.css">
-    <link rel="stylesheet" href="./css/estilosGenerales.css">
-    <!-- <link rel="stylesheet" href="css/CancelarReserva.css"> -->
+    <link rel="stylesheet" href="./css/VerCitas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
@@ -120,67 +115,68 @@
 
         <div class="home">
 
-            <div class="Breadcrumbs">
-
-            </div>
-
             <div class="tContainer">
                 <div class="tTituloContainer">
-                    <h2>Lista de Reservas</h2>
-                    <a class="NuevaCita" id="show-crear-Reserva">
-                        <i class="fa-solid fa-square-plus fa-3x" ></i>
-                        <p>Crear reserva</p>
-
-                    </a>
+                    <div><i class="fa-solid fa-list iconNuevaCita"></i></div>
+                    <div class="tituloCitas">
+                        <h2>Lista de Reservas</h2>
+                    </div>
+                    <div class="btnNuevaCitaContainer">
+                        <a id="show-crear-reserva"><i class="fa-solid fa-square-plus fa-3x NuevaCita"></i></a>
+                        <p>Crear Reserva</p>
+                    </div>
                 </div>
 
                 <div class="tFiltros">
 
                     <div for="txtNumCita" class="filtrosCajas">
-                        <label for="txtNumReserva">No.Reserva</label>
-                        <input id="txtNumReserva" type="text" class="cajasCitas">
+                        <label for="txtNumCita">No.Reserva</label>
+                        <input id="txtNumReserva" class="cajasCitas" type="text">
+                    </div>
+                    <div for="txtDuenhoCita" class="filtrosCajas">
+                        <label for="txtDuenhoCita">Propietario</label>
+                        <input id="txtDuenhoCita" class="cajasCitas" type="text">
+                    </div>
+                    <div for="txtMascotaCita" class="filtrosCajas">
+                        <label for="txtMascotaCita">Mascota</label>
+                        <input id="txtMascotaCita" class="cajasCitas" type="text">
                     </div>
 
-                    <div for="txtMascota" class="filtrosCajas">
-                        <label for="txtMascotaReserva">Mascota</label>
-                        <input id="txtMascotaReserva" type="text" class="cajasCitas">
+                    <div for="txtVeterinarioCita" class="filtrosCajas">
+                        <label for="txtVeterinarioCita">Veterinario</label>
+                        <input id="txtVeterinarioCita" class="cajasCitas" type="text">
+                    </div>
+                    <div class="filtroFecha">
+                        <div for="DateFecha1" class="filtrosCajas">
+                            <label for="DateFecha1">Fecha Inicio</label>
+                            <input id="DateFecha1" type="date" class="cajasCitas">
+                        </div>
+                        <div for="DateFecha2" class="filtrosCajas">
+                            <label for="DateFecha2">Fecha Final</label>
+                            <input id="DateFecha2" type="date" class="cajasCitas">
+                        </div>
                     </div>
 
-
-                    <div for="DateFecha1" class="filtrosCajas">
-                        <label for="DateFecha1Reserva">Fecha Inicio</label>
-                        <input id="DateFecha1Reserva" type="date" class="cajasCitas">
-                    </div>
-                    <div for="DateFecha2" class="filtrosCajas">
-                        <label for="DateFecha2Reserva">Fecha Final</label>
-                        <input id="DateFecha2Reserva" type="date" class="cajasCitas">
-                    </div>
-                    <!-- <div for="txtPropietario">Propietario
-                        <input id="txtPropietario" type="text">
-                    </div> -->
-
-                    <!-- <div for="txtVeterinario">Veterinario
-                        <input id="txtVeterinario" type="text">
-                    </div> -->
-                    <div for="checkEstadoReserva" class="filtrosCajaschk">
-                        <p>Estado Reserva</p>
+                    <div for="checkEstadoCita" class="filtrosCajaschk">
+                        <p>Estado Cita</p>
                         <div class="estadoChkCajas">
-                            <label for="chkAgendada">Agendada</label>
-                        <input class="checkEstadoCita" id="chkAgendada" type="checkbox">
+                            <label for="chkEstadoAgendada">Agendada</label>
+                        <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
                         </div>
                         <div class="estadoChkCajas">
-                            <label for="chkFinalizada" >Finalizada</label>
-                        <input class="checkEstadoCita" id="chkFinalizada" type="checkbox">
+                            <label for="chkEstadoFinalizada" >Finalizada</label>
+                        <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
                         </div>
                         <div class="estadoChkCajas">
-                            <label for="chkCancelada">Cancelada</label>
-                        <input class="checkEstadoCita" id="chkCancelada" type="checkbox">
+                            <label for="chkEstadoCancelada">Cancelada</label>
+                        <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
                         </div>
                     </div>
 
                     <div class="filtrosCajas">
-                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroReserva" onclick="ImprimirListaReservas()"></i></a>
-                        <label for="btnFiltroReserva">Filtrar</label>
+                        <!-- <input type="button" value="Filtrar" > -->
+                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita"></i></a>
+                        <label for="btnFiltroCita">Filtrar</label>
                     </div>
 
                 </div>
@@ -194,10 +190,12 @@
                     </tbody>
                 </table>
             </div>
+
+
             <!---------------CREAR RESERVACION------------------------>
-            <div class="cuerpoReserva">
-                <form id="formCrearReserva" class="formReserva hidden">
+                <form id="formCrearReserva" class="formCrearReserva hidden">
                     <h1 class="titulo">Nueva Reservación</h1>
+                    <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCrearR"></i>
 
                     <select class="cajas select" id="selectMacota">
                         <option value="">------Seleccionar mascota------</option>
@@ -213,21 +211,21 @@
                         <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
                     </div>
 
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
+                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5"
+                        placeholder="Cuidados Especiales*"></textarea>
 
-                    <div class="btnsR">
-                        <input type="button" class="btnCancelarR" value="Cancelar">
-
-                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
+                    <div class="btnsC">
+                        <input type="button" class="btnCancelarC" id="cerrarModalReserva" value="Cancelar">
+                        <input type="button" id="btnReserva" class="btnC" value="Crear Reserva">
                     </div>
                 </form>
-            </div>
 
-            <!--FORMULARIO---->
-            <form class="form-cancelar-reserva hidden">
+            <!--FORMULARIO CANCELAR RESERVA---->
+            <form class="form-cancelar-reserva hidden" id="formCancelarReserva">
 
                 <!--TITULO------------------------>
                 <h1 class="titulo">Cancelar Reserva</h1>
+                <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCancelarR"></i>
 
                 <div class="Cita">
                     <label for="numReservaCancelar">No.Reserva</label>
@@ -235,20 +233,25 @@
                 </div>
                 <div class="Cita">
                     <label for="nombreReservaCancelar">Mascota</label>
-                    <output class="cajasOut" id="nombreReservaCancelar" name="nombreMascotaCancelar" for="mostrarNombre"></output>
-
-
+                    <output class="cajasOut" id="nombreReservaCancelar" name="nombreMascotaCancelar"
+                        for="mostrarNombre"></output>
                 </div>
                 <div>
-                    <textarea class="cajas" id="motivoCancelar" cols="30" rows="10" placeholder="Motivo de cancelacion"></textarea>
+                    <textarea class="cajas" id="motivoCancelar" cols="30" rows="10"
+                        placeholder="Motivo de cancelacion"></textarea>
                 </div>
 
                 <!--BOTON-DE-Cancelar-------------------------->
-                <input type="button" class="btn-cancelar-reserva" id="btnRegistrar" value="Cancelar" onclick="CancelarReserva()">
+                <div class="btnsC">
+                    <input type="button" class="btn-cancelar-cita" id="btnRegistrar" value="Cancelar Reserva"
+                    onclick="CancelarReserva()">
+                </div>
+               
 
             </form>
             <div class="overlay hidden"></div>
         </div>
+
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -258,17 +261,8 @@
     <script src="./js/services/ReservaService.js"></script>
     <script src="./js/services/MascotasService.js"></script>
     <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/ReservaController.js"></script>
 
-    <script src="./js/controllers/CrearReservaController.js"></script>
-    <script src="./js/controllers/ReservasController.js"></script>
-
-    <!-- <script src="./js/services/MascotasService.js"></script> -->
-    <!-- <script src="./js/services/demoService.js"></script> -->
-
-    <!-- <script src="./js/controllers/VerReservasController.js"></script> -->
-    <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
-    <!-- <script src="./js/controllers/CrearReservaController.js"></script> -->
-    <!-- <script src="./js/controllers/CancelarControler.js"></script> -->
 </body>
 
 

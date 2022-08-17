@@ -1,0 +1,17 @@
+Manejo de citas
+
+Htmls:
+    - AppVerCitas.html -> en este se ven la lista de citas
+    - VerCitaDatos.html
+Controllers:
+    - CitaController.js
+Services:
+    - CitaService.js
+
+Manejo de reservas
+Htmls:
+AppVerReservas.html
+Controllers:
+ReservaController.js
+Services:
+ReservaService.js
