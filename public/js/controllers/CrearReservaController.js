@@ -24,9 +24,9 @@ let inputCuidadosReserva = document.getElementById('txtCuidadosEsp');
 
 let btnCrearReserva = document.getElementById('btnReserva');
 btnCrearReserva.addEventListener('click',CrearReserva);
-function CrearReserva(){
+async function CrearReserva(){
     if(ValidarDatos() ==true){
-        ConfirmarDatos();
+        
         
         let IdentificacionUsuario= userSession.Identificacion;
         let NombreMascota = inputNombreMascotaReserva.options[inputNombreMascotaReserva.selectedIndex].text;
@@ -40,8 +40,14 @@ function CrearReserva(){
         let dFechaE = inputEntrada.value;
         let dFechaS = inputSalida.value;
         let sCiuidadosEsp = inputCuidadosReserva.value; 
-        crearReserva(IdentificacionUsuario,IdMascota,NombreMascota,dFechaE,dFechaS,sCiuidadosEsp)
-        limpiarFormReserva();
+        await crearReserva(IdentificacionUsuario,IdMascota,NombreMascota,dFechaE,dFechaS,sCiuidadosEsp)
+        ConfirmarDatos();
+        setTimeout(() => {
+            limpiarFormReserva();
+            hiddenModalReservaFunct();
+            location.href="./AppVerReservas.html"
+        }, 2000);
+
     }
 }
 

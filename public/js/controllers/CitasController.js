@@ -1,8 +1,11 @@
 'use strict'
 
 
-
-window.addEventListener('load', GetListaCitas());
+let userSessionC;
+window.addEventListener('load', () =>{
+    userSessionC=GetSesion();
+    GetListaCitas()
+});
 
 async function GetListaCitas() {
 
@@ -20,7 +23,14 @@ function ImprimirListaCitas(ListaCitasBD){
 
     tbody.innerHTML = '';
     tThead.innerHTML = '';
-    let listaCitas = ListaCitasBD;
+    let listaCitas = [];
+///////////citas Usuario/////////////////
+    for (let i = 0; i < ListaCitasBD.length; i++) {
+        if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion){
+            listaCitas.push(ListaCitasBD[i]);
+            listaCitas.reverse();
+        }
+    }
 
     // thead
     let thRow = tThead.insertRow();

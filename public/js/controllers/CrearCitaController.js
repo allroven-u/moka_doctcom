@@ -43,7 +43,7 @@ btnCrear.addEventListener('click',CrearCita);
 async function CrearCita(){
 
     if(ValidarDatosCita() == true){
-        ConfirmarDatosC();
+        
         let IdentificacionUsuario= userSession.Identificacion;
         let IdMascota;
         let IdentificacionVeterinario;
@@ -64,8 +64,16 @@ async function CrearCita(){
 
         let FechaHora = inputFecha.value;
         let ObservacionesCita = inputDireccion.value; 
-        await crearCita(IdentificacionUsuario,IdMascota,NombreMascota,FechaHora,IdentificacionVeterinario,ObservacionesCita)
-        limpiarFormCita();
+        let result = await crearCita(IdentificacionUsuario,IdMascota,NombreMascota,FechaHora,IdentificacionVeterinario,ObservacionesCita);
+
+            ConfirmarDatosC();
+            setTimeout(() => {
+                limpiarFormCita();
+                hiddenModalCitaFunct();
+                location.href="./AppVerCitas.html"                
+            }, 2000);
+
+        
     }
 }
 

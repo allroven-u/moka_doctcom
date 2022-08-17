@@ -1,6 +1,10 @@
 'use strict'
 
-window.addEventListener('load', GetListaReservas());
+let userSessionR;
+window.addEventListener('load', () =>{
+    userSessionR=GetSesion();
+    GetListaReservas()
+});
 
 async function GetListaReservas() {
 
@@ -18,7 +22,15 @@ function ImprimirListaReservas(ListaReservasBD){
     let tThead = document.getElementById('tTheadReservas');
     let tbody = document.getElementById('tBodyReservas');
 
-    let listaReservas = ListaReservasBD;
+    let listaReservas = [];
+
+    ///////////citas Usuario/////////////////
+    for (let i = 0; i < ListaReservasBD.length; i++) {
+        if (ListaReservasBD[i].IdentificacionUsuario == userSessionR.Identificacion){
+            listaReservas.push(ListaReservasBD[i]);
+            listaReservas.reverse()
+        }
+    }
 
     tbody.innerHTML = '';
     tThead.innerHTML = '';
