@@ -41,15 +41,10 @@ function CargarDatosUser(userSession){
     }
 }
 
-
 function EditarDatosUser() {
     if (ValidarDatosUser()) {
 
         ActualizarDatos();
-
-
-
-
         ConfirmarDatosLogin();
         setTimeout(function() {
             window.location.pathname = "/public/MiPerfil.html";
@@ -124,11 +119,6 @@ function CambiarContrasenha(){
 }
 
 
-
-
-
-
-
 function MostrarErrorContactenos() {
     Swal.fire({
         icon: "error",
@@ -156,32 +146,43 @@ function ConfirmarDatosLogin() {
         timer: 1500,
     });
 }
-
-////////////////////// cambiar Contrasenha //////////////////////////
+////////////////////// cambiar Contrasenha MODAL //////////////////////////
 const passwordModal = document.querySelector('.cModal-form');
-const redirectModalPassword = document.querySelector(".redirect-modal-Password");
+const openModalPassword = document.querySelector(".redirect-modal-Password");
 const closeModalPassword = document.getElementById('cancelPassword');
-let overlay= document.querySelector('.overlay');
+const overlayPE = document.querySelector('.overlay');
+const cerrarButton = document.querySelector('.cerrarModalInicio');
+
+const limpiarFormRecovery = function () {
+    passwordModal.reset();
+}
 
 const hiddenModalPassword = function() {
     passwordModal.classList.add('hidden');
-    overlay.classList.add('hidden');
+    overlayPE.classList.add('hidden');
     window.removeEventListener('scroll', disableScroll);
+    limpiarFormRecovery();
 };
 
 // start function show modal
 function ShowModalPasswordFunct() {
     passwordModal.classList.remove('hidden');
-    overlay.classList.remove('hidden');
+    overlayPE.classList.remove('hidden');
     location.href = "#top-page";
     window.addEventListener('scroll', disableScroll);
 }
 closeModalPassword.addEventListener('click', function() {
     hiddenModalPassword();
 });
-redirectModalPassword.addEventListener('click', function() {
+cerrarButton.addEventListener('click', function() {
+    hiddenModalPassword();
+});
+overlayPE.addEventListener("click", hiddenModalPassword);
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !passwordModal.classList.contains("hidden")) {
+        hiddenModalPassword();
+    }
+});
+openModalPassword.addEventListener('click', function() {
     ShowModalPasswordFunct();
 });
-function disableScroll() {
-    window.scrollTo(0, 0);
-}

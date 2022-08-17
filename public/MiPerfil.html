@@ -28,6 +28,7 @@
     <div class="bodyContainer">
         <nav class="nav">
             <ul class="list">
+
                 <li class="list__item">
                     <div class="list__button">
                         <i class="fa-solid fa-angle-right fa-2x list__img "></i>
@@ -49,7 +50,7 @@
                         </li>
 
                         <li class="list__inside">
-                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
+                            <a href="mascotas.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
@@ -115,16 +116,24 @@
             </ul>
         </nav>
 
+
         <div class="home">
+
+
             <div class="perfil-main">
                 <div class="perfil-contenido">
                     <div class="box-usuario_img">
-                        <div class="box-img border-radius">  
+                        <div class="box-img border-radius">
+                            
                         </div>
                         <div class="usuario border-radius">
                             <p id="TxtUsuarioLogueado2"></p>
                         </div>
-                        <button class="usuario2 border-radius methodos_de_pagos" id="ver_metodo_pago">Mis Metodos de Pago</button>
+                        <div class="metodos-de-pago">
+                            <a href="metodosPago.html" class="agregar-metodos border-radius">
+                                Metodos de Pago
+                            </a>
+                        </div>
                     </div>
                     <div class="informacion-personal border-radius">
                         <div class="titulo-info-usario">
@@ -142,12 +151,6 @@
                         <div class="box-info-usuario border-radius">
                             <p>Email: <span id="txtEmailP"></span></p>
                         </div>
-                        <!-- <div class="box-info-usuario border-radius">
-                            <p>Nombre de Usuario: <span id="txtUsuarioP"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Contraseña: <span id="txtContraseniaP"></span></p>
-                        </div> -->
                         <div class="box-info-usuario border-radius direccion">
                             <p>Direccion: <span id="txtDireccionP"></span></p>
                         </div>
@@ -159,25 +162,31 @@
                             <h2>Historial de Pagos</h2>
                         </div>
                         <table>
+                            <thead class="thTitle">
+                                <tr>
+                                    <th class="tblTitle">Fecha</th>
+                                    <th class="tblTitle">Costo</th>
+                                </tr>
+                            </thead>
                             <tr>
-                                <td class="detalle">Lorem</td>
-                                <td class="precio">5000</td>
+                                <td class="detalle">01/08/2022 14:00</td>
+                                <td class="precio">&#8353;5000</td>
                             </tr>
                             <tr>
-                                <td class="detalle">Lorem</td>
-                                <td class="precio">5000</td>
+                                <td class="detalle">07/05/2022 13:00</td>
+                                <td class="precio">&#8353;5000</td>
                             </tr>
                             <tr>
-                                <td class="detalle">Lorem</td>
-                                <td class="precio">5000</td>
+                                <td class="detalle">03/18/2022 15:00</td>
+                                <td class="precio">&#8353;5000</td>
                             </tr>
                             <tr>
-                                <td class="detalle">Lorem</td>
-                                <td class="precio">5000</td>
+                                <td class="detalle">07/12/2022 18:00</td>
+                                <td class="precio">&#8353;5000</td>
                             </tr>
                             <tr>
-                                <td class="detalle">Lorem</td>
-                                <td class="precio">5000</td>
+                                <td class="detalle">04/22/2022 20:00</td>
+                                <td class="precio">&#8353;5000</td>
                             </tr>
                         </table>
                     </div>
@@ -202,211 +211,19 @@
                 </div>
             </div>
             <!--PERFIL USUSARIO-->
-
-            <!-------------CREAR CITA--------->
-            <div class="cuerpoCita hidden">
-                <form id="formCrearCita" class="formCita">
-                    <h1 class="titulo">Nueva Cita</h1>
-                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
-                        <option value="">------Seleccionar mascota------</option>
-                    </select>
-
-                    <div id="NombreOtro">
-
-                    </div>
-
-                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-
-                    <select class="cajas select" id="selectVeterinario">
-                        <option value="">------Seleccionar Veterinario------</option>
-                        
-                    </select>
-
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
-
-
-
-
-                    <div class="btnsC">
-                        <input type="button" class="btnCancelarC" value="Cancelar">
-
-                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
-                    </div>
-
-                </form>
-
-            </div>
-
-            <!---------------CREAR RESERVACION------------------------>
-            <div class="cuerpoReserva hidden">
-                <form id="formCrearReserva" class="formReserva">
-                    <h1 class="titulo">Nueva Reservación</h1>
-
-                    <select class="cajas select" id="selectMacota">
-                        <option value="">------Seleccionar mascota------</option>
-
-                    </select>
-                    <div>
-                        <label for="dateCheckIn">Fecha de ingreso</label>
-                        <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
-                    </div>
-
-                    <div>
-                        <label for="dateCheckOut">Fecha de Salida</label>
-                        <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
-                    </div>
-
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
-
-                    <div class="btnsR">
-                        <input type="button" class="btnCancelarR" value="Cancelar">
-
-                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
-                    </div>
-                </form>
-            </div>
         </div>
 
-        <form class="form-pago-tarjeta12345 hidden">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-            <h1 class="titulo">Metodos de Pagos</h1>
-
-            <img src="https://shoplineimg.com/assets/footer/card_visa.png"  id="imgVisa" class="hidden">
-    
-            <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
-    
-            <div class="cajasPContainer hidden" id="tarjeta1">
-                <img src="https://shoplineimg.com/assets/footer/card_visa.png">
-                <h1 class="tarjetas">****0001</h1>
-                <h1>
-                    <span class="trash">
-                    <span></span>
-                    <i></i>
-                </span>
-                </h1>
-            </div>
-
-            <button type="button" class="mas1">
-                <img class="tarjeta1espacio" id="espacio1" src="..//public/assets/img/plus-icon.png">
-            </button>
-
-            <div class="cajasPContainer hidden" id="tarjeta2">
-                <img src="https://shoplineimg.com/assets/footer/card_amex.png">
-                <h1 class="tarjetas">****0002</h1>
-                <h1>
-                    <span class="trash">
-                    <span></span>
-                    <i></i>
-                </span>
-                </h1>
-            </div>
-
-            <button type="button" class="mas1">
-                <img class="tarjeta1espacio" id="espacio2" src="..//public/assets/img/plus-icon.png">
-            </button>
-
-            <div class="cajasPContainer hidden" id="tarjeta3">
-                <img src="https://shoplineimg.com/assets/footer/card_visa.png">
-                <h1 class="tarjetas">****0003</h1>
-                <h1>
-                    <span class="trash">
-                    <span></span>
-                    <i></i>
-                </span>
-                </h1>
-            </div>
-
-            <button type="button" class="mas1">
-                <img class="tarjeta1espacio" id="espacio3" src="..//public/assets/img/plus-icon.png">
-            </button>
-
-            <div class="cajasPContainer hidden" id="tarjeta4">
-                <img src="https://shoplineimg.com/assets/footer/card_master.png">
-                <h1 class="tarjetas">****0004</h1>
-                <h1>
-                    <span class="trash">
-                    <span></span>
-                    <i></i>
-                </span>
-                </h1>
-            </div>
-
-            <button type="button" class="mas1">
-                <img class="tarjeta1espacio" id="espacio4" src="..//public/assets/img/plus-icon.png">
-            </button>
-
-            <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cerrar">
-        </form>
-
-        <div class="overlay1 hidden"></div>
-
-        <form class="form-pago-tarjeta2 hidden">
-            <h1 class="titulo">Agregar Metodo de Pago</h1>
-            <img src="https://shoplineimg.com/assets/footer/card_visa.png"  id="imgVisa" class="hidden">
-
-            <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
-
-            <img src="https://shoplineimg.com/assets/footer/card_amex.png" id="imgAmex" class="hidden">
-
-            <input class="cajas" id="txtTitular" type="text" placeholder="Nombre de titular de la tarjeta*"  maxlength="60">
-            <input class="cajas" id="numTarjeta" type="text" placeholder="Número de tarjeta*" maxlength="20">
-            <input class="cajas" id="txtCvv" type="password" placeholder="CVV*" maxlength="4">
-    
-            <label for="mes_vencimiento">Vencimiento:</label>
-            <div class="cajasPContainer">
-                <select id="mes_vencimiento" class="cajasP">
-                            <option value="">--Mes--</option>
-                            <option value="01">01</option>
-                            <option value="02">02</option>
-                            <option value="03">03</option>
-                            <option value="04">04</option>
-                            <option value="05">05</option>
-                            <option value="06">06</option>
-                            <option value="07">07</option>
-                            <option value="08">08</option>
-                            <option value="09">09</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            </select>
-    
-                <select id="year_vencimiento" class="cajasP">
-                            <option value="">--Año--</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
-                            <option value="2031">2031</option>
-                            <option value="2032">2032</option>
-                            <option value="2033">2033</option>
-                            <option value="2034">2034</option>
-                            <option value="2035">2035</option>
-                            </select>
-            </div>
-
-            <input type="button" class="btn1-pago-tarjeta2" id="btnPagar1" value="Agregar Tarjeta 1">
-            <input type="button" class="btn2-pago-tarjeta2" id="btnPagar2" value="Agregar Tarjeta 2">
-            <input type="button" class="btn3-pago-tarjeta2" id="btnPagar3" value="Agregar Tarjeta 3">
-            <input type="button" class="btn4-pago-tarjeta2" id="btnPagar4" value="Agregar Tarjeta 4">
-            <input type="button" class="btn2-cancerlar-tarjeta" id="btnCancelar2" value="Cancelar">
-        </form>
-        <div class="overlay2 hidden"></div>
+        <div class="overlay hidden"></div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/Constantes.js"></script>
-    <!-- <script src="./js/services/demoService.js"></script>-->
-    <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/CitaService.js"></script>
-
+    <script src="./js/Constantes.js"></script>
+    <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/SessionService.js"></script>
     <script src="./js/controllers/MiPerfilController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
-    <script src="./js/services/SessionService.js"></script>
+   
 </body>
 
 </html>
