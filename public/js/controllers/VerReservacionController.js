@@ -1,3 +1,5 @@
+'use strict';
+
 let star = document.querySelectorAll('.star')
 for (let i = 0; i <= 4; i++) {
     star[i].starval = i + 1
