@@ -73,3 +73,29 @@ function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
 
     return result;
   }
+
+
+  async function CancelarReservacion(pNumReserva,pEstado, pObsCancelar) {
+    let result ={};
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarReservacion',
+        responseType: 'json',
+        data: {
+          'NumeroReservacion': pNumReserva,
+          'Estado':pEstado,
+          'NotasCancelacion':pObsCancelar
+
+        }
+
+       })
+      .then(function (res) {
+        result = res;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+    return result;
+  }

@@ -3,7 +3,8 @@
 let userSessionR;
 
 let listaMascotas = [];
-
+let listaReservas = [];
+const idReserva = "";
 window.addEventListener('load', () =>{
     userSessionR=GetSesion();
     GetListaReservas();
@@ -53,7 +54,7 @@ function ImprimirListaReservas(ListaReservasBD){
 
     let celAcciones = thRow.insertCell();
     celAcciones.innerHTML = 'Acciones';
-    let listaReservas = [];
+
 
     ///////////citas Usuario/////////////////
     for (let i = 0; i < ListaReservasBD.length; i++) {
@@ -112,7 +113,7 @@ function ImprimirListaReservas(ListaReservasBD){
         
         if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
         let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','/public/VerReservacionDatos.html')
+        BotonV.setAttribute('href','/public/VerReservacionDatos.html?_id='+reserva._id);
         let iconoV =document.createElement('i');
         iconoV.classList.add("fa-solid")
         iconoV.classList.add("fa-eye")
@@ -122,7 +123,7 @@ function ImprimirListaReservas(ListaReservasBD){
         
 
         let Boton = document.createElement('a');
-        Boton.setAttribute('href','/public/VerReservacionDatos.html')
+        Boton.setAttribute('href','/public/VerReservacionDatos.html?_id='+reserva._id);
         let icono =document.createElement('i');
         icono.classList.add("fa-solid")
         icono.classList.add("fa-pen-to-square")
@@ -130,8 +131,15 @@ function ImprimirListaReservas(ListaReservasBD){
         Boton.appendChild(icono);
         celdaBoton.appendChild(Boton);
 
+
+        // document.querySelector("#tReservas").addEventListener("click", function(event){
+        //     alert(event.target.innerText);
+        // }, false);
+
         let BotonC = document.createElement('a');
-        BotonC.setAttribute('onclick','ShowModalCancelReservaFunct()');
+        BotonC.setAttribute('id',(reserva.NumeroReservacion));
+        BotonC.setAttribute('onclick','ShowModalCancelReservaFunct(id)');
+        BotonC.setAttribute('id',(reserva.NumeroReservacion));
         let iconoC =document.createElement('i');
         iconoC.classList.add("fa-solid")
         iconoC.classList.add("fa-circle-xmark")
@@ -140,7 +148,7 @@ function ImprimirListaReservas(ListaReservasBD){
         celdaBoton.appendChild(BotonC);
         }else{
         let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','/public/VerReservacionDatos.html')
+        BotonV.setAttribute('href','/public/VerReservacionDatos.html?_id='+reserva._id)
         let iconoV =document.createElement('i');
         iconoV.classList.add("fa-solid")
         iconoV.classList.add("fa-eye")
@@ -152,7 +160,6 @@ function ImprimirListaReservas(ListaReservasBD){
         
      }
     let EstadoCita = document.querySelectorAll('.Estado');
-        console.log(EstadoCita.length);
         VerEstado(EstadoCita);
   }
 
@@ -161,7 +168,7 @@ function VerEstado(EstadoCita){
     
     for (let i = 0; i < EstadoCita.length; i++) {
     let sEstadoCita = EstadoCita[i].innerHTML;    
-    console.log(sEstadoCita)
+
     if (sEstadoCita == 'AGENDADA'){
         EstadoCita[i].classList.add("AGENDADA")
         
@@ -353,12 +360,15 @@ const hiddenCancelModalReserva = function() {
     modalCancelarReserva.classList.add('hidden');
     overlayCancelarReserva.classList.add('hidden');
     window.removeEventListener("scroll", disableScroll);
+    
 };
 
 
-function ShowModalCancelReservaFunct() {
+function ShowModalCancelReservaFunct(id) {
+    llenarModalCancelarReserva(id);
     modalCancelarReserva.classList.remove('hidden');
     overlayCancelarReserva.classList.remove('hidden');
+    location.href = '#top-page';
     window.addEventListener("scroll", disableScroll);
 
     closeCancelarReserva.addEventListener('click', hiddenCancelModalReserva);
@@ -372,33 +382,38 @@ function ShowModalCancelReservaFunct() {
 
 // FIN MODAL CANCELAR RESERVA
 
+let outNumCita= document.getElementById('numReservaCancelar')
+let inputCancelar = document.getElementById('motivoCancelar');
+async function CancelarReserva() {
 
-function CancelarReserva() {
-    let listaReservas = ObtenerListaReservas();
-    let numReserva = 0; //llamar datos
-    let nombreMascota = 'bobo'; //llamar datos
-    let inputCancelar = document.getElementById('motivoCancelar');
+    let numReserva = outNumCita.value;
     let sMotivoCancelar = inputCancelar.value;
+    let sEstado = "CANCELADA";
+
+
     if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
         inputCancelar.classList.add("error")
         MostrarError('Debe ingresar motivo de cancelación');
         return false;
     } else {
         inputCancelar.classList.remove("error")
-        ConfirmarDatos("Reserva cancelada");
-    }
+        
+        let result = await CancelarReservacion(numReserva,sEstado, sMotivoCancelar);
 
-
-    document.getElementById('numReservaCancelar').innerHTML = numReserva;
-    document.getElementById('nombreReservaCancelar').innerHTML = nombreMascota;
-
-
-    for (let i = 0; i < listaReservas.length; i++) {
-        if (listaCitas[i][1] == numReserva) {
-            listaCitas[i][5] = "Cancelar"
+        if (result != {} && result.data.resultado == true) {
+            ConfirmarDatos(result.data.msj);
+            setTimeout(() => {
+                hiddenCancelModalReserva();
+                location.href="./AppVerReservas.html"
+            }, 2000);
+        }else{
+            MostrarError(result.data.msj);
+            return
         }
 
+        
     }
+
 }
 
 //alarms
@@ -442,7 +457,7 @@ const hiddenCrearModal = function() {
 function ShowModalCrearFunct() {
     modalCrearReserva.classList.remove("hidden");
     overlay.classList.remove("hidden");
-    location.href = "#top-page";
+    location.href = '#top-page';
     window.addEventListener("scroll", disableScroll);
 
     closeCrearReserva.addEventListener('click', hiddenCrearModal);
@@ -458,3 +473,17 @@ function ShowModalCrearFunct() {
 showCrearReserva.addEventListener('click', ShowModalCrearFunct);
 
 // FIN MODAL CREAR RESERVA
+
+
+
+function llenarModalCancelarReserva(id){
+
+    for (let i = 0; i < listaReservas.length; i++) {
+        if(listaReservas[i].NumeroReservacion == id){
+            document.getElementById('numReservaCancelar').value= id;
+            document.getElementById('nombreReservaCancelar').value= listaReservas[i].
+            NombreMascota;
+        }
+        
+    }
+}
