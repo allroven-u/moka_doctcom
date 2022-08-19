@@ -1,3 +1,5 @@
+'use strict';
+
 let btnGuardarCambios = document.getElementById("btn-guardarMiPerfil2")
 btnGuardarCambios.addEventListener('click', EnviarDatosCorreo)
 

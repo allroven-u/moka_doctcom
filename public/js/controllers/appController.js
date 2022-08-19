@@ -1,3 +1,5 @@
+'use strict';
+
 let listElements = document.querySelectorAll('.list__button--click');
 const body = document.querySelector('body'),
     sidebar = body.querySelector('nav'),

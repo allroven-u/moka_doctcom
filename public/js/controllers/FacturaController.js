@@ -1,3 +1,6 @@
+'use strict';
+
+
 const showPagar = document.getElementById('Pagar');
 const modalPago = document.querySelector('.form-pago-tarjeta');
 const closeModalPago = document.querySelector('.btn-cancerlar-tarjeta');

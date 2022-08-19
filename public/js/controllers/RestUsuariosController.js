@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 // Roles #1 Admin , #2 Cliente , #3 Veterinario , #4 Secretaria.
 
 let userLogin = 206790172;

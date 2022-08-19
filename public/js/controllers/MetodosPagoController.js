@@ -1,3 +1,5 @@
+'use strict';
+
 const showAgregarTajeta = document.querySelector('.btn-agregar-metodo-pago');
 const modalAgregarTarjeta = document.querySelector('.form-pago-tarjeta');
 const closeModalAgregarTarjeta = document.querySelector('.btn-cancerlar-tarjeta');
