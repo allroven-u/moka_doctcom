@@ -15,10 +15,11 @@ async function getCitasArray(){
  return result;
 };
 
-async function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
+async function FiltrarCitas(pFecha1,pFecha2){
   let result = {};
-  await  axios.get(apiUrl + '/FiltarCita', {
-    responseType: 'json',
+ 
+  await  axios.get(apiUrl + '/FiltarCita',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2}} , {
+    responseType: 'json'
   }).then((res)=>{
     result = res.data
   }).catch((err)=>{
@@ -64,7 +65,8 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
           'IdentificacionVeterinario':pIdVeterinario,
           'ObservacionesVeterinario':'',
           'ObservacionesCita': pDescripcionCita,
-          'NotasCancelacion':''
+          'NotasCancelacion':'',
+          'Fecha':pFecha
         }
 
        })

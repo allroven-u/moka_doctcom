@@ -19,7 +19,8 @@ router.post('/RegistrarCita', (req, res) => {
         IdentificacionVeterinario: body.IdentificacionVeterinario,
         ObservacionesVeterinario: body.ObservacionesVeterinario,
         ObservacionesCita: body.ObservacionesCita,
-        NotasCancelacion : body.NotasCancelacion
+        NotasCancelacion : body.NotasCancelacion,
+        Fecha: body.Fecha
     });
 
     nuevaCita.save((err, citaDB) => {
@@ -78,7 +79,9 @@ router.get('/UltimaCita', (req, res) => {
 
 
 router.get('/FiltarCita', (req, res) => {
-    Cita.find((err, ListaCitasBD) => {
+    let params = req.query;
+    
+    Cita.find({"Fecha":{"$gte" : new Date(params.fechaInicio),"$lte": new Date(params.fechaFinal)}},(err, ListaCitasBD) => {
         if (err) {
             res.json({
                 resultado: false,
@@ -92,7 +95,7 @@ router.get('/FiltarCita', (req, res) => {
                 ListaCitasBD
             });
         }
-    }).sort({$natural:-1}).limit(1);
+    },).sort({$natural:-1}).limit(50);
 });
 
 router.get('/BuscarCita', (req, res) => {

@@ -15,6 +15,7 @@ const schemaCita = new mongoose.Schema(
         ObservacionesVeterinario: { type: String, required: false, unique: false },
         ObservacionesCita: { type: String, required: false, unique: false },
         NotasCancelacion: { type: String, required: false, unique: false },
+        Fecha: {type:Date,require:false,unique:false}
     }
 );
 

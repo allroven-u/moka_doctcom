@@ -1,7 +1,15 @@
 'use strict'
+
+
+
 let listaMascotas = [];
 let listaUsuarios = [];
 let userSessionC;
+
+let botonFiltrar = document.getElementById('btnFiltroCita');
+let fechaInicio = document.getElementById('DateFecha1');
+let fechaFinal = document.getElementById('DateFecha2');
+
 window.addEventListener('load', () =>{
     userSessionC=GetSesion();
     GetListaCitas();
@@ -9,14 +17,28 @@ window.addEventListener('load', () =>{
     GetlistaUsuarios();
 });
 
+
+botonFiltrar.addEventListener('click', () =>{
+    FiltarListaCitas(fechaInicio.value,fechaFinal.value);
+});
+
 async function GetListaCitas() {
 
     let result = await getCitasArray();
 
     if( result != {} && result.resultado == true){
-        ImprimirListaCitas(result.ListaCitasBD)
+        ImprimirListaCitas(result.ListaCitasBD);
     }
 }
+
+async function FiltarListaCitas(pFecha1,pFecha2) {
+    let result = await FiltrarCitas(pFecha1,pFecha2);
+
+    if( result != {} && result.resultado == true){
+        ImprimirListaCitas(result.ListaCitasBD);
+    }
+}
+
 
 async function GetlistaMascota(){
 
@@ -36,7 +58,6 @@ async function GetlistaUsuarios(){
     }
 }
 
-
 function ImprimirListaCitas(ListaCitasBD){
 
     let tThead = document.getElementById('tTheadCitas');
@@ -45,7 +66,7 @@ function ImprimirListaCitas(ListaCitasBD){
     tbody.innerHTML = '';
     tThead.innerHTML = '';
 
-
+    
     // thead
     let thRow = tThead.insertRow();
 
@@ -70,11 +91,11 @@ function ImprimirListaCitas(ListaCitasBD){
     let celAcciones = thRow.insertCell();
     celAcciones.innerHTML = 'Acciones';
     let listaCitas = [];
+  
     ///////////citas Usuario/////////////////
         for (let i = 0; i < ListaCitasBD.length; i++) {
             if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion){
-                listaCitas.push(ListaCitasBD[i]);
-
+                listaCitas.push(ListaCitasBD[i]);  
             }
         }
 
@@ -89,10 +110,11 @@ function ImprimirListaCitas(ListaCitasBD){
         return 0;
       }
       
+     
       listaCitas.sort(compare_numCita);
       listaCitas.reverse()
 
-        
+     
 
     for (let i = 0; i < listaCitas.length; i++) {
 
