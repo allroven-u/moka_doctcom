@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Citas</title>
-    <link rel="stylesheet" href="css/tables.css">
+    <title>Moka Reporte Citas</title>
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/estilosGenerales.css">
+    <link rel="stylesheet" href="css/VerCitas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
     <header>
         <div class="menuBars">
             <a href="App.html" class="menuBars logo">
@@ -21,7 +19,7 @@
             </a>
             <div class="profile">
                 <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
-                <a class="logout" href="./landing.html">
+                <a class="logout" onclick="logout()">
                     <i class="fa-solid fa-right-to-bracket fa-2x "></i>
                 </a>
             </div>
@@ -29,7 +27,6 @@
     </header>
 
     <div class="bodyContainer">
-
         <nav class="nav">
             <ul class="list">
 
@@ -61,20 +58,22 @@
 
                 </li>
 
+
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-house-chimney-medical list__img"></i>
-                        <a href="AppVerCitas.html" class="nav__link">Citas Veterinaria</a>
+                        <a href="AppVerCitas.html" class="nav__link">Citas</a>
                     </div>
                 </li>
 
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
-                        <a href="AppVerReservas.html" class="nav__link">Reservas Hotel</a>
+                        <a href="AppVerReservas.html" class="nav__link">Reservas</a>
                     </div>
 
                 </li>
+
 
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
@@ -113,50 +112,73 @@
                         </li>
 
                     </ul>
-
                 </li>
             </ul>
         </nav>
-
-
         <div class="home">
-
-            <!-- Aqui se agrega el contenido de la pagina -->
-            <div class="Breadcrumbs">
-
-            </div>
 
             <div class="tContainer">
                 <div class="tTituloContainer">
-                    <h2>Reporte de citas</h2>
+                    <!--<div><i class="fa-solid fa-list iconNuevaCita"></i></div>-->
+                    <div class="tituloCitas">
+                        <h2>Reporte de citas</h2>
+                    </div>
+                    <!-- <div class="btnNuevaCitaContainer">
+                        <a id="showCrearCita"><i class="fa-solid fa-square-plus fa-3x NuevaCita"></i></a>
+                        <p>Crear cita</p>
+                    </div>-->
                 </div>
 
                 <div class="tFiltros">
 
-                    <div for="txtNumCita">Num. Reserva
-                        <input id="txtNumCita" type="text">
+                    <div for="txtNumCita" class="filtrosCajas">
+                        <label for="txtNumCita">No.Cita</label>
+                        <input id="txtNumCita" class="cajasCitas" type="text">
                     </div>
-                    <div for="DateFecha1">Fecha Inicio
-                        <input id="DateFecha1" type="date" class="fechas">
+                    <div for="txtDuenhoCita" class="filtrosCajas">
+                        <label for="txtDuenhoCita">Propietario</label>
+                        <input id="txtDuenhoCita" class="cajasCitas" type="text">
                     </div>
-                    <div for="DateFecha2">Fecha Fin
-                        <input id="DateFecha2" type="date" class="fechas">
-                    </div>
-                    <div for="txtPropietario">Propietario
-                        <input id="txtPropietario" type="text">
-                    </div>
-                    <div for="txtNumCita">Mascota
-                        <input id="txtNumCita" type="text">
-                    </div>
-                    <div for="txtNumCita">Veterinario
-                        <input id="txtNumCita" type="text">
-                    </div>
-                    <div for="txtNumCita">Estado
-                        <input id="txtNumCita" type="checkbox">
+                    <div for="txtMascotaCita" class="filtrosCajas">
+                        <label for="txtMascotaCita">Mascota</label>
+                        <input id="txtMascotaCita" class="cajasCitas" type="text">
                     </div>
 
-                    <div>
-                        <input type="button" value="Filtrar" onclick="ImprimirListaCitas()">
+                    <div for="txtVeterinarioCita" class="filtrosCajas">
+                        <label for="txtVeterinarioCita">Veterinario</label>
+                        <input id="txtVeterinarioCita" class="cajasCitas" type="text">
+                    </div>
+                    <div class="filtroFecha">
+                        <div for="DateFecha1" class="filtrosCajas">
+                            <label for="DateFecha1">Fecha Inicio</label>
+                            <input id="DateFecha1" type="date" class="cajasCitas">
+                        </div>
+                        <div for="DateFecha2" class="filtrosCajas">
+                            <label for="DateFecha2">Fecha Final</label>
+                            <input id="DateFecha2" type="date" class="cajasCitas">
+                        </div>
+                    </div>
+
+                    <div for="checkEstadoCita" class="filtrosCajaschk">
+                        <p>Estado Cita</p>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoAgendada">Agendada</label>
+                            <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoFinalizada">Finalizada</label>
+                            <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoCancelada">Cancelada</label>
+                            <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
+                        </div>
+                    </div>
+
+                    <div class="filtrosCajas">
+                        <!-- <input type="button" value="Filtrar" > -->
+                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita"></i></a>
+                        <label for="btnFiltroCita">Filtrar</label>
                     </div>
 
                 </div>
@@ -165,25 +187,29 @@
                     <thead id="tTheadCitas">
 
                     </thead>
-                    <tbody id="tBodyCitas" , class="tbody">
+                    <tbody id="tBodyCitas" class="tbody">
 
                     </tbody>
                 </table>
 
+                <div class="overlay hidden"></div>
             </div>
-
-
-            <!-- fin -->
-
         </div>
-
     </div>
+  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
 
-    <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/MascotasService.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/services/CitaService.js"></script>
     <script src="./js/controllers/RepCitasController.js"></script>
-    <script src="./js/controllers/AppController.js"></script>
+    <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
+    <!-- <script src="./js/controllers/CancelarController.js"></script> -->
+
 </body>
 
 </html>
