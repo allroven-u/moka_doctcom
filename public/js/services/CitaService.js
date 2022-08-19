@@ -17,7 +17,7 @@ async function getCitasArray(){
 
 async function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
   let result = {};
-  await  axios.get(apiUrl + '/ListarCitas', {
+  await  axios.get(apiUrl + '/FiltarCita', {
     responseType: 'json',
   }).then((res)=>{
     result = res.data

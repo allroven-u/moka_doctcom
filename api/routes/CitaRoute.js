@@ -75,6 +75,26 @@ router.get('/UltimaCita', (req, res) => {
     }).sort({$natural:-1}).limit(1);
 });
 
+
+
+router.get('/FiltarCita', (req, res) => {
+    Cita.find((err, ListaCitasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaCitasBD
+            });
+        }
+    }).sort({$natural:-1}).limit(1);
+});
+
 router.get('/BuscarCita', (req, res) => {
     let params = req.query;
     Cita.findOne({ NumeroCita: params.NumeroCita }, (err, citaDB) => {
