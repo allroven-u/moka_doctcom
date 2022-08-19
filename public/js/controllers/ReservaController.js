@@ -139,7 +139,7 @@ function ImprimirListaReservas(ListaReservasBD){
         let BotonC = document.createElement('a');
         BotonC.setAttribute('id',(reserva.NumeroReservacion));
         BotonC.setAttribute('onclick','ShowModalCancelReservaFunct(id)');
-        BotonC.setAttribute('id',(reserva.NumeroReservacion));
+        // BotonC.setAttribute('id',(reserva.NumeroReservacion));
         let iconoC =document.createElement('i');
         iconoC.classList.add("fa-solid")
         iconoC.classList.add("fa-circle-xmark")
