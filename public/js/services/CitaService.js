@@ -15,14 +15,17 @@ async function getCitasArray(){
  return result;
 };
 
-function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
+async function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
+  let result = {};
+  await  axios.get(apiUrl + '/ListarCitas', {
+    responseType: 'json',
+  }).then((res)=>{
+    result = res.data
+  }).catch((err)=>{
+    console.log(err);
+  });
 
-  for (let i = 0; i < citasArray.length; i++) {
-    const cita = citasArray[i];
-    
-  }
-
-  return citasArray;
+ return result;
   };
 
 async function UltimaCita(){
