@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria</title>
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Mis Mascotas - Moka Veterinaria</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/RegistroMascota.css">
     <link rel="stylesheet" href="css/perfilMascota.css">
@@ -112,7 +113,7 @@
 
             <div class="perfil-main">
                 <div class="title-misMascotas">
-                    <i class="fa-solid fa-square-plus registrar-mascota" id="annadir-mascota"></i><span style="position:absolute; left: 20%; font-size: 16px;">Registrar Mascota</span>
+                    <i class="fa-solid fa-square-plus registrar-mascota" id="annadir-mascota"></i><span style="position:absolute; left: 20%; font-size: 16px;">Registrar mascota</span>
                     <h2>Mis mascotas</h2>
                 </div>
                 <div class="perfil-contenido">
@@ -146,13 +147,15 @@
             <form id="FormRegistroMascota" class="form-registro-mascota hidden">
 
                 <!--TITULO------------------------>
-                <h1 class="titulo">Registrar Mascota</h1>
+                <h1 class="titulo">Registrar mascota</h1>
                 <i class="fa-solid fa-circle-xmark cerrarModalX" id="cerrarAnnadirM"></i>
                 <!--CAJAS-DE-ENTRADA-DE-DATOS------------------------------------------------>
                 <div>
                     <img id="imgFotoMascota" class="avatar" onclick="AbrirCloudinary('imgFotoMascota')">
                 </div>
-                <input class="cajas" id="txtNombre" type="text" placeholder="Nombre mascota*" maxlength="30">
+                <label for="txtNombre">Nombre mascota: </label>
+                <textarea class="cajas" id="txtNombre" type="text" placeholder="Nombre mascota*" maxlength="30"></textarea>
+                <label for="txtDireccionRegistroM">Dirección exacta: </label>
                 <textarea class="cajas" name="Dirección" id="txtDireccionRegistroM" cols="30" rows="5" placeholder="Dirección exacta*"></textarea>
                 <!--BOTON-DE-REGISTRARSE-------------------------->
                 <div class="modal-btns">

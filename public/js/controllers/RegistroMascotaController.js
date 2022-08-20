@@ -57,7 +57,7 @@ function MostrarError() {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Dato Requerido!',
+        text: '¡Dato requerido!',
     })
 }
 
@@ -65,7 +65,7 @@ function ConfirmarDatos() {
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Registrado!',
+        title: '¡Registrado!',
         showConfirmButton: false,
         timer: 1500
     })
