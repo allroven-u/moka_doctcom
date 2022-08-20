@@ -22,7 +22,7 @@ listElements.forEach(listElement => {
     })
 });
 
-const navReservas =  document.getElementById('reservasTab');
+
 
  window.addEventListener('load',()=>{setTimeout(() => {
     let usuario = GetSesion();
@@ -46,11 +46,23 @@ function cerrar() {
     }
 }
 
+const navReservas =  document.getElementById('reservasTab');
+const navMascotas =  document.getElementById('mascotasTab');
+const navReportes =  document.getElementById('reportesTab');
+
+
 let user = GetSesion();
 
 if(Number(user.Rol) === 3){
     navReservas.style = "display: none;";
-};
+    navReportes.style = "display: none;";
+    navMascotas.style = "display: none;";
+}else if(Number(user.Rol) === 4){
+    navReportes.style = "display: none;";
+    navMascotas.style = "display: none;";
+}else if(Number(user.Rol) === 2){
+    navReportes.style = "display: none;";
+}
 
 
 

@@ -80,8 +80,13 @@ function ValidarDatostarjeta(){
         inputNombreTitular.classList.add("TError");
         MostrarErrorT();
         return false;
-    } else {
+    }
+    if (sNombreTitular.match(/^[a-zA-Z,.' -]+$/)) {
         inputNombreTitular.classList.remove("TError");
+    } else {
+        inputNombreTitular.classList.add("TError");
+        MostrarError("¡El nombre de titular de la tarjeta no puede contener caracteres especiales ni números!");
+        return false;
     }
     if (sNumTarjeta == null || sNumTarjeta == undefined || sNumTarjeta == "" ) {
         inputNumTarjeta.classList.add("TError");
@@ -100,10 +105,11 @@ function ValidarDatostarjeta(){
     } else {
         console.log("cvv "+sNumCVV);
         if(sNumCVV.length!=cantCVV){
+            inputNumCVV.classList.add("TError");
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'CVV incorrecto',
+                text: '¡CVV incorrecto!',
             });
             return false;
         }else{
@@ -130,7 +136,7 @@ function ValidarDatostarjeta(){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Tarjeta Vencida',
+                text: '¡Tarjeta vencida!',
 
             });
             inputMesVenc.classList.add("TError");
@@ -141,7 +147,7 @@ function ValidarDatostarjeta(){
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Tarjeta Vencida',
+                text: '¡Tarjeta vencida!',
             });
             inputMesVenc.classList.add("TError");
             inputYearVenc.classList.add("TError");
@@ -191,10 +197,11 @@ function ValidarTipoTarjeta(){
         return true;
     }
     else{
+        inputNumTarjeta.classList.add("TError");
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'numero de tarjeta invalido',
+            text: '¡Número de tarjeta invalido!',
         });
         tipoVisa.classList.add("hidden");
         tipoMaster.classList.add("hidden");
@@ -204,12 +211,19 @@ function ValidarTipoTarjeta(){
 
 }
 
+function MostrarError(txtError) {
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: txtError,
+    })
+}
 
 function MostrarErrorT() {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Dato requerido',
+        text: '¡Dato requerido!',
     })
 }
 
@@ -217,7 +231,7 @@ function ConfirmarDatosT() {
     Swal.fire({
         position: 'center',
         icon: 'success',
-        title: 'Pago Realizado',
+        title: '¡Pago realizado!',
         showConfirmButton: false,
         timer: 1500
     })
