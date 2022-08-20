@@ -68,6 +68,7 @@ let OutnumCita = document.getElementById('numCita');
 let OutfechaCita = document.getElementById('fechaCita');
 let Outobservaciones = document.getElementById('observaciones');
 let OutestadoCita = document.getElementById('estadoCita');
+let OutMotivoCancelar = document.getElementById('txtMotivoCancelar');
 
 
 function llenarCompletarCita() {
@@ -92,6 +93,7 @@ function llenarCompletarCita() {
             OutfechaCita.innerHTML = listaCitas[i].FechaHora;
             Outobservaciones.innerHTML = listaCitas[i].ObservacionesCita;
             OutestadoCita.innerHTML = listaCitas[i].Estado;
+            OutMotivoCancelar.innerHTML = listaCitas[i].NotasCancelacion;
 
             if(listaCitas[i].Estado === 'CANCELADA'){
                 boxDiagnosticos.classList.add('hidden');
