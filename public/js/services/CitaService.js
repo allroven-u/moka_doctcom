@@ -81,3 +81,27 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
 
     return result;
   }
+  async function CancelarCita(pNumCita,pEstado, pObsCancelar) {
+    let result ={};
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+          'NumeroCita': pNumCita,
+          'Estado':pEstado,
+          'NotasCancelacion':pObsCancelar
+
+        }
+
+       })
+      .then(function (res) {
+        result = res;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+    return result;
+  }

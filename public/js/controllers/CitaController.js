@@ -5,6 +5,7 @@
 let listaMascotas = [];
 let listaUsuarios = [];
 let userSessionC;
+let listaCitas = [];
 
 let botonFiltrar = document.getElementById('btnFiltroCita');
 let fechaInicio = document.getElementById('DateFecha1');
@@ -90,7 +91,7 @@ function ImprimirListaCitas(ListaCitasBD){
 
     let celAcciones = thRow.insertCell();
     celAcciones.innerHTML = 'Acciones';
-    let listaCitas = [];
+    
   
     ///////////citas Usuario/////////////////
         for (let i = 0; i < ListaCitasBD.length; i++) {
@@ -150,7 +151,7 @@ function ImprimirListaCitas(ListaCitasBD){
          let EstadoCitaif = document.querySelectorAll('.Estado');
          if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
          let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','/public/VerCitaDatos.html')
+         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
          let iconoV =document.createElement('i');
          iconoV.classList.add("fa-solid")
          iconoV.classList.add("fa-eye")
@@ -160,7 +161,7 @@ function ImprimirListaCitas(ListaCitasBD){
 
 
          let Boton = document.createElement('a');
-         Boton.setAttribute('href','/public/VerCitaDatos.html')
+         Boton.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
          let icono =document.createElement('i');
          icono.classList.add("fa-solid")
          icono.classList.add("fa-pen-to-square")
@@ -169,7 +170,8 @@ function ImprimirListaCitas(ListaCitasBD){
          celdaBoton.appendChild(Boton);
 
          let BotonC = document.createElement('a');
-         BotonC.setAttribute('onclick','ShowModalCancelFunct()');
+         BotonC.setAttribute('id',(cita.NumeroCita));
+         BotonC.setAttribute('onclick','ShowModalCancelFunct(id)');
          let iconoC =document.createElement('i');
          iconoC.classList.add("fa-solid")
          iconoC.classList.add("fa-circle-xmark")
@@ -178,7 +180,7 @@ function ImprimirListaCitas(ListaCitasBD){
          celdaBoton.appendChild(BotonC);
          }else{
          let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','#')
+         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
          let iconoV =document.createElement('i');
          iconoV.classList.add("fa-solid")
          iconoV.classList.add("fa-eye")
@@ -424,7 +426,8 @@ const hiddenCancelModal = function() {
 };
 
 // start function show modal
-function ShowModalCancelFunct() {
+function ShowModalCancelFunct(id) {
+    llenarModalCancelarCita(id);
     modalCancelarCita.classList.remove("hidden");
     overlayCancelar.classList.remove("hidden");
     location.href = "#top-page";
@@ -440,34 +443,35 @@ function ShowModalCancelFunct() {
 };
 
 // FIN MODAL CANCELAR CITA
+let outNumCita= document.getElementById('numCitaCancelar')
+let inputCancelar = document.getElementById('motivoCancelar');
 
+async function CancelarCitas() {
 
-
-function CancelarCita() {
-    let listaCitas = ObtenerListaCitas();
-    let numCita = 0;
-    let nombreMascota = 'bobo';
-    let inputCancelar = document.getElementById('motivoCancelar');
+    let numCita = outNumCita.value;
     let sMotivoCancelar = inputCancelar.value;
+    let sEstado = "CANCELADA";
+
+
     if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
         inputCancelar.classList.add("error")
         MostrarError('Debe ingresar motivo de cancelación');
         return false;
     } else {
         inputCancelar.classList.remove("error")
-        ConfirmarDatos("Cita cancelada");
-    }
 
+        let result = await CancelarCita(numCita,sEstado, sMotivoCancelar);
 
-    document.getElementById('numCitaCancelar').innerHTML = numCita;
-    document.getElementById('nombreCitaCancelar').innerHTML = nombreMascota;
-
-
-    for (let i = 0; i < listaCitas.length; i++) {
-        if (listaCitas[i][1] == numCita) {
-            listaCitas[i][5] = "Cancelar"
+        if (result != {} && result.data.resultado == true) {
+            ConfirmarDatos(result.data.msj);
+            setTimeout(() => {
+                hiddenCancelModal();
+                location.href="./AppVerCitas.html"
+            }, 2000);
+        }else{
+            MostrarError(result.data.msj);
+            return
         }
-
     }
 }
 
@@ -507,3 +511,31 @@ function ShowModalCrearFunct() {
 showCrearCita.addEventListener('click', ShowModalCrearFunct);
 
 // FIN MODAL CREAR CITA
+function llenarModalCancelarCita(id){
+
+    for (let i = 0; i < listaCitas.length; i++) {
+        if(listaCitas[i].NumeroCita == id){
+            document.getElementById('numCitaCancelar').value= id;
+            document.getElementById('nombreCitaCancelar').value= listaCitas[i].
+            NombreMascota;
+        }
+        
+    }
+}
+
+function MostrarError(txtInfo){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: txtInfo,
+    })
+}
+function ConfirmarDatos(txtInfo){
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: txtInfo,
+        showConfirmButton: false,
+        timer: 1500
+      })
+}

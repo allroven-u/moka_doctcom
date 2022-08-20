@@ -309,6 +309,8 @@ tr {
 	transition: all .5s ease;
 	display: flex;
 	flex-wrap: wrap;
+	color: black;
+	text-align: justify;
 }
 
 .cajasOut:hover,

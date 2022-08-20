@@ -117,7 +117,7 @@
             <div class="tblCaja">
                 <div class="tituloCaja">
                     <a href="./AppVerReservas.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
-                    <h2>Reservación Número: </h2>
+                    <h2 id="numReservaDatos">Reservación Número: </h2>
                     <div id="numCita"> </div>
                 </div>
                 <div class="headCompletarCita">
@@ -182,11 +182,14 @@
 
         <div class="overlay hidden"></div>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/ReservaService.js"></script>
+    <script src="./js/Constantes.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/ReservaDatosController.js"></script>
     <script src="./js/services/SessionService.js"></script>
-    <script src="./js/controllers/AppController.js"></script>
-    <script src="./js/controllers/ReservaController.js"></script>
 </body>
 
 </html>
