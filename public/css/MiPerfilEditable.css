@@ -4,7 +4,7 @@ label {
     color: black;
 }
 
-.border-radius{
+.border-radius {
     border-radius: 5px;
 }
 
@@ -32,8 +32,6 @@ label {
 }
 
 .box-img {
-    background-image: url('../assets/img/default-user-image.jpg');
-    background-size: cover;
     width: 90%;
     height: 50%;
     margin-bottom: 30px;
@@ -47,18 +45,21 @@ label {
     text-align: center;
     padding: 10px;
 }
+
 .avatarUser {
     vertical-align: middle;
-    width: 180px;
-    height: 180px;
-    background-image: url('../assets/img/default-user-image.jpg');
-    background-size: cover;
+    width: 100%;
+    height: 100%;
+    background-color: #bbb;
     cursor: pointer;
-  }
+    transition: all 300ms;
+    border-radius: 5px;
+    overflow: hidden;
+}
 
-  .avatarUser:hover{
-    transform: scale(1.05);
-  }
+.avatarUser:hover {
+    transform: scale(1.01);
+}
 
 .resetearcontrasena {
     width: 90%;
@@ -79,11 +80,12 @@ label {
     justify-content: center;
 }
 
-.infopersonalbtn{
+.infopersonalbtn {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
+
 .titulo-info-usario {
     background-color: var(--verdeagua);
     width: 100%;
@@ -101,7 +103,7 @@ label {
     color: black;
 }
 
-.box-info-usuario p{
+.box-info-usuario p {
     color: #333;
     font-family: Roboto500;
     text-align: center;
@@ -138,9 +140,9 @@ table {
     border-spacing: 10px;
 }
 
-td{
+td {
     border-radius: 5px;
-   text-align: center;
+    text-align: center;
 }
 
 .detalle {
@@ -159,7 +161,7 @@ td{
     background-color: var(--blanco);
 }
 
-.btn-editar{
+.btn-editar {
     width: 120px;
     height: 50px;
     margin-bottom: 10px;
@@ -171,11 +173,11 @@ td{
     border: none;
 }
 
-.btn-editar:hover{
+.btn-editar:hover {
     background-color: var(--turquesa);
 }
 
-.btn-cancelar{
+.btn-cancelar {
     height: 50px;
     margin-bottom: 10px;
     padding: 5px 20px;
@@ -186,20 +188,21 @@ td{
     border: none;
 }
 
-.btn-cancelar:hover{
+.btn-cancelar:hover {
     background-color: var(--Roj1);
 }
 
-.edit-icon{
+.edit-icon {
     float: right;
     margin: 10px;
     font-size: 22px;
 }
-.edit-icon:hover{
+
+.edit-icon:hover {
     color: var(--verdeagua);
 }
 
-.fa-star{
+.fa-star {
     color: var(--amarillo);
 }
 
@@ -213,6 +216,7 @@ td{
     text-align: center;
     font-size: 18px;
 }
+
 .thTitle {
     border: 1px solid var(--azul2);
     background-color: var(--azul2);
@@ -220,20 +224,21 @@ td{
     padding: 5px;
 }
 
-.thTitle th{
+.thTitle th {
     padding: 5px;
 }
-.direccion{
+
+.direccion {
     width: 82%;
 }
 
-.perfilContainer{
+.perfilContainer {
     display: flex;
     flex-direction: column;
     width: 35%;
 }
 
-.perfilContainer2{
+.perfilContainer2 {
     display: flex;
     flex-direction: column;
     width: 70%;
@@ -273,18 +278,20 @@ td{
     border-left: 10px solid var(--verdeagua);
 }
 
-.linkModal{
+.linkModal {
     color: var(--gris);
     font-size: 17px;
     padding: 5px;
     margin-left: 10px;
-    cursor:pointer;
+    cursor: pointer;
 
 }
-.linkModal:hover{
+
+.linkModal:hover {
     color: var(--turquesa);
-    
+
 }
+
 .cModal-form {
     position: absolute;
     z-index: 11;
@@ -299,7 +306,8 @@ td{
     border-radius: 5px;
     animation: modal-password 500ms ease;
 }
-.InicioSesion-titleContainer{
+
+.InicioSesion-titleContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -307,28 +315,33 @@ td{
     border-bottom: 2px solid var(--silver);
     margin-bottom: 20px;
 }
+
 .cTitulo {
-    padding:0 10px 0 10px ;
+    padding: 0 10px 0 10px;
     color: var(--verdeagua);
     margin-bottom: 20px;
 }
+
 /*--Cerrar Modal Inicio--------------*/
-.cerrarModalInicio{
+.cerrarModalInicio {
     color: var(--Rojo2);
     position: absolute;
     top: 5%;
     right: 5%;
     transform: scale(1.5);
     transition: all 200ms linear;
-    cursor:pointer;
+    cursor: pointer;
 }
-.cerrarModalInicio:hover{
+
+.cerrarModalInicio:hover {
     transform: scale(1.6);
 }
-label{
+
+label {
     color: var(--gris);
-    
+
 }
+
 .cCajas {
     width: 100%;
     padding: 15px;
@@ -344,10 +357,12 @@ label{
 .cCajas:focus {
     border-left: 10px solid var(--verdeagua);
 }
+
 .lBtns {
     display: flex;
     justify-content: space-around;
 }
+
 .lBtnCancelar {
     padding: 10px;
     border-radius: 5px;
@@ -364,6 +379,7 @@ label{
 .lBtnCancelar:hover {
     background-color: var(--Roj1);
 }
+
 .cBtn {
     background-color: var(--verdeagua);
     width: 170px;
@@ -381,16 +397,18 @@ label{
 .cBtn:hover {
     background-color: var(--turquesa);
 }
+
 .hidden {
     display: none;
     transition: all 600ms linear;
 }
+
 .rError {
     border: 2px solid var(--Rojo2);
     border-left: 10px solid var(--Rojo2);
 }
 
-.btnsEditarPerfil{
+.btnsEditarPerfil {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -398,7 +416,7 @@ label{
     align-items: center;
 }
 
-.btn-editar:hover, 
+.btn-editar:hover,
 .btn-cancelar:hover,
 .lBtnCancelar:hover,
 .cBtn:hover {

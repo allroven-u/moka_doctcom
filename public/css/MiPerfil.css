@@ -36,14 +36,17 @@
 
 .box-img {
     /* background-image: url('../assets/img/default-user-image.jpg'); */
+    background-color: #aaa;
     background-size: cover;
     width: 90%;
     height: 200px;
     margin-bottom: 30px;
+    overflow: hidden;
 }
 .FotoPerfilUser{
     width: 100%;
-    height: 200px;
+    position: relative;
+    bottom: 100px;
 }
 
 .usuario {
