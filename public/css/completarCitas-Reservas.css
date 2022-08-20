@@ -415,3 +415,7 @@ tr {
 .btn-doctor:hover{
 	background-color: var(--turquesa);
 }
+
+.box-client th, .box-client td{
+	width: 50% !important;
+}

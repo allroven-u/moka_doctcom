@@ -179,18 +179,33 @@
                         </div>
 
                         <div class="DescripcionParrafo diagnostico">
-                            <div>
+                            <div id="boxDescripcion">
                                 <p style="color: #222;">Descripción</p>
                                 <input id="txtDiagnostico" class="cajas white">
                             </div>
-                            <div>
+                            <div id="boxPrecio">
                                 <p style="color:#222;">Precio</p>
                                 <input id="txtPrecio" class="cajas white">
                             </div>
-                            <div>
+                            <div id="boxBtn">
                                 <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir">
                             </div>
-                           
+                            <div class="table-description box-client hidden">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Descripción</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>..</td>
+                                            <td>..</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="btns">
@@ -211,7 +226,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/Constantes.js"></script>
-    
+
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/controllers/AppController.js"></script>
