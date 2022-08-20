@@ -89,6 +89,10 @@
     padding-top: 10px;*/
 }
 
+.box-info-usuario span{
+    font-family: Roboto300;
+}
+
 .calificacion {
     width: 100%;
     background-color: transparent;
