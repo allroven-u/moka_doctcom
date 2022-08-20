@@ -40,6 +40,8 @@ async function IdentificarAccion() {
 }
 
 usuarioRol = Number(usuarioRol);
+const boxDiagnosticos = document.querySelector('.box-2');
+const btnsVD = document.querySelector('.btns');
 const buttonVerCita = document.getElementById('Pagar');
 
 const boxDescripcion = document.getElementById('boxDescripcion');
@@ -89,6 +91,12 @@ function llenarCompletarCita() {
             OutfechaCita.innerHTML = listaCitas[i].FechaHora;
             Outobservaciones.innerHTML = listaCitas[i].ObservacionesCita;
             OutestadoCita.innerHTML = listaCitas[i].Estado;
+
+            if(listaCitas[i].Estado === 'CANCELADA'){
+                boxDiagnosticos.classList.add('hidden');
+                btnsVD.style = "display: none;"
+            }
+
         }
     }
 }
