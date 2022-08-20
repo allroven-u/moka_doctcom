@@ -64,7 +64,7 @@
                     </div>
                 </li>
 
-                <li class="list__item list__item--click">
+                <li class="list__item list__item--click" id="reservasTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
                         <a href="AppVerReservas.html" class="nav__link">Reservas</a>
@@ -152,7 +152,7 @@
                                                 
                                                 <th>Fecha de Entrada</th>
                                                 <th>Fecha de Salida</th>
-                                                <th>Observaciones</th>
+                                                <th>Descripción</th>
                                                 <th>Estado</th>
                                             </tr>
                                         </thead>
@@ -179,14 +179,16 @@
                         <div class="DescripcionParrafo diagnostico">
                             <div id="boxDescripcion">
                                 <p style="color: #222;">Descripción</p>
-                                <input id="txtDescricionR" class="cajasOut white">
+                                <textarea id="txtDescricionR" class="cajas white" style="width: 400px; height: 200px;"></textarea>
                             </div>
-                            <div id="boxPrecio">
-                                <p style="color:#222;">Precio</p>
-                                <input id="txtPecioR" class="cajasOut white">
-                            </div>
-                            <div id="boxBtn">
-                                <input type="button" class="agregar-btn" id="agregar-subdocR" value="Añadir">
+                            <div>
+                                <div id="boxPrecio">
+                                    <p style="color:#222;">Precio</p>
+                                    <input id="txtPecioR" class="cajas white">
+                                </div>
+                                <div id="boxBtn">
+                                    <input type="button" class="agregar-btn" id="agregar-subdocR" value="Añadir">
+                                </div>
                             </div>
                             <div class="table-description box-client hidden">
                                 <table>
@@ -203,6 +205,16 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-completar box-3 hidden">
+                        <div class="h2">
+                            <h2>Motivo de Cancelación</h2>
+                        </div>
+                        <div class="DescripcionParrafo">
+                            <div class="cajasOut white">
+                                Se cancelo por ........
                             </div>
                         </div>
                     </div>
