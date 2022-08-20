@@ -22,6 +22,8 @@ listElements.forEach(listElement => {
     })
 });
 
+const navReservas =  document.getElementById('reservasTab');
+
  window.addEventListener('load',()=>{setTimeout(() => {
     let usuario = GetSesion();
     txtUsuarioLogueado.textContent = usuario.Nombre + ' ' + usuario.Apellido;
@@ -43,3 +45,14 @@ function cerrar() {
         sidebar.classList.add("navClose");
     }
 }
+
+let user = GetSesion();
+
+if(Number(user.Rol) === 3){
+    navReservas.style = "display: none;";
+};
+
+
+
+
+

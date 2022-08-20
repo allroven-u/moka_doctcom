@@ -8,6 +8,7 @@ let txtEmailP = document.getElementById('txtEmailP');
 let txtUsuarioP = document.getElementById('txtUsuarioP');
 let txtContraseniaP = document.getElementById('txtContraseniaP');
 let txtDireccionP = document.getElementById('txtDireccionP');
+let txtFotoPerfil = document.getElementById('FotoPerfilUser');
 
 window.addEventListener('load', () => {
   let usuario = GetSesion();
@@ -41,6 +42,7 @@ function CargarDatosUser(userSession, listaUsuarios) {
       txtCedulaP.textContent = listaUsuarios[i].Identificacion;
       txtEmailP.textContent = listaUsuarios[i].Email;
       txtDireccionP.innerHTML = listaUsuarios[i].Direccion;
+      txtFotoPerfil.src = listaUsuarios[i].Foto;
     }
 
   }

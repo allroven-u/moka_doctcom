@@ -66,7 +66,7 @@
                     </div>
                 </li>
 
-                <li class="list__item list__item--click">
+                <li class="list__item list__item--click" id="reservasTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
                         <a href="AppVerReservas.html" class="nav__link">Reservas</a>
@@ -149,9 +149,8 @@
                 <h1 class="titulo">Registrar Mascota</h1>
                 <i class="fa-solid fa-circle-xmark cerrarModalX" id="cerrarAnnadirM"></i>
                 <!--CAJAS-DE-ENTRADA-DE-DATOS------------------------------------------------>
-                <div class="formFoto">
-                    <label for="imgFotoMascota" class="lblFotoMascota">Foto Mascota</label>
-                    <input type="file" id="imgFotoMascota" name="fotoPerfil" placeholder="Foto" capture>
+                <div>
+                    <img id="imgFotoMascota" class="avatar" onclick="AbrirCloudinary('imgFotoMascota')">
                 </div>
                 <input class="cajas" id="txtNombre" type="text" placeholder="Nombre mascota*" maxlength="30">
                 <textarea class="cajas" name="Dirección" id="txtDireccionRegistroM" cols="30" rows="5" placeholder="Dirección exacta*"></textarea>
@@ -170,15 +169,17 @@
     <div class="overlay hidden"></div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="./js/Constantes.js"></script>
-
+    <script src="./js/services/SubirImagenService.js"></script>
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/MascotasService.js"></script>
     <script src="js/controllers/PerfilMascotaController.js"></script>
     <script src="js/controllers/RegistroMascotaController.js"></script>
-    <script src="./js/controllers/AppController.js"></script>
     <script src="./js/services/SessionService.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+ 
 </body>
 
 </html>

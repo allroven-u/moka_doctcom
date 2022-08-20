@@ -9,6 +9,7 @@ window.addEventListener('load', () =>{
 let btnRegistroMascota = document.getElementById("btnRegistroMascota");
 let inputNombre = document.getElementById("txtNombre");
 let inputDireccionRegistroM = document.getElementById("txtDireccionRegistroM");
+let inputFoto = document.getElementById('imgFotoMascota');
 
 btnRegistroMascota.addEventListener("click", Registrar);
 
@@ -20,7 +21,8 @@ function Registrar() {
         let sDireccion = inputDireccionRegistroM.value;
         let sLatitud ='';
         let sLongitud ='';
-        let sFoto='';
+        let sFoto=inputFoto.src;
+        console.log(sFoto)
         RegistrarMascota(IDcliente,sNombre,sDireccion,sLatitud,sLongitud,sFoto);
         limpiarFormRegMascota();
     }
