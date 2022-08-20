@@ -313,13 +313,10 @@ tr {
 	transition: all .5s ease;
 	display: flex;
 	flex-wrap: wrap;
-<<<<<<< HEAD
 	color: #222;
 	font-size: 16px;
-=======
-	color: black;
-	text-align: justify;
->>>>>>> 50cc584817a309c639072b1210681e6bdace7c97
+	text-align: center;
+
 }
 
 .white {
