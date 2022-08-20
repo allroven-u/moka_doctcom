@@ -412,9 +412,10 @@ tr {
 .agregar-btn{
 	background-color: var(--verde);
 	border: none;
-	padding: 12px 15px;
+	padding: 12px 75px;
 	color: var(--blanco);
 	font-family: Roboto300;
+	font-size: 16px;
 	border-radius: 5px;
 }
 
@@ -433,3 +434,11 @@ tr {
 .box-client th, .box-client td{
 	width: 50% !important;
 }
+
+#boxDescripcion  p,
+#boxPrecio p{
+	padding: 10px;
+}
+
+
+
