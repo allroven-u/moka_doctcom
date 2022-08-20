@@ -329,7 +329,9 @@ tr {
 
 .table-description table {
 	width: 100%;
+	overflow: hidden;
 	border-collapse: collapse;
+	border-radius: 5px;
 }
 
 .table-description thead {
@@ -363,11 +365,6 @@ tr {
 	padding: 10px 10px;
 	color: #222;
 	border: 1px solid #bbb;
-}
-
-.table-description table tr{
-
-	border-bottom: 1px solid #aaa;
 }
 
 

@@ -32,6 +32,7 @@ async function IdentificarAccion() {
 
 usuarioRol = Number(usuarioRol);
 const boxDiagnosticos = document.querySelector('.box-2');
+const boxCancelacion = document.querySelector('.box-3');
 const btnsVD = document.querySelector('.btns');
 const buttonVerCita = document.getElementById('Pagar');
 
@@ -78,7 +79,8 @@ function llenarCompletarReserva(){
 
             if(listaReservas[i].Estado === 'CANCELADA'){
                 boxDiagnosticos.classList.add('hidden');
-                btnsVD.style = "display: none;"
+                btnsVD.style = "display: none;";
+                boxCancelacion.classList.remove('hidden');
             }
         }
     }    
