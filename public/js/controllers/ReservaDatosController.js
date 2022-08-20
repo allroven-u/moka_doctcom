@@ -41,6 +41,7 @@ const boxPrecio = document.getElementById('boxPrecio');
 const boxBtn = document.getElementById('boxBtn');
 const tableInfoCita = document.querySelector('.box-client');
 
+
 if (usuarioRol === 2) {
     boxDescripcion.classList.add('hidden');
     boxPrecio.classList.add('hidden')
@@ -59,6 +60,7 @@ let OutfechaCitaIn = document.getElementById('fechaCitaIn');
 let OutfechaCitaOut = document.getElementById('fechaCitaOut');
 let Outobservaciones = document.getElementById('observaciones');
 let OutestadoReserva = document.getElementById('estadoReserva');
+let OutMotivoCancelar = document.getElementById('txtMotivoCancelar');
 
 function llenarCompletarReserva(){
     for (let i = 0; i < listaReservas.length; i++) {
@@ -76,6 +78,7 @@ function llenarCompletarReserva(){
             ObservacionesReservacion;
             OutestadoReserva.innerHTML=listaReservas[i].
             Estado;
+            OutMotivoCancelar.innerHTML = listaReservas[i].NotasCancelacion;
 
             if(listaReservas[i].Estado === 'CANCELADA'){
                 boxDiagnosticos.classList.add('hidden');

@@ -100,6 +100,8 @@
 }
 .error{
   border: 2px solid var(--Rojo2);
+  border-left: 10px solid var(--Rojo2);
+
 }
 .lblFotoMascota{
   font-size: 14px;
