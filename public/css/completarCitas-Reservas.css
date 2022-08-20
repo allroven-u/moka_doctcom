@@ -1,6 +1,6 @@
 @import url('./estilosGenerales.css');
 
-h2{
+h2 {
 	font-size: 20px !important;
 }
 
@@ -12,6 +12,7 @@ h2{
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 50px;
+	width: 100%;
 }
 
 .infoTd {
@@ -160,11 +161,21 @@ tr {
 
 .DescripcionParrafo {
 	text-align: center;
-	background-color: var(--silver);
+	background-color: #ddd;
 	border-radius: 0 0 5px 5px;
 	color: var(--blanco);
 	padding: 20px;
 	margin-top: 0%;
+}
+
+.diagnostico {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.diagnostico .cajasOut{
+	width: 220px;
 }
 
 .h3 {
@@ -173,9 +184,8 @@ tr {
 	border-radius: 5px;
 	color: var(--blanco);
 	width: 300px;
-	margin-right: 5%;
+	height: 120px;
 	padding: 20px;
-	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 }
@@ -185,7 +195,7 @@ tr {
 }
 
 .h3 output {
-	height: 40px;
+	height: 20px !important;
 }
 
 .btns {
@@ -253,8 +263,6 @@ tr {
 }
 
 .stars {
-	height: 100px;
-	width: 500px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -296,31 +304,63 @@ tr {
 }
 
 .cajasOut {
-	background-color: white;
 	width: 100%;
 	height: auto;
-	min-height: 50px;
-	max-height: auto;
-	padding: 15px;
+	padding: 10px;
 	margin-bottom: 20px;
 	border-radius: 5px;
 	border: none;
-	border-left: 10px solid var(--blanco);
 	transition: all .5s ease;
 	display: flex;
 	flex-wrap: wrap;
+	color: #222;
+	font-size: 16px;
 }
 
-.cajasOut:hover,
-.cajasOut:focus {
-	border-left: 10px solid var(--verdeagua);
+.white {
+	background-color: #f3f3f3;
 }
+
+.table-description {
+	width: 100%;
+}
+
+.table-description table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table-description thead tr {
+	background-color: var(--verdeagua);
+	color: var(--blanco);
+}
+
+.table-description thead th {
+	width: 20%;
+	padding: 10px 0px;
+}
+
+.table-description tbody tr td {
+	width: 20%;
+	padding: 10px 0px;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	color: #222;
+}
+
+.table-description tbody tr {
+	height: auto;
+}
+
+
 
 .headCompletarCita {
 	margin-top: 50px;
 	display: flex;
+	width: 100%;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 }
 
@@ -332,11 +372,17 @@ tr {
 	border-radius: 5px;
 	padding: 20px;
 	color: var(--blanco);
+	width: 300px;
+	height: 120px;
 }
 
 .box-completar {
-	width: 45%;
+	width: 80%;
 	margin-top: 20px;
+}
+
+.box-2 {
+	width: 55%;
 }
 
 .boxes-container {
@@ -345,4 +391,17 @@ tr {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-evenly;
+}
+
+.agregar-btn{
+	background-color: var(--verde);
+	border: none;
+	padding: 12px 15px;
+	color: var(--blanco);
+	font-family: Roboto300;
+	border-radius: 5px;
+}
+
+.agregar-btn:hover{
+	background-color: var(--esmeralda);
 }
