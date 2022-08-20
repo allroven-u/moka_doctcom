@@ -115,18 +115,21 @@ function ImprimirListaReservas(ListaReservasBD) {
         let EstadoCitaif = document.querySelectorAll('.Estado');
 
         if (EstadoCitaif[i].innerHTML == 'AGENDADA') {
-            let BotonV = document.createElement('a');
-            BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id);
-            let iconoV = document.createElement('i');
-            iconoV.classList.add("fa-solid")
-            iconoV.classList.add("fa-eye")
-            iconoV.classList.add("btnV")
-            BotonV.appendChild(iconoV);
-            celdaBoton.appendChild(BotonV);
+            if (userSessionR.Rol === 2) {
+                let BotonV = document.createElement('a');
+                BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol);
+                let iconoV = document.createElement('i');
+                iconoV.classList.add("fa-solid")
+                iconoV.classList.add("fa-eye")
+                iconoV.classList.add("btnV")
+                BotonV.appendChild(iconoV);
+                celdaBoton.appendChild(BotonV);
+            }
+
 
             if (userSessionR.Rol !== 2) {
                 let Boton = document.createElement('a');
-                Boton.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id);
+                Boton.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol);
                 let icono = document.createElement('i');
                 icono.classList.add("fa-solid")
                 icono.classList.add("fa-pen-to-square")
@@ -147,7 +150,7 @@ function ImprimirListaReservas(ListaReservasBD) {
 
         } else {
             let BotonV = document.createElement('a');
-            BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id)
+            BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol);
             let iconoV = document.createElement('i');
             iconoV.classList.add("fa-solid")
             iconoV.classList.add("fa-eye")

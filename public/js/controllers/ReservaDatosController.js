@@ -17,7 +17,7 @@ async function GetListaReservas() {
 }
 
 ///////////Obtener id url/////////////////
-let queryString, urlParams, _id;
+let queryString, urlParams, _id, usuarioRol;
 IdentificarAccion();
 async function IdentificarAccion() {
     queryString = window.location.search;
@@ -26,6 +26,29 @@ async function IdentificarAccion() {
 
     _id = urlParams.get('_id');
     console.log(_id);
+    usuarioRol = urlParams.get('rol');
+    console.log(usuarioRol);
+}
+
+usuarioRol = Number(usuarioRol);
+const boxDiagnosticos = document.querySelector('.box-2');
+const btnsVD = document.querySelector('.btns');
+const buttonVerCita = document.getElementById('Pagar');
+
+const boxDescripcion = document.getElementById('boxDescripcion');
+const boxPrecio = document.getElementById('boxPrecio');
+const boxBtn = document.getElementById('boxBtn');
+const tableInfoCita = document.querySelector('.box-client');
+
+if (usuarioRol === 2) {
+    boxDescripcion.classList.add('hidden');
+    boxPrecio.classList.add('hidden')
+    boxBtn.classList.add('hidden')
+    tableInfoCita.classList.remove('hidden');
+    //boxDiagnosticos.classList.add('hidden');
+}else if(usuarioRol !== 2){
+    buttonVerCita.classList.toggle('btn-doctor')
+    buttonVerCita.value = 'Enviar';
 }
 
 let inputNumReservaDatos = document.getElementById('numReservaDatos');
@@ -52,6 +75,11 @@ function llenarCompletarReserva(){
             ObservacionesReservacion;
             OutestadoReserva.innerHTML=listaReservas[i].
             Estado;
+
+            if(listaReservas[i].Estado === 'CANCELADA'){
+                boxDiagnosticos.classList.add('hidden');
+                btnsVD.style = "display: none;"
+            }
         }
     }    
 }
