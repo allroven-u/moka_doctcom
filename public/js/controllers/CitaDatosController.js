@@ -42,11 +42,16 @@ async function IdentificarAccion() {
 
 let inputNumReservaDatos = document.getElementById('numCitaDatos');
 let inputNombreReservaDatos = document.getElementById('txtNombreMascota');
-let inputDescripReservaDatos = document.getElementById('txtDescripcion');
-let inputObservReservaDatos = document.getElementById('txtObservaciones');
+let OutVeterinario = document.getElementById('Vetrinario');
+let OutnumCita = document.getElementById('numCita');
+let OutfechaCita = document.getElementById('fechaCita');
+let Outobservaciones = document.getElementById('observaciones');
+let OutestadoCita = document.getElementById('estadoCita');
+
 
 function llenarCompletarCita(){
     let veterinario;
+
     for (let i = 0; i < listaCitas.length; i++) {
         if(listaCitas[i]._id == _id){
             for (let j = 0; j < listaUsuarios.length; j++) {
@@ -60,11 +65,12 @@ function llenarCompletarCita(){
             
             inputNumReservaDatos.innerHTML= 'Cita Numero: '+listaCitas[i].NumeroCita;
             inputNombreReservaDatos.innerHTML=listaCitas[i].NombreMascota;
-            inputDescripReservaDatos.innerHTML="Cita numero:"+listaCitas[i].NumeroCita +"</br>Identificación dueño: "+listaCitas[i].
-            IdentificacionUsuario+"</br>Mascota: "+listaCitas[i].NombreMascota+"</br>Fecha: "+listaCitas[i].
-            FechaHora+"</br>Veterinario: "+veterinario;
-            inputObservReservaDatos.innerHTML=listaCitas[i].
-            ObservacionesCita;
+
+            OutnumCita.innerHTML = listaCitas[i].NumeroCita;
+            OutVeterinario.innerHTML= veterinario;
+            OutfechaCita.innerHTML = listaCitas[i].FechaHora;
+            Outobservaciones.innerHTML=listaCitas[i].ObservacionesCita;
+            OutestadoCita.innerHTML=listaCitas[i].Estado;
         }
     }    
 }
