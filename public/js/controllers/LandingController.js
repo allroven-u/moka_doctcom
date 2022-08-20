@@ -244,37 +244,37 @@ function ValidarDatosContactenos() {
 
     if (sContName == null || sContName == undefined || sContName == "") {
         resaltarInputInvalido("cont-name");
-        MostrarError("El nombre es requerido!");
+        MostrarError("¡El nombre es requerido!");
         return false;
     }else if(!sContName.match(ValidarTexto)){
         resaltarInputInvalido("cont-name");
-        MostrarError("Formato de nombre invalido!");
+        MostrarError("¡Formato de nombre invalido!");
         return false;
     }
 
     if (sContEmail == null || sContEmail == undefined || sContEmail == "") {
         resaltarInputInvalido("cont-mail");
-        MostrarError("El email es requerido!");
+        MostrarError("¡El correo electrónico es requerido!");
         return false;
     }else if(!sContEmail.match(ValidarEmail)){
         resaltarInputInvalido("cont-mail");
-        MostrarError("Formato de email invalido!");
+        MostrarError("¡Formato de correo electrónico invalido!");
         return false;
     }
 
     if (sContPhone == null || sContPhone == undefined || sContPhone == "") {
         resaltarInputInvalido("cont-phone");
-        MostrarError("El numero de teléfono es requerido!");
+        MostrarError("¡El número de teléfono es requerido!");
         return false;
     }else if(!sContPhone.match(ValidarNumero)){
         resaltarInputInvalido("cont-phone");
-        MostrarError("Formato de Teléfono invalido!");
+        MostrarError("¡Formato de teléfono invalido!");
         return false;
     }
 
     if (sContDescip == null || sContDescip == undefined || sContDescip == "") {
         resaltarInputInvalido("cont-descrip");
-        MostrarError("La descripción es requerida!");
+        MostrarError("¡La descripción es requerida!");
         return false;
     }
 

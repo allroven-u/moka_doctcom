@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VETERINARIA MOKA</title>
+
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Inicio - Veterinaria Moka</title>
     <link rel="stylesheet" href="css/estilosGenerales.css">
     <link rel="stylesheet" href="css/estilosLanding.css">
     <link rel="stylesheet" href="css/mediaqueryLanding.css">
@@ -24,14 +26,14 @@
         <label for="txtNombre">Nombre:</label>
         <input class="rCajas" id="txtNombre" type="text" placeholder="Nombre*" >
 
-        <label for="txtApellido">Apellidos:</label>
-        <input class="rCajas" id="txtApellido" type="text" placeholder="Apellidos*" >
+        <label for="txtApellido">Apellido(s):</label>
+        <input class="rCajas" id="txtApellido" type="text" placeholder="Apellido(s)*" >
 
         <label for="numCedula">Identificación:</label>
-        <input class="rCajas" id="numCedula" type="text" placeholder="Identificación*">
+        <input class="rCajas" id="numCedula" type="text" placeholder="Cédula física, jurídica, DIMEX o NITE*">
 
-        <label for="txtEmail">Email:</label>
-        <input class="rCajas" id="txtEmail" type="email" placeholder="Email*" >
+        <label for="txtEmail">Correo electrónico:</label>
+        <input class="rCajas" id="txtEmail" type="email" placeholder="Correo electrónico*" >
 
         <!-- <label for="txtUsuario">Nombre de Usuario:</label>
         <input class="rCajas" id="txtUsuario" type="text" placeholder="Nombre de Usuario*" maxlength="15"> -->
@@ -49,34 +51,34 @@
             <input type="button" class="rBtn" id="btnRegistrar" value="Registrar">
         </div>
 
-        <p class="rBtnCancelar">Tiene una cuenta?</p>
+        <p class="rBtnCancelar">¿Tiene una cuenta?</p>
     </form>
 
     <!--INICIAR SESION-->
     <form class="lModal-form hidden">
         <div class="InicioSesion-titleContainer">
-            <h1 class="lTitulo">Iniciar Sesión</h1>
+            <h1 class="lTitulo">Iniciar sesión</h1>
            <i class="fa-solid fa-circle-xmark cerrarModalInicio"></i>
         </div>
 
         <div>
-            <label for="txtUsuario-l">Email:</label>
-            <input class="lCajas" id="txtUsuario-l" type="text" placeholder="email" >
+            <label for="txtUsuario-l">Correo electrónico:</label>
+            <input class="lCajas" id="txtUsuario-l" type="text" placeholder="Correo electrónico*" >
         </div>
 
         <div>
             <label for="txtContrasenha-l">Contraseña:</label>
-            <input class="lCajas" id="txtContrasenha-l" type="password" placeholder="Contraseña" >
+            <input class="lCajas" id="txtContrasenha-l" type="password" placeholder="Contraseña*" >
         </div>
 
         <div class="footContainer">
-            <p class="redirect-modal-Password linkModal ">Olvidó su contraseña?</p>
-            <p class="redirect-modal-sigin linkModal">No tiene una Cuenta?</p>
+            <p class="redirect-modal-Password linkModal ">¿Olvidó su contraseña?</p>
+            <p class="redirect-modal-sigin linkModal">¿No tiene una cuenta?</p>
         </div>
 
         <div class="lBtns">
             <input type="button" class="lBtnCancelar" id="cerrarLmodal" value="Cancelar">
-            <input type="button" id="btnIniciar" class="lBtn" value="Iniciar Sesion">
+            <input type="button" id="btnIniciar" class="lBtn" value="Iniciar sesión">
         </div>
 
     </form>
@@ -89,23 +91,23 @@
         </div>
 
         <div>
-            <label for="txtUsuario-c">Email:</label>
-            <input class="cCajas" id="txtUsuario-c" type="text" placeholder="email" required >
+            <label for="txtUsuario-c">Correo electrónico:</label>
+            <input class="cCajas" id="txtUsuario-c" type="text" placeholder="Correo electrónico*" required >
         </div>
 
         <div>
             <label for="txtContrasenha-l">Contraseña:</label>
-            <input class="cCajas" id="txtContrasenha-c" type="password" placeholder="Contraseña" required >
+            <input class="cCajas" id="txtContrasenha-c" type="password" placeholder="Contraseña*" required >
         </div>
 
         <div>
-            <label for="txtContrasenha-l">Confirmar Contraseña:</label>
-            <input class="cCajas" id="txtContrasenha2-c" type="password" placeholder="Confirmar contraseña" required >
+            <label for="txtContrasenha-l">Confirmar contraseña:</label>
+            <input class="cCajas" id="txtContrasenha2-c" type="password" placeholder="Confirmar contraseña*" required >
         </div>
 
         <div class="lBtns">
             <input type="button" class="lBtnCancelar" id="cancelPassword" value="Cancelar">
-            <input type="button" id="btnPassword" class="cBtn" value="Cambiar Contraseña">
+            <input type="button" id="btnPassword" class="cBtn" value="Cambiar contraseña">
         </div>
 
     </form>
@@ -213,7 +215,7 @@
                         <div class="radiologia img-ser">
                             <div class="icon"><i class="fa-solid fa-x-ray"></i></div>
                         </div>
-                        <h3>RADIOLOGIAS</h3>
+                        <h3>RADIOLOGÍAS</h3>
                     </div>
                 </div>
 
@@ -230,7 +232,7 @@
                         <div class="team-description">
                             <h4>Citología, Cirugía</h4>
                             <h3>Sofía Montes</h3>
-                            <p>Licenciada de la Universidad Nacional de Costa Rica en Medicina Veterinaria y Cirugía actualmente se encuentra enteramente dedicada al diagnóstico citológico.</p>
+                            <p>Licenciada de la Universidad Nacional de Costa Rica en Medicina Veterinaria y Cirugía, actualmente se encuentra enteramente dedicada al diagnóstico citológico.</p>
                         </div>
                     </div>
                     <div class="cards-teams">
@@ -270,7 +272,7 @@
                 <div class="info content-center">
                     <div class="title-contact">
                         <div>
-                            <h2>Contactenos</h2>
+                            <h2>Contáctenos</h2>
                         </div>
                         <div class="social-contact">
                             <span> <a href="https://www.facebook.com/profile.php?id=100084194042982" target="_blank"><i class="fa-brands fa-facebook-square"></i></a>
@@ -288,16 +290,16 @@
                                 <input type="text" name="" id="cont-name">
                             </div>
                             <div class="box-form">
-                                <label for="">Correo Electronico:
+                                <label for="">Correo electrónico:
                                 </label>
                                 <input type="text" name="" id="cont-mail">
                             </div>
                             <div class="box-form">
-                                <label for="">Numero de telefono:</label>
+                                <label for="">Número de teléfono:</label>
                                 <input type="text" name="" id="cont-phone">
                             </div>
                             <div class="box-form">
-                                <label for="">Descripcion:</label>
+                                <label for="">Descripción:</label>
                                 <textarea id="cont-descrip"></textarea>
                             </div>
                             <div class="box-form">
@@ -339,7 +341,7 @@
     <footer>
         <div id="footer">
             <div class="footer-content">
-                <span> Moka <span>&#169;</span> 2022 all rights reserved by <a href="./DOTCOM-main/landig.html" target="_blank"><i style="text-decoration: underline;">DOTCOM</i></a></span>
+                <span> Moka <span>&#169;</span> 2022 Todos los derechos reservados <a href="./DOTCOM-main/landig.html" target="_blank"><i style="text-decoration: underline;">DOTCOM</i></a></span>
             </div>
         </div>
     </footer>

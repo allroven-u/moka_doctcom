@@ -19,10 +19,10 @@ btnCambiarC.addEventListener('click',CambiarContrasenha);
 function CambiarContrasenha(){
    if(ValidarCambioContrasenha() == true) {
         if(CambiarPassword() == false){
-            MostrarError("Error no se pudo cambiar la contraseña")
+            MostrarError("¡Error no se pudo cambiar la contraseña!")
 
         }else{
-            ConfirmarDatos('Cambio de Contraseña exitoso!');
+            ConfirmarDatos('¡Cambio de contraseña exitoso!');
             limpiarForm('formCambioC');
             hiddenModalPassword();            
         }
@@ -39,7 +39,7 @@ function ValidarCambioContrasenha(){
 
     if (sNombre == null || sNombre == undefined || sNombre == ""){
         inputNombreC.classList.add("rError")
-        MostrarError("El usuario es requerido!");
+        MostrarError("¡El usuario es requerido!");
         return false;
 
     }else{
@@ -48,18 +48,18 @@ function ValidarCambioContrasenha(){
 
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == ""){
         inputContrasenha1C.classList.add("rError")
-        MostrarError("La contraseña es requerida!");
+        MostrarError("¡La contraseña es requerida!");
         return false;
     }else if(pwContrasenha.length>=6 && pwContrasenha.length<=15){
         inputContrasenha1C.classList.remove("rError")
     }else{
         inputContrasenha1C.classList.add("rError")
-        MostrarError("La contraseña debe contener entre 6 y 15 caracteres!");
+        MostrarError("¡La contraseña debe contener entre 6 y 15 caracteres!");
         return false;
     }
     if (pwContrasenha2 == null || pwContrasenha2 == undefined || pwContrasenha2 == "" || pwContrasenha != pwContrasenha2){
         inputContrasenha2C.classList.add("rError")
-        MostrarError("Las contraseñas no son iguales!");
+        MostrarError("¡Las contraseñas no son iguales!");
         return false;
         
     }else{

@@ -47,7 +47,7 @@ function MostrarErrorLogin() {
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Dato Requerido!",
+        text: "¡Dato requerido!",
     });
 }
 
@@ -55,7 +55,7 @@ async function ConfirmarDatosLogin() {
     Swal.fire({
         position: "center",
         icon: "success",
-        title: "Sesion Iniciada!",
+        title: "¡Sesión iniciada!",
         showConfirmButton: false,
         timer: 1500,
     });
@@ -65,7 +65,7 @@ async function ErrorDatosLogin() {
     Swal.fire({
         position: "center",
         icon: "error",
-        title: "Usuario o contaseña incorrectos!",
+        title: "¡Usuario o contraseña incorrectos!",
         showConfirmButton: false,
         timer: 1500,
     });
