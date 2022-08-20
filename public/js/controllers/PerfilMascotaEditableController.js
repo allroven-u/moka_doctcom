@@ -54,7 +54,7 @@ function MostrarErrorContactenos() {
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Dato Requerido!",
+        text: "¡Dato requerido!",
     });
 }
 
@@ -72,7 +72,7 @@ function ConfirmarDatosLogin() {
     Swal.fire({
         position: "center",
         icon: "success",
-        title: "Datos Actualizados!",
+        title: "¡Datos actualizados!",
         showConfirmButton: false,
         timer: 1500,
     });
