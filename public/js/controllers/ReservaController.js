@@ -4,12 +4,16 @@ let userSessionR;
 
 let listaMascotas = [];
 let listaReservas = [];
-const idReserva = "";
 window.addEventListener('load', () =>{
     userSessionR=GetSesion();
     GetListaReservas();
     GetlistaMascota();
 });
+
+
+
+
+
 
 async function GetListaReservas() {
 
@@ -131,15 +135,9 @@ function ImprimirListaReservas(ListaReservasBD){
         Boton.appendChild(icono);
         celdaBoton.appendChild(Boton);
 
-
-        // document.querySelector("#tReservas").addEventListener("click", function(event){
-        //     alert(event.target.innerText);
-        // }, false);
-
         let BotonC = document.createElement('a');
         BotonC.setAttribute('id',(reserva.NumeroReservacion));
         BotonC.setAttribute('onclick','ShowModalCancelReservaFunct(id)');
-        // BotonC.setAttribute('id',(reserva.NumeroReservacion));
         let iconoC =document.createElement('i');
         iconoC.classList.add("fa-solid")
         iconoC.classList.add("fa-circle-xmark")
@@ -180,7 +178,7 @@ function VerEstado(EstadoCita){
     if (sEstadoCita == 'FINALIZADA'){
         EstadoCita[i].classList.add("FINALIZADA")
         
-    }   
+        }   
     }
 }
 
@@ -382,11 +380,11 @@ function ShowModalCancelReservaFunct(id) {
 
 // FIN MODAL CANCELAR RESERVA
 
-let outNumCita= document.getElementById('numReservaCancelar')
+let outNumReserva= document.getElementById('numReservaCancelar')
 let inputCancelar = document.getElementById('motivoCancelar');
 async function CancelarReserva() {
 
-    let numReserva = outNumCita.value;
+    let numReserva = outNumReserva.value;
     let sMotivoCancelar = inputCancelar.value;
     let sEstado = "CANCELADA";
 
@@ -487,3 +485,4 @@ function llenarModalCancelarReserva(id){
         
     }
 }
+

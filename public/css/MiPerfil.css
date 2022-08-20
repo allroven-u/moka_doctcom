@@ -46,7 +46,7 @@
     background-color: var(--navApp);
     width: 90%;
     color: var(--blanco);
-    font-size: 22px;
+    font-size: 15px;
     text-align: center;
     padding: 10px;
 }
@@ -87,6 +87,10 @@
     font-family: Roboto500;
    /* text-align: center;
     padding-top: 10px;*/
+}
+
+.box-info-usuario span{
+    font-family: Roboto300;
 }
 
 .calificacion {

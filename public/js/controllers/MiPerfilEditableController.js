@@ -149,6 +149,11 @@ function ConfirmarDatosLogin() {
     });
 }
 ////////////////////// cambiar Contrasenha MODAL //////////////////////////
+
+function disableScroll() {
+    window.scrollTo(0, 0);
+}
+
 const passwordModal = document.querySelector('.cModal-form');
 const openModalPassword = document.querySelector(".redirect-modal-Password");
 const closeModalPassword = document.getElementById('cancelPassword');

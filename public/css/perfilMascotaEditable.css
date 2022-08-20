@@ -1,13 +1,14 @@
 @import url("estilosGenerales.css");
 
-label{
+label {
     color: black;
 }
 
-.border-radius{
+.border-radius {
     border-radius: 5px;
 }
-.shadow{
+
+.shadow {
     box-shadow: -5px 5px 15px var(--gris);
 }
 
@@ -28,7 +29,7 @@ label{
 
 .box-usuario_img {
     width: 250px;
-    height: 50%;
+    height: 440px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -43,22 +44,24 @@ label{
     margin-bottom: 30px;
 }
 
-.annadir,.remover{
+.annadir,
+.remover {
     transition: all 300ms ease;
 }
 
-.annadir{
+.annadir {
     background-color: var(--verdeagua) !important;
 }
 
-.annadir:hover{
+.annadir:hover {
     background-color: var(--turquesa) !important;
 }
 
-.remover{
+.remover {
     background-color: var(--Rojo2) !important;
 }
-.remover:hover{
+
+.remover:hover {
     background-color: var(--Roj1) !important;
 }
 
@@ -100,7 +103,7 @@ label{
     color: var(--blanco);
 }
 
-.box-info-usuario p{
+.box-info-usuario p {
     color: #333;
     font-family: Roboto500;
     text-align: center;
@@ -136,9 +139,9 @@ table {
     border-spacing: 10px;
 }
 
-td{
+td {
     border-radius: 5px;
-   text-align: center;
+    text-align: center;
 }
 
 
@@ -147,7 +150,7 @@ td{
     background-color: var(--blanco);
 }
 
-.btn-editar{
+.btn-editar {
     width: 120px;
     height: 50px;
     margin-bottom: 10px;
@@ -159,11 +162,11 @@ td{
     border: none;
 }
 
-.btn-editar:hover{
+.btn-editar:hover {
     background-color: var(--turquesa);
 }
 
-.btn-cancelar{
+.btn-cancelar {
     width: 120px;
     height: 50px;
     margin-bottom: 10px;
@@ -175,20 +178,21 @@ td{
     border: none;
 }
 
-.btn-cancelar:hover{
+.btn-cancelar:hover {
     background-color: var(--Roj1);
 }
 
-.edit-icon{
+.edit-icon {
     float: right;
     margin: 10px;
     font-size: 22px;
 }
-.edit-icon:hover{
+
+.edit-icon:hover {
     color: var(--verdeagua);
 }
 
-.fa-star{
+.fa-star {
     color: var(--amarillo);
 }
 
@@ -202,56 +206,61 @@ td{
     text-align: center;
     font-size: 18px;
 }
+
 .thTitle {
     border: 1px solid var(--azul2);
     background-color: var(--azul2);
     border-radius: 5px;
     padding: 5px;
 }
-.thTitle th{
+
+.thTitle th {
     padding: 5px;
 }
-.observaciones{
+
+.observaciones {
     width: 82%;
 }
 
-.observaciones p{
+.observaciones p {
     text-align: left;
     margin-left: 10px;
 }
 
-button{
+button {
     border: none;
 }
 
 .AGENDADA {
     background-color: var(--naranja);
 }
+
 .CANCELADA {
     background-color: var(--Rojo2);
 }
+
 .FINALIZADA {
     background-color: var(--verdeagua);
 }
 
-.editarperfilfila1{
+.editarperfilfila1 {
     display: flex;
     flex-direction: row;
 }
 
-.perfilContainer{
+.perfilContainer {
     display: flex;
     flex-direction: column;
     width: 35%;
 }
 
-.perfilContainer2{
+.perfilContainer2 {
     display: flex;
     flex-direction: column;
     width: 70%;
 }
 
-.perfilContainer3{
+.perfilContainer3 {
     width: 100%;
     display: flex;
     flex-direction: row;

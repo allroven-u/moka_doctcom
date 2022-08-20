@@ -5,6 +5,7 @@
 let listaMascotas = [];
 let listaUsuarios = [];
 let userSessionC;
+let listaCitas = [];
 
 let botonFiltrar = document.getElementById('btnFiltroCita');
 let fechaInicio = document.getElementById('DateFecha1');
@@ -90,7 +91,7 @@ function ImprimirListaCitas(ListaCitasBD){
 
     let celAcciones = thRow.insertCell();
     celAcciones.innerHTML = 'Acciones';
-    let listaCitas = [];
+    
   
     ///////////citas Usuario/////////////////
         for (let i = 0; i < ListaCitasBD.length; i++) {
@@ -150,7 +151,7 @@ function ImprimirListaCitas(ListaCitasBD){
          let EstadoCitaif = document.querySelectorAll('.Estado');
          if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
          let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','/public/VerCitaDatos.html')
+         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
          let iconoV =document.createElement('i');
          iconoV.classList.add("fa-solid")
          iconoV.classList.add("fa-eye")
@@ -160,7 +161,7 @@ function ImprimirListaCitas(ListaCitasBD){
 
 
          let Boton = document.createElement('a');
-         Boton.setAttribute('href','/public/VerCitaDatos.html')
+         Boton.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
          let icono =document.createElement('i');
          icono.classList.add("fa-solid")
          icono.classList.add("fa-pen-to-square")
@@ -169,7 +170,8 @@ function ImprimirListaCitas(ListaCitasBD){
          celdaBoton.appendChild(Boton);
 
          let BotonC = document.createElement('a');
-         BotonC.setAttribute('onclick','ShowModalCancelFunct()');
+         BotonC.setAttribute('id',(cita.NumeroCita));
+         BotonC.setAttribute('onclick','ShowModalCancelFunct(id)');
          let iconoC =document.createElement('i');
          iconoC.classList.add("fa-solid")
          iconoC.classList.add("fa-circle-xmark")
@@ -178,7 +180,7 @@ function ImprimirListaCitas(ListaCitasBD){
          celdaBoton.appendChild(BotonC);
          }else{
          let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','#')
+         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
          let iconoV =document.createElement('i');
          iconoV.classList.add("fa-solid")
          iconoV.classList.add("fa-eye")
@@ -190,7 +192,6 @@ function ImprimirListaCitas(ListaCitasBD){
 
      }
      let EstadoCita = document.querySelectorAll('.Estado');
-         console.log(EstadoCita.length);
          VerEstado(EstadoCita);
   }
 
@@ -198,7 +199,6 @@ function ImprimirListaCitas(ListaCitasBD){
 
     for (let i = 0; i < EstadoCita.length; i++) {
     let sEstadoCita = EstadoCita[i].innerHTML;
-    console.log(sEstadoCita)
     if (sEstadoCita == 'AGENDADA'){
         EstadoCita[i].classList.add("AGENDADA")
 
@@ -214,6 +214,21 @@ function ImprimirListaCitas(ListaCitasBD){
     }
     }
 }
+function AsignarNombreOtro(){
+    let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
+    let divNombreOtro = document.getElementById('NombreOtro');
+    let countNombreOtro = divNombreOtro.childElementCount;
+
+    if(sIdentificacion == 'Otro'){
+        divNombreOtro.classList.remove("hidden")
+    }else{
+        divNombreOtro.classList.add("hidden")
+    }
+}
+
+function limpiarFormCita(){
+    document.getElementById('formCrearCita').reset();
+}
 
 
 let inputNombreMascota = document.querySelector('#selectMascotaCita');
@@ -221,6 +236,7 @@ let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedInde
 
 let inputFecha = document.getElementById('txtFecha');
 let inputTipoIdentificacion = document.querySelector('#selectVeterinario');
+let NombreMascotaOtro = document.getElementById('txtNombreOtro');
 
 let inputDireccion = document.getElementById('txtDireccion');
 
@@ -233,13 +249,21 @@ async function CrearCita(){
     if(ValidarDatosCita() == true){
         
         let IdentificacionUsuario= userSessionC.Identificacion;
-        let IdMascota;
+        let IdMascota="N/D";
         let IdentificacionVeterinario;
         let NombreMascota = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
+        console.log("for "+NombreMascota)
         for (let i = 0; i < listaMascotas.length; i++) {
             if(IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota ){
-                IdMascota = listaMascotas[i]._id;
+
+               
+
+                    IdMascota = listaMascotas[i]._id; 
                 
+                
+                }else if(NombreMascota === "Otro"){
+                    
+                    NombreMascota="(Otro) "+NombreMascotaOtro.value;
             }
         }
         let NombreVeterinario = inputTipoIdentificacion.options[inputTipoIdentificacion.selectedIndex].text
@@ -384,25 +408,7 @@ function ImprimirListaVeterinarios(listaUsers){
         Select.appendChild(opcion);
     }
 
-    function AsignarNombreOtro(){
-        let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-        let divNombreOtro = document.getElementById('NombreOtro');
-        let countNombreOtro = divNombreOtro.childElementCount;
 
-        if(sIdentificacion == 'Otro' && countNombreOtro == 0){
-            let input = document.createElement('input');
-        input.classList.add('cajas');
-        input.setAttribute('id',"txtNombreOtro");
-        input.setAttribute('placeholder',"Nombre mascota (opcional)");
-        divNombreOtro.appendChild(input);
-        }else if(sIdentificacion != 'Otro' && countNombreOtro != 0){
-            divNombreOtro.removeChild(document.getElementById('txtNombreOtro'));
-        }
-    }
-
-    function limpiarFormCita(){
-        document.getElementById('formCrearCita').reset();
-    }
 
 
 ///MODAL CANCELAR CITA///
@@ -424,7 +430,8 @@ const hiddenCancelModal = function() {
 };
 
 // start function show modal
-function ShowModalCancelFunct() {
+function ShowModalCancelFunct(id) {
+    llenarModalCancelarCita(id);
     modalCancelarCita.classList.remove("hidden");
     overlayCancelar.classList.remove("hidden");
     location.href = "#top-page";
@@ -440,34 +447,35 @@ function ShowModalCancelFunct() {
 };
 
 // FIN MODAL CANCELAR CITA
+let outNumCita= document.getElementById('numCitaCancelar')
+let inputCancelar = document.getElementById('motivoCancelar');
 
+async function CancelarCitas() {
 
-
-function CancelarCita() {
-    let listaCitas = ObtenerListaCitas();
-    let numCita = 0;
-    let nombreMascota = 'bobo';
-    let inputCancelar = document.getElementById('motivoCancelar');
+    let numCita = outNumCita.value;
     let sMotivoCancelar = inputCancelar.value;
+    let sEstado = "CANCELADA";
+
+
     if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
         inputCancelar.classList.add("error")
         MostrarError('Debe ingresar motivo de cancelación');
         return false;
     } else {
         inputCancelar.classList.remove("error")
-        ConfirmarDatos("Cita cancelada");
-    }
 
+        let result = await CancelarCita(numCita,sEstado, sMotivoCancelar);
 
-    document.getElementById('numCitaCancelar').innerHTML = numCita;
-    document.getElementById('nombreCitaCancelar').innerHTML = nombreMascota;
-
-
-    for (let i = 0; i < listaCitas.length; i++) {
-        if (listaCitas[i][1] == numCita) {
-            listaCitas[i][5] = "Cancelar"
+        if (result != {} && result.data.resultado == true) {
+            ConfirmarDatos(result.data.msj);
+            setTimeout(() => {
+                hiddenCancelModal();
+                location.href="./AppVerCitas.html"
+            }, 2000);
+        }else{
+            MostrarError(result.data.msj);
+            return
         }
-
     }
 }
 
@@ -507,3 +515,31 @@ function ShowModalCrearFunct() {
 showCrearCita.addEventListener('click', ShowModalCrearFunct);
 
 // FIN MODAL CREAR CITA
+function llenarModalCancelarCita(id){
+
+    for (let i = 0; i < listaCitas.length; i++) {
+        if(listaCitas[i].NumeroCita == id){
+            document.getElementById('numCitaCancelar').value= id;
+            document.getElementById('nombreCitaCancelar').value= listaCitas[i].
+            NombreMascota;
+        }
+        
+    }
+}
+
+function MostrarError(txtInfo){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: txtInfo,
+    })
+}
+function ConfirmarDatos(txtInfo){
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: txtInfo,
+        showConfirmButton: false,
+        timer: 1500
+      })
+}

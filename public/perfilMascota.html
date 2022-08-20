@@ -5,9 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Moka Veterinaria</title>
         <link rel="stylesheet" href="css/app.css">
-        <link rel="stylesheet" href="css/CrearCita.css">
-        <link rel="stylesheet" href="css/CrearReservacion.css">
-        <link rel="stylesheet" href="css/RegistroMascota.css">
         <link rel="stylesheet" href="css/perfilMascota.css">
         <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
     </head>
@@ -92,19 +89,19 @@
             <div class="home">
                 <div class="perfil-main">
                     <div class="perfil-contenido">
+                        <a href="./mascotas.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
                         <div class="box-usuario_img">
                             <div class="box-img border-radius shadow">
-                                <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                                <!--<i class="fa-solid fa-pen-to-square edit-icon"></i>-->
                             </div>
                             <div class="usuario border-radius name-mascota">
                                 <p id="TxtMascotaM">Pinto</p>
                             </div>
-                            <button class="usuario border-radius annadir" id="annadir-mascota">Añadir mascota</button>
                             <button class="usuario border-radius remover" id="remover-mascota">Remover mascota</button>
                         </div>
                         <div class="informacion-personal border-radius shadow">
                             <div class="titulo-info-usario">
-                                <h2>Informacion General de Mascota</h2>
+                                <h2>Informacion General de la Mascota</h2>
                             </div>
                             <div class="box-info-usuario border-radius">
                                 <p>Dueño: <span id="txtDuennoM"></span></p>
@@ -214,8 +211,9 @@
         <div class="overlay hidden"></div>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="./js/controllers/RegistroMascotaController.js"></script>
+       <!-- <script src="./js/controllers/RegistroMascotaController.js"></script>-->
         <script src="./js/Constantes.js"></script>
+        
         <script src="./js/services/CitaService.js"></script>
         <script src="./js/services/UsuarioService.js"></script>
         <script src="./js/services/MascotasService.js"></script>

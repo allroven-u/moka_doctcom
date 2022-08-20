@@ -117,13 +117,12 @@
             <div class="tblCaja">
                 <div class="tituloCaja">
                     <a href="./AppVerReservas.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
-                    <h2>Reservación Número: </h2>
-                    <div id="numCita"> </div>
+                    <h2 id="numReservaDatos">Reservación Número: </h2>
                 </div>
                 <div class="headCompletarCita">
                     <div class="h3">
                         <label for="txtNombreMascota">Nombre Mascota</label>
-                        <output id="txtNombreMascota" name="txtNombreMascota" class="cajasOut"
+                        <output id="txtNombreMascota" name="txtNombreMascota" class="cajasOut white"
                             for="txtNombreMascota"></output>
                     </div>
                     <div class="califContainer">
@@ -144,27 +143,52 @@
                             </h2>
                         </div>
                         <div class="DescripcionParrafo">
-                            <p id="txtDescripcion" class="cajasOut">
-                            </p>
+                            <div id="txtDescripcion" class="cajasOut">
+                                <div class="table-description">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Num.Reserva</th>
+                                                
+                                                <th>Fecha de Entrada</th>
+                                                <th>Fecha de Salida</th>
+                                                <th>Observaciones</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbody-info-cita">
+                                            <tr>
+                                                <td id="numReserva">...</td>
+                                                <td id="fechaCitaIn">...</td>
+                                                <td id="fechaCitaOut">...</td>
+                                                <td id="observaciones">...</td>
+                                                <td id="estadoReserva">...</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="box-completar">
+                    <div class="box-completar box-2">
                         <div class="h2">
-                            <h2>Observaciones
+                            <h2>Servicios y productos utilizados
                             </h2>
                         </div>
-                        <div class="DescripcionParrafo">
-                            <p id="txtObservaciones" class="cajasOut">
-                            </p>
-                        </div>
-                    </div>
-                    <div class="box-completar">
-                        <div class="h2">
-                            <h2>Monto Factura
-                            </h2>
-                        </div>
-                        <div class="PagoFacura">
-                            <p id="txtCobro" class="cajasOut"></p>
+
+                        <div class="DescripcionParrafo diagnostico">
+                            <div>
+                                <p style="color: #222;">Descripción</p>
+                                <input id="txtDescricionR" class="cajasOut white">
+                            </div>
+                            <div>
+                                <p style="color:#222;">Precio</p>
+                                <input id="txtPecioR" class="cajasOut white">
+                            </div>
+                            <div>
+                                <input type="button" class="agregar-btn" id="agregar-subdocR" value="Añadir">
+                            </div>
+
                         </div>
                     </div>
                     <div class="box-completar"></div>
@@ -175,18 +199,22 @@
                             onclick="location.href='./Factura.html'">
                     </div>
                 </div>
-        
+
             </div>
 
         </div>
 
         <div class="overlay hidden"></div>
     </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
+
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/ReservaService.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/controllers/ReservaDatosController.js"></script>
     <script src="./js/services/SessionService.js"></script>
-    <script src="./js/controllers/AppController.js"></script>
-    <script src="./js/controllers/ReservaController.js"></script>
 </body>
 
 </html>
