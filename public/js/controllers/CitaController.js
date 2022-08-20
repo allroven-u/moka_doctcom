@@ -148,16 +148,21 @@ function ImprimirListaCitas(ListaCitasBD){
 
          let celdaBoton = fila.insertCell();
 
+
+     
          let EstadoCitaif = document.querySelectorAll('.Estado');
          if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
-         let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id+'&rol='+userSessionC.Rol);
-         let iconoV =document.createElement('i');
-         iconoV.classList.add("fa-solid")
-         iconoV.classList.add("fa-eye")
-         iconoV.classList.add("btnV")
-         BotonV.appendChild(iconoV);
-         celdaBoton.appendChild(BotonV);
+            if(userSessionC.Rol === 2){
+                let BotonV = document.createElement('a');
+                BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id+'&rol='+userSessionC.Rol);
+                let iconoV =document.createElement('i');
+                iconoV.classList.add("fa-solid")
+                iconoV.classList.add("fa-eye")
+                iconoV.classList.add("btnV")
+                BotonV.appendChild(iconoV);
+                celdaBoton.appendChild(BotonV);
+            }
+        
 
 
          if(userSessionC.Rol !== 2){
