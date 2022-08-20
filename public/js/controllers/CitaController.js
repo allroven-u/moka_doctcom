@@ -95,8 +95,18 @@ function ImprimirListaCitas(ListaCitasBD) {
 
     ///////////citas Usuario/////////////////
     for (let i = 0; i < ListaCitasBD.length; i++) {
-        if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion) {
-            listaCitas.push(ListaCitasBD[i]);
+
+        if(userSessionC.Rol == 2){
+            if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion) {
+                listaCitas.push(ListaCitasBD[i]);
+            }
+        }else if(userSessionC.Rol == 3){
+            if (ListaCitasBD[i].
+                IdentificacionVeterinario == userSessionC.Identificacion) {
+                listaCitas.push(ListaCitasBD[i]);
+            }
+        }else{
+            listaCitas = ListaCitasBD;
         }
     }
 
