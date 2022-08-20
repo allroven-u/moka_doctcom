@@ -30,8 +30,11 @@ async function IdentificarAccion() {
 
 let inputNumReservaDatos = document.getElementById('numReservaDatos');
 let inputNombreReservaDatos = document.getElementById('txtNombreMascota');
-let inputDescripReservaDatos = document.getElementById('txtDescripcion');
-let inputObservReservaDatos = document.getElementById('txtObservaciones');
+let OutnumReserva = document.getElementById('numReserva');
+let OutfechaCitaIn = document.getElementById('fechaCitaIn');
+let OutfechaCitaOut = document.getElementById('fechaCitaOut');
+let Outobservaciones = document.getElementById('observaciones');
+let OutestadoReserva = document.getElementById('estadoReserva');
 
 function llenarCompletarReserva(){
     for (let i = 0; i < listaReservas.length; i++) {
@@ -39,13 +42,16 @@ function llenarCompletarReserva(){
             
             inputNumReservaDatos.innerHTML= 'Reservación Número: '+listaReservas[i].NumeroReservacion;
             inputNombreReservaDatos.innerHTML=listaReservas[i].NombreMascota;
-            inputDescripReservaDatos.innerHTML="Reserva numero:"+listaReservas[i].NumeroReservacion +"</br>Identificación dueño: "+listaReservas[i].
-            IdentificacionUsuario+"</br>Mascota: "+listaReservas[i].NombreMascota+"</br>Fecha de ingreso: "+listaReservas[i].
-            FechaHoraIngreso+"</br>Fecha de Salida: "+listaReservas[i].
-            FechaHoraSalida
-            "20220809";
-            inputObservReservaDatos.innerHTML=listaReservas[i].
+
+            OutnumReserva.innerHTML=listaReservas[i].NumeroReservacion;
+            OutfechaCitaIn.innerHTML=listaReservas[i].
+            FechaHoraIngreso;
+            OutfechaCitaOut.innerHTML=listaReservas[i].
+            FechaHoraSalida;
+            Outobservaciones.innerHTML=listaReservas[i].
             ObservacionesReservacion;
+            OutestadoReserva.innerHTML=listaReservas[i].
+            Estado;
         }
     }    
 }

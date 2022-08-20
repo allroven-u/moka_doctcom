@@ -118,7 +118,6 @@
                 <div class="tituloCaja">
                     <a href="./AppVerReservas.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
                     <h2 id="numReservaDatos">Reservación Número: </h2>
-                    <div id="numCita"> </div>
                 </div>
                 <div class="headCompletarCita">
                     <div class="h3">
@@ -150,19 +149,20 @@
                                         <thead>
                                             <tr>
                                                 <th>Num.Reserva</th>
-                                                <th>Mascota</th>
+                                                
                                                 <th>Fecha de Entrada</th>
                                                 <th>Fecha de Salida</th>
+                                                <th>Observaciones</th>
                                                 <th>Estado</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody-info-cita">
                                             <tr>
-                                                <td id="numCita">...</td>
-                                                <td id="mascota">...</td>
-                                                <td id="fechaCita">...</td>
+                                                <td id="numReserva">...</td>
+                                                <td id="fechaCitaIn">...</td>
+                                                <td id="fechaCitaOut">...</td>
                                                 <td id="observaciones">...</td>
-                                                <td id="estadoCita">...</td>
+                                                <td id="estadoReserva">...</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -179,11 +179,11 @@
                         <div class="DescripcionParrafo diagnostico">
                             <div>
                                 <p style="color: #222;">Descripción</p>
-                                <input id="txtDescricionR" class="cajasOut white"></input>
+                                <input id="txtDescricionR" class="cajasOut white">
                             </div>
                             <div>
                                 <p style="color:#222;">Precio</p>
-                                <input id="txtPecioR" class="cajasOut white"></input>
+                                <input id="txtPecioR" class="cajasOut white">
                             </div>
                             <div>
                                 <input type="button" class="agregar-btn" id="agregar-subdocR" value="Añadir">
