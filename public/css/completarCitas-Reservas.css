@@ -324,7 +324,7 @@ tr {
 }
 
 .table-description {
-	width: 100%;
+	width: 100%; 
 }
 
 .table-description table {
@@ -332,28 +332,45 @@ tr {
 	border-collapse: collapse;
 }
 
-.table-description thead tr {
+.table-description thead {
+	width: 100%;
 	background-color: var(--verdeagua);
 	color: var(--blanco);
+}
+
+.table-description thead tr{
+	display: contents;
+	width: 100%;
 }
 
 .table-description thead th {
 	width: 20%;
 	padding: 10px 0px;
+	border: 1px solid #bbb;
 }
+.table-description tbody{
+	width: 100%;
 
-.table-description tbody tr td {
-	width: 20%;
-	padding: 10px 0px;
-	border-left: 1px solid #999;
-	border-right: 1px solid #999;
-	border-bottom: 1px solid #999;
-	color: #222;
 }
 
 .table-description tbody tr {
-	height: auto;
+	width: 100%;
+	display: contents;
 }
+
+.table-description tbody td {
+	width: 20%;
+	padding: 10px 10px;
+	color: #222;
+	border: 1px solid #bbb;
+}
+
+.table-description table tr{
+
+	border-bottom: 1px solid #aaa;
+}
+
+
 
 
 
