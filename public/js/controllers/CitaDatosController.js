@@ -24,7 +24,6 @@ async function GetlistaUsuarios() {
     let result = await getUsuariosArray();
     if (result != {} && result.resultado == true) {
         listaUsuarios = result.ListaUsuariosBD;
-        console.log(listaUsuarios);
     }
 }
 
@@ -37,9 +36,7 @@ async function IdentificarAccion() {
     urlParams = new URLSearchParams(queryString);
 
     _id = urlParams.get('_id');
-    console.log(_id);
     usuarioRol = urlParams.get('rol');
-    console.log(usuarioRol);
 }
 
 usuarioRol = Number(usuarioRol);
@@ -78,7 +75,7 @@ function llenarCompletarCita() {
     for (let i = 0; i < listaCitas.length; i++) {
         if (listaCitas[i]._id == _id) {
             for (let j = 0; j < listaUsuarios.length; j++) {
-                console.log(listaUsuarios[j].Identificacion);
+
                 if (listaUsuarios[j].Identificacion == listaCitas[i].IdentificacionVeterinario) {
                     veterinario = listaUsuarios[j].Nombre;
                 }

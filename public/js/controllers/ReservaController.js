@@ -61,10 +61,19 @@ function ImprimirListaReservas(ListaReservasBD) {
 
 
     ///////////citas Usuario/////////////////
-    for (let i = 0; i < ListaReservasBD.length; i++) {
-        if (ListaReservasBD[i].IdentificacionUsuario == userSessionR.Identificacion) {
-            listaReservas.push(ListaReservasBD[i]);
 
+    for (let i = 0; i < ListaReservasBD.length; i++) {
+        if(userSessionR.Rol == 2){
+            if (ListaReservasBD[i].IdentificacionUsuario == userSessionR.Identificacion) {
+                listaReservas.push(ListaReservasBD[i]);
+            }
+        }else if(userSessionR.Rol == 3){
+            if (ListaReservasBD[i].
+                IdentificacionVeterinario == userSessionR.Identificacion) {
+                    listaReservas.push(ListaReservasBD[i]);
+            }
+        }else{
+            listaReservas = ListaReservasBD;
         }
     }
 
