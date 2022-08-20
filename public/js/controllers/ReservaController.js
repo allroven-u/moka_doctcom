@@ -4,8 +4,8 @@ let userSessionR;
 
 let listaMascotas = [];
 let listaReservas = [];
-window.addEventListener('load', () =>{
-    userSessionR=GetSesion();
+window.addEventListener('load', () => {
+    userSessionR = GetSesion();
     GetListaReservas();
     GetlistaMascota();
 });
@@ -18,15 +18,15 @@ window.addEventListener('load', () =>{
 async function GetListaReservas() {
 
     let result = await getReservasArray();
-    if( result != {} && result.resultado == true){
-        
+    if (result != {} && result.resultado == true) {
+
         ImprimirListaReservas(result.ListaReservasBD)
 
     }
 }
 
 
-function ImprimirListaReservas(ListaReservasBD){
+function ImprimirListaReservas(ListaReservasBD) {
 
     let tThead = document.getElementById('tTheadReservas');
     let tbody = document.getElementById('tBodyReservas');
@@ -62,32 +62,31 @@ function ImprimirListaReservas(ListaReservasBD){
 
     ///////////citas Usuario/////////////////
     for (let i = 0; i < ListaReservasBD.length; i++) {
-        if (ListaReservasBD[i].IdentificacionUsuario == userSessionR.Identificacion){
+        if (ListaReservasBD[i].IdentificacionUsuario == userSessionR.Identificacion) {
             listaReservas.push(ListaReservasBD[i]);
-            
+
         }
     }
 
 
-    function compare_numCita( a, b )
-    {
-    if ( a.celNumCita < b.celNumCita){
-      return -1;
+    function compare_numCita(a, b) {
+        if (a.celNumCita < b.celNumCita) {
+            return -1;
+        }
+        if (a.celNumCita > b.celNumCita) {
+            return 1;
+        }
+        return 0;
     }
-    if ( a.celNumCita  > b.celNumCita){
-      return 1;
-    }
-    return 0;
-  }
-  
-  listaReservas.sort(compare_numCita);
-  listaReservas.reverse()
-    
+
+    listaReservas.sort(compare_numCita);
+    listaReservas.reverse()
+
 
     for (let i = 0; i < listaReservas.length; i++) {
 
-        
-        let  reserva = listaReservas[i];
+
+        let reserva = listaReservas[i];
         // let propietario = buscaUsuarioID(reserva.IdentificacionUsurio) ;
 
         let fila = tbody.insertRow();
@@ -104,7 +103,7 @@ function ImprimirListaReservas(ListaReservasBD){
         let celdafechaEnt = fila.insertCell();
         celdafechaEnt.innerHTML = reserva.FechaHoraIngreso;
 
-        let celdaFechaSalida= fila.insertCell();
+        let celdaFechaSalida = fila.insertCell();
         celdaFechaSalida.innerHTML = reserva.FechaHoraSalida;
 
         let celdaEstado = fila.insertCell();
@@ -112,82 +111,84 @@ function ImprimirListaReservas(ListaReservasBD){
         celdaEstado.classList.add('Estado');
 
         let celdaBoton = fila.insertCell();
-        
+
         let EstadoCitaif = document.querySelectorAll('.Estado');
-        
-        if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
-        let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','/public/VerReservacionDatos.html?_id='+reserva._id);
-        let iconoV =document.createElement('i');
-        iconoV.classList.add("fa-solid")
-        iconoV.classList.add("fa-eye")
-        iconoV.classList.add("btnV")
-        BotonV.appendChild(iconoV);
-        celdaBoton.appendChild(BotonV);
-        
 
-        let Boton = document.createElement('a');
-        Boton.setAttribute('href','/public/VerReservacionDatos.html?_id='+reserva._id);
-        let icono =document.createElement('i');
-        icono.classList.add("fa-solid")
-        icono.classList.add("fa-pen-to-square")
-        icono.classList.add("btnEd")
-        Boton.appendChild(icono);
-        celdaBoton.appendChild(Boton);
+        if (EstadoCitaif[i].innerHTML == 'AGENDADA') {
+            let BotonV = document.createElement('a');
+            BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id);
+            let iconoV = document.createElement('i');
+            iconoV.classList.add("fa-solid")
+            iconoV.classList.add("fa-eye")
+            iconoV.classList.add("btnV")
+            BotonV.appendChild(iconoV);
+            celdaBoton.appendChild(BotonV);
 
-        let BotonC = document.createElement('a');
-        BotonC.setAttribute('id',(reserva.NumeroReservacion));
-        BotonC.setAttribute('onclick','ShowModalCancelReservaFunct(id)');
-        let iconoC =document.createElement('i');
-        iconoC.classList.add("fa-solid")
-        iconoC.classList.add("fa-circle-xmark")
-        iconoC.classList.add("btnCa")
-        BotonC.appendChild(iconoC);
-        celdaBoton.appendChild(BotonC);
-        }else{
-        let BotonV = document.createElement('a');
-        BotonV.setAttribute('href','/public/VerReservacionDatos.html?_id='+reserva._id)
-        let iconoV =document.createElement('i');
-        iconoV.classList.add("fa-solid")
-        iconoV.classList.add("fa-eye")
-        iconoV.classList.add("btnV")
-        BotonV.appendChild(iconoV);
-        celdaBoton.appendChild(BotonV);
+            if (userSessionR.Rol !== 2) {
+                let Boton = document.createElement('a');
+                Boton.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id);
+                let icono = document.createElement('i');
+                icono.classList.add("fa-solid")
+                icono.classList.add("fa-pen-to-square")
+                icono.classList.add("btnEd")
+                Boton.appendChild(icono);
+                celdaBoton.appendChild(Boton);
+            }
+
+            let BotonC = document.createElement('a');
+            BotonC.setAttribute('id', (reserva.NumeroReservacion));
+            BotonC.setAttribute('onclick', 'ShowModalCancelReservaFunct(id)');
+            let iconoC = document.createElement('i');
+            iconoC.classList.add("fa-solid")
+            iconoC.classList.add("fa-circle-xmark")
+            iconoC.classList.add("btnCa")
+            BotonC.appendChild(iconoC);
+            celdaBoton.appendChild(BotonC);
+
+        } else {
+            let BotonV = document.createElement('a');
+            BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id)
+            let iconoV = document.createElement('i');
+            iconoV.classList.add("fa-solid")
+            iconoV.classList.add("fa-eye")
+            iconoV.classList.add("btnV")
+            BotonV.appendChild(iconoV);
+            celdaBoton.appendChild(BotonV);
         }
 
-        
-     }
+
+    }
     let EstadoCita = document.querySelectorAll('.Estado');
-        VerEstado(EstadoCita);
-  }
+    VerEstado(EstadoCita);
+}
 
 
-function VerEstado(EstadoCita){
-    
+function VerEstado(EstadoCita) {
+
     for (let i = 0; i < EstadoCita.length; i++) {
-    let sEstadoCita = EstadoCita[i].innerHTML;    
+        let sEstadoCita = EstadoCita[i].innerHTML;
 
-    if (sEstadoCita == 'AGENDADA'){
-        EstadoCita[i].classList.add("AGENDADA")
-        
-    }
-    if (sEstadoCita == 'CANCELADA'){
-        EstadoCita[i].classList.add("CANCELADA")
-       
-    }
-    if (sEstadoCita == 'FINALIZADA'){
-        EstadoCita[i].classList.add("FINALIZADA")
-        
-        }   
+        if (sEstadoCita == 'AGENDADA') {
+            EstadoCita[i].classList.add("AGENDADA")
+
+        }
+        if (sEstadoCita == 'CANCELADA') {
+            EstadoCita[i].classList.add("CANCELADA")
+
+        }
+        if (sEstadoCita == 'FINALIZADA') {
+            EstadoCita[i].classList.add("FINALIZADA")
+
+        }
     }
 }
 
-async function GetlistaMascota(){
+async function GetlistaMascota() {
 
     let result = await getMascotasArray(userSessionR.Identificacion);
     if (result != {} && result.resultado == true) {
         listaMascotas = result.MascotasDB;
-        ImprimirListaMascotasReserva(userSessionR.Identificacion,listaMascotas);
+        ImprimirListaMascotasReserva(userSessionR.Identificacion, listaMascotas);
     }
 }
 
@@ -197,59 +198,59 @@ let inputSalida = document.getElementById('dateCheckOut');
 let inputCuidadosReserva = document.getElementById('txtCuidadosEsp');
 
 let btnCrearReserva = document.getElementById('btnReserva');
-btnCrearReserva.addEventListener('click',CrearReserva);
-async function CrearReserva(){
-    if(ValidarDatos() ==true){
-        
-        
-        let IdentificacionUsuario= userSessionR.Identificacion;
+btnCrearReserva.addEventListener('click', CrearReserva);
+async function CrearReserva() {
+    if (ValidarDatos() == true) {
+
+
+        let IdentificacionUsuario = userSessionR.Identificacion;
         let NombreMascota = inputNombreMascotaReserva.options[inputNombreMascotaReserva.selectedIndex].text;
         let IdMascota;
         for (let i = 0; i < listaMascotas.length; i++) {
-            if(IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota ){
+            if (IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota) {
                 IdMascota = listaMascotas[i]._id;
             }
-        
+
         }
         let dFechaE = inputEntrada.value;
         let dFechaS = inputSalida.value;
-        let sCiuidadosEsp = inputCuidadosReserva.value; 
-        await crearReserva(IdentificacionUsuario,IdMascota,NombreMascota,dFechaE,dFechaS,sCiuidadosEsp)
+        let sCiuidadosEsp = inputCuidadosReserva.value;
+        await crearReserva(IdentificacionUsuario, IdMascota, NombreMascota, dFechaE, dFechaS, sCiuidadosEsp)
         ConfirmarDatos();
         setTimeout(() => {
             limpiarFormReserva();
             hiddenCrearModal();
-            location.href="./AppVerReservas.html"
+            location.href = "./AppVerReservas.html"
         }, 2000);
 
     }
 }
 
 
-function ValidarDatos(){
+function ValidarDatos() {
     let sNombreMascota = inputNombreMascotaReserva.value;
     let dFechaEnt = inputEntrada.value;
     let dFechaSalida = inputSalida.value;
     let sDireccion = inputCuidadosReserva.value;
 
-    if (sNombreMascota == null || sNombreMascota == undefined || sNombreMascota == ""){
+    if (sNombreMascota == null || sNombreMascota == undefined || sNombreMascota == "") {
         inputNombreMascotaReserva.classList.add("error")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputNombreMascotaReserva.classList.remove("error")
     }
 
-    if (dFechaEnt == null || dFechaEnt == undefined || dFechaEnt == ""){
+    if (dFechaEnt == null || dFechaEnt == undefined || dFechaEnt == "") {
         inputEntrada.classList.add("error")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputEntrada.classList.remove("error")
-        
+
     }
-    if(new Date() > new Date(dFechaEnt) == true ){
-        
+    if (new Date() > new Date(dFechaEnt) == true) {
+
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -260,22 +261,22 @@ function ValidarDatos(){
     }
     //fecha sumada
     var res = new Date();
-        res.setDate(res.getDate() + 15);
-     if( res < new Date(dFechaEnt) == true){
-         Swal.fire({
-             icon: 'error',
-             title: 'Oops...',
-             text: 'No se pueden hacer reservas con mas de 15 días de anticipación!',
-         })
-         inputFecha.classList.add("error")
-         return false;
-     }
-    
-    if (dFechaSalida == null || dFechaSalida == undefined || dFechaSalida == ""){
+    res.setDate(res.getDate() + 15);
+    if (res < new Date(dFechaEnt) == true) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'No se pueden hacer reservas con mas de 15 días de anticipación!',
+        })
+        inputFecha.classList.add("error")
+        return false;
+    }
+
+    if (dFechaSalida == null || dFechaSalida == undefined || dFechaSalida == "") {
         inputSalida.classList.add("error")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputSalida.classList.remove("error")
     }
 
@@ -289,16 +290,17 @@ function ValidarDatos(){
         return false;
     }
 
-    if (sDireccion == null || sDireccion == undefined || sDireccion == ""){
+    if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
         inputCuidadosReserva.classList.add("error")
         MostrarError();
         return false;
-    }else{
+    } else {
         inputCuidadosReserva.classList.remove("error")
     }
     return true;
 }
-function MostrarError(){
+
+function MostrarError() {
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -306,18 +308,18 @@ function MostrarError(){
     })
 }
 
-function ConfirmarDatos(){
+function ConfirmarDatos() {
     Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Reserva Asignada',
         showConfirmButton: false,
         timer: 1500
-      })
+    })
 }
 
 //carga Mascotas
-function ImprimirListaMascotasReserva(user,listaMascotas){
+function ImprimirListaMascotasReserva(user, listaMascotas) {
     let Select = document.getElementById('selectMacota');
     let idCliente = user;
     let opcion;
@@ -325,20 +327,20 @@ function ImprimirListaMascotasReserva(user,listaMascotas){
 
 
     for (let i = 0; i < listaMascotas.length; i++) {
-        
-        if(idCliente == listaMascotas[i].IdentificacionDuenio){
+
+        if (idCliente == listaMascotas[i].IdentificacionDuenio) {
             opcion = document.createElement('option');
-            valor = (i+1);
+            valor = (i + 1);
             opcion.value = valor;
             opcion.text = listaMascotas[i].NombreMascota;;
             Select.appendChild(opcion);
-            }
         }
     }
+}
 
-    function limpiarFormReserva(){
-        document.getElementById('formCrearReserva').reset();
-    }
+function limpiarFormReserva() {
+    document.getElementById('formCrearReserva').reset();
+}
 
 
 function disableScroll() {
@@ -354,11 +356,11 @@ const closeCancelarReserva = document.querySelector('#cerrarCancelarR');
 
 
 // start function show modal
-const hiddenCancelModalReserva = function() {
+const hiddenCancelModalReserva = function () {
     modalCancelarReserva.classList.add('hidden');
     overlayCancelarReserva.classList.add('hidden');
     window.removeEventListener("scroll", disableScroll);
-    
+
 };
 
 
@@ -371,7 +373,7 @@ function ShowModalCancelReservaFunct(id) {
 
     closeCancelarReserva.addEventListener('click', hiddenCancelModalReserva);
     overlayCancelarReserva.addEventListener('click', hiddenCancelModalReserva);
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && !modalCancelarReserva.classList.contains('hidden')) {
             hiddenCancelModalReserva();
         }
@@ -380,7 +382,7 @@ function ShowModalCancelReservaFunct(id) {
 
 // FIN MODAL CANCELAR RESERVA
 
-let outNumReserva= document.getElementById('numReservaCancelar')
+let outNumReserva = document.getElementById('numReservaCancelar')
 let inputCancelar = document.getElementById('motivoCancelar');
 async function CancelarReserva() {
 
@@ -395,21 +397,21 @@ async function CancelarReserva() {
         return false;
     } else {
         inputCancelar.classList.remove("error")
-        
-        let result = await CancelarReservacion(numReserva,sEstado, sMotivoCancelar);
+
+        let result = await CancelarReservacion(numReserva, sEstado, sMotivoCancelar);
 
         if (result != {} && result.data.resultado == true) {
             ConfirmarDatos(result.data.msj);
             setTimeout(() => {
                 hiddenCancelModalReserva();
-                location.href="./AppVerReservas.html"
+                location.href = "./AppVerReservas.html"
             }, 2000);
-        }else{
+        } else {
             MostrarError(result.data.msj);
             return
         }
 
-        
+
     }
 
 }
@@ -445,7 +447,7 @@ const showCrearReserva = document.getElementById('show-crear-reserva');
 const closeCrearReserva2 = document.querySelector('#cerrarCrearR');
 
 
-const hiddenCrearModal = function() {
+const hiddenCrearModal = function () {
     modalCrearReserva.classList.add("hidden");
     overlay.classList.add("hidden");
     window.removeEventListener("scroll", disableScroll);
@@ -461,7 +463,7 @@ function ShowModalCrearFunct() {
     closeCrearReserva.addEventListener('click', hiddenCrearModal);
     closeCrearReserva2.addEventListener('click', hiddenCrearModal);
     overlay.addEventListener('click', hiddenCrearModal);
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && !modalCrearReserva.classList.contains('hidden')) {
             hiddenCrearModal();
         }
@@ -474,15 +476,14 @@ showCrearReserva.addEventListener('click', ShowModalCrearFunct);
 
 
 
-function llenarModalCancelarReserva(id){
+function llenarModalCancelarReserva(id) {
 
     for (let i = 0; i < listaReservas.length; i++) {
-        if(listaReservas[i].NumeroReservacion == id){
-            document.getElementById('numReservaCancelar').value= id;
-            document.getElementById('nombreReservaCancelar').value= listaReservas[i].
+        if (listaReservas[i].NumeroReservacion == id) {
+            document.getElementById('numReservaCancelar').value = id;
+            document.getElementById('nombreReservaCancelar').value = listaReservas[i].
             NombreMascota;
         }
-        
+
     }
 }
-

@@ -151,7 +151,7 @@ function ImprimirListaCitas(ListaCitasBD){
          let EstadoCitaif = document.querySelectorAll('.Estado');
          if (EstadoCitaif[i].innerHTML == 'AGENDADA' ) {
          let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
+         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id+'&rol='+userSessionC.Rol);
          let iconoV =document.createElement('i');
          iconoV.classList.add("fa-solid")
          iconoV.classList.add("fa-eye")
@@ -160,15 +160,18 @@ function ImprimirListaCitas(ListaCitasBD){
          celdaBoton.appendChild(BotonV);
 
 
-         let Boton = document.createElement('a');
-         Boton.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
-         let icono =document.createElement('i');
-         icono.classList.add("fa-solid")
-         icono.classList.add("fa-pen-to-square")
-         icono.classList.add("btnEd")
-         Boton.appendChild(icono);
-         celdaBoton.appendChild(Boton);
+         if(userSessionC.Rol !== 2){
+            let Boton = document.createElement('a');
+            Boton.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id+'&rol='+userSessionC.Rol);
+            let icono =document.createElement('i');
+            icono.classList.add("fa-solid")
+            icono.classList.add("fa-pen-to-square")
+            icono.classList.add("btnEd")
+            Boton.appendChild(icono);
+            celdaBoton.appendChild(Boton);
+        }
 
+ 
          let BotonC = document.createElement('a');
          BotonC.setAttribute('id',(cita.NumeroCita));
          BotonC.setAttribute('onclick','ShowModalCancelFunct(id)');
@@ -178,9 +181,11 @@ function ImprimirListaCitas(ListaCitasBD){
          iconoC.classList.add("btnCa")
          BotonC.appendChild(iconoC);
          celdaBoton.appendChild(BotonC);
+
+        
          }else{
          let BotonV = document.createElement('a');
-         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id);
+         BotonV.setAttribute('href','/public/VerCitaDatos.html?_id='+cita._id+'&rol='+userSessionC.Rol);
          let iconoV =document.createElement('i');
          iconoV.classList.add("fa-solid")
          iconoV.classList.add("fa-eye")

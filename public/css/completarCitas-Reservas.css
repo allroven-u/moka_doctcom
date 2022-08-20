@@ -407,3 +407,11 @@ tr {
 .agregar-btn:hover{
 	background-color: var(--esmeralda);
 }
+
+.btn-doctor{
+	 background-color: var(--verdeagua);
+}
+
+.btn-doctor:hover{
+	background-color: var(--turquesa);
+}

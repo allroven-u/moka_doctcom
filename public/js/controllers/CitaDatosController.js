@@ -1,26 +1,26 @@
 'use strict'
 let listaCitas = [];
-let listaUsuarios= [];
-window.addEventListener('load', () =>{
+let listaUsuarios = [];
+window.addEventListener('load', () => {
     GetlistaUsuarios();
     GetListaCitas();
-    
+
 });
 
 async function GetListaCitas() {
 
     let result = await getCitasArray();
-    if( result != {} && result.resultado == true){
-        listaCitas=result.ListaCitasBD;
+    if (result != {} && result.resultado == true) {
+        listaCitas = result.ListaCitasBD;
 
         setTimeout(() => {
             llenarCompletarCita();
         }, 50);
-        
+
 
     }
 }
-async function GetlistaUsuarios(){
+async function GetlistaUsuarios() {
     let result = await getUsuariosArray();
     if (result != {} && result.resultado == true) {
         listaUsuarios = result.ListaUsuariosBD;
@@ -29,7 +29,7 @@ async function GetlistaUsuarios(){
 }
 
 ///////////Obtener id url/////////////////
-let queryString, urlParams, _id;
+let queryString, urlParams, _id, usuarioRol;
 IdentificarAccion();
 async function IdentificarAccion() {
     queryString = window.location.search;
@@ -38,6 +38,19 @@ async function IdentificarAccion() {
 
     _id = urlParams.get('_id');
     console.log(_id);
+    usuarioRol = urlParams.get('rol');
+    console.log(usuarioRol);
+}
+
+usuarioRol = Number(usuarioRol);
+const boxDiagnosticos = document.querySelector('.box-2');
+const buttonVerCita = document.getElementById('Pagar');
+
+if (usuarioRol === 2) {
+    boxDiagnosticos.classList.add('hidden');
+}else if(usuarioRol !== 2){
+    buttonVerCita.classList.toggle('btn-doctor')
+    buttonVerCita.value = 'Enviar';
 }
 
 let inputNumReservaDatos = document.getElementById('numCitaDatos');
@@ -49,28 +62,28 @@ let Outobservaciones = document.getElementById('observaciones');
 let OutestadoCita = document.getElementById('estadoCita');
 
 
-function llenarCompletarCita(){
+function llenarCompletarCita() {
     let veterinario;
 
     for (let i = 0; i < listaCitas.length; i++) {
-        if(listaCitas[i]._id == _id){
+        if (listaCitas[i]._id == _id) {
             for (let j = 0; j < listaUsuarios.length; j++) {
-                 console.log(listaUsuarios[j].Identificacion);
-                if(listaUsuarios[j].Identificacion == listaCitas[i].IdentificacionVeterinario){
+                console.log(listaUsuarios[j].Identificacion);
+                if (listaUsuarios[j].Identificacion == listaCitas[i].IdentificacionVeterinario) {
                     veterinario = listaUsuarios[j].Nombre;
                 }
 
-                
+
             }
-            
-            inputNumReservaDatos.innerHTML= 'Cita Numero: '+listaCitas[i].NumeroCita;
-            inputNombreReservaDatos.innerHTML=listaCitas[i].NombreMascota;
+
+            inputNumReservaDatos.innerHTML = 'Cita Numero: ' + listaCitas[i].NumeroCita;
+            inputNombreReservaDatos.innerHTML = listaCitas[i].NombreMascota;
 
             OutnumCita.innerHTML = listaCitas[i].NumeroCita;
-            OutVeterinario.innerHTML= veterinario;
+            OutVeterinario.innerHTML = veterinario;
             OutfechaCita.innerHTML = listaCitas[i].FechaHora;
-            Outobservaciones.innerHTML=listaCitas[i].ObservacionesCita;
-            OutestadoCita.innerHTML=listaCitas[i].Estado;
+            Outobservaciones.innerHTML = listaCitas[i].ObservacionesCita;
+            OutestadoCita.innerHTML = listaCitas[i].Estado;
         }
-    }    
+    }
 }
