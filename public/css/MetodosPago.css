@@ -222,10 +222,15 @@ label {
 }
 
 #imgVisa,
-#imgMaster,
 #imgAmex {
     height: 25px;
     width: 10%;
+    text-align: center;
+}
+
+#imgMaster {
+    height: 25px;
+    width: 9%;
     text-align: center;
 }
 

@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria</title>
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Mi Perfil - Moka Veterinaria</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/MiPerfil.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
@@ -124,42 +124,42 @@
                 <div class="perfil-contenido">
                     <div class="box-usuario_img">
                         <div class="box-img border-radius">
-                            
+                            <img id="FotoPerfilUser" class="FotoPerfilUser">
                         </div>
                         <div class="usuario border-radius">
                             <p id="TxtUsuarioLogueado2"></p>
                         </div>
                         <div class="metodos-de-pago">
                             <a href="metodosPago.html" class="agregar-metodos border-radius">
-                                Metodos de Pago
+                                Métodos de pago
                             </a>
                         </div>
                     </div>
                     <div class="informacion-personal border-radius">
                         <div class="titulo-info-usario">
-                            <h2>Informacion Personal</h2>
+                            <h2>Información personal</h2>
                         </div>
                         <div class="box-info-usuario border-radius">
                             <p>Nombre: <span id="txtNombreP"></span></p>
                         </div>
                         <div class="box-info-usuario border-radius">
-                            <p>Apellidos: <span id="txtApellidosP"></span></p>
+                            <p>Apellido(s): <span id="txtApellidosP"></span></p>
                         </div>
                         <div class="box-info-usuario border-radius">
                             <p>Identificación: <span id="txtCedulaP"></span></p>
                         </div>
                         <div class="box-info-usuario border-radius">
-                            <p>Email: <span id="txtEmailP"></span></p>
+                            <p>Correo electrónico: <span id="txtEmailP"></span></p>
                         </div>
                         <div class="box-info-usuario border-radius direccion">
-                            <p>Direccion: <span id="txtDireccionP"></span></p>
+                            <p>Dirección: <span id="txtDireccionP"></span></p>
                         </div>
-                        <button class="btn-editar border-radius" type="button" onclick="location.href='./MiPerfilEditable.html'">Editar Informacion Personal</button>
+                        <button class="btn-editar border-radius" type="button" onclick="location.href='./MiPerfilEditable.html'">Editar información personal</button>
 
                     </div>
                     <div class="historial-de-pagos border-radius">
                         <div class="titulo-historial">
-                            <h2>Historial de Pagos</h2>
+                            <h2>Historial de pagos</h2>
                         </div>
                         <table>
                             <thead class="thTitle">
@@ -192,12 +192,12 @@
                     </div>
                     <div class="historial-mascota border-radius">
                         <div class="titulo-lastCitas">
-                            <h2>Ultimas citas de Mascotas</h2>
+                            <h2>Últimas citas de mascotas</h2>
                         </div>
                         <table>
                             <thead class="thTitle">
                                 <tr>
-                                    <th class="tblTitle">No.Cita</th>
+                                    <th class="tblTitle">No. Cita</th>
                                     <th class="tblTitle">Mascota</th>
                                     <th class="tblTitle">Veterinario(a)</th>
                                     <th class="tblTitle">Fecha</th>
@@ -217,6 +217,7 @@
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/Constantes.js"></script>
     <script src="./js/services/UsuarioService.js"></script>

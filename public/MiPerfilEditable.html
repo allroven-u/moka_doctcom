@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria</title>
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Mi Perfil Editable - Moka Veterinaria</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/MiPerfilEditable.css">
 
@@ -119,19 +120,18 @@
             <div class="perfil-main">
                 <div class="perfil-contenido">
                     <div class="box-usuario_img">
-                        <div class="box-img border-radius shadow">
-                            <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                        <div >
+                            <img id="imgFotoUser" class="avatarUser" onclick="AbrirCloudinary('imgFotoUser')">
                         </div>
 
                         <div class="resetearcontrasena border-radius">
-                            <button class="btn-editar border-radius redirect-modal-Password" type="button">Cambiar
-                                Contraseña</button>
+                            <button class="btn-editar border-radius redirect-modal-Password" type="button">Cambiar contraseña</button>
                         </div>
 
                     </div>
                     <div class="informacion-personal border-radius shadow">
                         <div class="titulo-info-usario">
-                            <h2>Editar Informacion Personal</h2>
+                            <h2>Editar información personal</h2>
                         </div>
                         <div class="perfilContainer">
                             <label for="txtNombreP">Nombre: </label>
@@ -139,8 +139,8 @@
                         </div>
 
                         <div class="perfilContainer">
-                            <label for="txtApellidosP">Apellidos: </label>
-                            <input class="cajas" id="txtApellidosP" type="text" placeholder="Apellidos: "
+                            <label for="txtApellidosP">Apellido(s): </label>
+                            <input class="cajas" id="txtApellidosP" type="text" placeholder="Apellido(s): "
                                 maxlength="30">
                         </div>
 
@@ -151,8 +151,8 @@
                         </div>
 
                         <div class="perfilContainer">
-                            <label for="txtEmailP">Email: </label>
-                            <input class="cajas" id="txtEmailP" type="text" placeholder="Email: " maxlength="30">
+                            <label for="txtEmailP">Correo electrónico: </label>
+                            <input class="cajas" id="txtEmailP" type="text" placeholder="Correo electrónico: " maxlength="30">
                         </div>
                         <div class="perfilContainer hidden">
                             <label for="txtPassword">Password: </label> <input class="cajas" id="txtPassword"
@@ -161,8 +161,8 @@
 
 
                         <div class="perfilContainer2">
-                            <label for="txtDireccionP">Direccion: </label>
-                            <textarea class="cajas2" id="txtDireccionP" placeholder="Direccion: " cols="30"
+                            <label for="txtDireccionP">Dirección: </label>
+                            <textarea class="cajas2" id="txtDireccionP" placeholder="Dirección: " cols="30"
                                 rows="10"></textarea>
                         </div>
 
@@ -206,14 +206,15 @@
 
         <div class="lBtns">
             <input type="button" class="lBtnCancelar" id="cancelPassword" value="Cancelar">
-            <input type="button" id="btnPassword" class="cBtn" value="Cambiar Contraseña">
+            <input type="button" id="btnPassword" class="cBtn" value="Cambiar contraseña">
         </div>
 
     </form>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="./js/Constantes.js"></script>
-
+    <script src="./js/services/SubirImagenService.js"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/controllers/PasswordController.js"></script>

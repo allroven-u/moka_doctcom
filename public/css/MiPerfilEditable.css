@@ -47,6 +47,18 @@ label {
     text-align: center;
     padding: 10px;
 }
+.avatarUser {
+    vertical-align: middle;
+    width: 180px;
+    height: 180px;
+    background-image: url('../assets/img/default-user-image.jpg');
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  .avatarUser:hover{
+    transform: scale(1.05);
+  }
 
 .resetearcontrasena {
     width: 90%;

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria App</title>
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Métodos De Pago - Moka Veterinaria</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/MetodosPago.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
@@ -125,7 +126,7 @@
 
                 <div class="title-metodos-pago">
                     <a href="./MiPerfil.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
-                    <h2>Metodos de Pago</h2>
+                    <h2>Métodos de pago</h2>
                 </div>
                 <div class="caja-metodos-pago">
                     <div class="tarjeta-por-agregar">
@@ -134,7 +135,7 @@
                             <img src="./assets/img/Mastercard_2019_logo.svg" alt="logo tarjeta" width="50px">
                         </div>
                     </div>
-                    <button type="button" class="btn-agregar-metodo-pago">Agregar metodo de pago</button>
+                    <button type="button" class="btn-agregar-metodo-pago">Agregar método de pago</button>
                 </div>
             </div>
 
@@ -145,17 +146,19 @@
 
 
         <form class="form-pago-tarjeta hidden">
-            <h1 class="titulo">Agregar Tarjeta</h1>
+            <h1 class="titulo">Agregar tarjeta</h1>
             <i class="fa-solid fa-circle-xmark cerrarModalX-tarjeta"></i>
-            <img src="https://shoplineimg.com/assets/footer/card_visa.png" id="imgVisa" class="hidden">
-
-            <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
-
-            <img src="https://shoplineimg.com/assets/footer/card_amex.png" id="imgAmex" class="hidden">
-
+            <div>
+                <img src="https://shoplineimg.com/assets/footer/card_visa.png" id="imgVisa" class="hidden">
+                <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
+                <img src="https://shoplineimg.com/assets/footer/card_amex.png" id="imgAmex" class="hidden">
+            </div>
+            <label for="txtTitular">Nombre de titular de la tarjeta:</label>
             <input class="cajas" id="txtTitular" type="text" placeholder="Nombre de titular de la tarjeta*"
                 maxlength="60">
+            <label for="txtTitular">Número de tarjeta:</label>
             <input class="cajas" id="numTarjeta" type="text" placeholder="Número de tarjeta*" maxlength="20">
+            <label for="txtTitular">CVV:</label>
             <input class="cajas" id="txtCvv" type="password" placeholder="CVV*" maxlength="4">
 
             <label for="mes_vencimiento">Vencimiento:</label>

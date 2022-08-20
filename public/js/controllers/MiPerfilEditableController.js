@@ -9,6 +9,7 @@ let inputtxtApellidosP = document.getElementById("txtApellidosP");
 let inputtxtCedulaP = document.getElementById("txtCedulaP");
 let inputtxtEmailP = document.getElementById("txtEmailP");
 // let inputtxtPasswordP=document.getElementById('txtPassword');
+let inputFotoUser= document.getElementById('imgFotoUser')
 
 let inputtxtDireccionP = document.getElementById("txtDireccionP");
 const ValidarEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -112,7 +113,7 @@ function ActualizarDatos(){
     let sConttxtCedulaP = inputtxtCedulaP.value;
     let sConttxtEmailP = inputtxtEmailP.value;
     let sConttxtDireccionP = inputtxtDireccionP.value;
-    let sFoto = "";
+    let sFoto = inputFotoUser.src;
     EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto);
 }
 
@@ -125,7 +126,7 @@ function MostrarErrorContactenos() {
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "Dato Requerido!",
+        text: "¡Dato requerido!",
     });
 }
 
@@ -143,7 +144,7 @@ function ConfirmarDatosLogin() {
     Swal.fire({
         position: "center",
         icon: "success",
-        title: "Datos Actualizados!",
+        title: "¡Datos actualizados!",
         showConfirmButton: false,
         timer: 1500,
     });
