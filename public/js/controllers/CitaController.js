@@ -192,7 +192,6 @@ function ImprimirListaCitas(ListaCitasBD){
 
      }
      let EstadoCita = document.querySelectorAll('.Estado');
-         console.log(EstadoCita.length);
          VerEstado(EstadoCita);
   }
 
@@ -200,7 +199,6 @@ function ImprimirListaCitas(ListaCitasBD){
 
     for (let i = 0; i < EstadoCita.length; i++) {
     let sEstadoCita = EstadoCita[i].innerHTML;
-    console.log(sEstadoCita)
     if (sEstadoCita == 'AGENDADA'){
         EstadoCita[i].classList.add("AGENDADA")
 
@@ -216,6 +214,21 @@ function ImprimirListaCitas(ListaCitasBD){
     }
     }
 }
+function AsignarNombreOtro(){
+    let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
+    let divNombreOtro = document.getElementById('NombreOtro');
+    let countNombreOtro = divNombreOtro.childElementCount;
+
+    if(sIdentificacion == 'Otro'){
+        divNombreOtro.classList.remove("hidden")
+    }else{
+        divNombreOtro.classList.add("hidden")
+    }
+}
+
+function limpiarFormCita(){
+    document.getElementById('formCrearCita').reset();
+}
 
 
 let inputNombreMascota = document.querySelector('#selectMascotaCita');
@@ -223,6 +236,7 @@ let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedInde
 
 let inputFecha = document.getElementById('txtFecha');
 let inputTipoIdentificacion = document.querySelector('#selectVeterinario');
+let NombreMascotaOtro = document.getElementById('txtNombreOtro');
 
 let inputDireccion = document.getElementById('txtDireccion');
 
@@ -235,13 +249,21 @@ async function CrearCita(){
     if(ValidarDatosCita() == true){
         
         let IdentificacionUsuario= userSessionC.Identificacion;
-        let IdMascota;
+        let IdMascota="N/D";
         let IdentificacionVeterinario;
         let NombreMascota = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
+        console.log("for "+NombreMascota)
         for (let i = 0; i < listaMascotas.length; i++) {
             if(IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota ){
-                IdMascota = listaMascotas[i]._id;
+
+               
+
+                    IdMascota = listaMascotas[i]._id; 
                 
+                
+                }else if(NombreMascota === "Otro"){
+                    
+                    NombreMascota="(Otro) "+NombreMascotaOtro.value;
             }
         }
         let NombreVeterinario = inputTipoIdentificacion.options[inputTipoIdentificacion.selectedIndex].text
@@ -386,25 +408,7 @@ function ImprimirListaVeterinarios(listaUsers){
         Select.appendChild(opcion);
     }
 
-    function AsignarNombreOtro(){
-        let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-        let divNombreOtro = document.getElementById('NombreOtro');
-        let countNombreOtro = divNombreOtro.childElementCount;
 
-        if(sIdentificacion == 'Otro' && countNombreOtro == 0){
-            let input = document.createElement('input');
-        input.classList.add('cajas');
-        input.setAttribute('id',"txtNombreOtro");
-        input.setAttribute('placeholder',"Nombre mascota (opcional)");
-        divNombreOtro.appendChild(input);
-        }else if(sIdentificacion != 'Otro' && countNombreOtro != 0){
-            divNombreOtro.removeChild(document.getElementById('txtNombreOtro'));
-        }
-    }
-
-    function limpiarFormCita(){
-        document.getElementById('formCrearCita').reset();
-    }
 
 
 ///MODAL CANCELAR CITA///
