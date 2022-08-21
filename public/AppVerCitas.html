@@ -199,28 +199,59 @@
 
 
                 <!-------------CREAR CITA--------->
+
                 <form id="formCrearCita" class="formCita hidden">
                     <h1 class="titulo">Nueva Cita</h1>
                     <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCrearC"></i>
-                    <label for="selectMascotaCita">Seleccione Mascota</label>
-                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
-                        <option value="">------Seleccionar mascota------</option>
-                    </select>
-                    <div id="NombreOtro" class="hidden">
-                        <input type="text" id="txtNombreOtro" placeholder="Nombre mascota" class="cajas">
-                    </div>
-                    <label for="txtFecha">Seleccione Fecha y Hora</label>
-                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-                    <label for="selectVeterinario">Seleccione Veterinario</label>
-                    <select class="cajas select" id="selectVeterinario">
-                        <option value="">------Seleccionar Veterinario------</option>
-                    </select>
-                    <label for="txtDireccion">Descripción de la Cita</label>
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5"
-                        placeholder="Descripción de la Cita*"></textarea>
-                    <div class="btnsC">
-                        <input type="button" class="btnCancelarC" value="Cancelar" id="cerrarModalCita">
-                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
+
+                    <div class="crearCita-Comtainer">
+                        <div id="RegistroContainer" class="NuevoUser hidden">
+                            <div id="IdCliente" class="">
+                                <label for="txtidCliente">Identificacion Cliente</label>
+                                <input type="text" id="txtidCliente" placeholder="Identificación cliente" class="cajas" onblur="validarUser();">
+                            </div>
+                            <div id="nombreCliente" class="">
+                                <label for="txtNombreCliente">Nombre Cliente</label>
+                                <input type="text" id="txtNombreCliente" placeholder="Nombre cliente" class="cajas" >
+                            </div>
+                            <div id="ApellidoCliente" class="">
+                                <label for="txtApellidoCliente">Apellido Cliente</label>
+                                <input type="text" id="txtApellidoCliente" placeholder="Apellido cliente" class="cajas" >
+                            </div>
+                            <div id="emailCliente" class="">
+                                <label for="txtEmailCliente">Email Cliente</label>
+                                <input type="text" id="txtEmailCliente" placeholder="Email cliente" class="cajas" >
+                            </div>
+                            <div id="DireccionCliente" class="">
+                                <label for="txtDireccionCliente">Dirección Cliente</label>
+                                <textarea name="direccion" cols="30" rows="5" id="txtDireccionCliente" placeholder="Dirección cliente" class="cajas"></textarea>
+                            </div>
+                        </div>
+    
+                        <div class="nuevaCita">
+                            
+                        <label for="selectMascotaCita">Seleccione Mascota</label>
+                        <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
+                            <option value="">------Seleccionar mascota------</option>
+                        </select>
+                        <div id="NombreOtro" class="hidden">
+                            <label for="txtNombreOtro">Nombre Mascota</label>
+                            <input type="text" id="txtNombreOtro" placeholder="Nombre mascota" class="cajas">
+                        </div>
+                        <label for="txtFecha">Seleccione Fecha y Hora</label>
+                        <input class="cajas" id="txtFecha" type="datetime-local" value="" />
+                        <label for="selectVeterinario">Seleccione Veterinario</label>
+                        <select class="cajas select" id="selectVeterinario">
+                            <option value="">------Seleccionar Veterinario------</option>
+                        </select>
+                        <label for="txtDireccion">Descripción de la Cita</label>
+                        <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5"
+                            placeholder="Descripción de la Cita*"></textarea>
+                        <div class="btnsC">
+                            <input type="button" class="btnCancelarC" value="Cancelar" id="cerrarModalCita">
+                            <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
+                        </div>
+                        </div>
                     </div>
                 </form>
 
@@ -268,9 +299,10 @@
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/MascotasService.js"></script>
+    <script src="./js/controllers/CitaController.js"></script>
     <script src="./js/controllers/appController.js"></script>
     <script src="./js/services/CitaService.js"></script>
-    <script src="./js/controllers/CitaController.js"></script>
+
     <!-- <script src="./js/controllers/CrearCitaController.js"></script> -->
     <!-- <script src="./js/controllers/CancelarController.js"></script> -->
 
