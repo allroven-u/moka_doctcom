@@ -6,8 +6,6 @@ const modalPago = document.querySelector('.form-pago-tarjeta');
 const closeModalPago = document.querySelector('.btn-cancerlar-tarjeta');
 const overlay = document.querySelector('.overlay');
 
-
-
 const hiddenPagar = function() {
     modalPago.classList.add('hidden');
     overlay.classList.add('hidden');
@@ -34,14 +32,11 @@ showPagar.addEventListener('click', function() {
 
 //////////////////////////TARJETAS///////////////////////
 
-
 let inputNombreTitular = document.getElementById("txtTitular");
 let inputNumTarjeta = document.getElementById("numTarjeta");
 let inputNumCVV = document.getElementById("txtCvv");
 let inputMesVenc = document.getElementById("mes_vencimiento");
 let inputYearVenc = document.getElementById("year_vencimiento");
-
-
 
 let tipoVisa = document.getElementById("imgVisa");
 let tipoMaster = document.getElementById("imgMaster");
@@ -145,18 +140,6 @@ function ValidarDatostarjeta(){
     return true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function ValidarTipoTarjeta(){
     let nTarjeta = inputNumTarjeta.value;
     ///////visa////////
@@ -194,7 +177,6 @@ function ValidarTipoTarjeta(){
     }
 
 }
-
 
 function MostrarErrorT() {
     Swal.fire({

@@ -1,7 +1,5 @@
 'use strict'
 
-
-
 let listaMascotas = [];
 let listaUsuarios = [];
 let userSessionC;

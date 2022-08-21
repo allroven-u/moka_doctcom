@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Usuario</title>
+    <title>Listado de usuarios</title>
     <link rel="stylesheet" href="css/VerCitas.css">
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/estilosGenerales.css">
@@ -20,12 +20,13 @@
             </a>
             <div class="profile">
                 <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
-                <a class="logout" href="./landing.html">
+                <a class="logout" onclick="logout()">
                     <i class="fa-solid fa-right-to-bracket fa-2x "></i>
                 </a>
             </div>
         </div>
     </header>
+
     <div class="bodyContainer">
         <nav class="nav">
             <ul class="list">
@@ -50,13 +51,14 @@
                                 <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
                         </li>
 
-                        <li class="list__inside">
-                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
+                        <li class="list__inside" id="mascotasTab">
+                            <a href="Mascotas.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
                         </li>
                     </ul>
 
                 </li>
+
 
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
@@ -65,14 +67,16 @@
                     </div>
                 </li>
 
-                <li class="list__item list__item--click">
+                <li class="list__item list__item--click" id="reservasTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
                         <a href="AppVerReservas.html" class="nav__link">Reservas</a>
                     </div>
 
                 </li>
-                <li class="list__item list__item--click">
+
+
+                <li class="list__item list__item--click" id="reportesTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-file-contract list__img"></i>
                         <a href="#" class="nav__link">Reportes</a>
@@ -109,123 +113,96 @@
                         </li>
 
                     </ul>
+                </li>
+            </ul>
         </nav>
-
-
         <div class="home">
 
-            <!-- Aqui se agrega el contenido de la pagina -->
+            <div class="tContainer">
+                <div class="tTituloContainer">
+                   
+                    <div class="tituloCitas">
+                        <h2>Listado de usuarios</h2>
+                    </div>
 
-            <div class="tblCaja">
-                <div class="tituloCaja">
-                    <h2>Listado Usuarios Software</h2>
                 </div>
-                <div class="filtro">
-                    <span>Nombre Usuario</span>
-                    <input type="text" title="Nombre Usuario">
 
-                    <button id="btnFiltrarUsuarios" onclick="ImprimirListaUsuarios()"> Filtar</button>
+                <div class="tFiltros">
+
+                    <div for="txtIdentificacion" class="filtrosCajas">
+                        <label for="txtIdentificacion">Identificación</label>
+                        <input id="txtIdentificacion" class="cajasCitas" type="text">
+                    </div>
+                    <div for="txtNombre" class="filtrosCajas">
+                        <label for="txtNombre">Nombre/Apellidos</label>
+                        <input id="txtNombre" class="cajasCitas" type="text">
+                    </div>
+
+                    <div for="txtEmail" class="filtrosCajas">
+                        <label for="txtEmail">Email</label>
+                        <input id="txtEmail" class="cajasCitas" type="text">
+                    </div>
+                    
+                    <div for="checkEstadoCita" class="filtrosCajaschk">
+                        <p>Roles</p>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoAgendada">Administrador</label>
+                            <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoFinalizada">Cliente</label>
+                            <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoAgendada">Veterinario</label>
+                            <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoFinalizada">Secretaria</label>
+                            <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                        </div>
+                    </div>
+
+                        <div for="checkEstadoCita" class="filtrosCajaschk">
+                            <p>Activo</p>
+                            <div class="estadoChkCajas">
+                                <label for="chkEstadoAgendada">Si</label>
+                                <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                            </div>
+                            <div class="estadoChkCajas">
+                                <label for="chkEstadoFinalizada">No</label>
+                                <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                            </div>
+                        </div>
+
+                    <div class="filtrosCajas">
+                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita"></i></a>
+                        <label for="btnFiltroCita">Filtrar</label>
+                    </div>
+
                 </div>
-                <table class="tblCitas">
-                    <thead class="thTitle">
-                        <tr>
-                            <th class="tblTitle">Usuario</th>
-                            <th class="tblTitle">Nombre</th>
-                            <th class="tblTitle">Primer Apellido</th>
-                            <th class="tblTitle">Segundo Apellido</th>
-                            <th class="tblTitle">Identificación</th>
-                            <th class="tblTitle">Email</th>
-                            <th class="tblTitle">Estado</th>
-                            <th class="tblTitle">Rol</th>
-                        </tr>
+
+                <table id="tListaUsuarios" class="table">
+                    <thead id="tTheadListUsuarios">
+
                     </thead>
-                    <tbody id="tbdListaUsuarios">
+                    <tbody id="tBodyListUsuarios" class="tbody">
+
                     </tbody>
                 </table>
+
+                <div class="overlay hidden"></div>
             </div>
-
-
-            <!--  -->
-
-
-            <!-------------CREAR CITA--------->
-            <div class="cuerpoCita hidden">
-                <form id="formCrearCita" class="formCita">
-                    <h1 class="titulo">Nueva Cita</h1>
-                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
-                                <option value="">------Seleccionar mascota------</option>
-                            </select>
-
-                    <div id="NombreOtro">
-
-                    </div>
-
-                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-
-                    <select class="cajas select" id="selectVeterinario">
-                                <option value="">------Seleccionar Veterinario------</option>
-                                
-                            </select>
-
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
-
-
-
-
-                    <div class="btnsC">
-                        <input type="button" class="btnCancelarC" value="Cancelar">
-
-                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
-                    </div>
-
-                </form>
-
-            </div>
-
-            <!---------------CREAR RESERVACION------------------------>
-            <div class="cuerpoReserva hidden">
-                <form id="formCrearReserva" class="formReserva">
-                    <h1 class="titulo">Nueva Reservación</h1>
-
-                    <select class="cajas select" id="selectMacota">
-                                <option value="">------Seleccionar mascota------</option>
-        
-                            </select>
-                    <div>
-                        <label for="dateCheckIn">Fecha de ingreso</label>
-                        <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
-                    </div>
-
-                    <div>
-                        <label for="dateCheckOut">Fecha de Salida</label>
-                        <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
-                    </div>
-
-
-
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
-
-
-
-                    <div class="btnsR">
-                        <input type="button" class="btnCancelarR" value="Cancelar">
-
-                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
-                    </div>
-
-                </form>
-            </div>
-
         </div>
-
-        <div class="overlay hidden"></div>
     </div>
-
-
+  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/controllers/appController.js"></script>
     <script src="./js/controllers/RepUsuariosController.js"></script>
-    <script src="./js/controllers/AppController.js"></script>
 
 </body>
 

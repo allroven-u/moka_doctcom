@@ -1,90 +1,102 @@
 'use strict';
 
-var listaUsuarios;
+let listaUsuarios = [];
+let userSessionLU;
 
-window.addEventListener('load', () =>{
-     cargaJson();   
+window.addEventListener('load', () => {
+    userSessionLU = GetSesion();
+    GetlistaUsuarios();
 });
 
 
 
-function ImprimirListaUsuarios(){
-    let tbody = document.getElementById('tbdListaUsuarios');
-
-    listaUsuarios = getListaUsuarios();
-
-    tbody.innerHTML = '';
-
-    for (let i = 0; i < listaUsuarios.length; i++) {
-        
-        let usuario = listaUsuarios[i];
-
-        let fila = tbody.insertRow();
-        let celdaUsuario = fila.insertCell();
-        let celdaNombre = fila.insertCell();
-        let celdaApellido1 = fila.insertCell();
-        let celdaApellido2 = fila.insertCell();
-        let celdaIdentificación = fila.insertCell();
-        let celdaEmail = fila.insertCell();
-        let celdaActivo = fila.insertCell();
-        let celdaRol = fila.insertCell();
-
-        celdaUsuario.innerHTML = usuario.Usuario;
-        celdaUsuario.classList.add('infoTd');
-        celdaNombre.innerHTML = usuario.Nombre
-        celdaNombre.classList.add('infoTd');
-        celdaApellido1.innerHTML = usuario.Apellido1;
-        celdaApellido1.classList.add('infoTd');
-        celdaApellido2.innerHTML = usuario.Apellido2
-        celdaApellido2.classList.add('infoTd');
-        celdaIdentificación.innerHTML = usuario.Identificacion;
-        celdaIdentificación.classList.add('infoTd');
-        celdaEmail.innerHTML = usuario.Email;
-        celdaEmail.classList.add('infoTd');
-        if(usuario.Activo == 1) {
-            celdaActivo.innerHTML =   'Activo'
-        } else {
-            celdaActivo.innerHTML =   'Inactivo'
-        }
-        celdaActivo.classList.add('infoTd');
-        switch (usuario.Rol) {
-            case 1:
-                celdaRol.innerHTML = 'Administrador';
-                break;
-            case 2:
-                celdaRol.innerHTML = 'Usuario';
-                break;
-            case 3:
-                celdaRol.innerHTML = 'Veterinario(a)';
-            break;
-            case 4:
-                celdaRol.innerHTML = 'Secretario(a)';
-            break;
-        }
-        celdaRol.classList.add('infoTd');
+async function GetlistaUsuarios() {
+    let result = await getUsuariosArray();
+    if (result != {} && result.resultado == true) {
+        listaUsuarios = result.ListaUsuariosBD;
+        ImprimirListaUsuarios(listaUsuarios);
     }
-    // let EstadoCita = document.querySelectorAll('.Estado');
-    //     console.log(EstadoCita.length);
-    //     VerEstadoReservas(EstadoCita);
 }
 
+function ImprimirListaUsuarios(listaUsuariosBD) {
 
-//  function VerEstadoReservas(EstadoCita){
-    
-//      for (let i = 0; i < EstadoCita.length; i++) {
-//      let sEstadoCita = EstadoCita[i].innerHTML;    
-//      console.log(sEstadoCita)
-//      if (sEstadoCita == 'AGENDADA'){
-//          EstadoCita[i].classList.add("AGENDADA")
+    let tThead = document.getElementById('tTheadListUsuarios');
+    let tbody = document.getElementById('tBodyListUsuarios');
+
+    tbody.innerHTML = '';
+    tThead.innerHTML = '';
+
+
+    // thead
+    let thRow = tThead.insertRow();
+
+    let celIdentificacion = thRow.insertCell();
+    celIdentificacion.innerHTML = 'Identificación';
+
+
+    let celNombre = thRow.insertCell();
+    celNombre.innerHTML = 'Nombre';
+
+     let celApellido = thRow.insertCell();
+     celApellido.innerHTML = 'Apellidos';
+
+    let celEmail = thRow.insertCell();
+    celEmail.innerHTML = 'Email';
+
+    let celActivo = thRow.insertCell();
+    celActivo.innerHTML = 'Activo';
+
+    let celRol = thRow.insertCell();
+    celRol.innerHTML = 'Rol';
+
+
+    for (let i = 0; i < listaUsuariosBD.length; i++) {
+
+
+        let usuario = listaUsuariosBD[i];
+
+        let fila = tbody.insertRow();
+
+        let celdaIdentificacion = fila.insertCell();
+        celdaIdentificacion.innerHTML = usuario.Identificacion;
+
+        let celdaNombre = fila.insertCell();
+        celdaNombre.innerHTML = usuario.Nombre;
+
+         let celdaApellido = fila.insertCell();
+         celdaApellido.innerHTML = usuario.Apellido;
+
+        let celdaEmail = fila.insertCell();
+        celdaEmail.innerHTML = usuario.Email;
+
+        let celdaActivo = fila.insertCell();
+        if(usuario.Activo == 1) 
+        celdaActivo.innerHTML = 'Si';
+        else
+        celdaActivo.innerHTML = 'No';
+      
+        let celdaRol = fila.insertCell();
         
-//      }
-//      if (sEstadoCita == 'CANCELADA'){
-//          EstadoCita[i].classList.add("CANCELADA")
+        switch(usuario.Rol) {
+            case 1:
+                celdaRol.innerHTML = 'Administrador'
+              break;
+            case 2:
+                celdaRol.innerHTML = 'Cliente'
+              break;
+            case 3:
+                celdaRol.innerHTML = 'Veterinario'
+              break;
+            case 4:
+                celdaRol.innerHTML = 'Secretaria'
+              break;
+            default:
+                celdaRol.innerHTML = 'Otro'
+          }
+
+        
        
-//      }
-//      if (sEstadoCita == 'FINALIZADA'){
-//          EstadoCita[i].classList.add("FINALIZADA")
-        
-//      }   
-//      }
-//  }
+
+    }
+
+}
