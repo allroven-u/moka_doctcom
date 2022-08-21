@@ -1,13 +1,17 @@
 'use strict';
 
 let userSessionR;
-
+let listaUsuarios = [];
 let listaMascotas = [];
 let listaReservas = [];
 window.addEventListener('load', () => {
     userSessionR = GetSesion();
     GetListaReservas();
-    GetlistaMascota();
+    GetlistaUsuarios();
+    if (userSessionR.Rol == 2) {
+        GetlistaMascota();
+    }
+    registrarReservaUser()
 });
 
 
@@ -18,6 +22,13 @@ async function GetListaReservas() {
 
         ImprimirListaReservas(result.ListaReservasBD)
 
+    }
+}
+
+async function GetlistaUsuarios() {
+    let result = await getUsuariosArray();
+    if (result != {} && result.resultado == true) {
+        listaUsuarios = result.ListaUsuariosBD;
     }
 }
 
@@ -199,19 +210,30 @@ async function GetlistaMascota() {
         ImprimirListaMascotasReserva(userSessionR.Identificacion, listaMascotas);
     }
 }
+async function GetlistaMascotaUser(pIdUser) {
 
+    let result = await getMascotasArray(pIdUser);
+    if (result != {} && result.resultado == true) {
+        listaMascotas = result.MascotasDB;
+        ImprimirListaMascotasReserva(pIdUser, listaMascotas);
+    }
+}
+let idUser = document.getElementById("IdCliente");
 let inputNombreMascotaReserva = document.querySelector('#selectMacota');
 let inputEntrada = document.getElementById('dateCheckIn');
 let inputSalida = document.getElementById('dateCheckOut');
 let inputCuidadosReserva = document.getElementById('txtCuidadosEsp');
-
+let IdentificacionUsuario;
 let btnCrearReserva = document.getElementById('btnReserva');
 btnCrearReserva.addEventListener('click', CrearReserva);
 async function CrearReserva() {
     if (ValidarDatos() == true) {
 
-
-        let IdentificacionUsuario = userSessionR.Identificacion;
+        if (userSessionR.Rol == 2) {
+            IdentificacionUsuario = userSessionR.Identificacion;
+        } else {
+            IdentificacionUsuario = idUser.value;
+        }
         let NombreMascota = inputNombreMascotaReserva.options[inputNombreMascotaReserva.selectedIndex].text;
         let IdMascota;
         for (let i = 0; i < listaMascotas.length; i++) {
@@ -241,6 +263,30 @@ function ValidarDatos() {
     let dFechaSalida = inputSalida.value;
     let sDireccion = inputCuidadosReserva.value;
 
+    if (userSessionR.Rol != 2) {
+        let sIdUser = idUser.value;
+        let isnum = /^\d+$/.test(sIdUser);
+
+        if (sIdUser == null || sIdUser == undefined || sIdUser == "") {
+            idUser.classList.add("error")
+            MostrarError("¡La identificación es requerida!");
+            return false;
+        }
+        if (isnum == false) {
+            idUser.classList.add("error")
+            MostrarError("¡La identificación debe contener solo números! No puede contener caracteres especiales como guiones.");
+            return false;
+        }
+
+        if (sIdUser.length < 9 || sIdUser.length > 12) {
+            idUser.classList.add("error")
+            MostrarError("¡La cedula persona física debe tener 9 números, cedula persona jurídica 10 números, NITE 10 números y la DIMEX 11 o 12 números! Todas sin cero al inicio ni guiones.");
+            return false;
+        }
+        else {
+            idUser.classList.remove("error")
+        }
+    }
     if (sNombreMascota == null || sNombreMascota == undefined || sNombreMascota == "") {
         inputNombreMascotaReserva.classList.add("error")
         MostrarError();
@@ -345,6 +391,46 @@ function ImprimirListaMascotasReserva(user, listaMascotas) {
         }
     }
 }
+
+//////////////registrar reservas secretaria/////////////////
+let divIdUser = document.getElementById('UsuarioReserva')
+
+
+
+
+function registrarReservaUser() {
+
+    if (userSessionR.Rol == 2) {
+        divIdUser.classList.add("hidden")
+    } else {
+        divIdUser.classList.remove("hidden")
+    }
+}
+
+function validarUser(){
+
+    let sIdUser = idUser.value;
+  
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        if (sIdUser == listaUsuarios[i].Identificacion) {
+            GetlistaMascotaUser(sIdUser);
+            i = listaUsuarios.length;
+        }else{
+            if (i == listaUsuarios.length-1) {
+                MostrarError("El usuario no existe, intente de nuevo.")
+            }
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
 
 function limpiarFormReserva() {
     document.getElementById('formCrearReserva').reset();
