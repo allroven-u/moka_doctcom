@@ -324,10 +324,11 @@ label {
 	}
 	.NuevoUser{
 		margin-right: 20px;
+		width: 400px;
 		
 	}
 	.nuevaCita{
-		width: 450px;
+		width: 400px;
 	}
 
 	.cerrarModalX-crearCita{
