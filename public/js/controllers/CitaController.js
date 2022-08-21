@@ -103,7 +103,7 @@ function ImprimirListaCitas(ListaCitasBD) {
     celAcciones.innerHTML = 'Acciones';
 
 
-    ///////////citas Usuario/////////////////
+    ///////////cargar citas Usuarios/////////////////
     for (let i = 0; i < ListaCitasBD.length; i++) {
 
         if (userSessionC.Rol == 2) {
@@ -389,7 +389,6 @@ async function CrearCita() {
                         listaVeterinarios.push(listaUsuarios[i])
 
                     }
-                    console.log(listaVeterinarios)
                 }
 
                 var num = Math.floor(Math.random() * (listaVeterinarios.length));
