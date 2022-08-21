@@ -308,16 +308,26 @@ label {
 	.formCita {
 		position: absolute;
 		top: 40%;
-		left: 50%;
+		left: 55%;
 		transform: translate(-50%, -50%);
 		color: var(--verdeagua);
-		width: 450px;
-		padding: 30px;
+		width: fit-content;
+		padding:30px;
 		margin: auto;
-		margin-top: 25px;
+		margin-top: 95px;
 		background-color: var(--blanco);
 		border-radius: 5px;
 		z-index: 11;
+	}
+	.crearCita-Comtainer{
+		display: flex;
+	}
+	.NuevoUser{
+		margin-right: 20px;
+		
+	}
+	.nuevaCita{
+		width: 450px;
 	}
 
 	.cerrarModalX-crearCita{
@@ -325,7 +335,7 @@ label {
 		color: var(--Rojo2);
 		transition: all 200ms linear;
 		position: absolute;
-		top: 5%;
+		top: 2%;
 		right: 5%;
 		cursor: pointer;
 	}
@@ -351,10 +361,10 @@ label {
 	}
 	
 	.cajas {
-		margin-top: 20px;
+		margin-top: 15px;
 		width: 100%;
 		padding: 15px;
-		margin-bottom: 20px;
+		margin-bottom: 15px;
 		border-radius: 5px;
 		border: none;
 		border-left: 10px solid var(--silver);

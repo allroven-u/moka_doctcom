@@ -1,38 +1,4 @@
 "use strict";
-
-// function buscaUsuario(pUsuario) {
-//   let result = null;
-//   for (let i = 0; i < usuariosArray.length; i++) {
-//     if (usuariosArray[i].Usuario.toUpperCase() === pUsuario) {
-//       result = usuariosArray[i];
-//     }
-//   }
-//   return result;
-// }
-
-// //Esta funcion busca un objeto dentro del arreglo de usuario segun el campo de id usuario y lo devuelve en formato object.
-// function buscaUsuarioID(pUsuarioID) {
-//  let result = null;
-//  for (let i = 0; i < usuariosArray.length; i++) {
-//    if (usuariosArray[i].Identificacion === pUsuarioID) {
-//      result = usuariosArray[i];
-//    }
-//  }
-//  console.log(result);
-
-//  if (result != null) {
-//   return result;
-//  } else {
-//   return '';
-//  }
-
-// }
-
-// function getListaUsuarios(){
-//   return usuariosArray;
-// }
-
-//Esta funcion valida si el login es correcto devuelve un booleano.
 async function validarLogin(pEmail, pClave) {
   let result = {};
   await  axios.get(apiUrl + '/AutenticarUsuario', {

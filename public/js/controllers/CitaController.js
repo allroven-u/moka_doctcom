@@ -12,8 +12,12 @@ let fechaFinal = document.getElementById('DateFecha2');
 window.addEventListener('load', () => {
     userSessionC = GetSesion();
     GetListaCitas();
-    GetlistaMascota();
+    if (userSessionC.Rol == 2) {
+        GetlistaMascota();
+    }
+
     GetlistaUsuarios();
+    registrarCitaUser();
 });
 
 
@@ -45,6 +49,14 @@ async function GetlistaMascota() {
     if (result != {} && result.resultado == true) {
         listaMascotas = result.MascotasDB;
         ImprimirListaMascotasCita(userSessionC.Identificacion, listaMascotas);
+    }
+}
+async function GetlistaMascotaUser(idUser) {
+
+    let result = await getMascotasArray(idUser);
+    if (result != {} && result.resultado == true) {
+        listaMascotas = result.MascotasDB;
+        ImprimirListaMascotasCita(idUser, listaMascotas);
     }
 }
 
@@ -91,19 +103,19 @@ function ImprimirListaCitas(ListaCitasBD) {
     celAcciones.innerHTML = 'Acciones';
 
 
-    ///////////citas Usuario/////////////////
+    ///////////cargar citas Usuarios/////////////////
     for (let i = 0; i < ListaCitasBD.length; i++) {
 
-        if(userSessionC.Rol == 2){
+        if (userSessionC.Rol == 2) {
             if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion) {
                 listaCitas.push(ListaCitasBD[i]);
             }
-        }else if(userSessionC.Rol == 3){
+        } else if (userSessionC.Rol == 3) {
             if (ListaCitasBD[i].
                 IdentificacionVeterinario == userSessionC.Identificacion) {
                 listaCitas.push(ListaCitasBD[i]);
             }
-        }else{
+        } else {
             listaCitas = ListaCitasBD;
         }
     }
@@ -250,39 +262,118 @@ function limpiarFormCita() {
 }
 
 
+/////////////citas sin perfil///////////////////
+let inputIdUser = document.getElementById('txtidCliente');
+let inputNombreUser = document.getElementById('txtNombreCliente');
+let inputApellidoUser = document.getElementById('txtApellidoCliente');
+let inputEmailUser = document.getElementById('txtEmailCliente')
+let inputDireccionUser = document.getElementById('txtDireccionCliente')
+
+let divIdUser = document.getElementById('RegistroContainer')
+let IdentificacionUsuario;
+let NombreUsuario;
+let ApellidoUsuario;
+let EmailUsuario;
+let DiereccionUsuario;
+
+
+function registrarCitaUser() {
+
+    if (userSessionC.Rol == 2) {
+        divIdUser.classList.add("hidden")
+    } else {
+        divIdUser.classList.remove("hidden")
+    }
+}
+
+function validarUser() {
+    let idUser = inputIdUser.value;
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        if (listaUsuarios[i].Identificacion == idUser) {
+            NombreUsuario = listaUsuarios[i].Nombre;
+            ApellidoUsuario = listaUsuarios[i].Apellido;
+            EmailUsuario = listaUsuarios[i].Email;
+            DiereccionUsuario = listaUsuarios[i].Direccion;
+            CargarDatosUser(NombreUsuario, ApellidoUsuario, EmailUsuario, DiereccionUsuario, idUser);
+            i = listaUsuarios.length;
+        } else {
+            if (i == listaUsuarios.length - 1) {
+                ImprimirListaMascotasCita(idUser, listaMascotas);
+            }
+
+        }
+
+
+    }
+}
+function CargarDatosUser(pNombreUsuario, pApellidoUsuario, pEmailUsuario, pDiereccionUsuario, pidUser) {
+    inputNombreUser.value = pNombreUsuario;
+    inputApellidoUser.value = pApellidoUsuario;
+    inputEmailUser.value = pEmailUsuario;
+    inputDireccionUser.value = pDiereccionUsuario;
+    GetlistaMascotaUser(pidUser)
+}
+function RegistroNuevoUser(idUser) {
+
+    let sNombre = inputNombreUser.value;
+    let sApellido = inputApellidoUser.value;
+    let sEmail = inputEmailUser.value;
+    let sDireccion = inputDireccionUser.value;
+
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        if (listaUsuarios[i].Identificacion != idUser) {
+            if (i == listaUsuarios.length - 1) {
+                let passwordUser = "Df1234"
+                let fotoUser = "";
+                RegistrarUsuario(sNombre, sApellido, idUser, sEmail, passwordUser, sDireccion, fotoUser)
+            }
+        }
+    }
+
+}
+
+
+
+
 let inputNombreMascota = document.querySelector('#selectMascotaCita');
 let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-
 let inputFecha = document.getElementById('txtFecha');
 let inputTipoIdentificacion = document.querySelector('#selectVeterinario');
 let NombreMascotaOtro = document.getElementById('txtNombreOtro');
-
 let inputDireccion = document.getElementById('txtDireccion');
-
 let btnCrear = document.getElementById('btnIniciar');
 btnCrear.addEventListener('click', CrearCita);
+
+
 
 
 async function CrearCita() {
 
     if (ValidarDatosCita() == true) {
 
-        let IdentificacionUsuario = userSessionC.Identificacion;
+
+        if (userSessionC.Rol == 2) {
+            IdentificacionUsuario = userSessionC.Identificacion;
+        } else {
+            IdentificacionUsuario = inputIdUser.value;
+        }
+
+        RegistroNuevoUser(IdentificacionUsuario);
+
         let IdMascota = "N/D";
         let IdentificacionVeterinario;
         let NombreMascota = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
         console.log("for " + NombreMascota)
+        if (NombreMascota === "Otro") {
+
+            NombreMascota = "(Otro) " + NombreMascotaOtro.value;
+        }
         for (let i = 0; i < listaMascotas.length; i++) {
             if (IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota) {
 
 
 
                 IdMascota = listaMascotas[i]._id;
-
-
-            } else if (NombreMascota === "Otro") {
-
-                NombreMascota = "(Otro) " + NombreMascotaOtro.value;
             }
         }
         let NombreVeterinario = inputTipoIdentificacion.options[inputTipoIdentificacion.selectedIndex].text
@@ -290,34 +381,32 @@ async function CrearCita() {
         for (let i = 0; i < listaUsuarios.length; i++) {
             if (NombreVeterinario == listaUsuarios[i].Nombre) {
                 IdentificacionVeterinario = listaUsuarios[i].Identificacion;
-                
-            }else if(NombreVeterinario === ("Aleatorio")){
+
+            } else if (NombreVeterinario === ("Aleatorio")) {
                 let listaVeterinarios = [];
                 for (let i = 0; i < listaUsuarios.length; i++) {
-                    if(listaUsuarios[i].Rol == 3){
+                    if (listaUsuarios[i].Rol == 3) {
                         listaVeterinarios.push(listaUsuarios[i])
-                        
+
                     }
-                    console.log(listaVeterinarios)
                 }
 
-                var num = Math.floor(Math.random()*(listaVeterinarios.length));
-                console.log(num)
-                NombreVeterinario=listaVeterinarios[num].Nombre;
+                var num = Math.floor(Math.random() * (listaVeterinarios.length));
+                NombreVeterinario = listaVeterinarios[num].Nombre;
             }
         }
 
         let FechaHora = inputFecha.value;
-        let ObservacionesCita = inputDireccion.value; 
-        let result = await crearCita(IdentificacionUsuario,IdMascota,NombreMascota,FechaHora,IdentificacionVeterinario,ObservacionesCita);
+        let ObservacionesCita = inputDireccion.value;
+        let result = await crearCita(IdentificacionUsuario, IdMascota, NombreMascota, FechaHora, IdentificacionVeterinario, ObservacionesCita);
         if (result != {} && result.data.resultado == true) {
             ConfirmarDatos(result.data.msj);
             setTimeout(() => {
                 limpiarFormCita();
                 hiddenCrearModal();
-                location.href="./AppVerCitas.html"                
+                location.href = "./AppVerCitas.html"
             }, 2000);
-        }else{
+        } else {
             MostrarError(result.data.msj)
         }
     }
@@ -329,6 +418,82 @@ function ValidarDatosCita() {
     let dFecha = inputFecha.value;
     let sIdentificacion = inputTipoIdentificacion.value;
     let sDireccion = inputDireccion.value;
+
+
+    if (userSessionC.Rol != 2) {
+        let sIdUser = inputIdUser.value;
+        let sNombre = inputNombreUser.value;
+        let sApellido = inputApellidoUser.value;
+        let sEmail = inputEmailUser.value;
+        let sDireccion = inputDireccionUser.value;
+        const ValidarTexto = /^[a-zA-Z,.' -]+$/;
+        const ValidarEmail =/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+        let isnum = /^\d+$/.test(sIdUser);
+
+        if (sIdUser == null || sIdUser == undefined || sIdUser == "") {
+            inputIdUser.classList.add("error")
+            MostrarError("¡La identificación es requerida!");
+            return false;
+        }
+        if (isnum == false) {
+            inputIdUser.classList.add("error")
+            MostrarError("¡La identificación debe contener solo números! No puede contener caracteres especiales como guiones.");
+            return false;
+        }
+
+        if (sIdUser.length < 9 || sIdUser.length > 12) {
+            inputIdUser.classList.add("error")
+            MostrarError("¡La cedula persona física debe tener 9 números, cedula persona jurídica 10 números, NITE 10 números y la DIMEX 11 o 12 números! Todas sin cero al inicio ni guiones.");
+            return false;
+        }
+        else {
+            inputIdUser.classList.remove("error")
+        }
+
+        if (sNombre == null || sNombre == undefined || sNombre == "") {
+            inputNombreUser.classList.add("error")
+            MostrarError("¡El nombre es requerido!");
+            return false;
+
+        } else if (sNombre.match(ValidarTexto)) {
+            inputNombreUser.classList.remove("error")
+
+        } else {
+            inputNombreUser.classList.add("error")
+            MostrarError("¡El nombre no puede contener caracteres especiales ni números!");
+            return false;
+        }
+        if (sApellido == null || sApellido == undefined || sApellido == "") {
+            inputApellidoUser.classList.add("error")
+            MostrarError("¡Formato de apellido no es valido!");
+            return false;
+        } else if (sApellido.match(ValidarTexto)) {
+            inputApellidoUser.classList.remove("error")
+        } else {
+            inputApellidoUser.classList.add("error")
+            MostrarError("El campo de apellido(s) no puede contener caracteres especiales ni números!");
+            return false;
+        }
+
+        if (sEmail == null || sEmail == undefined || sEmail == "") {
+            inputEmailUser.classList.add("error")
+            MostrarError("¡El correo electrónico requerido!");
+            return false;
+        } else if (sEmail.match(ValidarEmail)) {
+            inputEmailUser.classList.remove("error")
+        } else {
+            inputEmailUser.classList.add("error")
+            MostrarError("¡Formato de correo electrónico no valido!");
+            return false;
+        }
+        if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
+            inputDireccionUser.classList.add("error")
+            MostrarError('¡La dirección es requerida!');
+            return false;
+        } else {
+            inputDireccionUser.classList.remove("error")
+        }
+    }
 
 
     if (sNombreMascota == null || sNombreMascota == undefined || sNombreMascota == "") {
@@ -557,7 +722,7 @@ function llenarModalCancelarCita(id) {
         if (listaCitas[i].NumeroCita == id) {
             document.getElementById('numCitaCancelar').value = id;
             document.getElementById('nombreCitaCancelar').value = listaCitas[i].
-            NombreMascota;
+                NombreMascota;
         }
 
     }
