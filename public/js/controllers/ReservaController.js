@@ -11,10 +11,6 @@ window.addEventListener('load', () => {
 });
 
 
-
-
-
-
 async function GetListaReservas() {
 
     let result = await getReservasArray();
