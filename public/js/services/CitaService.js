@@ -29,6 +29,32 @@ async function FiltrarCitas(pFecha1,pFecha2){
  return result;
   };
 
+  async function getCitasUsuario(pIdentificacionUsuario){
+    let result = {};
+    await  axios.get(apiUrl + '/MiListarCitas',{params: {IdentificacionUsuario: pIdentificacionUsuario }} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  
+   return result;
+    };
+
+    async function getCitasVeterinario(pIdentificacionVeterinario){
+      let result = {};
+      await  axios.get(apiUrl + '/ListarCitasVet',{params: {IdentificacionVeterinario: pIdentificacionVeterinario }} , {
+        responseType: 'json'
+      }).then((res)=>{
+        result = res.data
+      }).catch((err)=>{
+        console.log(err);
+      });
+    
+     return result;
+      };
+
 async function UltimaCita(){
     let result = {};
     await  axios.get(apiUrl + '/UltimaCita', {

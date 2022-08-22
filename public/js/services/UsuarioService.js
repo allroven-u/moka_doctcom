@@ -30,6 +30,19 @@ async function getUsuariosArray(){
   return result;
   };
 
+  async function buscaUsuarioID(pIdentificacion){
+    let result = {};
+    await  axios.get(apiUrl + '/BuscarUsuario',{params: {Identificacion: pIdentificacion }} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  
+   return result;
+  }
+
 
   async function RegistrarUsuario(pNombre,pApellido,pIdUsuario,pEmail,pPassword,pDireccion,pFoto) {
     let result ={};

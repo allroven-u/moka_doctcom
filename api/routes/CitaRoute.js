@@ -55,7 +55,7 @@ router.get('/ListarCitas', (req, res) => {
                 ListaCitasBD
             });
         }
-    });
+    }).sort({$natural:-1});
 });
 
 router.get('/UltimaCita', (req, res) => {
@@ -75,6 +75,45 @@ router.get('/UltimaCita', (req, res) => {
         }
     }).sort({$natural:-1}).limit(1);
 });
+
+router.get('/MiListarCitas', (req, res) => {
+    let params = req.query;
+    Cita.find({"IdentificacionUsuario":params.IdentificacionUsuario},(err, ListaCitasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaCitasBD
+            });
+        }
+    }).sort({$natural:-1});
+});
+
+router.get('/ListarCitasVet', (req, res) => {
+    let params = req.query;
+    Cita.find({"IdentificacionVeterinario":params.IdentificacionVeterinario},(err, ListaCitasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaCitasBD
+            });
+        }
+    }).sort({$natural:-1});
+});
+
 
 
 

@@ -1,747 +1,771 @@
-'use strict'
+"use strict";
 
 let listaMascotas = [];
 let listaUsuarios = [];
 let userSessionC;
 let listaCitas = [];
 
-let botonFiltrar = document.getElementById('btnFiltroCita');
-let fechaInicio = document.getElementById('DateFecha1');
-let fechaFinal = document.getElementById('DateFecha2');
+let botonFiltrar = document.getElementById("btnFiltroCita");
+let fechaInicio = document.getElementById("DateFecha1");
+let fechaFinal = document.getElementById("DateFecha2");
 
-window.addEventListener('load', () => {
-    userSessionC = GetSesion();
-    GetListaCitas();
-    if (userSessionC.Rol == 2) {
-        GetlistaMascota();
-    }
+window.addEventListener("load", () => {
+  userSessionC = GetSesion();
 
-    GetlistaUsuarios();
-    registrarCitaUser();
+  GetListaCitas();
+  if (userSessionC.Rol == 2) {
+    GetlistaMascota();
+  }
+  GetlistaUsuarios();
+  registrarCitaUser();
 });
 
-
-botonFiltrar.addEventListener('click', () => {
-    FiltarListaCitas(fechaInicio.value, fechaFinal.value);
+botonFiltrar.addEventListener("click", () => {
+  FiltarListaCitas(fechaInicio.value, fechaFinal.value);
 });
 
 async function GetListaCitas() {
+  let result;
+  switch (userSessionC.Rol) {
+    case 2:
+      result = await getCitasUsuario(userSessionC.Identificacion);
+      break;
+    case 3:
+      result = await getCitasVeterinario(userSessionC.Identificacion);
+      break;
+    default:
+      result = await getCitasArray();
+      break;
+  }
 
-    let result = await getCitasArray();
-
-    if (result != {} && result.resultado == true) {
-        ImprimirListaCitas(result.ListaCitasBD);
-    }
+  if (result != {} && result.resultado == true) {
+    ImprimirListaCitas(result.ListaCitasBD);
+  }
 }
 
 async function FiltarListaCitas(pFecha1, pFecha2) {
-    let result = await FiltrarCitas(pFecha1, pFecha2);
+  let result = await FiltrarCitas(pFecha1, pFecha2);
 
-    if (result != {} && result.resultado == true) {
-        ImprimirListaCitas(result.ListaCitasBD);
-    }
+  if (result != {} && result.resultado == true) {
+    ImprimirListaCitas(result.ListaCitasBD);
+  }
 }
-
 
 async function GetlistaMascota() {
-
-    let result = await getMascotasArray(userSessionC.Identificacion);
-    if (result != {} && result.resultado == true) {
-        listaMascotas = result.MascotasDB;
-        ImprimirListaMascotasCita(userSessionC.Identificacion, listaMascotas);
-    }
+  let result = await getMascotasArray(userSessionC.Identificacion);
+  if (result != {} && result.resultado == true) {
+    listaMascotas = result.MascotasDB;
+    ImprimirListaMascotasCita(userSessionC.Identificacion, listaMascotas);
+  }
 }
 async function GetlistaMascotaUser(idUser) {
-
-    let result = await getMascotasArray(idUser);
-    if (result != {} && result.resultado == true) {
-        listaMascotas = result.MascotasDB;
-        ImprimirListaMascotasCita(idUser, listaMascotas);
-    }
+  let result = await getMascotasArray(idUser);
+  if (result != {} && result.resultado == true) {
+    listaMascotas = result.MascotasDB;
+    ImprimirListaMascotasCita(idUser, listaMascotas);
+  }
 }
 
 async function GetlistaUsuarios() {
-    let result = await getUsuariosArray();
-    if (result != {} && result.resultado == true) {
-        listaUsuarios = result.ListaUsuariosBD;
-        ImprimirListaVeterinarios(listaUsuarios);
-
-    }
+  let result = await getUsuariosArray();
+  if (result != {} && result.resultado == true) {
+    listaUsuarios = result.ListaUsuariosBD;
+    ImprimirListaVeterinarios(listaUsuarios);
+  }
 }
 
-function ImprimirListaCitas(ListaCitasBD) {
+async function ImprimirListaCitas(ListaCitasBD) {
+  let tThead = document.getElementById("tTheadCitas");
+  let tbody = document.getElementById("tBodyCitas");
 
-    let tThead = document.getElementById('tTheadCitas');
-    let tbody = document.getElementById('tBodyCitas');
+  tbody.innerHTML = "";
+  tThead.innerHTML = "";
 
-    tbody.innerHTML = '';
-    tThead.innerHTML = '';
+  // thead
+  let thRow = tThead.insertRow();
 
+  let celNumCita = thRow.insertCell();
+  celNumCita.innerHTML = "Num. Cita";
 
-    // thead
-    let thRow = tThead.insertRow();
+  if ((userSessionC.Rol == 3)) {
+    let celPropietario = thRow.insertCell();
+    celPropietario.innerHTML = "Propietario";
+  }
 
-    let celNumCita = thRow.insertCell();
-    celNumCita.innerHTML = 'Num. Cita';
+  let celMascota = thRow.insertCell();
+  celMascota.innerHTML = "Mascota";
+  if ((userSessionC.Rol == 2)) {
+    let celVeterinario = thRow.insertCell();
+    celVeterinario.innerHTML = "Veterinario";
+  }
 
-    // let celPropietario= thRow.insertCell();
-    // celPropietario.innerHTML = 'Propietario';
+  let celFecha = thRow.insertCell();
+  celFecha.innerHTML = "Fecha";
 
-    let celMascota = thRow.insertCell();
-    celMascota.innerHTML = 'Mascota';
+  let celEstado = thRow.insertCell();
+  celEstado.innerHTML = "Estado";
 
-    // let celVeterinario = thRow.insertCell();
-    // celVeterinario.innerHTML = 'Veterinario';
+  let celAcciones = thRow.insertCell();
+  celAcciones.innerHTML = "Acciones";
 
-    let celFecha = thRow.insertCell();
-    celFecha.innerHTML = 'Fecha';
+  ///////////cargar citas Usuarios/////////////////
+  // for (let i = 0; i < ListaCitasBD.length; i++) {
 
-    let celEstado = thRow.insertCell();
-    celEstado.innerHTML = 'Estado';
+  //     if (userSessionC.Rol == 2) {
+  //         if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion) {
+  //             listaCitas.push(ListaCitasBD[i]);
+  //         }
+  //     } else if (userSessionC.Rol == 3) {
+  //         if (ListaCitasBD[i].
+  //             IdentificacionVeterinario == userSessionC.Identificacion) {
+  //             listaCitas.push(ListaCitasBD[i]);
+  //         }
+  //     } else {
+  //         listaCitas = ListaCitasBD;
+  //     }
+  // }
 
-    let celAcciones = thRow.insertCell();
-    celAcciones.innerHTML = 'Acciones';
+  // function compare_numCita(a, b) {
+  //     if (a.celNumCita < b.celNumCita) {
+  //         return -1;
+  //     }
+  //     if (a.celNumCita > b.celNumCita) {
+  //         return 1;
+  //     }
+  //     return 0;
+  // }
 
+  // listaCitas.sort(compare_numCita);
+  // listaCitas.reverse()
 
-    ///////////cargar citas Usuarios/////////////////
-    for (let i = 0; i < ListaCitasBD.length; i++) {
+  for (let i = 0; i < ListaCitasBD.length; i++) {
+    let cita = ListaCitasBD[i];
+    let veterinario;
+    let propietario;
 
-        if (userSessionC.Rol == 2) {
-            if (ListaCitasBD[i].IdentificacionUsuario == userSessionC.Identificacion) {
-                listaCitas.push(ListaCitasBD[i]);
-            }
-        } else if (userSessionC.Rol == 3) {
-            if (ListaCitasBD[i].
-                IdentificacionVeterinario == userSessionC.Identificacion) {
-                listaCitas.push(ListaCitasBD[i]);
-            }
-        } else {
-            listaCitas = ListaCitasBD;
-        }
+    if ((userSessionC.Rol == 3)) {
+      let result = await buscaUsuarioID(cita.IdentificacionUsuario);
+      if (result != {} && result.resultado == true) {
+        propietario = result.usuarioDB;
+      }
     }
 
-    function compare_numCita(a, b) {
-        if (a.celNumCita < b.celNumCita) {
-            return -1;
-        }
-        if (a.celNumCita > b.celNumCita) {
-            return 1;
-        }
-        return 0;
+    if ((userSessionC.Rol == 2)) {
+      let result = await buscaUsuarioID(cita.IdentificacionVeterinario);
+      if (result != {} && result.resultado == true) {
+        veterinario = result.usuarioDB;
+      }
     }
 
+    let fila = tbody.insertRow();
 
-    listaCitas.sort(compare_numCita);
-    listaCitas.reverse()
+    let celdaNumCita = fila.insertCell();
+    celdaNumCita.innerHTML = cita.NumeroCita;
 
-
-
-    for (let i = 0; i < listaCitas.length; i++) {
-
-
-        let cita = listaCitas[i];
-
-        // let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
-        // let propietario = buscaUsuarioID(cita.IdentificacionUsurio) ;
-
-        let fila = tbody.insertRow();
-
-        let celdaNumCita = fila.insertCell();
-        celdaNumCita.innerHTML = cita.NumeroCita;
-
-        // let celdaPropietario = fila.insertCell();
-        // celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
-
-        let celdaMascota = fila.insertCell();
-        celdaMascota.innerHTML = cita.NombreMascota;
-
-        // let celdaVeterinario = fila.insertCell();
-        // celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido1;
-
-        let celdaFecha = fila.insertCell();
-        celdaFecha.innerHTML = cita.FechaHora;
-
-        let celdaEstado = fila.insertCell();
-        celdaEstado.innerHTML = cita.Estado;
-        celdaEstado.classList.add('Estado');
-
-        let celdaBoton = fila.insertCell();
-
-
-
-        let EstadoCitaif = document.querySelectorAll('.Estado');
-        if (EstadoCitaif[i].innerHTML == 'AGENDADA') {
-            if (userSessionC.Rol === 2) {
-                let BotonV = document.createElement('a');
-                BotonV.setAttribute('href', '/public/VerCitaDatos.html?_id=' + cita._id + '&rol=' + userSessionC.Rol);
-                let iconoV = document.createElement('i');
-                iconoV.classList.add("fa-solid")
-                iconoV.classList.add("fa-eye")
-                iconoV.classList.add("btnV")
-                BotonV.appendChild(iconoV);
-                celdaBoton.appendChild(BotonV);
-            }
-
-
-
-            if (userSessionC.Rol !== 2) {
-                let Boton = document.createElement('a');
-                Boton.setAttribute('href', '/public/VerCitaDatos.html?_id=' + cita._id + '&rol=' + userSessionC.Rol);
-                let icono = document.createElement('i');
-                icono.classList.add("fa-solid")
-                icono.classList.add("fa-pen-to-square")
-                icono.classList.add("btnEd")
-                Boton.appendChild(icono);
-                celdaBoton.appendChild(Boton);
-            }
-
-
-            let BotonC = document.createElement('a');
-            BotonC.setAttribute('id', (cita.NumeroCita));
-            BotonC.setAttribute('onclick', 'ShowModalCancelFunct(id)');
-            let iconoC = document.createElement('i');
-            iconoC.classList.add("fa-solid")
-            iconoC.classList.add("fa-circle-xmark")
-            iconoC.classList.add("btnCa")
-            BotonC.appendChild(iconoC);
-            celdaBoton.appendChild(BotonC);
-
-
-        } else {
-            let BotonV = document.createElement('a');
-            BotonV.setAttribute('href', '/public/VerCitaDatos.html?_id=' + cita._id + '&rol=' + userSessionC.Rol);
-            let iconoV = document.createElement('i');
-            iconoV.classList.add("fa-solid")
-            iconoV.classList.add("fa-eye")
-            iconoV.classList.add("btnV")
-            BotonV.appendChild(iconoV);
-            celdaBoton.appendChild(BotonV);
-        }
-
-
+    if ((userSessionC.Rol == 3)) {
+      let celdaPropietario = fila.insertCell();
+      celdaPropietario.innerHTML =
+        propietario.Nombre + " " + propietario.Apellido;
     }
-    let EstadoCita = document.querySelectorAll('.Estado');
-    VerEstado(EstadoCita);
+    let celdaMascota = fila.insertCell();
+    celdaMascota.innerHTML = cita.NombreMascota;
+
+    if ((userSessionC.Rol == 2)) {
+      let celdaVeterinario = fila.insertCell();
+      celdaVeterinario.innerHTML =
+        veterinario.Nombre + " " + veterinario.Apellido;
+    }
+    let celdaFecha = fila.insertCell();
+    celdaFecha.innerHTML = cita.FechaHora;
+
+    let celdaEstado = fila.insertCell();
+    celdaEstado.innerHTML = cita.Estado;
+    celdaEstado.classList.add("Estado");
+
+    let celdaBoton = fila.insertCell();
+
+    let EstadoCitaif = document.querySelectorAll(".Estado");
+    if (EstadoCitaif[i].innerHTML == "AGENDADA") {
+      if (userSessionC.Rol === 2) {
+        let BotonV = document.createElement("a");
+        BotonV.setAttribute(
+          "href",
+          "/public/VerCitaDatos.html?_id=" +
+            cita._id +
+            "&rol=" +
+            userSessionC.Rol
+        );
+        let iconoV = document.createElement("i");
+        iconoV.classList.add("fa-solid");
+        iconoV.classList.add("fa-eye");
+        iconoV.classList.add("btnV");
+        BotonV.appendChild(iconoV);
+        celdaBoton.appendChild(BotonV);
+      }
+
+      if (userSessionC.Rol !== 2) {
+        let Boton = document.createElement("a");
+        Boton.setAttribute(
+          "href",
+          "/public/VerCitaDatos.html?_id=" +
+            cita._id +
+            "&rol=" +
+            userSessionC.Rol
+        );
+        let icono = document.createElement("i");
+        icono.classList.add("fa-solid");
+        icono.classList.add("fa-pen-to-square");
+        icono.classList.add("btnEd");
+        Boton.appendChild(icono);
+        celdaBoton.appendChild(Boton);
+      }
+
+      let BotonC = document.createElement("a");
+      BotonC.setAttribute("id", cita.NumeroCita);
+      BotonC.setAttribute("onclick", "ShowModalCancelFunct(id)");
+      let iconoC = document.createElement("i");
+      iconoC.classList.add("fa-solid");
+      iconoC.classList.add("fa-circle-xmark");
+      iconoC.classList.add("btnCa");
+      BotonC.appendChild(iconoC);
+      celdaBoton.appendChild(BotonC);
+    } else {
+      let BotonV = document.createElement("a");
+      BotonV.setAttribute(
+        "href",
+        "/public/VerCitaDatos.html?_id=" + cita._id + "&rol=" + userSessionC.Rol
+      );
+      let iconoV = document.createElement("i");
+      iconoV.classList.add("fa-solid");
+      iconoV.classList.add("fa-eye");
+      iconoV.classList.add("btnV");
+      BotonV.appendChild(iconoV);
+      celdaBoton.appendChild(BotonV);
+    }
+  }
+  let EstadoCita = document.querySelectorAll(".Estado");
+  VerEstado(EstadoCita);
 }
 
 function VerEstado(EstadoCita) {
-
-    for (let i = 0; i < EstadoCita.length; i++) {
-        let sEstadoCita = EstadoCita[i].innerHTML;
-        if (sEstadoCita == 'AGENDADA') {
-            EstadoCita[i].classList.add("AGENDADA")
-
-        }
-        if (sEstadoCita == 'CANCELADA') {
-            EstadoCita[i].classList.add("CANCELADA")
-
-        }
-        if (sEstadoCita == 'FINALIZADA') {
-            EstadoCita[i].classList.add("FINALIZADA")
-
-
-        }
+  for (let i = 0; i < EstadoCita.length; i++) {
+    let sEstadoCita = EstadoCita[i].innerHTML;
+    if (sEstadoCita == "AGENDADA") {
+      EstadoCita[i].classList.add("AGENDADA");
     }
+    if (sEstadoCita == "CANCELADA") {
+      EstadoCita[i].classList.add("CANCELADA");
+    }
+    if (sEstadoCita == "FINALIZADA") {
+      EstadoCita[i].classList.add("FINALIZADA");
+    }
+  }
 }
 
 function AsignarNombreOtro() {
-    let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-    let divNombreOtro = document.getElementById('NombreOtro');
+  let sIdentificacion =
+    inputNombreMascota.options[inputNombreMascota.selectedIndex].text;
+  let divNombreOtro = document.getElementById("NombreOtro");
 
-    if (sIdentificacion == 'Otro') {
-        divNombreOtro.classList.remove("hidden")
-        console.log(listaUsuarios.length)
-
-    } else {
-        divNombreOtro.classList.add("hidden")
-    }
+  if (sIdentificacion == "Otro") {
+    divNombreOtro.classList.remove("hidden");
+    console.log(listaUsuarios.length);
+  } else {
+    divNombreOtro.classList.add("hidden");
+  }
 }
 
 function limpiarFormCita() {
-    document.getElementById('formCrearCita').reset();
+  document.getElementById("formCrearCita").reset();
 }
 
-
 /////////////citas sin perfil///////////////////
-let inputIdUser = document.getElementById('txtidCliente');
-let inputNombreUser = document.getElementById('txtNombreCliente');
-let inputApellidoUser = document.getElementById('txtApellidoCliente');
-let inputEmailUser = document.getElementById('txtEmailCliente')
-let inputDireccionUser = document.getElementById('txtDireccionCliente')
+let inputIdUser = document.getElementById("txtidCliente");
+let inputNombreUser = document.getElementById("txtNombreCliente");
+let inputApellidoUser = document.getElementById("txtApellidoCliente");
+let inputEmailUser = document.getElementById("txtEmailCliente");
+let inputDireccionUser = document.getElementById("txtDireccionCliente");
 
-let divIdUser = document.getElementById('RegistroContainer')
+let divIdUser = document.getElementById("RegistroContainer");
 let IdentificacionUsuario;
 let NombreUsuario;
 let ApellidoUsuario;
 let EmailUsuario;
 let DiereccionUsuario;
 
-
 function registrarCitaUser() {
-
-    if (userSessionC.Rol == 2) {
-        divIdUser.classList.add("hidden")
-    } else {
-        divIdUser.classList.remove("hidden")
-    }
+  if (userSessionC.Rol == 2) {
+    divIdUser.classList.add("hidden");
+  } else {
+    divIdUser.classList.remove("hidden");
+  }
 }
 
 function validarUser() {
-    let idUser = inputIdUser.value;
-    for (let i = 0; i < listaUsuarios.length; i++) {
-        if (listaUsuarios[i].Identificacion == idUser) {
-            NombreUsuario = listaUsuarios[i].Nombre;
-            ApellidoUsuario = listaUsuarios[i].Apellido;
-            EmailUsuario = listaUsuarios[i].Email;
-            DiereccionUsuario = listaUsuarios[i].Direccion;
-            CargarDatosUser(NombreUsuario, ApellidoUsuario, EmailUsuario, DiereccionUsuario, idUser);
-            i = listaUsuarios.length;
-        } else {
-            if (i == listaUsuarios.length - 1) {
-                ImprimirListaMascotasCita(idUser, listaMascotas);
-            }
-
-        }
-
-
+  let idUser = inputIdUser.value;
+  for (let i = 0; i < listaUsuarios.length; i++) {
+    if (listaUsuarios[i].Identificacion == idUser) {
+      NombreUsuario = listaUsuarios[i].Nombre;
+      ApellidoUsuario = listaUsuarios[i].Apellido;
+      EmailUsuario = listaUsuarios[i].Email;
+      DiereccionUsuario = listaUsuarios[i].Direccion;
+      CargarDatosUser(
+        NombreUsuario,
+        ApellidoUsuario,
+        EmailUsuario,
+        DiereccionUsuario,
+        idUser
+      );
+      i = listaUsuarios.length;
+    } else {
+      if (i == listaUsuarios.length - 1) {
+        ImprimirListaMascotasCita(idUser, listaMascotas);
+      }
     }
+  }
 }
-function CargarDatosUser(pNombreUsuario, pApellidoUsuario, pEmailUsuario, pDiereccionUsuario, pidUser) {
-    inputNombreUser.value = pNombreUsuario;
-    inputApellidoUser.value = pApellidoUsuario;
-    inputEmailUser.value = pEmailUsuario;
-    inputDireccionUser.value = pDiereccionUsuario;
-    GetlistaMascotaUser(pidUser)
+function CargarDatosUser(
+  pNombreUsuario,
+  pApellidoUsuario,
+  pEmailUsuario,
+  pDiereccionUsuario,
+  pidUser
+) {
+  inputNombreUser.value = pNombreUsuario;
+  inputApellidoUser.value = pApellidoUsuario;
+  inputEmailUser.value = pEmailUsuario;
+  inputDireccionUser.value = pDiereccionUsuario;
+  GetlistaMascotaUser(pidUser);
 }
 function RegistroNuevoUser(idUser) {
+  let sNombre = inputNombreUser.value;
+  let sApellido = inputApellidoUser.value;
+  let sEmail = inputEmailUser.value;
+  let sDireccion = inputDireccionUser.value;
 
+  for (let i = 0; i < listaUsuarios.length; i++) {
+    if (listaUsuarios[i].Identificacion != idUser) {
+      if (i == listaUsuarios.length - 1) {
+        let passwordUser = "Df1234";
+        let fotoUser = "";
+        RegistrarUsuario(
+          sNombre,
+          sApellido,
+          idUser,
+          sEmail,
+          passwordUser,
+          sDireccion,
+          fotoUser
+        );
+      }
+    }
+  }
+}
+
+let inputNombreMascota = document.querySelector("#selectMascotaCita");
+let sIdentificacion =
+  inputNombreMascota.options[inputNombreMascota.selectedIndex].text;
+let inputFecha = document.getElementById("txtFecha");
+let inputTipoIdentificacion = document.querySelector("#selectVeterinario");
+let NombreMascotaOtro = document.getElementById("txtNombreOtro");
+let inputDireccion = document.getElementById("txtDireccion");
+let btnCrear = document.getElementById("btnIniciar");
+btnCrear.addEventListener("click", CrearCita);
+
+async function CrearCita() {
+  if (ValidarDatosCita() == true) {
+    if (userSessionC.Rol == 2) {
+      IdentificacionUsuario = userSessionC.Identificacion;
+    } else {
+      IdentificacionUsuario = inputIdUser.value;
+    }
+
+    RegistroNuevoUser(IdentificacionUsuario);
+
+    let IdMascota = "N/D";
+    let IdentificacionVeterinario;
+    let NombreMascota =
+      inputNombreMascota.options[inputNombreMascota.selectedIndex].text;
+    console.log("for " + NombreMascota);
+    if (NombreMascota === "Otro") {
+      NombreMascota = "(Otro) " + NombreMascotaOtro.value;
+    }
+    for (let i = 0; i < listaMascotas.length; i++) {
+      if (
+        IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio &&
+        NombreMascota == listaMascotas[i].NombreMascota
+      ) {
+        IdMascota = listaMascotas[i]._id;
+      }
+    }
+    let NombreVeterinario =
+      inputTipoIdentificacion.options[inputTipoIdentificacion.selectedIndex]
+        .text;
+    console.log(NombreVeterinario);
+    for (let i = 0; i < listaUsuarios.length; i++) {
+      if (NombreVeterinario == listaUsuarios[i].Nombre) {
+        IdentificacionVeterinario = listaUsuarios[i].Identificacion;
+      } else if (NombreVeterinario === "Aleatorio") {
+        let listaVeterinarios = [];
+        for (let i = 0; i < listaUsuarios.length; i++) {
+          if (listaUsuarios[i].Rol == 3) {
+            listaVeterinarios.push(listaUsuarios[i]);
+          }
+        }
+
+        var num = Math.floor(Math.random() * listaVeterinarios.length);
+        NombreVeterinario = listaVeterinarios[num].Nombre;
+      }
+    }
+
+    let FechaHora = inputFecha.value;
+    let ObservacionesCita = inputDireccion.value;
+    let result = await crearCita(
+      IdentificacionUsuario,
+      IdMascota,
+      NombreMascota,
+      FechaHora,
+      IdentificacionVeterinario,
+      ObservacionesCita
+    );
+    if (result != {} && result.data.resultado == true) {
+      ConfirmarDatos(result.data.msj);
+      setTimeout(() => {
+        limpiarFormCita();
+        hiddenCrearModal();
+        location.href = "./AppVerCitas.html";
+      }, 2000);
+    } else {
+      MostrarError(result.data.msj);
+    }
+  }
+}
+
+function ValidarDatosCita() {
+  let sNombreMascota = inputNombreMascota.value;
+  let dFecha = inputFecha.value;
+  let sIdentificacion = inputTipoIdentificacion.value;
+  let sDireccion = inputDireccion.value;
+
+  if (userSessionC.Rol != 2) {
+    let sIdUser = inputIdUser.value;
     let sNombre = inputNombreUser.value;
     let sApellido = inputApellidoUser.value;
     let sEmail = inputEmailUser.value;
     let sDireccion = inputDireccionUser.value;
+    const ValidarTexto = /^[a-zA-Z,.' -]+$/;
+    const ValidarEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+    let isnum = /^\d+$/.test(sIdUser);
 
-    for (let i = 0; i < listaUsuarios.length; i++) {
-        if (listaUsuarios[i].Identificacion != idUser) {
-            if (i == listaUsuarios.length - 1) {
-                let passwordUser = "Df1234"
-                let fotoUser = "";
-                RegistrarUsuario(sNombre, sApellido, idUser, sEmail, passwordUser, sDireccion, fotoUser)
-            }
-        }
+    if (sIdUser == null || sIdUser == undefined || sIdUser == "") {
+      inputIdUser.classList.add("error");
+      MostrarError("¡La identificación es requerida!");
+      return false;
+    }
+    if (isnum == false) {
+      inputIdUser.classList.add("error");
+      MostrarError(
+        "¡La identificación debe contener solo números! No puede contener caracteres especiales como guiones."
+      );
+      return false;
     }
 
-}
-
-
-
-
-let inputNombreMascota = document.querySelector('#selectMascotaCita');
-let sIdentificacion = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-let inputFecha = document.getElementById('txtFecha');
-let inputTipoIdentificacion = document.querySelector('#selectVeterinario');
-let NombreMascotaOtro = document.getElementById('txtNombreOtro');
-let inputDireccion = document.getElementById('txtDireccion');
-let btnCrear = document.getElementById('btnIniciar');
-btnCrear.addEventListener('click', CrearCita);
-
-
-
-
-async function CrearCita() {
-
-    if (ValidarDatosCita() == true) {
-
-
-        if (userSessionC.Rol == 2) {
-            IdentificacionUsuario = userSessionC.Identificacion;
-        } else {
-            IdentificacionUsuario = inputIdUser.value;
-        }
-
-        RegistroNuevoUser(IdentificacionUsuario);
-
-        let IdMascota = "N/D";
-        let IdentificacionVeterinario;
-        let NombreMascota = inputNombreMascota.options[inputNombreMascota.selectedIndex].text
-        console.log("for " + NombreMascota)
-        if (NombreMascota === "Otro") {
-
-            NombreMascota = "(Otro) " + NombreMascotaOtro.value;
-        }
-        for (let i = 0; i < listaMascotas.length; i++) {
-            if (IdentificacionUsuario == listaMascotas[i].IdentificacionDuenio && NombreMascota == listaMascotas[i].NombreMascota) {
-
-
-
-                IdMascota = listaMascotas[i]._id;
-            }
-        }
-        let NombreVeterinario = inputTipoIdentificacion.options[inputTipoIdentificacion.selectedIndex].text
-        console.log(NombreVeterinario)
-        for (let i = 0; i < listaUsuarios.length; i++) {
-            if (NombreVeterinario == listaUsuarios[i].Nombre) {
-                IdentificacionVeterinario = listaUsuarios[i].Identificacion;
-
-            } else if (NombreVeterinario === ("Aleatorio")) {
-                let listaVeterinarios = [];
-                for (let i = 0; i < listaUsuarios.length; i++) {
-                    if (listaUsuarios[i].Rol == 3) {
-                        listaVeterinarios.push(listaUsuarios[i])
-
-                    }
-                }
-
-                var num = Math.floor(Math.random() * (listaVeterinarios.length));
-                NombreVeterinario = listaVeterinarios[num].Nombre;
-            }
-        }
-
-        let FechaHora = inputFecha.value;
-        let ObservacionesCita = inputDireccion.value;
-        let result = await crearCita(IdentificacionUsuario, IdMascota, NombreMascota, FechaHora, IdentificacionVeterinario, ObservacionesCita);
-        if (result != {} && result.data.resultado == true) {
-            ConfirmarDatos(result.data.msj);
-            setTimeout(() => {
-                limpiarFormCita();
-                hiddenCrearModal();
-                location.href = "./AppVerCitas.html"
-            }, 2000);
-        } else {
-            MostrarError(result.data.msj)
-        }
-    }
-}
-
-function ValidarDatosCita() {
-
-    let sNombreMascota = inputNombreMascota.value;
-    let dFecha = inputFecha.value;
-    let sIdentificacion = inputTipoIdentificacion.value;
-    let sDireccion = inputDireccion.value;
-
-
-    if (userSessionC.Rol != 2) {
-        let sIdUser = inputIdUser.value;
-        let sNombre = inputNombreUser.value;
-        let sApellido = inputApellidoUser.value;
-        let sEmail = inputEmailUser.value;
-        let sDireccion = inputDireccionUser.value;
-        const ValidarTexto = /^[a-zA-Z,.' -]+$/;
-        const ValidarEmail =/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
-        let isnum = /^\d+$/.test(sIdUser);
-
-        if (sIdUser == null || sIdUser == undefined || sIdUser == "") {
-            inputIdUser.classList.add("error")
-            MostrarError("¡La identificación es requerida!");
-            return false;
-        }
-        if (isnum == false) {
-            inputIdUser.classList.add("error")
-            MostrarError("¡La identificación debe contener solo números! No puede contener caracteres especiales como guiones.");
-            return false;
-        }
-
-        if (sIdUser.length < 9 || sIdUser.length > 12) {
-            inputIdUser.classList.add("error")
-            MostrarError("¡La cedula persona física debe tener 9 números, cedula persona jurídica 10 números, NITE 10 números y la DIMEX 11 o 12 números! Todas sin cero al inicio ni guiones.");
-            return false;
-        }
-        else {
-            inputIdUser.classList.remove("error")
-        }
-
-        if (sNombre == null || sNombre == undefined || sNombre == "") {
-            inputNombreUser.classList.add("error")
-            MostrarError("¡El nombre es requerido!");
-            return false;
-
-        } else if (sNombre.match(ValidarTexto)) {
-            inputNombreUser.classList.remove("error")
-
-        } else {
-            inputNombreUser.classList.add("error")
-            MostrarError("¡El nombre no puede contener caracteres especiales ni números!");
-            return false;
-        }
-        if (sApellido == null || sApellido == undefined || sApellido == "") {
-            inputApellidoUser.classList.add("error")
-            MostrarError("¡Formato de apellido no es valido!");
-            return false;
-        } else if (sApellido.match(ValidarTexto)) {
-            inputApellidoUser.classList.remove("error")
-        } else {
-            inputApellidoUser.classList.add("error")
-            MostrarError("El campo de apellido(s) no puede contener caracteres especiales ni números!");
-            return false;
-        }
-
-        if (sEmail == null || sEmail == undefined || sEmail == "") {
-            inputEmailUser.classList.add("error")
-            MostrarError("¡El correo electrónico requerido!");
-            return false;
-        } else if (sEmail.match(ValidarEmail)) {
-            inputEmailUser.classList.remove("error")
-        } else {
-            inputEmailUser.classList.add("error")
-            MostrarError("¡Formato de correo electrónico no valido!");
-            return false;
-        }
-        if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
-            inputDireccionUser.classList.add("error")
-            MostrarError('¡La dirección es requerida!');
-            return false;
-        } else {
-            inputDireccionUser.classList.remove("error")
-        }
-    }
-
-
-    if (sNombreMascota == null || sNombreMascota == undefined || sNombreMascota == "") {
-
-
-        inputNombreMascota.classList.add("error")
-        MostrarErrorC();
-        return false;
+    if (sIdUser.length < 9 || sIdUser.length > 12) {
+      inputIdUser.classList.add("error");
+      MostrarError(
+        "¡La cedula persona física debe tener 9 números, cedula persona jurídica 10 números, NITE 10 números y la DIMEX 11 o 12 números! Todas sin cero al inicio ni guiones."
+      );
+      return false;
     } else {
-        inputNombreMascota.classList.remove("error")
+      inputIdUser.classList.remove("error");
     }
 
-    if (dFecha == null || dFecha == undefined || dFecha == "") {
-        inputFecha.classList.add("error")
-        MostrarErrorC();
-        return false;
+    if (sNombre == null || sNombre == undefined || sNombre == "") {
+      inputNombreUser.classList.add("error");
+      MostrarError("¡El nombre es requerido!");
+      return false;
+    } else if (sNombre.match(ValidarTexto)) {
+      inputNombreUser.classList.remove("error");
     } else {
-        inputFecha.classList.remove("error")
+      inputNombreUser.classList.add("error");
+      MostrarError(
+        "¡El nombre no puede contener caracteres especiales ni números!"
+      );
+      return false;
     }
-    if (new Date() > new Date(dFecha) == true) {
-
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'la fecha no pueder ser menor al dia de hoy!',
-        })
-        inputFecha.classList.add("error")
-        return false;
-    }
-
-    if (sIdentificacion == null || sIdentificacion == undefined || sIdentificacion == "") {
-        inputTipoIdentificacion.classList.add("error")
-        MostrarErrorC();
-        return false;
+    if (sApellido == null || sApellido == undefined || sApellido == "") {
+      inputApellidoUser.classList.add("error");
+      MostrarError("¡Formato de apellido no es valido!");
+      return false;
+    } else if (sApellido.match(ValidarTexto)) {
+      inputApellidoUser.classList.remove("error");
     } else {
-        inputTipoIdentificacion.classList.remove("error")
+      inputApellidoUser.classList.add("error");
+      MostrarError(
+        "El campo de apellido(s) no puede contener caracteres especiales ni números!"
+      );
+      return false;
     }
 
+    if (sEmail == null || sEmail == undefined || sEmail == "") {
+      inputEmailUser.classList.add("error");
+      MostrarError("¡El correo electrónico requerido!");
+      return false;
+    } else if (sEmail.match(ValidarEmail)) {
+      inputEmailUser.classList.remove("error");
+    } else {
+      inputEmailUser.classList.add("error");
+      MostrarError("¡Formato de correo electrónico no valido!");
+      return false;
+    }
     if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
-        inputDireccion.classList.add("error")
-        MostrarErrorC();
-        return false;
+      inputDireccionUser.classList.add("error");
+      MostrarError("¡La dirección es requerida!");
+      return false;
     } else {
-        inputDireccion.classList.remove("error")
+      inputDireccionUser.classList.remove("error");
     }
-    return true;
+  }
+
+  if (
+    sNombreMascota == null ||
+    sNombreMascota == undefined ||
+    sNombreMascota == ""
+  ) {
+    inputNombreMascota.classList.add("error");
+    MostrarErrorC();
+    return false;
+  } else {
+    inputNombreMascota.classList.remove("error");
+  }
+
+  if (dFecha == null || dFecha == undefined || dFecha == "") {
+    inputFecha.classList.add("error");
+    MostrarErrorC();
+    return false;
+  } else {
+    inputFecha.classList.remove("error");
+  }
+  if (new Date() > new Date(dFecha) == true) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "la fecha no pueder ser menor al dia de hoy!",
+    });
+    inputFecha.classList.add("error");
+    return false;
+  }
+
+  if (
+    sIdentificacion == null ||
+    sIdentificacion == undefined ||
+    sIdentificacion == ""
+  ) {
+    inputTipoIdentificacion.classList.add("error");
+    MostrarErrorC();
+    return false;
+  } else {
+    inputTipoIdentificacion.classList.remove("error");
+  }
+
+  if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
+    inputDireccion.classList.add("error");
+    MostrarErrorC();
+    return false;
+  } else {
+    inputDireccion.classList.remove("error");
+  }
+  return true;
 }
 
 function MostrarErrorC() {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Dato Requerido!',
-    })
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Dato Requerido!",
+  });
 }
 
 function ConfirmarDatosC() {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Cita Asignada',
-        showConfirmButton: false,
-        timer: 1500
-    })
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Cita Asignada",
+    showConfirmButton: false,
+    timer: 1500,
+  });
 }
-
 
 //carga Mascotas
 async function ImprimirListaMascotasCita(user, listaMascotas) {
-    let Select = document.getElementById('selectMascotaCita');
-    let idCliente = user
-    let opcion;
-    let valor = 0;
+  let Select = document.getElementById("selectMascotaCita");
+  let idCliente = user;
+  let opcion;
+  let valor = 0;
 
-
-    for (let i = 0; i < listaMascotas.length; i++) {
-        if (idCliente == listaMascotas[i].IdentificacionDuenio) {
-            opcion = document.createElement('option');
-            valor += 1;
-            opcion.value = valor;
-            opcion.text = listaMascotas[i].NombreMascota;
-            Select.appendChild(opcion);
-        }
+  for (let i = 0; i < listaMascotas.length; i++) {
+    if (idCliente == listaMascotas[i].IdentificacionDuenio) {
+      opcion = document.createElement("option");
+      valor += 1;
+      opcion.value = valor;
+      opcion.text = listaMascotas[i].NombreMascota;
+      Select.appendChild(opcion);
     }
-    opcion = document.createElement('option');
-    opcion.value = ++valor;
-    opcion.text = 'Otro';
-    Select.appendChild(opcion);
+  }
+  opcion = document.createElement("option");
+  opcion.value = ++valor;
+  opcion.text = "Otro";
+  Select.appendChild(opcion);
 }
 
 //carga Veterinarios
 function ImprimirListaVeterinarios(listaUsers) {
-    let Select = document.getElementById('selectVeterinario');
-    let opcion;
-    let valor = 0;
+  let Select = document.getElementById("selectVeterinario");
+  let opcion;
+  let valor = 0;
 
-
-    for (let i = 0; i < listaUsers.length; i++) {
-
-        if (listaUsers[i].Rol == 3) {
-            opcion = document.createElement('option');
-            valor += 1;
-            opcion.value = valor;
-            opcion.text = listaUsers[i].Nombre;
-            Select.appendChild(opcion);
-        }
-
-
+  for (let i = 0; i < listaUsers.length; i++) {
+    if (listaUsers[i].Rol == 3) {
+      opcion = document.createElement("option");
+      valor += 1;
+      opcion.value = valor;
+      opcion.text = listaUsers[i].Nombre;
+      Select.appendChild(opcion);
     }
-    opcion = document.createElement('option');
-    opcion.value = ++valor;
-    opcion.text = 'Aleatorio';
-    Select.appendChild(opcion);
+  }
+  opcion = document.createElement("option");
+  opcion.value = ++valor;
+  opcion.text = "Aleatorio";
+  Select.appendChild(opcion);
 }
-
-
-
 
 ///MODAL CANCELAR CITA///
 
 function disableScroll() {
-    window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
 }
 
 //Cancelar Cita
-const modalCancelarCita = document.querySelector('#formCancelarCita');
-const overlayCancelar = document.querySelector('.overlay');
-const closeCancelarCita = document.querySelector('#cerrarCancelarC');
-
+const modalCancelarCita = document.querySelector("#formCancelarCita");
+const overlayCancelar = document.querySelector(".overlay");
+const closeCancelarCita = document.querySelector("#cerrarCancelarC");
 
 const hiddenCancelModal = function () {
-    modalCancelarCita.classList.add("hidden");
-    overlayCancelar.classList.add("hidden");
-    window.removeEventListener("scroll", disableScroll);
+  modalCancelarCita.classList.add("hidden");
+  overlayCancelar.classList.add("hidden");
+  window.removeEventListener("scroll", disableScroll);
 };
 
 // start function show modal
 function ShowModalCancelFunct(id) {
-    llenarModalCancelarCita(id);
-    modalCancelarCita.classList.remove("hidden");
-    overlayCancelar.classList.remove("hidden");
-    location.href = "#top-page";
-    window.addEventListener("scroll", disableScroll);
+  llenarModalCancelarCita(id);
+  modalCancelarCita.classList.remove("hidden");
+  overlayCancelar.classList.remove("hidden");
+  location.href = "#top-page";
+  window.addEventListener("scroll", disableScroll);
 
-    closeCancelarCita.addEventListener('click', hiddenCancelModal);
-    overlayCancelar.addEventListener('click', hiddenCancelModal);
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modalCancelarCita.classList.contains('hidden')) {
-            hiddenCancelModal();
-        }
-    });
-};
-
-// FIN MODAL CANCELAR CITA
-let outNumCita = document.getElementById('numCitaCancelar')
-let inputCancelar = document.getElementById('motivoCancelar');
-
-async function CancelarCitas() {
-
-    let numCita = outNumCita.value;
-    let sMotivoCancelar = inputCancelar.value;
-    let sEstado = "CANCELADA";
-
-
-    if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
-        inputCancelar.classList.add("error")
-        MostrarError('Debe ingresar motivo de cancelación');
-        return false;
-    } else {
-        inputCancelar.classList.remove("error")
-
-        let result = await CancelarCita(numCita, sEstado, sMotivoCancelar);
-
-        if (result != {} && result.data.resultado == true) {
-            ConfirmarDatos(result.data.msj);
-            setTimeout(() => {
-                hiddenCancelModal();
-                location.href = "./AppVerCitas.html"
-            }, 2000);
-        } else {
-            MostrarError(result.data.msj);
-            return
-        }
+  closeCancelarCita.addEventListener("click", hiddenCancelModal);
+  overlayCancelar.addEventListener("click", hiddenCancelModal);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modalCancelarCita.classList.contains("hidden")) {
+      hiddenCancelModal();
     }
+  });
 }
 
+// FIN MODAL CANCELAR CITA
+let outNumCita = document.getElementById("numCitaCancelar");
+let inputCancelar = document.getElementById("motivoCancelar");
+
+async function CancelarCitas() {
+  let numCita = outNumCita.value;
+  let sMotivoCancelar = inputCancelar.value;
+  let sEstado = "CANCELADA";
+
+  if (
+    sMotivoCancelar == null ||
+    sMotivoCancelar == undefined ||
+    sMotivoCancelar == ""
+  ) {
+    inputCancelar.classList.add("error");
+    MostrarError("Debe ingresar motivo de cancelación");
+    return false;
+  } else {
+    inputCancelar.classList.remove("error");
+
+    let result = await CancelarCita(numCita, sEstado, sMotivoCancelar);
+
+    if (result != {} && result.data.resultado == true) {
+      ConfirmarDatos(result.data.msj);
+      setTimeout(() => {
+        hiddenCancelModal();
+        location.href = "./AppVerCitas.html";
+      }, 2000);
+    } else {
+      MostrarError(result.data.msj);
+      return;
+    }
+  }
+}
 
 //MODAL CREAR CITA
 
-const modalCrearCita = document.querySelector('#formCrearCita');
-const overlay = document.querySelector('.overlay');
-const closeCrearCita = document.querySelector('#cerrarModalCita');
-const showCrearCita = document.getElementById('showCrearCita');
-const closeCrearCita2 = document.querySelector('#cerrarCrearC');
-
+const modalCrearCita = document.querySelector("#formCrearCita");
+const overlay = document.querySelector(".overlay");
+const closeCrearCita = document.querySelector("#cerrarModalCita");
+const showCrearCita = document.getElementById("showCrearCita");
+const closeCrearCita2 = document.querySelector("#cerrarCrearC");
 
 const hiddenCrearModal = function () {
-    modalCrearCita.classList.add("hidden");
-    overlay.classList.add("hidden");
-    window.removeEventListener("scroll", disableScroll);
+  modalCrearCita.classList.add("hidden");
+  overlay.classList.add("hidden");
+  window.removeEventListener("scroll", disableScroll);
 };
 
 // start function show modal
 function ShowModalCrearFunct() {
-    modalCrearCita.classList.remove("hidden");
-    overlay.classList.remove("hidden");
-    location.href = "#top-page";
-    window.addEventListener("scroll", disableScroll);
+  modalCrearCita.classList.remove("hidden");
+  overlay.classList.remove("hidden");
+  location.href = "#top-page";
+  window.addEventListener("scroll", disableScroll);
 
-    closeCrearCita.addEventListener('click', hiddenCrearModal);
-    closeCrearCita2.addEventListener('click', hiddenCrearModal);
-    overlayCancelar.addEventListener('click', hiddenCrearModal);
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && !modalCrearCita.classList.contains('hidden')) {
-            hiddenCrearModal();
-        }
-    });
-};
+  closeCrearCita.addEventListener("click", hiddenCrearModal);
+  closeCrearCita2.addEventListener("click", hiddenCrearModal);
+  overlayCancelar.addEventListener("click", hiddenCrearModal);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !modalCrearCita.classList.contains("hidden")) {
+      hiddenCrearModal();
+    }
+  });
+}
 
-showCrearCita.addEventListener('click', ShowModalCrearFunct);
+showCrearCita.addEventListener("click", ShowModalCrearFunct);
 
 // FIN MODAL CREAR CITA
 function llenarModalCancelarCita(id) {
-
-    for (let i = 0; i < listaCitas.length; i++) {
-        if (listaCitas[i].NumeroCita == id) {
-            document.getElementById('numCitaCancelar').value = id;
-            document.getElementById('nombreCitaCancelar').value = listaCitas[i].
-                NombreMascota;
-        }
-
+  for (let i = 0; i < listaCitas.length; i++) {
+    if (listaCitas[i].NumeroCita == id) {
+      document.getElementById("numCitaCancelar").value = id;
+      document.getElementById("nombreCitaCancelar").value =
+        listaCitas[i].NombreMascota;
     }
+  }
 }
 
 function MostrarError(txtInfo) {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: txtInfo,
-    })
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: txtInfo,
+  });
 }
 
 function ConfirmarDatos(txtInfo) {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: txtInfo,
-        showConfirmButton: false,
-        timer: 1500
-    })
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: txtInfo,
+    showConfirmButton: false,
+    timer: 1500,
+  });
 }
