@@ -49,7 +49,7 @@ function cerrar() {
 const navReservas =  document.getElementById('reservasTab');
 const navMascotas =  document.getElementById('mascotasTab');
 const navReportes =  document.getElementById('reportesTab');
-
+const crearCitaNueva = document.querySelector('.containerCrearCita');
 
 let user = GetSesion();
 
@@ -57,6 +57,8 @@ if(Number(user.Rol) === 3){
     navReservas.style = "display: none;";
     navReportes.style = "display: none;";
     navMascotas.style = "display: none;";
+    crearCitaNueva.style = "display: none;";
+
 }else if(Number(user.Rol) === 4){
     navReportes.style = "display: none;";
     navMascotas.style = "display: none;";
