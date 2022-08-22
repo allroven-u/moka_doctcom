@@ -29,6 +29,9 @@ async function GetlistaUsuarios(){
   }
 
   let selectRol = document.getElementById('selectRol');
+  let selectEstado = document.getElementById('selectEstado');
+
+  
 
 function CargarDatosUser(userSession){
     for (let i = 0; i < listaUsuarios.length; i++) {
@@ -39,14 +42,16 @@ function CargarDatosUser(userSession){
             inputtxtApellidosP.value = listaUsuarios[i].Apellido;
             inputtxtCedulaP.value = listaUsuarios[i].Identificacion;
             inputtxtEmailP.value=listaUsuarios[i].Email;
-            // inputtxtPasswordP.value = listaUsuarios[i].Contrasenia;
+            inputFotoUser.src= listaUsuarios[i].Foto;
             inputtxtDireccionP.value = listaUsuarios[i].Direccion;
 
 
             if (userSession.Rol == 1) {
                 selectRol.classList.remove('hidden');
+                selectEstado.classList.remove('hidden');
             }else{
                 selectRol.classList.add('hidden');
+                selectEstado.classList.add('hidden');
             }
         }
         
