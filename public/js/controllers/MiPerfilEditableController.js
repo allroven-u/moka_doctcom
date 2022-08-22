@@ -28,6 +28,8 @@ async function GetlistaUsuarios(){
     }
   }
 
+  let selectRol = document.getElementById('selectRol');
+
 function CargarDatosUser(userSession){
     for (let i = 0; i < listaUsuarios.length; i++) {
         
@@ -39,6 +41,13 @@ function CargarDatosUser(userSession){
             inputtxtEmailP.value=listaUsuarios[i].Email;
             // inputtxtPasswordP.value = listaUsuarios[i].Contrasenia;
             inputtxtDireccionP.value = listaUsuarios[i].Direccion;
+
+
+            if (userSession.Rol == 1) {
+                selectRol.classList.remove('hidden');
+            }else{
+                selectRol.classList.add('hidden');
+            }
         }
         
     }
