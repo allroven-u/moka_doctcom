@@ -2,11 +2,14 @@
 let txtMascota = document.getElementById('TxtMascotaM');
 let txtDireccionM = document.getElementById('txtDireccionM');
 let txtCalificacionM = document.getElementById('txtCalificacionM');
+let txtEstadoM = document.getElementById('txtEstadoM');
+let fotoMascota = document.getElementById('imgMascota');
 
 let listaMascotas = [];
 let userSessionM = GetSesion();
 
 let btnRemoverMascota = document.getElementById('removerMascota');
+btnRemoverMascota.addEventListener('click', EliminarMascota);
 
 
 async function GetlistaMascota() {
@@ -35,6 +38,8 @@ async function ImprimirDatosMascota(p_id) {
         if (cargarMascotas[i]._id === p_id) {
             txtMascota.textContent = cargarMascotas[i].NombreMascota;
             txtDireccionM.textContent = cargarMascotas[i].Direccion;
+            txtEstadoM.textContent = cargarMascotas[i].Estado;
+            fotoMascota.src  =cargarMascotas[i].Foto;
             ImprimirListaCitas(cargarMascotas[i]._id);
             let calificacion = Number(cargarMascotas[i].CalificacionPromedio);
             let editarInfoBtn = document.getElementById('editarInfo');
@@ -55,8 +60,16 @@ async function ImprimirDatosMascota(p_id) {
     }
 }
 
-async function EliminarMascota(_id){
-    
+async function EliminarMascota(){
+    let result = await DesactivarMascota(_id);
+    if (result != {} && result.resultado) {
+        ConfirmarDatos(result.msj);
+        setTimeout(function() {
+            location.href = "./Mascotas.html";
+        }, 2000);
+    }else{
+        MostrarError(result.msj);
+    };
 }
 
 

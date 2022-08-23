@@ -37,11 +37,23 @@ label {
 }
 
 .box-img {
-    background-image: url('../assets/img/default-user-mascota.jpg');
-    background-size: cover;
+    text-align: center;
+    width: 210px;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+.avatarUser {
+    border: 7px solid var(--verdeagua);
     width: 200px;
-    height: 200px;
-    margin-bottom: 30px;
+    height: 180px;
+    object-fit: cover;
+    background-color: #bbb;
+    cursor: pointer;
+    transition: all 300ms;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
 }
 
 .annadir,

@@ -32,16 +32,3 @@ function resaltarInputInvalido(pinputID) {
   }, 5000);
 }
 
-
-
-function estadoMascota(pEstado) {
-  switch (Number(pEstado)) {
-    case 1:
-      return "Normal"
-    case 2:
-      return "Perdido"
-    case 3:
-      return "Muerto"
-  }
-}
-

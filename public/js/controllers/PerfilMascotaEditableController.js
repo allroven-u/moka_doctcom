@@ -1,11 +1,12 @@
 'use strict';
 
 let btnGuardarCambios = document.getElementById("btn-guardarMiPerfil2")
-btnGuardarCambios.addEventListener('click', EnviarDatosCorreo)
+btnGuardarCambios.addEventListener('click', EnviarDatosMascota)
 
 let txtMascota = document.getElementById('TxtMascotaM');
 let txtDireccionM = document.getElementById('txtDireccionM');
 let statusM = document.getElementById('statusM');
+let fotoM = document.getElementById('imgMascota');
 
 
 let listaMascotas = [];
@@ -42,6 +43,7 @@ async function ImprimirDatosMascota(p_id) {
             txtMascota.textContent = cargarMascotas[i].NombreMascota;
             txtDireccionM.value = cargarMascotas[i].Direccion;
             statusM.value = cargarMascotas[i].Estado;
+            fotoM.src = cargarMascotas[i].Foto;
         }
     }
    
@@ -53,11 +55,12 @@ btnBack.addEventListener('click', function(){
 
 
 
-async function EnviarDatosCorreo() {
+async function EnviarDatosMascota() {
     if (ValidarDatosMascota() == true) {
         let spDireccionM = txtDireccionM.value;
-        let spStatusM = estadoMascota(statusM.value);
-        let result = await EditarDatosMascota(_id, spDireccionM, spStatusM);
+        let spStatusM = statusM.value;
+        let spFoto = fotoM.src;
+        let result = await EditarDatosMascota(_id, spDireccionM, spStatusM, spFoto);
         if (result != {} && result.resultado) {
             ConfirmarDatos(result.msj);
             setTimeout(function() {

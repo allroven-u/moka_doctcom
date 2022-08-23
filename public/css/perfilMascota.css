@@ -30,12 +30,13 @@
 }
 
 .box-img {
-    background-image: url('../assets/img/default-user-mascota.jpg');
+    background-color: #aaa;
     background-size: cover;
     width: 200px;
     height: 200px;
     margin-bottom: 30px;
     border: 7px solid var(--verdeagua);
+    overflow: hidden;
 }
 
 .annadir,
@@ -272,4 +273,10 @@ button {
 
 .registrar-mascota:hover{
     color: var(--navApp);
+}
+
+.FotoPerfilUser{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
 }

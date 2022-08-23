@@ -37,6 +37,10 @@ a{
     text-decoration: none;
 }
 
+textarea{
+    font-family: Roboto300;
+}
+
 :root{
     --turquesa: #1abc9c;
     --verdeagua: #16a085;

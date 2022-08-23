@@ -52,35 +52,40 @@ async function GetlistaMascota() {
 
  async function imprimirMascotas(){
     for(let i = 0; i < listaMascotas.length; i++){
-        console.log(listaMascotas[i]);
-        let perfiles = document.querySelector('.perfil-contenido');
-        let mainDiv = document.createElement('div');
-        let firstDiv = document.createElement('div');
-        let secondDiv = document.createElement('div');
-        let createP = document.createElement('p');
-        let createButton = document.createElement('button');
 
-        perfiles.appendChild(mainDiv);
-        mainDiv.classList.add('box-usuario_img');
-        mainDiv.classList.add('cards-mascotas');
-        mainDiv.appendChild(firstDiv);
-        firstDiv.classList.add('box-img');
-        firstDiv.classList.add('border-radius');
-        mainDiv.appendChild(secondDiv);
-        secondDiv.classList.add('usuario');
-        secondDiv.classList.add('border-radius');
-        secondDiv.classList.add('name-mascota');
-        secondDiv.appendChild(createP);
-        createP.setAttribute('id', 'TxtMascotaM');
-        createP.textContent = listaMascotas[i].NombreMascota;
-        mainDiv.appendChild(createButton);
-        createButton.classList.add('usuario');
-        createButton.classList.add('border-radius');
-        createButton.classList.add('annadir');
-        createButton.textContent = 'Ver Perfil'
-        createButton.addEventListener('click', function(){
-            location.href = './perfilMascota.html?_id='+listaMascotas[i]._id;
-        })
+
+        if(listaMascotas[i].Activo === 1){
+            console.log(listaMascotas[i]);
+            let perfiles = document.querySelector('.perfil-contenido');
+            let mainDiv = document.createElement('div');
+            let firstDiv = document.createElement('div');
+            let secondDiv = document.createElement('div');
+            let createP = document.createElement('p');
+            let createButton = document.createElement('button');
+    
+            perfiles.appendChild(mainDiv);
+            mainDiv.classList.add('box-usuario_img');
+            mainDiv.classList.add('cards-mascotas');
+            mainDiv.appendChild(firstDiv);
+            firstDiv.classList.add('box-img');
+            firstDiv.classList.add('border-radius');
+            mainDiv.appendChild(secondDiv);
+            secondDiv.classList.add('usuario');
+            secondDiv.classList.add('border-radius');
+            secondDiv.classList.add('name-mascota');
+            secondDiv.appendChild(createP);
+            createP.setAttribute('id', 'TxtMascotaM');
+            createP.textContent = listaMascotas[i].NombreMascota;
+            mainDiv.appendChild(createButton);
+            createButton.classList.add('usuario');
+            createButton.classList.add('border-radius');
+            createButton.classList.add('annadir');
+            createButton.textContent = 'Ver Perfil';
+            createButton.addEventListener('click', function(){
+                location.href = './perfilMascota.html?_id='+listaMascotas[i]._id;
+            });
+        }
+        
 
 
     }
