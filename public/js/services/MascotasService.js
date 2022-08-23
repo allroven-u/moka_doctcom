@@ -1,6 +1,6 @@
 "use strict";
 
-let mascotasArray = []; // arreglo de usuarios
+/*let mascotasArray = []; // arreglo de usuarios
 
 // Esta funcion carga un archivo tipo json y lo carga a un array utilizando un promesa de js
 function cargaJsonMascota() {
@@ -14,6 +14,7 @@ function cargaJsonMascota() {
     });
   return mascotasArray;
 }
+
 
 //Esta funcion busca un objeto dentro del arreglo de mascotas segun el campo de nombre y lo devuelve en formato json object.
 function buscaMascota(pNombreMascota) {
@@ -45,7 +46,7 @@ function buscaMascotasPorDuenio(pIdentificacion) {
     }
   }
   return result;
-}
+}*/
 
 async function getMascotasArray(idCliente){
   let result = {};

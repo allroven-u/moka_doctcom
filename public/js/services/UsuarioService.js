@@ -65,8 +65,18 @@ async function getUsuariosArray(){
 
        })
       .then(function (res) {
-        result = res;
-        console.log(res);
+        if(res.data.resultado == false){
+          switch (res.data.err.code) {
+              case 11000:
+                      res.data.msj = 'No se pudo registrar la persona, ya existe una persona registrada con esa identificacion o correo';
+                      console.log('No se pudo registrar 11000');
+                      console.log(res.data.err);
+                  break;            
+              default:
+                  break;
+          }
+      }
+      result = res;
       })
       .catch(function (err) {
         console.log(err);

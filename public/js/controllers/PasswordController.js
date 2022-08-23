@@ -100,22 +100,7 @@ async function CambiarPassword(){
 }
 
 
-function MostrarError(txtError){
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: txtError,
-    })
-}
-function ConfirmarDatos(txtConfirmar){
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: txtConfirmar,
-        showConfirmButton: false,
-        timer: 1500
-      })
-}
+
 function limpiarForm(idForm){
     document.getElementById(idForm).reset();
 }

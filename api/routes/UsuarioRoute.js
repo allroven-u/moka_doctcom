@@ -26,7 +26,7 @@ router.post('/RegistrarUsuario', (req, res) => {
         if (err) {
             res.json({
                 resultado: false,
-                msj: 'No se pudo registrar el usuario, ocurrio el siguiente error: ',
+                msj: 'No se pudo registrar el usuario!',
                 err
             });
         } else {
@@ -76,24 +76,7 @@ router.get('/BuscarUsuario', (req, res) => {
         }
     });
 });
-// router.get('/BuscarUsuarioPorId', (req, res) => {
-//     let params = req.query;
-//     Usuario.findOne({_id: params._id}, (err, UsuarioDB) => {
-//         if (err) {            
-//             res.json({
-//                 resultado: false,
-//                 msj: 'No se pudo obtener datos: ',
-//                 err
-//             });
-//         }else{
-//             res.json({
-//                 resultado: true,
-//                 msj: 'Los datos se obtuvieron de manera correcta: ',
-//                 UsuarioDB
-//             });
-//         }
-//     });
-// });
+
 router.get('/AutenticarUsuario', (req, res) => {
     let params = req.query;
     Usuario.findOne({
