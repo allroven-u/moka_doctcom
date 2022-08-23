@@ -112,39 +112,35 @@
 
             <div class="perfil-main">
                 <div class="perfil-contenido">
-                    <div class="box-usuario_img">
-                        <div class="box-img border-radius shadow editable">
-                            <i class="fa-solid fa-pen-to-square edit-icon"></i>
-                        </div>
-                        <div class="usuario border-radius name-mascota">
-                            <p id="TxtMascotaM">Pinto</p>
-                        </div>
-
-                    </div>
+                   
                     <div class="informacion-personal border-radius shadow">
                         <div class="titulo-info-usario">
-                            <h2>Editar Informacion General de Mascota</h2>
+                            <h2>Editar Informacion General de la Mascota</h2>
                         </div>
-
-                        <div class="perfilContainer">
-                            <label for="txtDuennoM">Dueño: </label>
-                            <input class="cajas" id="txtDuennoM" type="text" placeholder="Dueño: " maxlength="30">
+                        <div class="box-usuario_img">
+                            <div class="box-img border-radius shadow editable">
+                                <i class="fa-solid fa-pen-to-square edit-icon"></i>
+                            </div>
+                            <div class="usuario border-radius name-mascota">
+                                <p id="TxtMascotaM">Pinto</p>
+                            </div>
+    
                         </div>
-
-                        <div class="perfilContainer">
-                            <label for="txtEdadM">Edad: </label>
-                            <input class="cajas" id="txtEdadM" type="text" placeholder="Edad: " maxlength="30">
+                        <div class="perfilContainer2">
+                            <label for="status">Estado</label>
+                            <select name="status" id="statusM" class="cajas2">
+                                <option value="0">Inactivo</option>
+                                <option value="1">Activo</option>
+                            </select>
                         </div>
 
                         <div class="perfilContainer2">
                             <label for="txtDireccionM">Direccion: </label>
                             <input class="cajas2" id="txtDireccionM" type="text" placeholder="Direccion: " maxlength="30">
-                            <label for="txtObservacionesM">Observaciones: </label>
-                            <textarea class="cajas2" id="txtObservacionesM" placeholder="Observaciones: " cols="30" rows="10"></textarea>
                             
                         </div>
                         <div class="perfilContainer3">
-                            <button class="btn-cancelar border-radius" type="button" onclick="location.href='./perfilMascota.html'">Cancelar</button>
+                            <button class="btn-cancelar border-radius" type="button" id="btnBack">Cancelar</button>
                             <button class="btn-editar border-radius" id="btn-guardarMiPerfil2" type="button">Guardar</button>
                         </div>
 
@@ -163,10 +159,11 @@
     <script src="./js/services/CitaService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/MascotasService.js"></script>
+    <script src="./js/services/SessionService.js"></script>
     <script src="./js/controllers/PerfilMascotaEditableController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
 
-    <script src="./js/services/SessionService.js"></script>
+  
 </body>
 
 </html>

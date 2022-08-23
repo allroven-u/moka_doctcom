@@ -3,49 +3,90 @@
 let btnGuardarCambios = document.getElementById("btn-guardarMiPerfil2")
 btnGuardarCambios.addEventListener('click', EnviarDatosCorreo)
 
-let inputtxtDuennoM = document.getElementById("txtDuennoM");
-let inputtxtEdadM = document.getElementById("txtEdadM");
-let inputtxtDireccionM = document.getElementById("txtDireccionM");
-let inputtxtObservacionesM = document.getElementById("txtObservacionesM");
+let txtMascota = document.getElementById('TxtMascotaM');
+let txtDireccionM = document.getElementById('txtDireccionM');
+let statusM = document.getElementById('statusM');
 
-function EnviarDatosCorreo() {
-    if (ValidarDatosContactenos() == true) {
-        ConfirmarDatosLogin();
-        setTimeout(function() {
-            window.location.pathname = "/public/perfilMascota.html";
-        }, 2000);
+
+let listaMascotas = [];
+let userSessionM = GetSesion();
+
+let btnBack = document.getElementById('btnBack');
+
+///////////Obtener id url/////////////////
+let queryString, urlParams, _id;
+IdentificarAccion();
+async function IdentificarAccion() {
+    queryString = window.location.search;
+
+    urlParams = new URLSearchParams(queryString);
+
+    _id = urlParams.get('_id');
+    await ImprimirDatosMascota(_id);
+}
+
+//location.href = './perfilMascota.html?_id='+listaMascotas[i]._id;
+
+
+async function GetlistaMascota() {
+    let result = await getMascotasArray(userSessionM.Identificacion);
+    if (result != {} && result.resultado == true) {
+        listaMascotas = result.MascotasDB;
+    }
+    return listaMascotas;
+}
+async function ImprimirDatosMascota(p_id) {
+    let cargarMascotas = await GetlistaMascota();
+    for (let i = 0; i < cargarMascotas.length; i++) {
+        if (cargarMascotas[i]._id === p_id) {
+            txtMascota.textContent = cargarMascotas[i].NombreMascota;
+            txtDireccionM.value = cargarMascotas[i].Direccion;
+            statusM.value = cargarMascotas[i].Activo;
+        }
+    }
+   
+}
+
+btnBack.addEventListener('click', function(){
+    location.href = './perfilMascota.html?_id='+_id;
+})
+
+
+
+async function EnviarDatosCorreo() {
+    if (ValidarDatosMascota() == true) {
+        let spDireccionM = txtDireccionM.value;
+        let spStatusM = statusM.value;
+        let result = await EditarDatosMascota(_id, spDireccionM, spStatusM);
+        if (result != {} && result.resultado) {
+            ConfirmarDatos(result.msj);
+            setTimeout(function() {
+                location.href = "./perfilMascota.html?_id="+_id;
+            }, 2000);
+        }else{
+            MostrarError(result.msj);
+        };
     }
 }
 
-function ValidarDatosContactenos() {
-    let sConttxtDuennoM = inputtxtDuennoM.value;
-    let sConttxtEdadM = inputtxtEdadM.value;
-    let sConttxtDireccionM = inputtxtDireccionM.value;
-    let sConttxtObservacionesM = inputtxtObservacionesM.value;
 
-    if (sConttxtDuennoM == null || sConttxtDuennoM == undefined || sConttxtDuennoM == "") {
-        resaltarInputInvalido("txtDuennoM");
-        MostrarErrorContactenos();
-        return false;
-    }
+function ValidarDatosMascota() {
 
-    if (sConttxtEdadM == null || sConttxtEdadM == undefined || sConttxtEdadM == "") {
-        resaltarInputInvalido("txtEdadM");
-        MostrarErrorContactenos();
-        return false;
-    }
+    let sConttxtDireccionM = txtDireccionM.value;
+    let sEstadoM = statusM.value;
 
     if (sConttxtDireccionM == null || sConttxtDireccionM == undefined || sConttxtDireccionM == "") {
         resaltarInputInvalido("txtDireccionM");
         MostrarErrorContactenos();
         return false;
     }
-
-    if (sConttxtObservacionesM == null || sConttxtObservacionesM == undefined || sConttxtObservacionesM == "") {
-        resaltarInputInvalido("txtObservacionesM");
+    
+    if (sEstadoM == null || sEstadoM == undefined || sEstadoM == "") {
+        resaltarInputInvalido("txtDireccionM");
         MostrarErrorContactenos();
         return false;
     }
+
 
     return true;
 }
@@ -65,7 +106,7 @@ function resaltarInputInvalido(pinputID) {
 
     setTimeout(function() {
         obj.style = orig;
-    }, 5000);
+    }, 4000);
 }
 
 function ConfirmarDatosLogin() {

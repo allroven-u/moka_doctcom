@@ -93,4 +93,23 @@ async function RegistrarMascota(pIdUsuario,pMascota,pDireccion,platitud,plongitu
   return result;
 }
 
+async function EditarDatosMascota(pId, pDireccion, pEstado) {
+  let result ={};
+    await axios({
+      method:'put',
+      url: apiUrl + '/ModificarMascota',
+      responseType: 'json',
+      data: {
+        '_id': pId,
+        'Direccion': pDireccion,
+        'Activo': pEstado,
+      }
+    }).then((res) => {
+      result = res.data;
+  }).catch((err) => {
+      console.log(err);
+  });
+  return result;
+}
+
 

@@ -34,9 +34,26 @@ async function ImprimirDatosMascota(p_id) {
             txtMascota.textContent = cargarMascotas[i].NombreMascota;
             txtDireccionM.textContent = cargarMascotas[i].Direccion;
             ImprimirListaCitas(cargarMascotas[i]._id);
+            let calificacion = Number(cargarMascotas[i].CalificacionPromedio);
+            let editarInfoBtn = document.getElementById('editarInfo');
+            editarInfoBtn.addEventListener('click', function () {
+                location.href = './perfilMascotaEditable.html?_id=' + cargarMascotas[i]._id;
+            })
+            for (let c = 0; c < calificacion; c++) {
+                let addStars = document.createElement('i');
+                txtCalificacionM.appendChild(addStars);
+                addStars.classList.add('fa-solid');
+                addStars.classList.add('fa-star');
+            }
+
+
+
+            //<i class="fa-solid fa-star"></i>
         }
     }
 }
+
+
 
 async function ImprimirListaCitas(pp_id) {
     let tbody = document.getElementById('tbbody-ultimas-citas');
@@ -50,11 +67,9 @@ async function ImprimirListaCitas(pp_id) {
 
         if (listaCitas[i].IdMascota === pp_id) {
 
-            console.log(listaCitas[i]);
             let cita = listaCitas[i];
             let veterinario = await buscaUsuarioID(cita.IdentificacionVeterinario);
             veterinario = veterinario.usuarioDB;
-            console.log(veterinario);
 
             let fila = tbody.insertRow();
             let celdaNumCita = fila.insertCell();
