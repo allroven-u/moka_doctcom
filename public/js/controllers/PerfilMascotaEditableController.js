@@ -1,7 +1,7 @@
 'use strict';
 
 let btnGuardarCambios = document.getElementById("btn-guardarMiPerfil2")
-btnGuardarCambios.addEventListener('click', EditarDatosMascota)
+btnGuardarCambios.addEventListener('click', EnviarDatosCorreo)
 
 let txtMascota = document.getElementById('TxtMascotaM');
 let txtDireccionM = document.getElementById('txtDireccionM');
@@ -52,7 +52,8 @@ btnBack.addEventListener('click', function(){
 })
 
 
-async function EditarDatosMascota() {
+
+async function EnviarDatosCorreo() {
     if (ValidarDatosMascota() == true) {
         let spDireccionM = txtDireccionM.value;
         let spStatusM = estadoMascota(statusM.value);
