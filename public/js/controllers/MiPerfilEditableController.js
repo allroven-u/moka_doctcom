@@ -58,14 +58,25 @@ function CargarDatosUser(userSession){
     }
 }
 
-function EditarDatosUser() {
+async function EditarDatosUser() {
     if (ValidarDatosUser()) {
+        let sID= userSession._id;
+        let sConttxtNombreP = inputtxtNombreP.value;
+        let sConttxtApellidosP = inputtxtApellidosP.value;
+        let sConttxtCedulaP = inputtxtCedulaP.value;
+        let sConttxtEmailP = inputtxtEmailP.value;
+        let sConttxtDireccionP = inputtxtDireccionP.value;
+        let sFoto = inputFotoUser.src;
+        let result = await EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto);
+        if (result != {} && result.resultado) {
+            ConfirmarDatos(result.msj);
+            setTimeout(function() {
+                window.location.pathname = "/public/MiPerfil.html";
+            }, 2000);
+        }else{
+            MostrarError(result.msj);
+        }
 
-        ActualizarDatos();
-        ConfirmarDatos("¡Datos actualizados!");
-        setTimeout(function() {
-            window.location.pathname = "/public/MiPerfil.html";
-        }, 2000);
     }
 }
 
@@ -114,16 +125,6 @@ function ValidarDatosUser() {
 }
 
 
-function ActualizarDatos(){
-    let sID= userSession._id;
-    let sConttxtNombreP = inputtxtNombreP.value;
-    let sConttxtApellidosP = inputtxtApellidosP.value;
-    let sConttxtCedulaP = inputtxtCedulaP.value;
-    let sConttxtEmailP = inputtxtEmailP.value;
-    let sConttxtDireccionP = inputtxtDireccionP.value;
-    let sFoto = inputFotoUser.src;
-    EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto);
-}
 
 ////////////////////// cambiar Contrasenha MODAL //////////////////////////
 

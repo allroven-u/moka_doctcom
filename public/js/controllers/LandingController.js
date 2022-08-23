@@ -119,7 +119,7 @@ for (let i = 0; i < showModalLogin.length; i++) {
 
 ///////////////////// SHOW MODAL SIGNIN AND HIDE CODE //////////////////
 for (let i = 0; i < showModalSignin.length; i++) {
-    const hiddenModalSignin = function () {
+    var hiddenModalSignin = function () {
         signinModal.classList.add("hidden");
         overlay.classList.add("hidden");
         window.removeEventListener("scroll", disableScroll);

@@ -30,7 +30,7 @@ async function Registrar() {
             limpiarForm('formRegistroUser');
             hiddenModalSignin();
         }else{
-            ConfirmarDatos(result.data.msj);
+            MostrarError(result.data.msj);
         }
     }
 }

@@ -29,7 +29,7 @@ async function Registrar() {
             hiddenRegistroM();
             location.href = './Mascotas.html';
         }else{
-            ConfirmarDatos(result.data.msj);
+            MostrarError(result.data.msj);
         }
         
     }
