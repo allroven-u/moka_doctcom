@@ -59,6 +59,7 @@ async function GetlistaMascota() {
             let perfiles = document.querySelector('.perfil-contenido');
             let mainDiv = document.createElement('div');
             let firstDiv = document.createElement('div');
+            let imgMascota = document.createElement('img');
             let secondDiv = document.createElement('div');
             let createP = document.createElement('p');
             let createButton = document.createElement('button');
@@ -69,6 +70,9 @@ async function GetlistaMascota() {
             mainDiv.appendChild(firstDiv);
             firstDiv.classList.add('box-img');
             firstDiv.classList.add('border-radius');
+            firstDiv.appendChild(imgMascota);
+            imgMascota.classList.add('FotoPerfilUser');
+            imgMascota.src = listaMascotas[i].Foto;
             mainDiv.appendChild(secondDiv);
             secondDiv.classList.add('usuario');
             secondDiv.classList.add('border-radius');
