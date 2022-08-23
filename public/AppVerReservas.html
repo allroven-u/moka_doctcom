@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria Reservas</title>
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Reservas - Moka Veterinaria</title>
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/VerCitas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
@@ -46,12 +47,12 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i>Mi perfil</a>
                         </li>
 
                         <li class="list__inside" id="mascotasTab">
                             <a href="Mascotas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i>Mis mascotas</a>
                         </li>
                     </ul>
                 </li>
@@ -81,30 +82,30 @@
                             <li class="list__inside">
 
                                 <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
+                                    <i class="fa-solid fa-file-lines list__arrow"></i>Listado de citas</a>
                             </li>
 
                             <li class="list__inside">
                                 <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
+                                    <i class="fa-solid fa-file-lines list__arrow"></i>Listado de reservaciones</a>
                             </li>
 
                             <li class="list__inside">
                                 <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
+                                    <i class="fa-solid fa-star-half-stroke list__arrow"></i>Calificaciones
                                 </a>
                             </li>
 
                             <li class="list__inside">
                                 <a href="reporteGanancia.html" class="nav__link nav__link--inside">
 
-                                    <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                                    <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>Ganacias
                                 </a>
                             </li>
 
                             <li class="list__inside">
                                 <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
+                                    <i class="fa-solid fa-file-lines list__arrow"></i>Usuarios registrados</a>
                             </li>
 
                         </ul>
@@ -119,18 +120,18 @@
                 <div class="tTituloContainer">
                     <div><i class="fa-solid fa-list iconNuevaCita"></i></div>
                     <div class="tituloCitas">
-                        <h2>Lista de Reservas</h2>
+                        <h2>Lista de reservas</h2>
                     </div>
                     <div class="btnNuevaCitaContainer">
                         <a id="show-crear-reserva"><i class="fa-solid fa-square-plus fa-3x NuevaCita"></i></a>
-                        <p>Crear Reserva</p>
+                        <p>Crear reserva</p>
                     </div>
                 </div>
 
                 <div class="tFiltros">
 
                     <div for="txtNumCita" class="filtrosCajas">
-                        <label for="txtNumCita">No.Reserva</label>
+                        <label for="txtNumCita">No. reserva</label>
                         <input id="txtNumReserva" class="cajasCitas" type="text">
                     </div>
                     <div for="txtDuenhoCita" class="filtrosCajas">
@@ -143,16 +144,16 @@
                     </div>
 
                     <div for="txtVeterinarioCita" class="filtrosCajas">
-                        <label for="txtVeterinarioCita">Veterinario</label>
+                        <label for="txtVeterinarioCita">Veterinario(a)</label>
                         <input id="txtVeterinarioCita" class="cajasCitas" type="text">
                     </div>
                     <div class="filtroFecha">
                         <div for="DateFecha1" class="filtrosCajas">
-                            <label for="DateFecha1">Fecha Inicio</label>
+                            <label for="DateFecha1">Fecha inicio</label>
                             <input id="DateFecha1" type="date" class="cajasCitas">
                         </div>
                         <div for="DateFecha2" class="filtrosCajas">
-                            <label for="DateFecha2">Fecha Final</label>
+                            <label for="DateFecha2">Fecha final</label>
                             <input id="DateFecha2" type="date" class="cajasCitas">
                         </div>
                     </div>
@@ -164,7 +165,7 @@
                         <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
                         </div>
                         <div class="estadoChkCajas">
-                            <label for="chkEstadoFinalizada" >Finalizada</label>
+                            <label for="chkEstadoFinalizada">Finalizada</label>
                         <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
                         </div>
                         <div class="estadoChkCajas">
@@ -194,7 +195,7 @@
 
             <!---------------CREAR RESERVACION------------------------>
                 <form id="formCrearReserva" class="formCrearReserva hidden">
-                    <h1 class="titulo">Nueva Reservación</h1>
+                    <h1 class="titulo">Nueva reservación</h1>
                     <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCrearR"></i>
 
                     <div id="UsuarioReserva">
@@ -202,26 +203,28 @@
                         <input class="cajas" id="IdCliente" type="text" onblur="validarUser();" />
                     </div>
 
+                    <label for="selectMacota">Seleccione mascota:</label>
                     <select class="cajas select" id="selectMacota">
-                        <option value="">------Seleccionar mascota------</option>
+                        <option value="">------Seleccione mascota------</option>
 
                     </select>
                     <div>
-                        <label for="dateCheckIn">Fecha de ingreso</label>
+                        <label for="dateCheckIn">Seleccione fecha y hora de ingreso:</label>
                         <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
                     </div>
 
                     <div>
-                        <label for="dateCheckOut">Fecha de Salida</label>
+                        <label for="dateCheckOut">Seleccione fecha y hora de salida:</label>
                         <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
                     </div>
 
+                    <label for="txtCuidadosEsp">Cuidados especiales:</label>
                     <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5"
-                        placeholder="Cuidados Especiales*"></textarea>
+                        placeholder="Cuidados especiales*"></textarea>
 
                     <div class="btnsC">
                         <input type="button" class="btnCancelarC" id="cerrarModalReserva" value="Cancelar">
-                        <input type="button" id="btnReserva" class="btnC" value="Crear Reserva">
+                        <input type="button" id="btnReserva" class="btnC" value="Crear reserva">
                     </div>
                 </form>
 
@@ -229,11 +232,11 @@
             <form class="form-cancelar-reserva hidden" id="formCancelarReserva">
 
                 <!--TITULO------------------------>
-                <h1 class="titulo">Cancelar Reserva</h1>
+                <h1 class="titulo">Cancelar reserva</h1>
                 <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCancelarR"></i>
 
                 <div class="Cita">
-                    <label for="numReservaCancelar">No.Reserva</label>
+                    <label for="numReservaCancelar">No reserva</label>
                     <output class="cajasOut" id="numReservaCancelar" name="NumeroReserva" for="mostarNum"></output>
                 </div>
                 <div class="Cita">
@@ -248,7 +251,7 @@
 
                 <!--BOTON-DE-Cancelar-------------------------->
                 <div class="btnsC">
-                    <input type="button" class="btn-cancelar-cita" id="btnCancelarReserva" value="Cancelar Reserva"
+                    <input type="button" class="btn-cancelar-cita" id="btnCancelarReserva" value="Cancelar reserva"
                     onclick="CancelarReserva()">
                 </div>
                

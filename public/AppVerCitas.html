@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria Citas</title>
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Citas - Moka Veterinaria</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/VerCitas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
@@ -47,12 +48,12 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i>Mi perfil</a>
                         </li>
 
                         <li class="list__inside" id="mascotasTab">
                             <a href="Mascotas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i>Mis mascotas</a>
                         </li>
                     </ul>
 
@@ -85,30 +86,30 @@
                         <li class="list__inside">
 
                             <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Listado de citas</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Listado de reservaciones</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
+                                <i class="fa-solid fa-star-half-stroke list__arrow"></i>Calificaciones
                             </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteGanancia.html" class="nav__link nav__link--inside">
 
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>Ganacias
                             </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Usuarios Registrados</a>
                         </li>
 
                     </ul>
@@ -135,7 +136,7 @@
                 <div class="tFiltros">
 
                     <div for="txtNumCita" class="filtrosCajas">
-                        <label for="txtNumCita">No.Cita</label>
+                        <label for="txtNumCita">No. Cita</label>
                         <input id="txtNumCita" class="cajasCitas" type="text">
                     </div>
                     <div for="txtDuenhoCita" class="filtrosCajas">
@@ -148,16 +149,16 @@
                     </div>
 
                     <div for="txtVeterinarioCita" class="filtrosCajas">
-                        <label for="txtVeterinarioCita">Veterinario</label>
+                        <label for="txtVeterinarioCita">Veterinario(a)</label>
                         <input id="txtVeterinarioCita" class="cajasCitas" type="text">
                     </div>
                     <div class="filtroFecha">
                         <div for="DateFecha1" class="filtrosCajas">
-                            <label for="DateFecha1">Fecha Inicio</label>
+                            <label for="DateFecha1">Fecha inicio</label>
                             <input id="DateFecha1" type="date" class="cajasCitas">
                         </div>
                         <div for="DateFecha2" class="filtrosCajas">
-                            <label for="DateFecha2">Fecha Final</label>
+                            <label for="DateFecha2">Fecha final</label>
                             <input id="DateFecha2" type="date" class="cajasCitas">
                         </div>
                     </div>
@@ -167,7 +168,7 @@
 
 
                     <div for="checkEstadoCita" class="filtrosCajaschk">
-                        <p>Estado Cita</p>
+                        <p>Estado cita</p>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoAgendada">Agendada</label>
                             <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
@@ -204,55 +205,55 @@
                 <!-------------CREAR CITA--------->
 
                 <form id="formCrearCita" class="formCita hidden">
-                    <h1 class="titulo">Nueva Cita</h1>
+                    <h1 class="titulo">Nueva cita</h1>
                     <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCrearC"></i>
 
                     <div class="crearCita-Comtainer">
                         <div id="RegistroContainer" class="NuevoUser hidden">
                             <div id="IdCliente" class="">
-                                <label for="txtidCliente">Identificacion Cliente</label>
+                                <label for="txtidCliente">Identificacion cliente</label>
                                 <input type="text" id="txtidCliente" placeholder="Identificación cliente" class="cajas" onblur="validarUser();">
                             </div>
                             <div id="nombreCliente" class="">
-                                <label for="txtNombreCliente">Nombre Cliente</label>
+                                <label for="txtNombreCliente">Nombre cliente</label>
                                 <input type="text" id="txtNombreCliente" placeholder="Nombre cliente" class="cajas" >
                             </div>
                             <div id="ApellidoCliente" class="">
-                                <label for="txtApellidoCliente">Apellido Cliente</label>
+                                <label for="txtApellidoCliente">Apellido cliente</label>
                                 <input type="text" id="txtApellidoCliente" placeholder="Apellido cliente" class="cajas" >
                             </div>
                             <div id="emailCliente" class="">
-                                <label for="txtEmailCliente">Email Cliente</label>
+                                <label for="txtEmailCliente">Email cliente</label>
                                 <input type="text" id="txtEmailCliente" placeholder="Email cliente" class="cajas" >
                             </div>
                             <div id="DireccionCliente" class="">
-                                <label for="txtDireccionCliente">Dirección Cliente</label>
+                                <label for="txtDireccionCliente">Dirección cliente</label>
                                 <textarea name="direccion" cols="30" rows="5" id="txtDireccionCliente" placeholder="Dirección cliente" class="cajas"></textarea>
                             </div>
                         </div>
     
                         <div class="nuevaCita">
                             
-                        <label for="selectMascotaCita">Seleccione Mascota</label>
+                        <label for="selectMascotaCita">Seleccione mascota:</label>
                         <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
                             <option value="">------Seleccionar mascota------</option>
                         </select>
                         <div id="NombreOtro" class="hidden">
-                            <label for="txtNombreOtro">Nombre Mascota</label>
+                            <label for="txtNombreOtro">Nombre mascota:</label>
                             <input type="text" id="txtNombreOtro" placeholder="Nombre mascota" class="cajas">
                         </div>
-                        <label for="txtFecha">Seleccione Fecha y Hora</label>
+                        <label for="txtFecha">Seleccione fecha y hora:</label>
                         <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-                        <label for="selectVeterinario">Seleccione Veterinario</label>
+                        <label for="selectVeterinario">Seleccione veterinario(a):</label>
                         <select class="cajas select" id="selectVeterinario">
-                            <option value="">------Seleccionar Veterinario------</option>
+                            <option value="">------Seleccionar veterinario(a)------</option>
                         </select>
-                        <label for="txtDireccion">Descripción de la Cita</label>
+                        <label for="txtDireccion">Descripción de la cita:</label>
                         <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5"
-                            placeholder="Descripción de la Cita*"></textarea>
+                            placeholder="Descripción de la cita*"></textarea>
                         <div class="btnsC">
                             <input type="button" class="btnCancelarC" value="Cancelar" id="cerrarModalCita">
-                            <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
+                            <input type="button" id="btnIniciar" class="btnC" value="Crear cita">
                         </div>
                         </div>
                     </div>
@@ -266,10 +267,10 @@
                 <!--Cancelar cita---->
                 <form class="form-cancelar-cita hidden" id="formCancelarCita">
                     <!--TITULO------------------------>
-                    <h1 class="titulo">Cancelar Cita</h1>
+                    <h1 class="titulo">Cancelar cita</h1>
                     <i class="fa-solid fa-circle-xmark cerrarModalX-crearCita" id="cerrarCancelarC"></i>
                     <div class="Cita">
-                        <label for="numCitaCancelar">No.Cita</label>
+                        <label for="numCitaCancelar">No. cita</label>
                         <output class="cajasOut" id="numCitaCancelar" name="NumeroCita" for="mostarNum"></output>
                     </div>
                     <div class="Cita">
