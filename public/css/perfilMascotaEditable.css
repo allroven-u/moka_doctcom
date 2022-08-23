@@ -200,8 +200,8 @@ td {
     color: var(--verdeagua);
     position: relative;
     top: 20%;
-    left: 5%;
-    float: left;
+    right: 5%;
+    float: right;
     margin: 10px;
     font-size: 22px;
     transition: all 100ms linear;
