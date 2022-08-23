@@ -166,7 +166,7 @@ async function getUsuariosArray(){
     return result;
 }
 
-async function EliminarTarjetaPersona(p_idUsuario, p_idTarjeta) {
+async function EliminarTarjeta(p_idUsuario, p_idTarjeta) {
   let result = {};
   await axios({
       method: 'post',

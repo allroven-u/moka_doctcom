@@ -20,7 +20,7 @@ window.addEventListener("load", () => {
     let result = await buscaUsuarioID(userSessionT.Identificacion);
 
     if(result != {} && result.resultado == true){
-        console.log(result.usuarioDB.Tarjetas);
+        //console.log(result.usuarioDB.Tarjetas);
         mostrarTarjetas(result.usuarioDB.Tarjetas);
     }
     
@@ -36,8 +36,6 @@ function mostrarTarjetas(pListaTarjetas){
         let divLogoTarjeta = document.createElement('div');
         let imgTarjeta = document.createElement('i');
    
-        // let createButton = document.createElement('button');
-
         cajaTarjetas.appendChild(tarjetaNum);
         tarjetaNum.classList.add('tarjeta-por-agregar');
         tarjetaNum.appendChild(createP);
@@ -57,10 +55,6 @@ function mostrarTarjetas(pListaTarjetas){
 
 function disableScroll() {
     window.scrollTo(0, 0);
-}
-
-function listarTarjetas(){
-
 }
 
 
