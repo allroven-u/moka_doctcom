@@ -141,3 +141,26 @@ async function getUsuariosArray(){
 
     return result;
   }
+
+
+  async function RegistrarTarjetaNueva(p_id,pNombre,pNumeroTarjeta,pMesVencimiento,pAnioVencimiento,pCVV) {
+    let result = {};
+    await axios({
+        method: 'post',
+        url: apiUrl + '/RegistrarTarjeta',
+        responseType: 'json',
+        data: {
+            '_id': p_id,
+            'NombreTarjetahabiente': pNombre,
+            'NumeroTarjeta': pNumeroTarjeta,
+            'MesVencimiento' : pMesVencimiento,
+            'AnioVencimiento':pAnioVencimiento,
+            'CVV': pCVV
+        }
+    }).then((res) => {
+        result = res.data;
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}
