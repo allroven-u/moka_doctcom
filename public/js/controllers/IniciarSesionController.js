@@ -10,12 +10,14 @@ async function IniciarSesion() {
         let Email = inputUsuarioLogin.value;
         Email = Email.trim();
         let result = await validarLogin(Email, inputContrasenha1Login.value);
-         if (result) {
-            ConfirmarDatos("¡Sesión iniciada!");
-             location.href = './AppVerCitas.html'
-         } else {
-            MostrarError("¡Usuario o contraseña incorrectos!");
-         }
+        if (result) {
+        ConfirmarDatos("¡Sesión iniciada!");
+            location.href = './AppVerCitas.html'
+        } else {
+            if (ValidarDatosLogin==true) {
+                MostrarError("¡Usuario o contraseña incorrectos!");
+            } 
+        }
     }
 }
 
