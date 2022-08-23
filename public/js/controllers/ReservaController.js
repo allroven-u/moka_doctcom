@@ -103,15 +103,12 @@ function ImprimirListaReservas(ListaReservasBD) {
 
 
         let reserva = listaReservas[i];
-        // let propietario = buscaUsuarioID(reserva.IdentificacionUsurio) ;
 
         let fila = tbody.insertRow();
 
         let celdaNumReserva = fila.insertCell();
         celdaNumReserva.innerHTML = reserva.NumeroReservacion;
 
-        // let celdaPropietario = fila.insertCell();
-        // celdaPropietario.innerHTML = propietario.Nombre + ' ' + propietario.Apellido1 + ' ' + propietario.Apellido2;
 
         let celdaMascota = fila.insertCell();
         celdaMascota.innerHTML = reserva.NombreMascota;
@@ -226,6 +223,8 @@ let inputCuidadosReserva = document.getElementById('txtCuidadosEsp');
 let IdentificacionUsuario;
 let btnCrearReserva = document.getElementById('btnReserva');
 btnCrearReserva.addEventListener('click', CrearReserva);
+
+
 async function CrearReserva() {
     if (ValidarDatos() == true) {
 
@@ -245,14 +244,17 @@ async function CrearReserva() {
         let dFechaE = inputEntrada.value;
         let dFechaS = inputSalida.value;
         let sCiuidadosEsp = inputCuidadosReserva.value;
-        await crearReserva(IdentificacionUsuario, IdMascota, NombreMascota, dFechaE, dFechaS, sCiuidadosEsp)
-        ConfirmarDatos();
-        setTimeout(() => {
-            limpiarFormReserva();
-            hiddenCrearModal();
-            location.href = "./AppVerReservas.html"
-        }, 2000);
-
+        let result = await crearReserva(IdentificacionUsuario, IdMascota, NombreMascota, dFechaE, dFechaS, sCiuidadosEsp)
+        if (result != {} && result.data.resultado) {
+            ConfirmarDatos(result.data.msj);
+            setTimeout(() => {
+                limpiarFormReserva();
+                hiddenCrearModal();
+                location.href = "./AppVerReservas.html"
+            }, 2000);
+        }else{
+            ConfirmarDatos(result.data.msj);
+        }
     }
 }
 
@@ -289,7 +291,7 @@ function ValidarDatos() {
     }
     if (sNombreMascota == null || sNombreMascota == undefined || sNombreMascota == "") {
         inputNombreMascotaReserva.classList.add("error")
-        MostrarError();
+        MostrarError("El nombre de la mascota es requerido!");
         return false;
     } else {
         inputNombreMascotaReserva.classList.remove("error")
@@ -297,7 +299,7 @@ function ValidarDatos() {
 
     if (dFechaEnt == null || dFechaEnt == undefined || dFechaEnt == "") {
         inputEntrada.classList.add("error")
-        MostrarError();
+        MostrarError("La fecha de entrada es requerida!");
         return false;
     } else {
         inputEntrada.classList.remove("error")
@@ -328,7 +330,7 @@ function ValidarDatos() {
 
     if (dFechaSalida == null || dFechaSalida == undefined || dFechaSalida == "") {
         inputSalida.classList.add("error")
-        MostrarError();
+        MostrarError("La fecha de salida es requerida!");
         return false;
     } else {
         inputSalida.classList.remove("error")
@@ -346,7 +348,7 @@ function ValidarDatos() {
 
     if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
         inputCuidadosReserva.classList.add("error")
-        MostrarError();
+        MostrarError("La dirección es requerida!");
         return false;
     } else {
         inputCuidadosReserva.classList.remove("error")
@@ -354,23 +356,23 @@ function ValidarDatos() {
     return true;
 }
 
-function MostrarError() {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Dato Requerido!',
-    })
-}
+// function MostrarError() {
+//     Swal.fire({
+//         icon: 'error',
+//         title: 'Oops...',
+//         text: 'Dato Requerido!',
+//     })
+// }
 
-function ConfirmarDatos() {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Reserva Asignada',
-        showConfirmButton: false,
-        timer: 1500
-    })
-}
+// function ConfirmarDatos() {
+//     Swal.fire({
+//         position: 'center',
+//         icon: 'success',
+//         title: 'Reserva Asignada',
+//         showConfirmButton: false,
+//         timer: 1500
+//     })
+// }
 
 //carga Mascotas
 function ImprimirListaMascotasReserva(user, listaMascotas) {
