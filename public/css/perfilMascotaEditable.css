@@ -29,7 +29,7 @@ label {
 
 .box-usuario_img {
     width: 250px;
-    height: 440px;
+    height: 300px;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -39,8 +39,8 @@ label {
 .box-img {
     background-image: url('../assets/img/default-user-mascota.jpg');
     background-size: cover;
-    width: 90%;
-    height: 50%;
+    width: 200px;
+    height: 200px;
     margin-bottom: 30px;
 }
 
@@ -89,10 +89,12 @@ label {
 .titulo-info-usario {
     background-color: var(--verdeagua);
     width: 100%;
-    height: 7%;
+    height: 70px;
     color: var(--blanco);
-    text-align: center;
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .box-info-usuario {
