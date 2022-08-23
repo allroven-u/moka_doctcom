@@ -11,10 +11,10 @@ async function IniciarSesion() {
         Email = Email.trim();
         let result = await validarLogin(Email, inputContrasenha1Login.value);
          if (result) {
-            ConfirmarDatosLogin();
+            ConfirmarDatos("¡Sesión iniciada!");
              location.href = './AppVerCitas.html'
          } else {
-           ErrorDatosLogin();
+            MostrarError("¡Usuario o contraseña incorrectos!");
          }
     }
 }
@@ -24,7 +24,7 @@ async function ValidarDatosLogin() {
     let pwContrasenha = inputContrasenha1Login.value;
     if (sUsuario == null || sUsuario == undefined || sUsuario == "") {
         inputUsuarioLogin.classList.add("lError");
-        MostrarErrorLogin();
+        MostrarError("Correo requerido!");
         return false;
     } else {
         inputUsuarioLogin.classList.remove("lError");
@@ -35,38 +35,10 @@ async function ValidarDatosLogin() {
         pwContrasenha == ""
     ) {
         inputContrasenha1Login.classList.add("lError");
-        MostrarErrorLogin();
+        MostrarError("Contraseña requerida");
         return false;
     } else {
         inputContrasenha1Login.classList.remove("lError");
     }
     return true;
-}
-
-function MostrarErrorLogin() {
-    Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "¡Dato requerido!",
-    });
-}
-
-async function ConfirmarDatosLogin() {
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "¡Sesión iniciada!",
-        showConfirmButton: false,
-        timer: 1500,
-    });
-}
-
-async function ErrorDatosLogin() {
-    Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "¡Usuario o contraseña incorrectos!",
-        showConfirmButton: false,
-        timer: 1500,
-    });
 }
