@@ -703,5 +703,3 @@ function llenarModalCancelarCita(id) {
     }
   }
 }
-
-
