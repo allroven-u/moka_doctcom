@@ -102,7 +102,7 @@ async function EditarDatosMascota(pId, pDireccion, pEstado) {
       data: {
         '_id': pId,
         'Direccion': pDireccion,
-        'Activo': pEstado,
+        'Estado': pEstado
       }
     }).then((res) => {
       result = res.data;
