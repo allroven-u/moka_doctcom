@@ -6,16 +6,15 @@ let inputNombre = document.getElementById("txtNombre");
 let inputApellido = document.getElementById("txtApellido");
 let inputCedula = document.getElementById("numCedula");
 let inputEmail = document.getElementById("txtEmail");
-// let inputUsuario = document.getElementById("txtUsuario");
 let inputContrasenha1 = document.getElementById("txtContrasenha");
 let inputContrasenha2 = document.getElementById("txtContrasenha2");
 let inputDireccion = document.getElementById("txtDireccion");
 
 btnRegistrar.addEventListener("click", Registrar);
 
-function Registrar() {
+async function Registrar() {
     if (ValidarDatos() == true) {
-        ConfirmarDatos("¡Registro exitoso!");
+        
         let sNombre = inputNombre.value;
         let sApellido = inputApellido.value;
         let sCedula = inputCedula.value;
@@ -24,8 +23,15 @@ function Registrar() {
         let sDireccion = inputDireccion.value;
         let sFoto='';
 
-        RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,pwContrasenha,sDireccion,sFoto)
-        limpiarForm('formRegistroUser')
+        let result = await RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,pwContrasenha,sDireccion,sFoto)
+        console.log(result.data.resultado)
+        if (result != {} && result.data.resultado) {
+            ConfirmarDatos(result.data.msj);
+            limpiarForm('formRegistroUser');
+        }else{
+            ConfirmarDatos(result.data.msj);
+        }
+        
     }
 }
 
@@ -126,23 +132,6 @@ function ValidarDatos() {
     return true;
 }
 
-function MostrarError(txtError) {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: txtError,
-    })
-}
-
-function ConfirmarDatos(txtConfirmar) {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: txtConfirmar,
-        showConfirmButton: false,
-        timer: 1500
-    })
-}
 
 function limpiarForm(idform){
     document.getElementById(idform).reset();

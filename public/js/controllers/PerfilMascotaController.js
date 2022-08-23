@@ -6,18 +6,6 @@ let txtEdadM = document.getElementById('txtEdadM');
 let txtCalificacionM = document.getElementById('txtCalificacionM');
 let txtObservacionesM = document.getElementById('txtObservacionesM');
 
-// window.addEventListener('load', () => {
-//     let mascota = getMascotasArray();
-//     let usuario = GetSesion();
-//     txtDuennoM.textContent = usuario.Nombre;
-//     txtDireccionM.textContent = usuario.Direccion;
-//     console.log(mascota);
-//     //txtMascota.textContent = mascota.NombreMascota;
-
-//     cargaJsonCitas();
-//     cargaJson();
-//     setTimeout(() => { ImprimirListaCitas(); }, 1000);
-// });
 
 function ImprimirListaCitas() {
     let tbody = document.getElementById('tbbody-ultimas-citas');
