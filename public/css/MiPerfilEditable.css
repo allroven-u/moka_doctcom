@@ -79,7 +79,7 @@ select{
 
 .informacion-personal {
     overflow: hidden;
-    background-color: var(--silver);
+    background-color: #ddd;
     width: 60%;
     height: 800px;
     display: flex;

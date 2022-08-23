@@ -9,7 +9,7 @@ label {
 }
 
 .shadow {
-    box-shadow: -5px 5px 15px var(--gris);
+    box-shadow: -5px 5px 15px #ccc;
 }
 
 .perfil-main {
@@ -89,7 +89,7 @@ label {
 
 .informacion-personal {
     overflow: hidden;
-    background-color: var(--silver);
+    background-color: #dddd;
     width: 60%;
     height: 90%;
     display: flex;
@@ -197,13 +197,19 @@ td {
 }
 
 .edit-icon {
+    color: var(--verdeagua);
+    position: relative;
+    top: 20%;
+    right: 5%;
     float: right;
     margin: 10px;
     font-size: 22px;
+    transition: all 300ms linear;
 }
 
 .edit-icon:hover {
-    color: var(--verdeagua);
+    transform: scale(1.03, 1.03);
+    color: var(--turquesa);
 }
 
 .fa-star {
@@ -280,6 +286,7 @@ button {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .usuario:hover,

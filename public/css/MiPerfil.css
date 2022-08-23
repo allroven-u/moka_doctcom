@@ -61,7 +61,7 @@
 
 .informacion-personal {
     overflow: hidden;
-    background-color: var(--silver);
+    background-color: #ddd;
     width: 70%;
     height: 50%;
     display: flex;
@@ -109,7 +109,7 @@
 .historial-de-pagos,
 .historial-mascota {
     overflow: hidden;
-    background-color: var(--silver);
+    background-color: #ddd;
     width: 45%;
     height: auto;
     display: flex;
