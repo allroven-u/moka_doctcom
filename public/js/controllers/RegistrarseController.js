@@ -28,10 +28,10 @@ async function Registrar() {
         if (result != {} && result.data.resultado) {
             ConfirmarDatos(result.data.msj);
             limpiarForm('formRegistroUser');
+            hiddenModalSignin();
         }else{
             ConfirmarDatos(result.data.msj);
         }
-        
     }
 }
 
