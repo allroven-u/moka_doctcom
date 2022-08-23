@@ -77,44 +77,16 @@ function ValidarDatosMascota() {
 
     if (sConttxtDireccionM == null || sConttxtDireccionM == undefined || sConttxtDireccionM == "") {
         resaltarInputInvalido("txtDireccionM");
-        MostrarErrorContactenos();
+        MostrarError('Debe ingresar la direccion!');
         return false;
     }
     
     if (sEstadoM == null || sEstadoM == undefined || sEstadoM == "") {
-        resaltarInputInvalido("txtDireccionM");
-        MostrarErrorContactenos();
+        resaltarInputInvalido("statusM");
+        MostrarError('');
         return false;
     }
 
 
     return true;
-}
-
-function MostrarErrorContactenos() {
-    Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "¡Dato requerido!",
-    });
-}
-
-function resaltarInputInvalido(pinputID) {
-    var obj = document.getElementById(pinputID);
-    var orig = obj.style;
-    obj.style = 'border: 2px solid red; border-left: 10px solid var(--Rojo2);'
-
-    setTimeout(function() {
-        obj.style = orig;
-    }, 4000);
-}
-
-function ConfirmarDatosLogin() {
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "¡Datos actualizados!",
-        showConfirmButton: false,
-        timer: 1500,
-    });
 }

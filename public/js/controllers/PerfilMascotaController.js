@@ -6,6 +6,8 @@ let txtCalificacionM = document.getElementById('txtCalificacionM');
 let listaMascotas = [];
 let userSessionM = GetSesion();
 
+let btnRemoverMascota = document.getElementById('removerMascota');
+
 
 async function GetlistaMascota() {
     let result = await getMascotasArray(userSessionM.Identificacion);
@@ -53,6 +55,9 @@ async function ImprimirDatosMascota(p_id) {
     }
 }
 
+async function EliminarMascota(_id){
+    
+}
 
 
 async function ImprimirListaCitas(pp_id) {
