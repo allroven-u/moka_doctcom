@@ -39,7 +39,7 @@ async function ImprimirDatosMascota(p_id) {
             txtMascota.textContent = cargarMascotas[i].NombreMascota;
             txtDireccionM.textContent = cargarMascotas[i].Direccion;
             txtEstadoM.textContent = cargarMascotas[i].Estado;
-            fotoMascota.src  =cargarMascotas[i].Foto;
+            fotoMascota.src = cargarMascotas[i].Foto;
             ImprimirListaCitas(cargarMascotas[i]._id);
             let calificacion = Number(cargarMascotas[i].CalificacionPromedio);
             let editarInfoBtn = document.getElementById('editarInfo');
@@ -60,17 +60,54 @@ async function ImprimirDatosMascota(p_id) {
     }
 }
 
-async function EliminarMascota(){
-    let result = await DesactivarMascota(_id);
-    if (result != {} && result.resultado) {
-        ConfirmarDatos(result.msj);
-        setTimeout(function() {
-            location.href = "./Mascotas.html";
-        }, 2000);
-    }else{
-        MostrarError(result.msj);
-    };
-}
+//async function EliminarMascota() {
+//    let result = await DesactivarMascota(_id);
+//    if (result != {} && result.resultado) {
+//        ConfirmarDatos(result.msj);
+//        setTimeout(function () {
+//            location.href = "./Mascotas.html";
+//        }, 2000);
+//    } else {
+//        MostrarError(result.msj);
+//    };
+//}
+
+
+async function EliminarMascota() {
+
+    let cargarMascotas = await GetlistaMascota();
+    for (let i = 0; i < cargarMascotas.length; i++) {
+        if (cargarMascotas[i]._id === _id) {
+            let confirmacion = false;
+            await Swal.fire({
+                title: 'Desea eliminar el registro de ' + cargarMascotas[i].NombreMascota,
+                showDenyButton: true,
+                confirmButtonText: 'Confirmar',
+                denyButtonText: 'Cancelar',
+                icon: 'warning'
+            }).then((res) => {
+                confirmacion = res.isConfirmed;
+            });
+            if (confirmacion == true) {
+                let result = await DesactivarMascota(_id);
+                if (result != {} && result.resultado) {
+                    ConfirmarDatos(result.msj);
+                    setTimeout(function () {
+                        location.href = "./Mascotas.html";
+                    }, 2000);
+                } else {
+                    MostrarError(result.msj);
+                };
+                // await GetListaPersonas();
+            }
+        }
+    }
+
+};
+
+
+
+
 
 
 async function ImprimirListaCitas(pp_id) {
