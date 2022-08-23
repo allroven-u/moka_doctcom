@@ -62,7 +62,7 @@ function EditarDatosUser() {
     if (ValidarDatosUser()) {
 
         ActualizarDatos();
-        ConfirmarDatosLogin();
+        ConfirmarDatos("¡Datos actualizados!");
         setTimeout(function() {
             window.location.pathname = "/public/MiPerfil.html";
         }, 2000);
@@ -78,41 +78,35 @@ function ValidarDatosUser() {
 
     if (sConttxtNombreP == null || sConttxtNombreP == undefined || sConttxtNombreP == "") {
         resaltarInputInvalido("txtNombreP");
-        MostrarErrorContactenos();
+        MostrarError("El nombre es requerido!");
         return false;
     }
 
     if (sConttxtApellidosP == null || sConttxtApellidosP == undefined || sConttxtApellidosP == "") {
         resaltarInputInvalido("txtApellidosP");
-        MostrarErrorContactenos();
+        MostrarError("El Apellido es requerido!");
         return false;
     }
 
     if (sConttxtCedulaP == null || sConttxtCedulaP == undefined || sConttxtCedulaP == "") {
         resaltarInputInvalido("txtCedulaP");
-        MostrarErrorContactenos();
+        MostrarError("La cedula es requerida!");
         return false;
     }
 
     if (sConttxtEmailP == null || sConttxtEmailP == undefined || sConttxtEmailP == "") {
         resaltarInputInvalido("txtEmailP");
-        MostrarErrorContactenos();
-        return false;
-    }
-
-    if (sConttxtEmailP == null || sConttxtEmailP == undefined || sConttxtEmailP == "") {
-        resaltarInputInvalido("txtEmailP");
-        MostrarErrorContactenos("El email es requerido!");
+        MostrarError("El email es requerido!");
         return false;
     }else if(!sConttxtEmailP.match(ValidarEmail)){
         resaltarInputInvalido("txtEmailP");
-        MostrarErrorContactenos("Formato de email invalido!");
+        MostrarError("Formato de email invalido!");
         return false;
     }
 
     if (sConttxtDireccionP == null || sConttxtDireccionP == undefined || sConttxtDireccionP == "") {
         resaltarInputInvalido("txtDireccionP");
-        MostrarErrorContactenos();
+        MostrarError();
         return false;
     }
 
@@ -131,38 +125,6 @@ function ActualizarDatos(){
     EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto);
 }
 
-function CambiarContrasenha(){
-    
-}
-
-
-function MostrarErrorContactenos() {
-    Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "¡Dato requerido!",
-    });
-}
-
-function resaltarInputInvalido(pinputID) {
-    var obj = document.getElementById(pinputID);
-    var orig = obj.style;
-    obj.style = 'border: 2px solid red; border-left: 10px solid var(--Rojo2);'
-
-    setTimeout(function() {
-        obj.style = orig;
-    }, 5000);
-}
-
-function ConfirmarDatosLogin() {
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "¡Datos actualizados!",
-        showConfirmButton: false,
-        timer: 1500,
-    });
-}
 ////////////////////// cambiar Contrasenha MODAL //////////////////////////
 
 function disableScroll() {
