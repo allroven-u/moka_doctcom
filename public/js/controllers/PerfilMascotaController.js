@@ -10,7 +10,7 @@ let userSessionM = GetSesion();
 async function GetlistaMascota() {
     let result = await getMascotasArray(userSessionM.Identificacion);
     if (result != {} && result.resultado == true) {
-      listaMascotas = result.MascotasDB;
+        listaMascotas = result.MascotasDB;
     }
     return listaMascotas;
 }
@@ -27,13 +27,78 @@ async function IdentificarAccion() {
     await ImprimirDatosMascota(_id);
 }
 
-async function ImprimirDatosMascota(p_id){
+async function ImprimirDatosMascota(p_id) {
     let cargarMascotas = await GetlistaMascota();
-    for(let i = 0; i < cargarMascotas.length; i++){
-        if(cargarMascotas[i]._id === p_id){
+    for (let i = 0; i < cargarMascotas.length; i++) {
+        if (cargarMascotas[i]._id === p_id) {
             txtMascota.textContent = cargarMascotas[i].NombreMascota;
             txtDireccionM.textContent = cargarMascotas[i].Direccion;
-            console.log(cargarMascotas[i]);
+            ImprimirListaCitas(cargarMascotas[i]._id);
+        }
+    }
+}
+
+async function ImprimirListaCitas(pp_id) {
+    let tbody = document.getElementById('tbbody-ultimas-citas');
+
+    let listaCitas = await getCitasUsuario(userSessionM.Identificacion);
+    listaCitas = listaCitas.ListaCitasBD;
+
+    tbody.innerHTML = '';
+
+    for (let i = 0; i < listaCitas.length; i++) {
+
+        if (listaCitas[i].IdMascota === pp_id) {
+
+            console.log(listaCitas[i]);
+            let cita = listaCitas[i];
+            let veterinario = await buscaUsuarioID(cita.IdentificacionVeterinario);
+            veterinario = veterinario.usuarioDB;
+            console.log(veterinario);
+
+            let fila = tbody.insertRow();
+            let celdaNumCita = fila.insertCell();
+            let celdaMascota = fila.insertCell();
+            let celdaVeterinario = fila.insertCell();
+            let celdaFecha = fila.insertCell();
+            let celdaEstado = fila.insertCell();
+
+            celdaNumCita.innerHTML = cita.NumeroCita;
+            celdaNumCita.classList.add('h-citas');
+            celdaMascota.innerHTML = cita.NombreMascota;
+            celdaMascota.classList.add('h-citas');
+            celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido;
+            celdaVeterinario.classList.add('h-citas');
+            celdaFecha.innerHTML = cita.FechaHora;
+            celdaFecha.classList.add('h-citas');
+            celdaEstado.innerHTML = cita.Estado;
+            celdaEstado.classList.add('Estado');
+            celdaEstado.classList.add('h-citas');
+        }
+
+
+
+
+    }
+    let EstadoCita = document.querySelectorAll('.Estado');
+    VerEstado(EstadoCita);
+
+};
+
+function VerEstado(EstadoCita) {
+
+    for (let i = 0; i < EstadoCita.length; i++) {
+        let sEstadoCita = EstadoCita[i].innerHTML;
+        if (sEstadoCita == 'AGENDADA') {
+            EstadoCita[i].classList.add("AGENDADA")
+        }
+        if (sEstadoCita == 'CANCELADA') {
+            EstadoCita[i].classList.add("CANCELADA")
+
+        }
+        if (sEstadoCita == 'FINALIZADA') {
+            EstadoCita[i].classList.add("FINALIZADA")
+
         }
     }
 }
@@ -71,63 +136,6 @@ let userSessionM = GetSesion();
 
 
 
-function ImprimirListaCitas() {
-    let tbody = document.getElementById('tbbody-ultimas-citas');
-
-    let listaCitas = getCitasArray();
-
-    console.log(listaCitas);
-
-    tbody.innerHTML = '';
-
-    for (let i = 0; i < listaCitas.length; i++) {
-
-        let cita = listaCitas[i];
-        let veterinario = buscaUsuarioID(cita.IdentificacionVeterinario);
-
-        let fila = tbody.insertRow();
-        let celdaNumCita = fila.insertCell();
-        let celdaMascota = fila.insertCell();
-        let celdaVeterinario = fila.insertCell();
-        let celdaFecha = fila.insertCell();
-        let celdaEstado = fila.insertCell();
-
-        celdaNumCita.innerHTML = cita.NumeroCita;
-        celdaNumCita.classList.add('h-citas');
-        celdaMascota.innerHTML = cita.NombreMascota;
-        celdaMascota.classList.add('h-citas');
-        celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido1;
-        celdaVeterinario.classList.add('h-citas');
-        celdaFecha.innerHTML = cita.FechaHora;
-        celdaFecha.classList.add('h-citas');
-        celdaEstado.innerHTML = cita.Estado;
-        celdaEstado.classList.add('Estado');
-        celdaEstado.classList.add('h-citas');
-
-
-    }
-    let EstadoCita = document.querySelectorAll('.Estado');
-    VerEstado(EstadoCita);
-
-};
-
-function VerEstado(EstadoCita) {
-
-    for (let i = 0; i < EstadoCita.length; i++) {
-        let sEstadoCita = EstadoCita[i].innerHTML;
-        if (sEstadoCita == 'AGENDADA') {
-            EstadoCita[i].classList.add("AGENDADA")
-        }
-        if (sEstadoCita == 'CANCELADA') {
-            EstadoCita[i].classList.add("CANCELADA")
-
-        }
-        if (sEstadoCita == 'FINALIZADA') {
-            EstadoCita[i].classList.add("FINALIZADA")
-
-        }
-    }
-}
 
 
 const btnAnnadirMascota = document.getElementById('annadir-mascota');
@@ -215,5 +223,3 @@ async function GetlistaMascota() {
 
     }
 }*/
-
-
