@@ -152,10 +152,6 @@ router.put('/ModificarUsuario', function (req, res) {
     let body = req.body;
     Usuario.updateOne({ _id: body._id}, {
         $set: req.body 
-        // $set: {
-        //     Nombre: body.Nombre,
-        //     Edad: body.Edad
-        // }
     }, function (err, info) {
         if (err) {
             res.json({
@@ -197,5 +193,36 @@ router.put('/DesactivarUsuario', function(req, res){
     });
 
 });
+
+router.post('/RegistrarTarjeta', (req, res) =>{
+    let body = req.body;
+    Usuario.updateOne({_id: body._id},{
+        $push:{
+            Tarjetas:{
+                NombreTarjetahabiente: body.NombreTarjetahabiente,
+                NumeroTarjeta: body.NumeroTarjeta,
+                MesVencimiento: body.MesVencimiento,
+                AnioVencimiento: body.AnioVencimiento,
+                CVV: body.CVV
+            }
+        }
+    }, function (err, info){
+        if(err){
+            res.json({
+                resultado: false,
+                msj: 'Ocurrio un error inesperado y no se realizo el registro de la tarjeta',
+                err
+            });
+        }else{
+            res.json({
+                resultado: true,
+                msj:'Las tarjetas se actualizaron de manera correcta',
+                info
+            });
+        }
+    });
+});
+
+
 
 module.exports = router;
