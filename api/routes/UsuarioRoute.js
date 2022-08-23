@@ -206,6 +206,29 @@ router.post('/RegistrarTarjeta', (req, res) =>{
     });
 });
 
+router.post('/EliminarTarjeta', (req, res) => {
+    let body = req.body;
+    Usuario.updateOne({_id: body._idUsuario},{
+        $pull:{
+            Tarjetas: {_id: body._idTarjeta}
+        }
+    }, (err, info) =>{
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo eliminar la tarjeta',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'La tarjeta se elimino de manera correcta',
+                info
+            });
+        }
+    });
+});
+
 
 
 module.exports = router;

@@ -19,7 +19,7 @@ const schemaUsuario = new mongoose.Schema(
         Tarjetas:[
             {
                 NombreTarjetahabiente:{ type: String, required: true, unique: false },
-                NumeroTarjeta:{ type: String, required: true, unique: false },
+                NumeroTarjeta:{ type: String, required: true, unique: true },
                 MesVencimiento:{type: String, required: true, unique: false},
                 AnioVencimiento:{type: String, required: true, unique: false},
                 CVV:{ type: String, required: true, unique: false }
