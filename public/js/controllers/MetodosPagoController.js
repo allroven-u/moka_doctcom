@@ -1,21 +1,69 @@
 'use strict';
-
+let userSessionT;
 const showAgregarTajeta = document.querySelector('.btn-agregar-metodo-pago');
 const modalAgregarTarjeta = document.querySelector('.form-pago-tarjeta');
 const closeModalAgregarTarjeta = document.querySelector('.btn-cancerlar-tarjeta');
 const overlay = document.querySelector('.overlay');
 const cerrarModalIcon = document.querySelector('.cerrarModalX-tarjeta');
-let userSessionT;
+
+
+let btnAgregarTarjeta = document.getElementById('btnAgregarTarjeta');
+
 
 window.addEventListener("load", () => {
     userSessionT = GetSesion();
   //////////////////// cargar datos desde BD////////////////////
+    getListaTarjetas();
   });
+
+ async function getListaTarjetas(){
+    let result = await buscaUsuarioID(userSessionT.Identificacion);
+
+    if(result != {} && result.resultado == true){
+        console.log(result.usuarioDB.Tarjetas);
+        mostrarTarjetas(result.usuarioDB.Tarjetas);
+    }
+    
+  }
   
+function mostrarTarjetas(pListaTarjetas){
+
+    for(let i = 0; i < pListaTarjetas.length; i++){
+        console.log(pListaTarjetas[i]);
+        let cajaTarjetas = document.querySelector('.caja-metodos-pago');
+        let tarjetaNum = document.createElement('div');
+        let createP = document.createElement('p');
+        let divLogoTarjeta = document.createElement('div');
+        let imgTarjeta = document.createElement('i');
+   
+        // let createButton = document.createElement('button');
+
+        cajaTarjetas.appendChild(tarjetaNum);
+        tarjetaNum.classList.add('tarjeta-por-agregar');
+        tarjetaNum.appendChild(createP);
+        createP.classList.add('numero-tajeta');
+        tarjetaNum.appendChild(divLogoTarjeta);
+        divLogoTarjeta.classList.add('logo-tarjeta');
+        divLogoTarjeta.appendChild(imgTarjeta);
+        imgTarjeta.classList.add('fa-brands');
+        imgTarjeta.classList.add('fa-cc-visa');
+        imgTarjeta.classList.add('fa-3x');
+
+        createP.textContent = pListaTarjetas[i].NumeroTarjeta;
+        createP.setAttribute('id',pListaTarjetas[i]._id);
+
+}
+}
 
 function disableScroll() {
     window.scrollTo(0, 0);
 }
+
+function listarTarjetas(){
+
+}
+
+
 const limpiarFormAgregar = function () {
     modalAgregarTarjeta.reset();
 }
@@ -47,7 +95,6 @@ showAgregarTajeta.addEventListener('click', function() {
     ShowModalAgregarTarjetaFunct();
 });
 
-
 //////////////////////////TARJETAS///////////////////////
 
 
@@ -70,12 +117,26 @@ var cantCVV;
 
 
 
-function RealizarPago(){
+async function registarTarjeta(){
     if(ValidarDatostarjeta() == true){
-        ConfirmarDatos("Tarjeta registrada con éxito!");
-        hiddenAgregar();
+        let result = await RegistrarTarjetaNueva(userSessionT._id,inputNombreTitular.value,inputNumTarjeta.value,inputMesVenc.value,inputYearVenc.value,inputNumCVV.value);
+        if(result.resultado == true){
+            ConfirmarDatos("Tarjeta registrada con éxito!");
+            hiddenAgregar();
+        }
+        
     }
 }
+
+btnAgregarTarjeta.addEventListener("click", () => {
+    registarTarjeta();
+  });
+
+  btnAgregarTarjeta.addEventListener("click", () => {
+    registarTarjeta();
+  });
+
+  
 
 function ValidarDatostarjeta(){
     let sNombreTitular = inputNombreTitular.value;
@@ -207,9 +268,3 @@ function ValidarTipoTarjeta(){
 
 }
 
-
-async function registarTarjeta(){
-    
-    let result = await RegistrarTarjetaNueva(userSessionT._id,'Allan Rodriguez V','12345678913243546','09','2023','0102');
-    console.log(result);
-}

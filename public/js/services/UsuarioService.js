@@ -155,7 +155,8 @@ async function getUsuariosArray(){
             'NumeroTarjeta': pNumeroTarjeta,
             'MesVencimiento' : pMesVencimiento,
             'AnioVencimiento':pAnioVencimiento,
-            'CVV': pCVV
+            'CVV': pCVV,
+            'Activo':1
         }
     }).then((res) => {
         result = res.data;
@@ -163,4 +164,22 @@ async function getUsuariosArray(){
         console.log(err);
     });
     return result;
+}
+
+async function EliminarTarjetaPersona(p_idUsuario, p_idTarjeta) {
+  let result = {};
+  await axios({
+      method: 'post',
+      url: apiUrl + '/EliminarTarjetaPersona',
+      responseType: 'json',
+      data: {
+          '_idUsuario': p_idUsuario,
+          '_idTarjeta': p_idTarjeta
+      }
+  }).then((res) => {
+      result = res.data;
+  }).catch((err) => {
+      console.log(err);
+  });
+  return result;
 }

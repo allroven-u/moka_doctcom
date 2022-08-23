@@ -127,16 +127,22 @@
                 <div class="title-metodos-pago">
                     <a href="./MiPerfil.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
                     <h2>Métodos de pago</h2>
+                    
                 </div>
+                
                 <div class="caja-metodos-pago">
-                    <div class="tarjeta-por-agregar">
+                    <!-- <div class="tarjeta-por-agregar">
                         <p class="numero-tajeta">**** 1234</p>
                         <div class="logo-tarjeta">
-                            <img src="./assets/img/Mastercard_2019_logo.svg" alt="logo tarjeta" width="50px">
-                        </div>
+                            <i class="fa-brands fa-cc-visa fa-3x"></i>
+                           
+                        </div> -->
+                        <button type="button" class="btn-agregar-metodo-pago">Agregar método de pago</button>
+                        <button type="button" id="btnEliminarTarjeta" class="btn-agregar-metodo-pago">Eliminar método de pago</button>
                     </div>
-                    <button type="button" class="btn-agregar-metodo-pago">Agregar método de pago</button>
+                   
                 </div>
+
             </div>
 
 
@@ -199,9 +205,7 @@
             </div>
             <div class="lBtns">
                 <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cancelar">
-                <input type="button" class="btn-agregar-tarjeta" id="btnAgregar" value="Agregar"
-                    onclick="registarTarjeta();">
-
+                <input type="button" class="btn-agregar-tarjeta" id="btnAgregarTarjeta" value="Agregar">
             </div>
         </form>
 
