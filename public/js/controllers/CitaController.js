@@ -40,6 +40,7 @@ async function GetListaCitas() {
 
   if (result != {} && result.resultado == true) {
     ImprimirListaCitas(result.ListaCitasBD);
+    listaCitas =result.ListaCitasBD;
   }
 }
 
@@ -695,6 +696,7 @@ showCrearCita.addEventListener("click", ShowModalCrearFunct);
 
 ///////////////// FIN MODAL CREAR CITA /////////////////////
 function llenarModalCancelarCita(id) {
+  console.log(listaCitas)
   for (let i = 0; i < listaCitas.length; i++) {
     if (listaCitas[i].NumeroCita == id) {
       document.getElementById("numCitaCancelar").value = id;
