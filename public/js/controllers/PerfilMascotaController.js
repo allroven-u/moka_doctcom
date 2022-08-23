@@ -11,6 +11,7 @@ let listaMascotas = [];
 let userSessionM = GetSesion();
 
 
+
 function ImprimirListaCitas() {
     let tbody = document.getElementById('tbbody-ultimas-citas');
 
