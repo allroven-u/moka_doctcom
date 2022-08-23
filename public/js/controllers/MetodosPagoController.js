@@ -5,6 +5,13 @@ const modalAgregarTarjeta = document.querySelector('.form-pago-tarjeta');
 const closeModalAgregarTarjeta = document.querySelector('.btn-cancerlar-tarjeta');
 const overlay = document.querySelector('.overlay');
 const cerrarModalIcon = document.querySelector('.cerrarModalX-tarjeta');
+let userSessionT;
+
+window.addEventListener("load", () => {
+    userSessionT = GetSesion();
+  //////////////////// cargar datos desde BD////////////////////
+  });
+  
 
 function disableScroll() {
     window.scrollTo(0, 0);
@@ -161,18 +168,6 @@ function ValidarDatostarjeta(){
     return true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function ValidarTipoTarjeta(){
     let nTarjeta = inputNumTarjeta.value;
     ///////visa////////
@@ -213,21 +208,8 @@ function ValidarTipoTarjeta(){
 }
 
 
-
-// function MostrarErrorT() {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: '¡Dato requerido!',
-//     })
-// }
-
-// function ConfirmarDatosT() {
-//     Swal.fire({
-//         position: 'center',
-//         icon: 'success',
-//         title: '¡Pago realizado!',
-//         showConfirmButton: false,
-//         timer: 1500
-//     })
-// }
+async function registarTarjeta(){
+    
+    let result = await RegistrarTarjetaNueva(userSessionT._id,'Allan Rodriguez V','12345678913243546','09','2023','0102');
+    console.log(result);
+}
