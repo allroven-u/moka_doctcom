@@ -253,7 +253,7 @@ async function CrearReserva() {
                 location.href = "./AppVerReservas.html"
             }, 2000);
         }else{
-            ConfirmarDatos(result.data.msj);
+            MostrarError(result.data.msj);
         }
     }
 }
@@ -356,23 +356,6 @@ function ValidarDatos() {
     return true;
 }
 
-// function MostrarError() {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: 'Dato Requerido!',
-//     })
-// }
-
-// function ConfirmarDatos() {
-//     Swal.fire({
-//         position: 'center',
-//         icon: 'success',
-//         title: 'Reserva Asignada',
-//         showConfirmButton: false,
-//         timer: 1500
-//     })
-// }
 
 //carga Mascotas
 function ImprimirListaMascotasReserva(user, listaMascotas) {

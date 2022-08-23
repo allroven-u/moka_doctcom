@@ -28,7 +28,7 @@ async function Registrar() {
             limpiarFormRegMascota();
             hiddenRegistroM();
         }else{
-            ConfirmarDatos(result.data.msj);
+            MostrarError(result.data.msj);
         }
         
     }
