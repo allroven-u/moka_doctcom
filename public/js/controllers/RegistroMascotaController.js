@@ -27,6 +27,7 @@ async function Registrar() {
             ConfirmarDatos(result.data.msj);
             limpiarFormRegMascota();
             hiddenRegistroM();
+            location.href = './Mascotas.html';
         }else{
             ConfirmarDatos(result.data.msj);
         }
