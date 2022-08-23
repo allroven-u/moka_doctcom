@@ -6,18 +6,11 @@ let txtEdadM = document.getElementById('txtEdadM');
 let txtCalificacionM = document.getElementById('txtCalificacionM');
 let txtObservacionesM = document.getElementById('txtObservacionesM');
 
-// window.addEventListener('load', () => {
-//     let mascota = getMascotasArray();
-//     let usuario = GetSesion();
-//     txtDuennoM.textContent = usuario.Nombre;
-//     txtDireccionM.textContent = usuario.Direccion;
-//     console.log(mascota);
-//     //txtMascota.textContent = mascota.NombreMascota;
 
-//     cargaJsonCitas();
-//     cargaJson();
-//     setTimeout(() => { ImprimirListaCitas(); }, 1000);
-// });
+let listaMascotas = [];
+let userSessionM = GetSesion();
+
+
 
 function ImprimirListaCitas() {
     let tbody = document.getElementById('tbbody-ultimas-citas');
@@ -91,7 +84,7 @@ function disableScroll() {
 
 
 
-const hiddenRegistroM = function() {
+const hiddenRegistroM = function () {
     modalRegisMascot.classList.add('hidden');
     overlayRegistroM.classList.add('hidden');
     window.removeEventListener("scroll", disableScroll);
@@ -106,16 +99,61 @@ function ShowModalRegistroM() {
     closeModalMascota.addEventListener('click', hiddenRegistroM);
     closeModalMascota2.addEventListener('click', hiddenRegistroM);
     overlayRegistroM.addEventListener('click', hiddenRegistroM);
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && !modalRegisMascot.classList.contains('hidden')) {
             hiddenRegistroM();
         }
     });
 };
 
-btnAnnadirMascota.addEventListener('click', function() {
+btnAnnadirMascota.addEventListener('click', function () {
     ShowModalRegistroM();
 });
 
+GetlistaMascota()
+
+async function GetlistaMascota() {
+    let result = await getMascotasArray(userSessionM.Identificacion);
+    if (result != {} && result.resultado == true) {
+      listaMascotas = result.MascotasDB;
+      await imprimirMascotas();
+    }
+}
+
+ async function imprimirMascotas(){
+    for(let i = 0; i < listaMascotas.length; i++){
+        console.log(listaMascotas[i]);
+        let perfiles = document.querySelector('.perfil-contenido');
+        let mainDiv = document.createElement('div');
+        let firstDiv = document.createElement('div');
+        let secondDiv = document.createElement('div');
+        let createP = document.createElement('p');
+        let createButton = document.createElement('button');
+
+        perfiles.appendChild(mainDiv);
+        mainDiv.classList.add('box-usuario_img');
+        mainDiv.classList.add('cards-mascotas');
+        mainDiv.appendChild(firstDiv);
+        firstDiv.classList.add('box-img');
+        firstDiv.classList.add('border-radius');
+        mainDiv.appendChild(secondDiv);
+        secondDiv.classList.add('usuario');
+        secondDiv.classList.add('border-radius');
+        secondDiv.classList.add('name-mascota');
+        secondDiv.appendChild(createP);
+        createP.setAttribute('id', 'TxtMascotaM');
+        createP.textContent = listaMascotas[i].NombreMascota;
+        mainDiv.appendChild(createButton);
+        createButton.classList.add('usuario');
+        createButton.classList.add('border-radius');
+        createButton.classList.add('annadir');
+        createButton.textContent = 'Ver Perfil'
+        createButton.addEventListener('click', function(){
+            location.href = './perfilMascota.html';
+        })
+
+
+    }
+}
 
 

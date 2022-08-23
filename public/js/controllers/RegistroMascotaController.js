@@ -13,9 +13,8 @@ let inputFoto = document.getElementById('imgFotoMascota');
 
 btnRegistroMascota.addEventListener("click", Registrar);
 
-function Registrar() {
+async function Registrar() {
     if (ValidarDatosRegMascota() == true) {
-        ConfirmarDatos();
         let IDcliente = userSession.Identificacion;
         let sNombre = inputNombre.value;
         let sDireccion = inputDireccionRegistroM.value;
@@ -23,8 +22,15 @@ function Registrar() {
         let sLongitud ='';
         let sFoto=inputFoto.src;
         console.log(sFoto)
-        RegistrarMascota(IDcliente,sNombre,sDireccion,sLatitud,sLongitud,sFoto);
-        limpiarFormRegMascota();
+         let result = await RegistrarMascota(IDcliente,sNombre,sDireccion,sLatitud,sLongitud,sFoto);
+         if (result != {} && result.data.resultado) {
+            ConfirmarDatos(result.data.msj);
+            limpiarFormRegMascota();
+            hiddenRegistroM();
+        }else{
+            MostrarError(result.data.msj);
+        }
+        
     }
 }
 
@@ -37,7 +43,7 @@ function ValidarDatosRegMascota() {
 
     if (sNombre == null || sNombre == undefined || sNombre == "") {
         inputNombre.classList.add("error")
-        MostrarError();
+        MostrarError("El nombre es requerido!");
         return false;
 
     } else {
@@ -45,7 +51,7 @@ function ValidarDatosRegMascota() {
     }
     if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
         inputDireccionRegistroM.classList.add("error")
-        MostrarError();
+        MostrarError("La dirección es requerida!");
         return false;
     } else {
         inputDireccionRegistroM.classList.remove("error")
@@ -53,23 +59,6 @@ function ValidarDatosRegMascota() {
     return true;
 }
 
-function MostrarError() {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: '¡Dato requerido!',
-    })
-}
-
-function ConfirmarDatos() {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: '¡Registrado!',
-        showConfirmButton: false,
-        timer: 1500
-    })
-}
 
 function limpiarFormRegMascota() {
     document.getElementById('FormRegistroMascota').reset();

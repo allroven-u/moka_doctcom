@@ -65,7 +65,8 @@ var cantCVV;
 
 function RealizarPago(){
     if(ValidarDatostarjeta() == true){
-        ConfirmarDatosT();
+        ConfirmarDatos("Tarjeta registrada con éxito!");
+        hiddenAgregar();
     }
 }
 
@@ -78,7 +79,7 @@ function ValidarDatostarjeta(){
 
     if (sNombreTitular == null || sNombreTitular == undefined || sNombreTitular == "") {
         inputNombreTitular.classList.add("TError");
-        MostrarErrorT();
+        MostrarError("El nombre es requerido!");
         return false;
     }
     if (sNombreTitular.match(/^[a-zA-Z,.' -]+$/)) {
@@ -90,7 +91,7 @@ function ValidarDatostarjeta(){
     }
     if (sNumTarjeta == null || sNumTarjeta == undefined || sNumTarjeta == "" ) {
         inputNumTarjeta.classList.add("TError");
-        MostrarErrorT();
+        MostrarError("El número de tarjeta es requerido!");
         return false;
     }
     if(ValidarTipoTarjeta() == true){
@@ -100,7 +101,7 @@ function ValidarDatostarjeta(){
     }
     if (sNumCVV == null || sNumCVV == undefined || sNumCVV == "") {
         inputNumCVV.classList.add("TError");
-        MostrarErrorT();
+        MostrarError("El código de seguridad es requerido!");
         return false;
     } else {
         console.log("cvv "+sNumCVV);
@@ -119,14 +120,14 @@ function ValidarDatostarjeta(){
     }
     if (nMesV == null || nMesV == undefined || nMesV == "") {
         inputMesVenc.classList.add("TError");
-        MostrarErrorT();
+        MostrarError("El mes de vencimiento es requerido!");
         return false;
     } else {
         inputMesVenc.classList.remove("TError");
     }
     if (nYearV == null || nYearV == undefined || nYearV == "") {
         inputYearVenc.classList.add("TError");
-        MostrarErrorT();
+        MostrarError("El año de vencimiento es requerido!");
         return false;
     } else {
         inputYearVenc.classList.remove("TError");
@@ -211,28 +212,22 @@ function ValidarTipoTarjeta(){
 
 }
 
-function MostrarError(txtError) {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: txtError,
-    })
-}
 
-function MostrarErrorT() {
-    Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: '¡Dato requerido!',
-    })
-}
 
-function ConfirmarDatosT() {
-    Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: '¡Pago realizado!',
-        showConfirmButton: false,
-        timer: 1500
-    })
-}
+// function MostrarErrorT() {
+//     Swal.fire({
+//         icon: 'error',
+//         title: 'Oops...',
+//         text: '¡Dato requerido!',
+//     })
+// }
+
+// function ConfirmarDatosT() {
+//     Swal.fire({
+//         position: 'center',
+//         icon: 'success',
+//         title: '¡Pago realizado!',
+//         showConfirmButton: false,
+//         timer: 1500
+//     })
+// }

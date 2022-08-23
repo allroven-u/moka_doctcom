@@ -21,3 +21,13 @@ function MostrarError(txtInfo) {
       timer: 1500,
     });
   }
+
+  function resaltarInputInvalido(pinputID) {
+    var obj = document.getElementById(pinputID);
+    var orig = obj.style;
+    obj.style = "border: 2px solid red; border-left: 10px solid var(--Rojo2);";
+
+    setTimeout(function () {
+        obj.style = orig;
+    }, 5000);
+}

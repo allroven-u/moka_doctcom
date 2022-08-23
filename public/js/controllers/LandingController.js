@@ -119,7 +119,7 @@ for (let i = 0; i < showModalLogin.length; i++) {
 
 ///////////////////// SHOW MODAL SIGNIN AND HIDE CODE //////////////////
 for (let i = 0; i < showModalSignin.length; i++) {
-    const hiddenModalSignin = function () {
+    var hiddenModalSignin = function () {
         signinModal.classList.add("hidden");
         overlay.classList.add("hidden");
         window.removeEventListener("scroll", disableScroll);
@@ -282,32 +282,4 @@ function ValidarDatosContactenos() {
 }
 function limpiarFormulario(idForm) {
     document.getElementById(idForm).reset();
-}
-
-function MostrarError(txtError) {
-    Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: txtError,
-    });
-}
-
-function resaltarInputInvalido(pinputID) {
-    var obj = document.getElementById(pinputID);
-    var orig = obj.style;
-    obj.style = "border: 2px solid red; border-left: 10px solid var(--Rojo2);";
-
-    setTimeout(function () {
-        obj.style = orig;
-    }, 5000);
-}
-
-function ConfirmarDatos(txtConfirmar) {
-    Swal.fire({
-        position: "center",
-        icon: "success",
-        title: txtConfirmar,
-        showConfirmButton: false,
-        timer: 1500,
-    });
 }
