@@ -142,7 +142,7 @@ router.put('/DesactivarMascota', function(req, res){
         } else {
             res.json({
                 resultado: true,
-                msj: 'Mascota inactivada de manera correcta',
+                msj: 'Mascota elimanada de manera correcta!',
                 info
             });
         }

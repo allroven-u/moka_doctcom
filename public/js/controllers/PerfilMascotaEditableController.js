@@ -43,6 +43,9 @@ async function ImprimirDatosMascota(p_id) {
             txtMascota.textContent = cargarMascotas[i].NombreMascota;
             txtDireccionM.value = cargarMascotas[i].Direccion;
             statusM.value = cargarMascotas[i].Estado;
+            if(cargarMascotas[i].Foto === ""){
+                cargarMascotas[i].Foto = './assets/img/default-user-mascota.jpg';
+            }
             fotoM.src = cargarMascotas[i].Foto;
         }
     }

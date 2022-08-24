@@ -72,6 +72,9 @@ async function GetlistaMascota() {
             firstDiv.classList.add('border-radius');
             firstDiv.appendChild(imgMascota);
             imgMascota.classList.add('FotoPerfilUser');
+            if(listaMascotas[i].Foto === ""){
+                listaMascotas[i].Foto = './assets/img/default-user-mascota.jpg';
+            }
             imgMascota.src = listaMascotas[i].Foto;
             mainDiv.appendChild(secondDiv);
             secondDiv.classList.add('usuario');

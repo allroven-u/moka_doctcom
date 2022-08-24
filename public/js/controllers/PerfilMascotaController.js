@@ -39,6 +39,9 @@ async function ImprimirDatosMascota(p_id) {
             txtMascota.textContent = cargarMascotas[i].NombreMascota;
             txtDireccionM.textContent = cargarMascotas[i].Direccion;
             txtEstadoM.textContent = cargarMascotas[i].Estado;
+            if(cargarMascotas[i].Foto === ""){
+                cargarMascotas[i].Foto = './assets/img/default-user-mascota.jpg';
+            }
             fotoMascota.src = cargarMascotas[i].Foto;
             ImprimirListaCitas(cargarMascotas[i]._id);
             let calificacion = Number(cargarMascotas[i].CalificacionPromedio);

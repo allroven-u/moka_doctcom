@@ -14,7 +14,7 @@ let inputFoto = document.getElementById('imgFotoMascota');
 btnRegistroMascota.addEventListener("click", Registrar);
 
 async function Registrar() {
-    if (ValidarDatosRegMascota() == true) {
+    if (ValidarDatosRegMascota() === true) {
         let IDcliente = userSession.Identificacion;
         let sNombre = inputNombre.value;
         let sDireccion = inputDireccionRegistroM.value;
@@ -27,7 +27,9 @@ async function Registrar() {
             ConfirmarDatos(result.data.msj);
             limpiarFormRegMascota();
             hiddenRegistroM();
-            location.href = './Mascotas.html';
+            setTimeout(function () {
+                location.href = "./Mascotas.html";
+            }, 2000);
         }else{
             MostrarError(result.data.msj);
         }
