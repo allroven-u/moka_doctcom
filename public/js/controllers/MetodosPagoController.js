@@ -143,7 +143,7 @@ let actualYear = actualDate.getFullYear();
 let actualMonth = actualDate.getMonth();
 var cantCVV;
 
-// Campo numeros
+/*// Campo numeros
 var numeros = document.getElementById('numTarjeta');
 
 // Poner cursor en el campo numeros
@@ -176,7 +176,7 @@ numeros.onkeyup = function(){
 
 					// Borrar espacio al final
 					.trim();
-};
+};*/
 
     
 
