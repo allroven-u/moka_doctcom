@@ -17,8 +17,8 @@ router.post('/RegistrarUsuario', (req, res) => {
         CalificacionPromedio: body.CalificacionPromedio,
         Foto: body.Foto,
         Activo: body.Activo,
-        Rol: body.Rol
-
+        Rol: body.Rol,
+        Fecha:body.Fecha
     });
 
     nuevaUsuario.save((err, usuarioDB) => {
@@ -185,7 +185,9 @@ router.post('/RegistrarTarjeta', (req, res) =>{
                 NumeroTarjeta: body.NumeroTarjeta,
                 MesVencimiento: body.MesVencimiento,
                 AnioVencimiento: body.AnioVencimiento,
-                CVV: body.CVV
+                CVV: body.CVV,
+                Activo :body.Activo,
+                Principal: body.Principal
             }
         }
     }, function (err, info){

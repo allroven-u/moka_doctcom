@@ -44,7 +44,7 @@ async function getUsuariosArray(){
   }
 
 
-  async function RegistrarUsuario(pNombre,pApellido,pIdUsuario,pEmail,pPassword,pDireccion,pFoto) {
+  async function RegistrarUsuario(pNombre,pApellido,pIdUsuario,pEmail,pPassword,pDireccion,pFoto,pFecha) {
     let result ={};
       await axios({
         method:'post',
@@ -60,7 +60,8 @@ async function getUsuariosArray(){
           'CalificacionPromedio': 0,
           'Foto': pFoto,
           'Activo': 1,
-          'Rol': 2
+          'Rol': 2,
+          'Fecha':pFecha
         }
 
        })
@@ -158,7 +159,8 @@ async function getUsuariosArray(){
             'MesVencimiento' : pMesVencimiento,
             'AnioVencimiento':pAnioVencimiento,
             'CVV': pCVV,
-            'Activo':1
+            'Activo':1,
+            'Principal':1,
         }
     }).then((res) => {
         result = res.data;

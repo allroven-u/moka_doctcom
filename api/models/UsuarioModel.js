@@ -16,13 +16,16 @@ const schemaUsuario = new mongoose.Schema(
         Foto: { type: String, required: false, unique: false },
         Activo:{ type: Number, required: true, unique: false },
         Rol:{ type: Number, required: true, unique: false },
+        Fecha:{type:Date, require:true,unique:false},
         Tarjetas:[
             {
                 NombreTarjetahabiente:{ type: String, required: true, unique: false },
-                NumeroTarjeta:{ type: String, required: true, unique: true },
+                NumeroTarjeta:{ type: String, required: true, unique: false },
                 MesVencimiento:{type: String, required: true, unique: false},
                 AnioVencimiento:{type: String, required: true, unique: false},
-                CVV:{ type: String, required: true, unique: false }
+                CVV:{ type: String, required: true, unique: false },
+                Activo:{ type: Number, required: true, unique: false },
+                Principal:{ type: Number, required: true, unique: false },
             }
         ]
     }
