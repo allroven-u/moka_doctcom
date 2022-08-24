@@ -8,8 +8,9 @@ let inputtxtNombreP = document.getElementById("txtNombreP");
 let inputtxtApellidosP = document.getElementById("txtApellidosP");
 let inputtxtCedulaP = document.getElementById("txtCedulaP");
 let inputtxtEmailP = document.getElementById("txtEmailP");
-// let inputtxtPasswordP=document.getElementById('txtPassword');
-let inputFotoUser= document.getElementById('imgFotoUser')
+let inputFotoUser= document.getElementById('imgFotoUser');
+let selectRolUser= document.getElementById('SelectRol');
+let selectEstadoUser= document.getElementById('SelectEstado');
 
 let inputtxtDireccionP = document.getElementById("txtDireccionP");
 const ValidarEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -37,13 +38,14 @@ function CargarDatosUser(userSession){
     for (let i = 0; i < listaUsuarios.length; i++) {
         
         if (listaUsuarios[i].Identificacion == userSession.Identificacion){
-            console.log("_id: "+userSession._id);
             inputtxtNombreP.value= listaUsuarios[i].Nombre;
             inputtxtApellidosP.value = listaUsuarios[i].Apellido;
             inputtxtCedulaP.value = listaUsuarios[i].Identificacion;
             inputtxtEmailP.value=listaUsuarios[i].Email;
             inputFotoUser.src= listaUsuarios[i].Foto;
             inputtxtDireccionP.value = listaUsuarios[i].Direccion;
+            selectRolUser.value = listaUsuarios[i].Rol;
+            selectEstadoUser.value = listaUsuarios[i].Activo;
 
 
             if (userSession.Rol == 1) {
@@ -67,7 +69,9 @@ async function EditarDatosUser() {
         let sConttxtEmailP = inputtxtEmailP.value;
         let sConttxtDireccionP = inputtxtDireccionP.value;
         let sFoto = inputFotoUser.src;
-        let result = await EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto);
+        let sRol = Number(selectRolUser.value);
+        let sEstado = Number(selectEstadoUser.value);
+        let result = await EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto,sRol,sEstado);
         if (result != {} && result.resultado) {
             ConfirmarDatos(result.msj);
             setTimeout(function() {
