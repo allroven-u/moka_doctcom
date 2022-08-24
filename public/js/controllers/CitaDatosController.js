@@ -1,10 +1,16 @@
 'use strict'
 let listaCitas = [];
 let listaUsuarios = [];
+
+//variables de lineas factura
+let factDescripcion = document.getElementById('txtDiagnostico');
+let factCantidad = document.getElementById('txtCantidad');
+let factPrecio = document.getElementById('txtPrecio');
+let factCita = {};
+
 window.addEventListener('load', () => {
     GetlistaUsuarios();
     GetListaCitas();
-
 });
 
 async function GetListaCitas() {
@@ -16,8 +22,6 @@ async function GetListaCitas() {
         setTimeout(() => {
             llenarCompletarCita();
         }, 50);
-
-
     }
 }
 async function GetlistaUsuarios() {
@@ -26,6 +30,9 @@ async function GetlistaUsuarios() {
         listaUsuarios = result.ListaUsuariosBD;
     }
 }
+
+
+
 
 ///////////Obtener id url/////////////////
 let queryString, urlParams, _id, usuarioRol;
@@ -76,6 +83,7 @@ function llenarCompletarCita() {
 
     for (let i = 0; i < listaCitas.length; i++) {
         if (listaCitas[i]._id == _id) {
+            factCita = listaCitas[i];
             for (let j = 0; j < listaUsuarios.length; j++) {
 
                 if (listaUsuarios[j].Identificacion == listaCitas[i].IdentificacionVeterinario) {
@@ -104,4 +112,19 @@ function llenarCompletarCita() {
 
         }
     }
+}
+
+
+async function agregarLineas(){
+
+    // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
+    
+   let fact = await crearFactura(factCita.IdentificacionUsuario,factCita.IdMascota,factCita.NombreMascota,new Date().toLocaleDateString(),'');
+ 
+    console.log(new Date().toLocaleDateString());
+    //  factDescripcion 
+    //  factCantidad 
+    //  factPrecio 
+    
+
 }

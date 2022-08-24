@@ -1,8 +1,8 @@
- 'use strict';
+//  'use strict';
 
- const express = require('express');
- const router = express.Router();
- const Tarjeta = require('../models/TarjetaModel');
+//  const express = require('express');
+//  const router = express.Router();
+//  const Tarjeta = require('../models/TarjetaModel');
 
 
 
@@ -99,4 +99,4 @@
 
 // });
 
- module.exports = router;
+//  module.exports = router;

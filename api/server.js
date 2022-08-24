@@ -61,5 +61,5 @@ app.use('/api', citas);
 const reservaciones = require('./routes/ReservacionRoute');
 app.use('/api', reservaciones);
 
-const tarjetas = require('./routes/TarjetaRoute');
-app.use('/api', tarjetas);
+const facturas = require('./routes/FacturaRoute');
+app.use('/api', facturas);

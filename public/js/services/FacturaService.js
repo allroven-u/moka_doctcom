@@ -1,42 +1,66 @@
-"use strict";
+ "use strict";
 
-let facturasArray = []; // arreglo de usuarios
-
-// Esta funcion carga un archivo tipo json y lo carga a un array utilizando un promesa de js
-function cargaJson() {
-  console.log("Empezando carga de facturas....");
-
-  fetch("/public/assets/data/infoFacturas.json")
-    .then((response) => response.json())
-    .then((response) => {
-        facturasArray = response;
-      console.log(usuariosfacturasArrayArray);
+ async function getFacturasArray(){
+    let result = {};
+    await  axios.get(apiUrl + '/ListarFacturas', {
+      responseType: 'json',
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
     });
-  return facturasArray;
-}
+  
+   return result;
+  };
 
-function getFacturas(){
-    return facturasArray;
-}
 
-//Esta funcion busca un objeto dentro del arreglo de facturas segun el campo de id factura y lo devuelve en formato object.
-function buscaFacturaNumero(pNumFactura) {
-    let result = null;
-    for (let i = 0; i < facturasArray.length; i++) {
-      if (facturasArray[i].NumeroFactura == pNumFactura) {
-        result = facturasArray[i];
-      }
-    }
-    return result;
+  async function UltimaFactura(){
+    let result = {};
+    await  axios.get(apiUrl + '/UltimaFactura', {
+      responseType: 'json',
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+
+  return result;
   }
 
-  //Esta funcion busca un las facturas dentro del arreglo de facturas segun el cliente y lo devuelve un arreglo con todas las facturas del cliente.
-function buscaFacturaCliente(pClienteID) {
-    let result = [];
-    for (let i = 0; i < facturasArray.length; i++) {
-      if (facturasArray[i].IdentificacionUsuario === pClienteID) {
-        result = result.push(facturasArray[i]);
-      }
+async function crearFactura(pIdentificacionUsuario,pIdMascota,pNombreMascota,pFecha,pObservacionesFactura) {
+    let result = await UltimaFactura();
+    let NumeroFact = 0;
+
+    if(result != {} && result.resultado == true  ){
+          console.log(result);
+
+        NumeroFact = result.UltimaFacturaBD[0].NumeroFactura;
+        console.log(NumeroFact);
+
+      await axios({
+        method:'post',
+        url: apiUrl + '/RegistrarFactura',
+        responseType: 'json',
+        data: {
+          'NumeroFactura': NumeroFact + 1,
+          'IdentificacionUsuario':pIdentificacionUsuario,
+          'IdMascota':pIdMascota,
+          'NombreMascota': pNombreMascota,
+          'Fecha': pFecha,
+          'Estado': 'CREADO',
+          'ObservacionesFactura':pObservacionesFactura
+        }
+
+       })
+      .then(function (res) {
+        result = res;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
     }
+
     return result;
   }
+  
