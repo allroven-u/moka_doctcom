@@ -399,7 +399,9 @@ async function CrearCita() {
       NombreMascota,
       FechaHora,
       IdentificacionVeterinario,
-      ObservacionesCita
+      ObservacionesCita,
+      new Date().toLocaleDateString(),
+      userSessionC.Email
     );
     if (result != {} && result.data.resultado == true) {
       ConfirmarDatos(result.data.msj);
