@@ -78,7 +78,7 @@ async function EliminarMascota() {
         if (cargarMascotas[i]._id === _id) {
             let confirmacion = false;
             await Swal.fire({
-                title: 'Desea eliminar el registro de ' + cargarMascotas[i].NombreMascota,
+                title: '¿Desea eliminar el registro de ' + cargarMascotas[i].NombreMascota +'?',
                 showDenyButton: true,
                 confirmButtonText: 'Confirmar',
                 denyButtonText: 'Cancelar',

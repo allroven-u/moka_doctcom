@@ -93,29 +93,29 @@ function ValidarDatosUser() {
 
     if (sConttxtNombreP == null || sConttxtNombreP == undefined || sConttxtNombreP == "") {
         resaltarInputInvalido("txtNombreP");
-        MostrarError("El nombre es requerido!");
+        MostrarError("¡El nombre es requerido!");
         return false;
     }
 
     if (sConttxtApellidosP == null || sConttxtApellidosP == undefined || sConttxtApellidosP == "") {
         resaltarInputInvalido("txtApellidosP");
-        MostrarError("El Apellido es requerido!");
+        MostrarError("¡El apellido(s) es requerido!");
         return false;
     }
 
     if (sConttxtCedulaP == null || sConttxtCedulaP == undefined || sConttxtCedulaP == "") {
         resaltarInputInvalido("txtCedulaP");
-        MostrarError("La cedula es requerida!");
+        MostrarError("¡La cédula es requerida!");
         return false;
     }
 
     if (sConttxtEmailP == null || sConttxtEmailP == undefined || sConttxtEmailP == "") {
         resaltarInputInvalido("txtEmailP");
-        MostrarError("El email es requerido!");
+        MostrarError("¡El correo electrónico es requerido!");
         return false;
     }else if(!sConttxtEmailP.match(ValidarEmail)){
         resaltarInputInvalido("txtEmailP");
-        MostrarError("Formato de email invalido!");
+        MostrarError("¡Formato de correo electrónico invalido!");
         return false;
     }
 
