@@ -69,30 +69,38 @@ async function UltimaCita(){
   }
 
 
-async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pDescripcionCita) {
+async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pDescripcionCita,pFechaCreacion,pUsuarioCreacion) {
     let result ={};
     let ultimaCita = await UltimaCita();
 
     if(ultimaCita != {} && ultimaCita.resultado == true){
-      let NumeroCita=ultimaCita.ListaCitasBD
-      
+      let NumeroCita = 0;
+
+      if(ultimaCita.ListaCitasBD == "" && ultimaCita.ListaCitasBD == undefined && ultimaCita.ListaCitasBD == []){
+        NumeroCita = 0;
+      }else{
+        NumeroCita = ultimaCita.ListaCitasBD[0].NumeroCita ;
+      }
+      console.log(NumeroCita);
       await axios({
         method:'post',
         url: apiUrl + '/RegistrarCita',
         responseType: 'json',
         data: {
-          'NumeroCita':NumeroCita[0].NumeroCita + 1,
+          'NumeroCita':NumeroCita + 1,
           'IdentificacionUsuario':pIdUsuario,
           'IdMascota':pIdMascota,
           'NombreMascota': pMascota,
-          'FechaHora': pFecha,
+          'Fecha': pFecha,
           'Calificacion': 0,
           'Estado': 'AGENDADA',
           'IdentificacionVeterinario':pIdVeterinario,
           'ObservacionesVeterinario':'',
           'ObservacionesCita': pDescripcionCita,
           'NotasCancelacion':'',
-          'Fecha':pFecha
+          'NumeroFactura':'',
+          'FechaCreacion':pFechaCreacion,
+          'UsuarioCreacion':pUsuarioCreacion
         }
 
        })

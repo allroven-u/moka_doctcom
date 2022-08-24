@@ -8,13 +8,15 @@ const schemaReserva = new mongoose.Schema(
         IdentificacionUsuario:{ type: String, required: true, unique: false },
         IdMascota:{ type: String, required: true, unique: false },
         NombreMascota: { type: String, required: true, unique: false },
-        FechaHoraIngreso: { type: String, required: true, unique: false },
-        FechaHoraSalida: { type: String, required: true, unique: false },
+        FechaHoraIngreso: { type: Date, required: true, unique: false },
+        FechaHoraSalida: { type: Date, required: true, unique: false },
         Calificacion: { type: Number, required: false, unique: false },
         Estado: { type: String, required: true, unique: false },
         ObservacionesReservacion: { type: String, required: false, unique: false },
         NotasCancelacion: { type: String, required: false, unique: false },
-        NumeroFactura: { type: Number, required: false, unique: false },
+        NumeroFactura: { type: Number, required: false, unique: true },
+        FechaCreacion: {type:Date,require:true,unique:false},
+        UsuarioCreacion:{ type: String, required: true, unique: false }
     }
 );
 

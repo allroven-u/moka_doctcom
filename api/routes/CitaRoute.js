@@ -13,14 +13,16 @@ router.post('/RegistrarCita', (req, res) => {
         IdentificacionUsuario:body.IdentificacionUsuario,
         IdMascota: body.IdMascota,
         NombreMascota: body.NombreMascota,
-        FechaHora: body.FechaHora,
+        Fecha: body.Fecha,
         Calificacion:body.Calificacion,
         Estado: body.Estado,
         IdentificacionVeterinario: body.IdentificacionVeterinario,
         ObservacionesVeterinario: body.ObservacionesVeterinario,
         ObservacionesCita: body.ObservacionesCita,
         NotasCancelacion : body.NotasCancelacion,
-        Fecha: body.Fecha
+        NumeroFactura : body.NumeroFactura,
+        FechaCreacion : body.FechaCreacion,
+        UsuarioCreacion : body.UsuarioCreacion
     });
 
     nuevaCita.save((err, citaDB) => {
