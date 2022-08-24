@@ -22,8 +22,9 @@ async function Registrar() {
         let pwContrasenha = inputContrasenha1.value;
         let sDireccion = inputDireccion.value;
         let sFoto='';
+        let pfecha = new Date().toLocaleDateString();
 
-        let result = await RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,pwContrasenha,sDireccion,sFoto)
+        let result = await RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,pwContrasenha,sDireccion,sFoto,pfecha)
         console.log(result.data.resultado)
         if (result != {} && result.data.resultado) {
             ConfirmarDatos(result.data.msj);
