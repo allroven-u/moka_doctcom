@@ -200,6 +200,21 @@ td {
     background-color: var(--Roj1);
 }
 
+.btn-cancelar-admin{
+    height: 50px;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+    background-color: var(--Rojo2);
+    color: var(--blanco);
+    font-size: 15px;
+    font-family: Roboto400;
+    border: none;
+}
+
+.btn-cancelar-admin:hover{
+    background-color: var(--Roj1);
+}
+
 .edit-icon {
     float: right;
     margin: 10px;
