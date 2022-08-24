@@ -2,7 +2,8 @@
 
 let btnGuardarCambios = document.getElementById("btn-guardarMiPerfil2")
 btnGuardarCambios.addEventListener('click', EditarDatosUser)
-
+let btnCancelarCambios =document.querySelector('.btn-cancelar');
+let btnCancelarCambiosAdmin =document.querySelector('.btn-cancelar-admin');
 let inputtxtNombreP = document.getElementById("txtNombreP");
 
 let inputtxtApellidosP = document.getElementById("txtApellidosP");
@@ -39,8 +40,12 @@ window.addEventListener('load', async() =>{
     await GetlistaUsuarios();
     if (userSession.Rol == 1 && _id!= null) {
         CargarDatosAdmin(listaUsuarios)
+        btnCancelarCambiosAdmin.classList.remove('hidden')
+        btnCancelarCambios.classList.add('hidden')
+
       }else{
         CargarDatosUser(userSession)
+        
       }
     
 });
@@ -106,7 +111,12 @@ function CargarDatosAdmin(listaUsuarios) {
 
 async function EditarDatosUser() {
     if (ValidarDatosUser()) {
-        let sID= _id;
+        let sID;
+        if (userSession.Rol == 1 && _id!= null) {
+            sID= _id;
+        }else{
+            sID=userSession._id;
+        }
         let sConttxtNombreP = inputtxtNombreP.value;
         let sConttxtApellidosP = inputtxtApellidosP.value;
         let sConttxtCedulaP = inputtxtCedulaP.value;
@@ -117,13 +127,19 @@ async function EditarDatosUser() {
         let sEstado = Number(selectEstadoUser.value);
         let result = await EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto,sRol,sEstado);
         if (result != {} && result.resultado) {
-            ConfirmarDatos(result.msj);
+            
+             ConfirmarDatos(result.msj);
             setTimeout(function() {
-                window.location.pathname = "/public/MiPerfil.html";
+                if (userSession.Rol == 1 && _id!= null) {
+                    window.location.pathname = "/public/reporteUsuario.html";
+                }else{
+                    window.location.pathname = "/public/MiPerfil.html";
+                }
+                
             }, 2000);
-        }else{
+         }else{
             MostrarError(result.msj);
-        }
+         }
 
     }
 }
