@@ -54,11 +54,11 @@
 
 .fa-trash-can:hover {
     color: #ff3300 !important;
-   /* transform: rotate(30deg);*/
+   transform: rotate(30deg);
 }
 
 .cajaTarjeta{
-    margin: 0px 20px;
+    margin: 20px 20px;
 }
 
 .tarjeta-por-agregar {
