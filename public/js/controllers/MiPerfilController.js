@@ -9,9 +9,25 @@ let txtUsuarioP = document.getElementById('txtUsuarioP');
 let txtContraseniaP = document.getElementById('txtContraseniaP');
 let txtDireccionP = document.getElementById('txtDireccionP');
 let txtFotoPerfil = document.getElementById('FotoPerfilUser');
+let usuario;
+
+
+///////////Obtener id url/////////////////
+let queryString, urlParams, _id, usuarioRol;
+IdentificarAccion();
+async function IdentificarAccion() {
+    queryString = window.location.search;
+
+    urlParams = new URLSearchParams(queryString);
+
+    _id = urlParams.get('_id');
+    usuarioRol = urlParams.get('rol');
+}
+
+
 
 window.addEventListener('load', () => {
-  let usuario = GetSesion();
+  usuario = GetSesion();
   GetListaCitas(usuario.Identificacion);
 });
 
@@ -19,6 +35,7 @@ async function GetListaCitas(idUser) {
 
   let result = await getCitasArray();
   if (result != {} && result.resultado == true) {
+    
     GetlistaUsuarios(result.ListaCitasBD, idUser)
   }
 }
@@ -27,15 +44,43 @@ async function GetlistaUsuarios(ListaCitasBD, idUser) {
   let result = await getUsuariosArray();
   if (result != {} && result.resultado == true) {
     let listaUsuarios = result.ListaUsuariosBD;
-    CargarDatosUser(idUser, listaUsuarios)
+    if (usuario.Rol == 1 && _id!= null) {
+      CargarDatosAdmin(listaUsuarios)
+    }else{
+      CargarDatosUser(idUser, listaUsuarios)
+    }
+    
     ImprimirListaCitas(ListaCitasBD, listaUsuarios, idUser);
   }
 }
+
+
+
+
 function CargarDatosUser(userSession, listaUsuarios) {
 
   for (let i = 0; i < listaUsuarios.length; i++) {
 
     if (listaUsuarios[i].Identificacion == userSession) {
+      txtUsuarioLogueado2.textContent = listaUsuarios[i].Nombre + ' ' + listaUsuarios[i].Apellido;
+      txtNombreP.textContent = listaUsuarios[i].Nombre;
+      txtApellidosP.textContent = listaUsuarios[i].Apellido;
+      txtCedulaP.textContent = listaUsuarios[i].Identificacion;
+      txtEmailP.textContent = listaUsuarios[i].Email;
+      txtDireccionP.innerHTML = listaUsuarios[i].Direccion;
+      txtFotoPerfil.src = listaUsuarios[i].Foto;
+    }
+
+  }
+}
+
+
+
+function CargarDatosAdmin(listaUsuarios) {
+
+  for (let i = 0; i < listaUsuarios.length; i++) {
+
+    if (listaUsuarios[i]._id == _id) {
       txtUsuarioLogueado2.textContent = listaUsuarios[i].Nombre + ' ' + listaUsuarios[i].Apellido;
       txtNombreP.textContent = listaUsuarios[i].Nombre;
       txtApellidosP.textContent = listaUsuarios[i].Apellido;

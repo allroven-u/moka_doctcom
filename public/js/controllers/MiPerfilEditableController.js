@@ -16,10 +16,33 @@ let inputtxtDireccionP = document.getElementById("txtDireccionP");
 const ValidarEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
 let userSession;
 let listaUsuarios;
+
+
+
+
+///////////Obtener id url/////////////////
+let queryString, urlParams, _id, usuarioRol;
+IdentificarAccion();
+async function IdentificarAccion() {
+    queryString = window.location.search;
+
+    urlParams = new URLSearchParams(queryString);
+    console.log(urlParams)
+
+    _id = urlParams.get('_id');
+    usuarioRol = urlParams.get('rol');
+}
+
+
 window.addEventListener('load', async() =>{
     userSession=GetSesion();
     await GetlistaUsuarios();
-    CargarDatosUser(userSession)
+    if (userSession.Rol == 1 && _id!= null) {
+        CargarDatosAdmin(listaUsuarios)
+      }else{
+        CargarDatosUser(userSession)
+      }
+    
 });
 
 async function GetlistaUsuarios(){
@@ -48,21 +71,42 @@ function CargarDatosUser(userSession){
             selectEstadoUser.value = listaUsuarios[i].Activo;
 
 
-            if (userSession.Rol == 1) {
-                selectRol.classList.remove('hidden');
-                selectEstado.classList.remove('hidden');
-            }else{
-                selectRol.classList.add('hidden');
-                selectEstado.classList.add('hidden');
-            }
+
         }
         
     }
 }
 
+function CargarDatosAdmin(listaUsuarios) {
+
+    for (let i = 0; i < listaUsuarios.length; i++) {
+  
+      if (listaUsuarios[i]._id == _id) {
+        inputtxtNombreP.value= listaUsuarios[i].Nombre;
+        inputtxtApellidosP.value = listaUsuarios[i].Apellido;
+        inputtxtCedulaP.value = listaUsuarios[i].Identificacion;
+        inputtxtEmailP.value=listaUsuarios[i].Email;
+        inputFotoUser.src= listaUsuarios[i].Foto;
+        inputtxtDireccionP.value = listaUsuarios[i].Direccion;
+        selectRolUser.value = listaUsuarios[i].Rol;
+        selectEstadoUser.value = listaUsuarios[i].Activo;
+
+        if (userSession.Rol == 1) {
+            selectRol.classList.remove('hidden');
+            selectEstado.classList.remove('hidden');
+        }else{
+            selectRol.classList.add('hidden');
+            selectEstado.classList.add('hidden');
+        }
+
+      }
+  
+    }
+  }
+
 async function EditarDatosUser() {
     if (ValidarDatosUser()) {
-        let sID= userSession._id;
+        let sID= _id;
         let sConttxtNombreP = inputtxtNombreP.value;
         let sConttxtApellidosP = inputtxtApellidosP.value;
         let sConttxtCedulaP = inputtxtCedulaP.value;
