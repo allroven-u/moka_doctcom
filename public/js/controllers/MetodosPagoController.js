@@ -5,30 +5,32 @@ const modalAgregarTarjeta = document.querySelector('.form-pago-tarjeta');
 const closeModalAgregarTarjeta = document.querySelector('.btn-cancerlar-tarjeta');
 const overlay = document.querySelector('.overlay');
 const cerrarModalIcon = document.querySelector('.cerrarModalX-tarjeta');
-const eliminarTarjeta = document.querySelectorAll('.fa-trash-can');
+//let cantidadT = document.getElementsByClassName('fa-trash-can');
+
 
 
 let btnAgregarTarjeta = document.getElementById('btnAgregarTarjeta');
+let listaTarjetas = [];
+userSessionT = GetSesion();
 
-
-window.addEventListener("load", () => {
-    userSessionT = GetSesion();
-    //////////////////// cargar datos desde BD////////////////////
-    getListaTarjetas();
-});
 
 async function getListaTarjetas() {
     let result = await buscaUsuarioID(userSessionT.Identificacion);
-
     if (result != {} && result.resultado == true) {
-        // console.log(result.usuarioDB.Tarjetas);
-        mostrarTarjetas(result.usuarioDB.Tarjetas);
+        //console.log(result.usuarioDB.Tarjetas);
+        listaTarjetas = result.usuarioDB.Tarjetas;
     }
-
+    return listaTarjetas;
 }
 
-function mostrarTarjetas(pListaTarjetas) {
+window.addEventListener("load", () => {
+    //////////////////// cargar datos desde BD////////////////////
+    mostrarTarjetas(listaTarjetas);
+});
 
+
+async function mostrarTarjetas(pListaTarjetas) {
+    pListaTarjetas = await getListaTarjetas();
     for (let i = 0; i < pListaTarjetas.length; i++) {
         console.log(pListaTarjetas[i]);
         let cajaTarjetas = document.querySelector('.caja-metodos-pago');
@@ -37,12 +39,39 @@ function mostrarTarjetas(pListaTarjetas) {
         let divLogoTarjeta = document.createElement('div');
         let imgTarjeta = document.createElement('i');
         const iconDelete = document.createElement('i');
-
-        cajaTarjetas.appendChild(iconDelete);
+        const createDiv = document.createElement('div');
+        cajaTarjetas.appendChild(createDiv);
+        createDiv.classList.add('cajaTarjeta');
+        createDiv.appendChild(iconDelete);
         iconDelete.classList.add('fa-solid');
         iconDelete.classList.add('fa-trash-can');
         iconDelete.style = 'color: #cc2900;';
-        cajaTarjetas.appendChild(tarjetaNum);
+        iconDelete.addEventListener('click', async function () {
+            let tarjetasUsuario = await getListaTarjetas();
+            let confirmacion = false;
+            await Swal.fire({
+                title: '¿Desea eliminar el registro de la tarjeta?',
+                showDenyButton: true,
+                confirmButtonText: 'Confirmar',
+                denyButtonText: 'Cancelar',
+                icon: 'warning'
+            }).then((res) => {
+                confirmacion = res.isConfirmed;
+            });
+            if (confirmacion == true) {
+                let result = await EliminarTarjeta(userSessionT._id, tarjetasUsuario[i]._id);
+                if (result != {} && result.resultado) {
+                    ConfirmarDatos(result.msj);
+                    setTimeout(function () {
+                        location.href = "./MetodosPago.html";
+                    }, 2000);
+                } else {
+                    MostrarError(result.msj);
+                };
+                // await GetListaPersonas();
+            }
+        })
+        createDiv.appendChild(tarjetaNum);
         tarjetaNum.classList.add('tarjeta-por-agregar');
         tarjetaNum.appendChild(createP);
         createP.classList.add('numero-tajeta');
@@ -97,7 +126,6 @@ showAgregarTajeta.addEventListener('click', function () {
 
 //////////////////////////TARJETAS///////////////////////
 
-
 let inputNombreTitular = document.getElementById("txtTitular");
 let inputNumTarjeta = document.getElementById("numTarjeta");
 let inputNumCVV = document.getElementById("txtCvv");
@@ -117,13 +145,8 @@ var cantCVV;
 
 
 
-async function DeleteTarjetas(){
-    for(let i = 0; i < eliminarTarjeta.length; i++){
-        eliminarTarjeta[i].addEventListener('click', function(){
-            
-        })
-    }
-}
+    
+
 
 
 
@@ -133,6 +156,9 @@ async function registarTarjeta() {
         if (result.resultado == true) {
             ConfirmarDatos("Tarjeta registrada con éxito!");
             hiddenAgregar();
+            setTimeout(function () {
+                location.href = "./MetodosPago.html";
+            }, 2000);
         }
 
     }

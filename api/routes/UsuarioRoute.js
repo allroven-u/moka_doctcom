@@ -5,7 +5,6 @@ const router = express.Router();
 const Usuario = require('../models/UsuarioModel');
 
 
-
 router.post('/RegistrarUsuario', (req, res) => {
     let body = req.body;
     let nuevaUsuario = new Usuario({
@@ -206,7 +205,7 @@ router.post('/RegistrarTarjeta', (req, res) =>{
     });
 });
 
-router.post('/EliminarTarjeta', (req, res) => {
+router.post('/EliminarTarjetaPersona', (req, res) => {
     let body = req.body;
     Usuario.updateOne({_id: body._idUsuario},{
         $pull:{

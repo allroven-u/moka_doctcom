@@ -48,17 +48,17 @@
 
 .fa-trash-can {
     font-size: 35px;
-    border-radius: 10px 0 0 10px;
-    position: relative;
-    left: 1%;
-    margin-left: 25px;
-    padding: 100px 10px;
-    background-color: #ddd;
     transition: all 200ms linear;
+
 }
 
 .fa-trash-can:hover {
     color: #ff3300 !important;
+   /* transform: rotate(30deg);*/
+}
+
+.cajaTarjeta{
+    margin: 0px 20px;
 }
 
 .tarjeta-por-agregar {
@@ -66,6 +66,7 @@
     height: 250px;
     background-color: var(--headerApp);
     border-radius: 10px;
+    margin: 10px 0;
     display: flex;
     justify-content: space-between;
     box-shadow: 10px 10px 20px #888;
