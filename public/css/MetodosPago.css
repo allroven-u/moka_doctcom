@@ -10,34 +10,56 @@
     background-color: var(--verdeagua);
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 65px;
     align-items: center;
     color: var(--blanco);
 }
 
 .caja-metodos-pago {
     margin: 80px auto;
-    width: 65%;
+    width: 85%;
     height: auto;
     padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.btn-agregar-metodo-pago {
-    border: none;
-    padding: 20px;
-    background-color: var(--celestemar);
-    border-radius: 5px;
-    color: var(--blanco);
-    font-size: 15px;
-    margin: 20px 0px;
-    transition: all 500ms ease;
+.btnAgregar-icon {
+    display: flex;
+    transition: all 200ms linear;
 }
 
-.btn-agregar-metodo-pago:hover {
-    background-color: var(--celeste);
-    box-shadow: -5px 5px 15px var(--silver);
+.btnAgregar-icon span {
+    font-family: Roboto400;
 }
 
+.add-icon {
+    font-size: 25px;
+    position: relative;
+    top: 10%;
+    margin: 0 6px;
+}
+
+.btnAgregar-icon:hover {
+    color: var(--navApp);
+}
+
+.fa-trash-can {
+    font-size: 35px;
+    border-radius: 10px 0 0 10px;
+    position: relative;
+    left: 1%;
+    margin-left: 25px;
+    padding: 100px 10px;
+    background-color: #ddd;
+    transition: all 200ms linear;
+}
+
+.fa-trash-can:hover {
+    color: #ff3300 !important;
+}
 
 .tarjeta-por-agregar {
     width: 400px;
@@ -46,6 +68,7 @@
     border-radius: 10px;
     display: flex;
     justify-content: space-between;
+    box-shadow: 10px 10px 20px #888;
 }
 
 .numero-tajeta {
@@ -66,14 +89,10 @@
 
 .back-mi-perfil {
     font-size: 25px;
-    position: absolute;
-    left: 20%
 }
 
 
 /***********MODAL AGREGAR TARJETA*************/
-
-@import url(./estilosGenerales.css);
 
 * {
     font-family: Roboto300;
@@ -260,4 +279,4 @@ label {
     justify-content: space-between;
 }
 
-/***********FIN MODAL AGREGAR TARJETA*************/ 
+/***********FIN MODAL AGREGAR TARJETA*************/
