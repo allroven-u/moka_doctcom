@@ -54,10 +54,10 @@
 
 .fa-trash-can:hover {
     color: #ff3300 !important;
-   transform: rotate(30deg);
+    transform: rotate(30deg);
 }
 
-.cajaTarjeta{
+.cajaTarjeta {
     margin: 20px 20px;
 }
 
@@ -69,13 +69,25 @@
     margin: 10px 0;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     box-shadow: 10px 10px 20px #888;
+}
+
+.datosTarjeta{
+    color: var(--blanco);
+    margin: 30px 0 0 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.datosTarjeta p{
+    margin-bottom: 15px;
 }
 
 .numero-tajeta {
     color: var(--blanco);
-    padding: 30px;
     letter-spacing: 5px;
+
 }
 
 .logo-tarjeta {

@@ -33,13 +33,16 @@ async function mostrarTarjetas(pListaTarjetas) {
     pListaTarjetas = await getListaTarjetas();
     for (let i = 0; i < pListaTarjetas.length; i++) {
         console.log(pListaTarjetas[i]);
-        let cajaTarjetas = document.querySelector('.caja-metodos-pago');
-        let tarjetaNum = document.createElement('div');
-        let createP = document.createElement('p');
-        let divLogoTarjeta = document.createElement('div');
-        let imgTarjeta = document.createElement('i');
+        const cajaTarjetas = document.querySelector('.caja-metodos-pago');
+        const tarjetaNum = document.createElement('div');
+        const createP = document.createElement('p');
+        const divLogoTarjeta = document.createElement('div');
+        const imgTarjeta = document.createElement('img');
         const iconDelete = document.createElement('i');
         const createDiv = document.createElement('div');
+        const createDiv2 = document.createElement('div');
+        const createP2 = document.createElement('p');
+        const createP3 = document.createElement('p');
         cajaTarjetas.appendChild(createDiv);
         createDiv.classList.add('cajaTarjeta');
         createDiv.appendChild(iconDelete);
@@ -73,22 +76,49 @@ async function mostrarTarjetas(pListaTarjetas) {
         })
         createDiv.appendChild(tarjetaNum);
         tarjetaNum.classList.add('tarjeta-por-agregar');
-        tarjetaNum.appendChild(createP);
+        tarjetaNum.appendChild(createDiv2);
+        createDiv2.classList.add('datosTarjeta');
+        createDiv2.appendChild(createP);
         createP.classList.add('numero-tajeta');
-        tarjetaNum.appendChild(divLogoTarjeta);
-        divLogoTarjeta.classList.add('logo-tarjeta');
-        divLogoTarjeta.appendChild(imgTarjeta);
-        imgTarjeta.classList.add('fa-brands');
-        imgTarjeta.classList.add('fa-cc-visa');
-        imgTarjeta.classList.add('fa-3x');
         let str = pListaTarjetas[i].NumeroTarjeta;
         const lst4 = str.slice(-4);
         console.log(lst4);
-        createP.textContent = "**** **** **** " + lst4;
+        if(str.length ===  16){
+            createP.textContent = "**** **** **** " + lst4;
+        }else if(str.length === 15){
+            createP.textContent = "**** ****** *" + lst4;
+        }
+        createDiv2.appendChild(createP2);
+        createP2.textContent = pListaTarjetas[i].MesVencimiento + '/' + pListaTarjetas[i].AnioVencimiento;
+        createDiv2.appendChild(createP3);
+        createP3.textContent = pListaTarjetas[i].NombreTarjetahabiente.toUpperCase();
+        tarjetaNum.appendChild(divLogoTarjeta);
+        divLogoTarjeta.classList.add('logo-tarjeta');
+        divLogoTarjeta.appendChild(imgTarjeta);
+        let nTarjeta =  pListaTarjetas[i].NumeroTarjeta;
+        ///////visa////////
+        if (nTarjeta.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/)) {
+            imgTarjeta.src = 'https://shoplineimg.com/assets/footer/card_visa.png';
+            ///////mastercard/////////////    
+        } else if (nTarjeta.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)) {
+            imgTarjeta.src = 'https://shoplineimg.com/assets/footer/card_master.png';
+            ///////amex/////////////
+        } else if (nTarjeta.match(/^3[4-7]\d{2}-?\d{6}-?\d{5}$/)) {
+            imgTarjeta.src = 'https://shoplineimg.com/assets/footer/card_amex.png'
+        }
+       
+        
         createP.setAttribute('id', pListaTarjetas[i]._id);
 
     }
 }
+
+
+
+
+
+
+
 
 function disableScroll() {
     window.scrollTo(0, 0);
@@ -188,8 +218,8 @@ async function registarTarjeta() {
         let result = await RegistrarTarjetaNueva(userSessionT._id, inputNombreTitular.value, inputNumTarjeta.value, inputMesVenc.value, inputYearVenc.value, inputNumCVV.value);
         if (result.resultado == true) {
             ConfirmarDatos("Tarjeta registrada con éxito!");
-            hiddenAgregar();
             setTimeout(function () {
+                hiddenAgregar();
                 location.href = "./MetodosPago.html";
             }, 2000);
         }
