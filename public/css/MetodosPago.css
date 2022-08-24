@@ -18,7 +18,7 @@
 
 .caja-metodos-pago {
     margin: 80px auto;
-    width: 85%;
+    width: 88%;
     height: auto;
     padding-left: 30px;
     display: flex;
@@ -62,7 +62,7 @@
 }
 
 .tarjeta-por-agregar {
-    width: 400px;
+    width: 410px;
     height: 250px;
     background-color: var(--headerApp);
     border-radius: 10px;

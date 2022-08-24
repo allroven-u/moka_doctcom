@@ -81,8 +81,10 @@ async function mostrarTarjetas(pListaTarjetas) {
         imgTarjeta.classList.add('fa-brands');
         imgTarjeta.classList.add('fa-cc-visa');
         imgTarjeta.classList.add('fa-3x');
-
-        createP.textContent = pListaTarjetas[i].NumeroTarjeta;
+        let str = pListaTarjetas[i].NumeroTarjeta;
+        const lst4 = str.slice(-4);
+        console.log(lst4);
+        createP.textContent = "**** **** **** " + lst4;
         createP.setAttribute('id', pListaTarjetas[i]._id);
 
     }
@@ -179,8 +181,6 @@ numeros.onkeyup = function(){
 };*/
 
     
-
-
 
 
 async function registarTarjeta() {
