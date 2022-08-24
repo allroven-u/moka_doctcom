@@ -49,6 +49,9 @@ function ImprimirListaUsuarios(listaUsuariosBD) {
     let celRol = thRow.insertCell();
     celRol.innerHTML = 'Rol';
 
+    let celAcciones = thRow.insertCell();
+    celAcciones.innerHTML = 'Acciones';
+
 
     for (let i = 0; i < listaUsuariosBD.length; i++) {
 
@@ -93,8 +96,32 @@ function ImprimirListaUsuarios(listaUsuariosBD) {
             default:
                 celdaRol.innerHTML = 'Otro'
           }
+          let celdaBoton = fila.insertCell();
+          let BotonV = document.createElement("a");
+          BotonV.setAttribute(
+            "href",
+            "/public/MiPerfil.html?_id=" +
+            usuario._id 
+          );
+          let iconoV = document.createElement("i");
+          iconoV.classList.add("fa-solid");
+          iconoV.classList.add("fa-eye");
+          iconoV.classList.add("btnV");
+          BotonV.appendChild(iconoV);
+          celdaBoton.appendChild(BotonV);
 
-        
+          let BotonE = document.createElement("a");
+          BotonE.setAttribute(
+            "href",
+            "/public/MiPerfilEditable.html?_id=" +
+            usuario._id 
+          );
+          let iconoE = document.createElement("i");
+          iconoE.classList.add("fa-solid");
+          iconoE.classList.add("fa-pen-to-square");
+          iconoE.classList.add("btnEd");
+          BotonE.appendChild(iconoE);
+          celdaBoton.appendChild(BotonE);
        
 
     }
