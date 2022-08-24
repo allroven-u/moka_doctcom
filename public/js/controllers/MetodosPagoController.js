@@ -43,6 +43,8 @@ async function mostrarTarjetas(pListaTarjetas) {
         const createDiv2 = document.createElement('div');
         const createP2 = document.createElement('p');
         const createP3 = document.createElement('p');
+        let str = pListaTarjetas[i].NumeroTarjeta;
+        const lst4 = str.slice(-4);
         cajaTarjetas.appendChild(createDiv);
         createDiv.classList.add('cajaTarjeta');
         createDiv.appendChild(iconDelete);
@@ -53,7 +55,7 @@ async function mostrarTarjetas(pListaTarjetas) {
             let tarjetasUsuario = await getListaTarjetas();
             let confirmacion = false;
             await Swal.fire({
-                title: '¿Desea eliminar el registro de la tarjeta de numero: ' + tarjetasUsuario[i].NumeroTarjeta + '?',
+                title: '¿Desea eliminar el registro de la tarjeta de terminación: ' + lst4 + '?',
                 showDenyButton: true,
                 confirmButtonText: 'Confirmar',
                 denyButtonText: 'Cancelar',
@@ -80,9 +82,8 @@ async function mostrarTarjetas(pListaTarjetas) {
         createDiv2.classList.add('datosTarjeta');
         createDiv2.appendChild(createP);
         createP.classList.add('numero-tajeta');
-        let str = pListaTarjetas[i].NumeroTarjeta;
-        const lst4 = str.slice(-4);
-        console.log(lst4);
+    
+        //console.log(lst4);
         if(str.length ===  16){
             createP.textContent = "**** **** **** " + lst4;
         }else if(str.length === 15){
