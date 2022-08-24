@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Ganancias</title>
-    <link rel="stylesheet" href=".//css/reporteGanancia.css">
-    <link rel="stylesheet" href="./css/estilosGenerales.css">
-    <link rel="stylesheet" href="./css/app.css">
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Reporte Ganancias - Moka Veterinaria</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/VerCitas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="ImprimirListaCitas();">
-
+<body>
     <header>
         <div class="menuBars">
             <a href="App.html" class="menuBars logo">
@@ -21,12 +20,13 @@
             </a>
             <div class="profile">
                 <a id="TxtUsuarioLogueado" class="name" href="#"> </a>
-                <a class="logout" href="./landing.html">
+                <a class="logout" onclick="logout()">
                     <i class="fa-solid fa-right-to-bracket fa-2x "></i>
                 </a>
             </div>
         </div>
     </header>
+
     <div class="bodyContainer">
         <nav class="nav">
             <ul class="list">
@@ -48,16 +48,17 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i>Mi perfil</a>
                         </li>
 
-                        <li class="list__inside">
-                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                        <li class="list__inside" id="mascotasTab">
+                            <a href="Mascotas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-paw" list__arrow></i>Mis Mascotas</a>
                         </li>
                     </ul>
 
                 </li>
+
 
                 <li class="list__item list__item--click">
                     <div class="list__button list__button--click">
@@ -66,14 +67,16 @@
                     </div>
                 </li>
 
-                <li class="list__item list__item--click">
+                <li class="list__item list__item--click" id="reservasTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
                         <a href="AppVerReservas.html" class="nav__link">Reservas</a>
                     </div>
 
                 </li>
-                <li class="list__item list__item--click">
+
+
+                <li class="list__item list__item--click" id="reportesTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-file-contract list__img"></i>
                         <a href="#" class="nav__link">Reportes</a>
@@ -83,201 +86,128 @@
                         <li class="list__inside">
 
                             <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Listado de citas</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Listado de reservaciones</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
+                                <i class="fa-solid fa-star-half-stroke list__arrow"></i>Calificaciones
                             </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteGanancia.html" class="nav__link nav__link--inside">
 
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>Ganacias
                             </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios Registrados</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Usuarios registrados</a>
                         </li>
 
                     </ul>
-
                 </li>
             </ul>
         </nav>
-
-
         <div class="home">
 
-            <div class="tblCaja">
-                <div class="tituloCaja">
-                    <h2>Reporte de Ganancias</h2>
+            <div class="tContainer">
+                <div class="tTituloContainer">
+                    <!--<div><i class="fa-solid fa-list iconNuevaCita"></i></div>-->
+                    <div class="tituloCitas">
+                        <h2>Reporte de ganancias</h2>
+                    </div>
+                    <!-- <div class="btnNuevaCitaContainer">
+                        <a id="showCrearCita"><i class="fa-solid fa-square-plus fa-3x NuevaCita"></i></a>
+                        <p>Crear cita</p>
+                    </div>-->
+                </div>
 
-                    <span>Fecha Inicio</span>
-                    <input type="date">
+                <div class="tFiltros">
 
-                    <span>Fecha Final</span>
-                    <input type="date">
+                    <div for="txtNumCita" class="filtrosCajas">
+                        <label for="txtNumCita">No. Cita</label>
+                        <input id="txtNumCita" class="cajasCitas" type="text">
+                    </div>
+                    <div for="txtDuenhoCita" class="filtrosCajas">
+                        <label for="txtDuenhoCita">Propietario(a)</label>
+                        <input id="txtDuenhoCita" class="cajasCitas" type="text">
+                    </div>
+                    <div for="txtMascotaCita" class="filtrosCajas">
+                        <label for="txtMascotaCita">Mascota</label>
+                        <input id="txtMascotaCita" class="cajasCitas" type="text">
+                    </div>
 
-                    <span>Mascota</span>
-                    <input type="text">
+                    <div for="txtVeterinarioCita" class="filtrosCajas">
+                        <label for="txtVeterinarioCita">Veterinario(a)</label>
+                        <input id="txtVeterinarioCita" class="cajasCitas" type="text">
+                    </div>
+                    <div class="filtroFecha">
+                        <div for="DateFecha1" class="filtrosCajas">
+                            <label for="DateFecha1">Fecha inicio</label>
+                            <input id="DateFecha1" type="date" class="cajasCitas">
+                        </div>
+                        <div for="DateFecha2" class="filtrosCajas">
+                            <label for="DateFecha2">Fecha final</label>
+                            <input id="DateFecha2" type="date" class="cajasCitas">
+                        </div>
+                    </div>
 
-                    <span>Usuario</span>
-                    <input type="text">
+                    <div for="checkEstadoCita" class="filtrosCajaschk">
+                        <p>Estado cita</p>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoAgendada">Agendada</label>
+                            <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoFinalizada">Finalizada</label>
+                            <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                        </div>
+                        <div class="estadoChkCajas">
+                            <label for="chkEstadoCancelada">Cancelada</label>
+                            <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
+                        </div>
+                    </div>
 
-                    <button>Filtrar</button>
+                    <div class="filtrosCajas">
+                        <!-- <input type="button" value="Filtrar" > -->
+                        <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita"></i></a>
+                        <label for="btnFiltroCita">Filtrar</label>
+                    </div>
 
                 </div>
-                <table class="tblReporte">
-                    <thead class="thTitle">
-                        <tr>
-                            <th class="tblTitulo">No.de Factura</th>
-                            <th class="tblTitulo">Nombre del Cliente</th>
-                            <th class="tblTitulo">Servicio</th>
-                            <th class="tblTitulo">Mes</th>
-                            <th class="tblTitulo">Fecha</th>
-                            <th class="tblTitulo">Venta</th>
 
-                        </tr>
+                <table id="tCitas" class="table">
+                    <thead id="tTheadRCitas">
+
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tblContenido">001</td>
-                            <td class="tblContenido"> Luis Salazar</td>
-                            <td class="tblContenido">Veterinaria</td>
-                            <td class="tblContenido">Julio</td>
-                            <td class="tblContenido">25/7/2022</td>
-                            <td class="tblContenido">₡25000</td>
+                    <tbody id="tBodyRCitas" class="tbody">
 
-                        </tr>
-                        <tr>
-                            <td class="tblContenido">002</td>
-                            <td class="tblContenido">Jorge Morales</td>
-                            <td class="tblContenido">Veterinaria</td>
-                            <td class="tblContenido">Julio</td>
-                            <td class="tblContenido">20/7/2022</td>
-                            <td class="tblContenido">₡20000</td>
-
-                        </tr>
-                        <tr>
-                            <td class="tblContenido">003</td>
-                            <td class="tblContenido">Isabel Mena</td>
-                            <td class="tblContenido">Veterinaria</td>
-                            <td class="tblContenido">Julio</td>
-                            <td class="tblContenido">15/7/2022</td>
-                            <td class="tblContenido">₡30000</td>
-                        </tr>
                     </tbody>
                 </table>
-                <div class="tblCajaSecundaria">
-                    <table class="tblTotales">
-                        <thead class="thTitle2">
-                            <tr>
-                                <th class="tblCajaTotal">SubTotal</th>
-                                <th class="tblCajaTotal">Deducciones</th>
-                                <th class="tblCajaTotal">IVA</th>
-                                <th class="tblCajaTotal">Total de ganancias</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="tblInfoTotal">₡75000</td>
-                                <td class="tblInfoTotal">₡25000</td>
-                                <td class="tblInfoTotal">₡9750</td>
-                                <td class="tblInfoTotal">₡40250</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+
+                <div class="overlay hidden"></div>
             </div>
-
-            <!-------------CREAR CITA--------->
-            <div class="cuerpoCita hidden">
-                <form id="formCrearCita" class="formCita">
-                    <h1 class="titulo">Nueva Cita</h1>
-                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
-                        <option value="">------Seleccionar mascota------</option>
-                    </select>
-
-                    <div id="NombreOtro">
-
-                    </div>
-
-                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-
-                    <select class="cajas select" id="selectVeterinario">
-                        <option value="">------Seleccionar Veterinario------</option>
-                        
-                    </select>
-
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
-
-
-
-
-                    <div class="btnsC">
-                        <input type="button" class="btnCancelarC" value="Cancelar">
-
-                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
-                    </div>
-
-                </form>
-
-            </div>
-
-            <!---------------CREAR RESERVACION------------------------>
-            <div class="cuerpoReserva hidden">
-                <form id="formCrearReserva" class="formReserva">
-                    <h1 class="titulo">Nueva Reservación</h1>
-
-                    <select class="cajas select" id="selectMacota">
-                        <option value="">------Seleccionar mascota------</option>
-
-                    </select>
-                    <div>
-                        <label for="dateCheckIn">Fecha de ingreso</label>
-                        <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
-                    </div>
-
-                    <div>
-                        <label for="dateCheckOut">Fecha de Salida</label>
-                        <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
-                    </div>
-
-
-
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
-
-
-
-                    <div class="btnsR">
-                        <input type="button" class="btnCancelarR" value="Cancelar">
-
-                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
-                    </div>
-
-                </form>
-            </div>
-
         </div>
-
-        <div class="overlay hidden"></div>
     </div>
-
+  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/services/DemoService.js"></script>
-    <script src="./js/services/UsuarioService.js"></script>
-    <script src="./js/controllers/AppController.js"></script>
+    <script src="./js/Constantes.js"></script>
+
     <script src="./js/services/SessionService.js"></script>
+    <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/MascotasService.js"></script>
+    <script src="./js/controllers/appController.js"></script>
+    <script src="./js/services/CitaService.js"></script>
+    <script src="./js/controllers/RepCitasController.js"></script>
 </body>
 
 </html>
