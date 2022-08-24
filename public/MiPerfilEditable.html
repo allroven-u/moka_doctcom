@@ -48,12 +48,12 @@
                     <ul class="list__show">
                         <li class="list__inside">
                             <a href="MiPerfil.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
+                                <i class="fa-solid fa-address-card" list__arrow></i>Mi perfil</a>
                         </li>
 
                         <li class="list__inside" id="mascotasTab">
                             <a href="Mascotas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i>Mis mascotas</a>
                         </li>
                     </ul>
                 </li>
@@ -83,25 +83,25 @@
                         <li class="list__inside">
 
                             <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Listado de citas</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteReservacion.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Listado de reservaciones</a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
                                 <i class="fa-solid fa-file-lines list__arrow"></i>
-                                <i class="fa-solid fa-star-half-stroke"></i> Calificaciones
+                                <i class="fa-solid fa-star-half-stroke"></i>Calificaciones
                             </a>
                         </li>
 
                         <li class="list__inside">
                             <a href="reporteGanancia.html" class="nav__link nav__link--inside">
 
-                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                                <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>Ganacias
                             </a>
                         </li>
 
@@ -133,6 +133,7 @@
                             <label for="Rol">Roles:</label>
 
                             <select name="Rol" id="SelectRol">
+                                <option value="1">Admin</option>
                                 <option value="2">Usuario</option>
                               <option value="3">Veterinario</option>
                               <option value="4">Secretaria</option>
@@ -155,18 +156,18 @@
                             <h2>Editar información personal</h2>
                         </div>
                         <div class="perfilContainer">
-                            <label for="txtNombreP">Nombre: </label>
+                            <label for="txtNombreP">Nombre:</label>
                             <input class="cajas" id="txtNombreP" type="text" placeholder="Nombre: " maxlength="30">
                         </div>
 
                         <div class="perfilContainer">
-                            <label for="txtApellidosP">Apellido(s): </label>
+                            <label for="txtApellidosP">Apellido(s):</label>
                             <input class="cajas" id="txtApellidosP" type="text" placeholder="Apellido(s): "
                                 maxlength="30">
                         </div>
 
                         <div class="perfilContainer">
-                            <label for="txtCedulaP">Identificación: </label>
+                            <label for="txtCedulaP">Identificación:</label>
                             <input class="cajas" id="txtCedulaP" type="text" placeholder="Identificación: "
                                 maxlength="30">
                         </div>
@@ -176,8 +177,8 @@
                             <input class="cajas" id="txtEmailP" type="text" placeholder="Correo electrónico: " maxlength="30">
                         </div>
                         <div class="perfilContainer hidden">
-                            <label for="txtPassword">Password: </label> <input class="cajas" id="txtPassword"
-                                type="text" placeholder="password " maxlength="30">
+                            <label for="txtPassword">Contraseña:</label> <input class="cajas" id="txtPassword"
+                                type="text" placeholder="Contraseña: " maxlength="30">
                         </div>
 
 
@@ -190,6 +191,8 @@
                         <div class="btnsEditarPerfil">
                             <button class="btn-cancelar border-radius" type="button"
                                 onclick="location.href='./MiPerfil.html'">Cancelar</button>
+                                <button class="btn-cancelar-admin hidden border-radius" type="button"
+                                onclick="location.href='./reporteUsuario.html'">Cancelar</button>
                             <button type="button" id="btn-guardarMiPerfil2"
                                 class="btn-editar border-radius">Guardar</button>
 

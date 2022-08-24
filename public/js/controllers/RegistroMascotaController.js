@@ -44,7 +44,7 @@ function ValidarDatosRegMascota() {
 
     if (sNombre == null || sNombre == undefined || sNombre == "") {
         inputNombre.classList.add("error")
-        MostrarError("El nombre es requerido!");
+        MostrarError("¡El nombre es requerido!");
         return false;
 
     } else {
@@ -52,7 +52,7 @@ function ValidarDatosRegMascota() {
     }
     if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
         inputDireccionRegistroM.classList.add("error")
-        MostrarError("La dirección es requerida!");
+        MostrarError("¡La dirección es requerida!");
         return false;
     } else {
         inputDireccionRegistroM.classList.remove("error")

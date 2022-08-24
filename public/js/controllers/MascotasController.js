@@ -84,7 +84,7 @@ async function GetlistaMascota() {
             createButton.classList.add('usuario');
             createButton.classList.add('border-radius');
             createButton.classList.add('annadir');
-            createButton.textContent = 'Ver Perfil';
+            createButton.textContent = 'Ver perfil';
             createButton.addEventListener('click', function(){
                 location.href = './perfilMascota.html?_id='+listaMascotas[i]._id;
             });

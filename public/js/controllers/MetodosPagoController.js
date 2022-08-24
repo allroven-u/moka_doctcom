@@ -1,10 +1,11 @@
 'use strict';
 let userSessionT;
-const showAgregarTajeta = document.querySelector('.btn-agregar-metodo-pago');
+const showAgregarTajeta = document.querySelector('.btnAgregar-icon');
 const modalAgregarTarjeta = document.querySelector('.form-pago-tarjeta');
 const closeModalAgregarTarjeta = document.querySelector('.btn-cancerlar-tarjeta');
 const overlay = document.querySelector('.overlay');
 const cerrarModalIcon = document.querySelector('.cerrarModalX-tarjeta');
+const eliminarTarjeta = document.querySelectorAll('.fa-trash-can');
 
 
 let btnAgregarTarjeta = document.getElementById('btnAgregarTarjeta');
@@ -12,30 +13,35 @@ let btnAgregarTarjeta = document.getElementById('btnAgregarTarjeta');
 
 window.addEventListener("load", () => {
     userSessionT = GetSesion();
-  //////////////////// cargar datos desde BD////////////////////
+    //////////////////// cargar datos desde BD////////////////////
     getListaTarjetas();
-  });
+});
 
- async function getListaTarjetas(){
+async function getListaTarjetas() {
     let result = await buscaUsuarioID(userSessionT.Identificacion);
 
-    if(result != {} && result.resultado == true){
-        //console.log(result.usuarioDB.Tarjetas);
+    if (result != {} && result.resultado == true) {
+        // console.log(result.usuarioDB.Tarjetas);
         mostrarTarjetas(result.usuarioDB.Tarjetas);
     }
-    
-  }
-  
-function mostrarTarjetas(pListaTarjetas){
 
-    for(let i = 0; i < pListaTarjetas.length; i++){
+}
+
+function mostrarTarjetas(pListaTarjetas) {
+
+    for (let i = 0; i < pListaTarjetas.length; i++) {
         console.log(pListaTarjetas[i]);
         let cajaTarjetas = document.querySelector('.caja-metodos-pago');
         let tarjetaNum = document.createElement('div');
         let createP = document.createElement('p');
         let divLogoTarjeta = document.createElement('div');
         let imgTarjeta = document.createElement('i');
-   
+        const iconDelete = document.createElement('i');
+
+        cajaTarjetas.appendChild(iconDelete);
+        iconDelete.classList.add('fa-solid');
+        iconDelete.classList.add('fa-trash-can');
+        iconDelete.style = 'color: #cc2900;';
         cajaTarjetas.appendChild(tarjetaNum);
         tarjetaNum.classList.add('tarjeta-por-agregar');
         tarjetaNum.appendChild(createP);
@@ -48,9 +54,9 @@ function mostrarTarjetas(pListaTarjetas){
         imgTarjeta.classList.add('fa-3x');
 
         createP.textContent = pListaTarjetas[i].NumeroTarjeta;
-        createP.setAttribute('id',pListaTarjetas[i]._id);
+        createP.setAttribute('id', pListaTarjetas[i]._id);
 
-}
+    }
 }
 
 function disableScroll() {
@@ -62,7 +68,7 @@ const limpiarFormAgregar = function () {
     modalAgregarTarjeta.reset();
 }
 
-const hiddenAgregar = function() {
+const hiddenAgregar = function () {
     modalAgregarTarjeta.classList.add('hidden');
     overlay.classList.add('hidden');
     window.removeEventListener("scroll", disableScroll);
@@ -78,14 +84,14 @@ function ShowModalAgregarTarjetaFunct() {
     closeModalAgregarTarjeta.addEventListener('click', hiddenAgregar);
     cerrarModalIcon.addEventListener('click', hiddenAgregar);
     overlay.addEventListener('click', hiddenAgregar);
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && !modalAgregarTarjeta.classList.contains('hidden')) {
             hiddenAgregar();
         }
     });
 };
 
-showAgregarTajeta.addEventListener('click', function() {
+showAgregarTajeta.addEventListener('click', function () {
     ShowModalAgregarTarjetaFunct();
 });
 
@@ -111,28 +117,34 @@ var cantCVV;
 
 
 
-async function registarTarjeta(){
-    if(ValidarDatostarjeta() == true){
-        let result = await RegistrarTarjetaNueva(userSessionT._id,inputNombreTitular.value,inputNumTarjeta.value,inputMesVenc.value,inputYearVenc.value,inputNumCVV.value);
-        if(result.resultado == true){
+async function DeleteTarjetas(){
+    for(let i = 0; i < eliminarTarjeta.length; i++){
+        eliminarTarjeta[i].addEventListener('click', function(){
+            
+        })
+    }
+}
+
+
+
+async function registarTarjeta() {
+    if (ValidarDatostarjeta() == true) {
+        let result = await RegistrarTarjetaNueva(userSessionT._id, inputNombreTitular.value, inputNumTarjeta.value, inputMesVenc.value, inputYearVenc.value, inputNumCVV.value);
+        if (result.resultado == true) {
             ConfirmarDatos("Tarjeta registrada con éxito!");
             hiddenAgregar();
         }
-        
+
     }
 }
 
 btnAgregarTarjeta.addEventListener("click", () => {
     registarTarjeta();
-  });
+});
 
-  btnAgregarTarjeta.addEventListener("click", () => {
-    registarTarjeta();
-  });
 
-  
 
-function ValidarDatostarjeta(){
+function ValidarDatostarjeta() {
     let sNombreTitular = inputNombreTitular.value;
     let sNumTarjeta = inputNumTarjeta.value;
     let sNumCVV = inputNumCVV.value;
@@ -151,14 +163,14 @@ function ValidarDatostarjeta(){
         MostrarError("¡El nombre de titular de la tarjeta no puede contener caracteres especiales ni números!");
         return false;
     }
-    if (sNumTarjeta == null || sNumTarjeta == undefined || sNumTarjeta == "" ) {
+    if (sNumTarjeta == null || sNumTarjeta == undefined || sNumTarjeta == "") {
         inputNumTarjeta.classList.add("TError");
         MostrarError("El número de tarjeta es requerido!");
         return false;
     }
-    if(ValidarTipoTarjeta() == true){
-            inputNumTarjeta.classList.remove("TError");
-    }else{
+    if (ValidarTipoTarjeta() == true) {
+        inputNumTarjeta.classList.remove("TError");
+    } else {
         return false;
     }
     if (sNumCVV == null || sNumCVV == undefined || sNumCVV == "") {
@@ -166,8 +178,8 @@ function ValidarDatostarjeta(){
         MostrarError("El código de seguridad es requerido!");
         return false;
     } else {
-        console.log("cvv "+sNumCVV);
-        if(sNumCVV.length!=cantCVV){
+        console.log("cvv " + sNumCVV);
+        if (sNumCVV.length != cantCVV) {
             inputNumCVV.classList.add("TError");
             Swal.fire({
                 icon: 'error',
@@ -175,7 +187,7 @@ function ValidarDatostarjeta(){
                 text: '¡CVV incorrecto!',
             });
             return false;
-        }else{
+        } else {
             inputNumCVV.classList.remove("TError");
         }
 
@@ -194,8 +206,8 @@ function ValidarDatostarjeta(){
     } else {
         inputYearVenc.classList.remove("TError");
     }
-    if (Number(nYearV) == actualYear ) {
-        if(Number(nMesV)<=actualMonth){
+    if (Number(nYearV) == actualYear) {
+        if (Number(nMesV) <= actualMonth) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -206,7 +218,7 @@ function ValidarDatostarjeta(){
             inputYearVenc.classList.add("TError");
             return false;
 
-        }else if(Number(nYearV) < actualYear){
+        } else if (Number(nYearV) < actualYear) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -215,39 +227,38 @@ function ValidarDatostarjeta(){
             inputMesVenc.classList.add("TError");
             inputYearVenc.classList.add("TError");
             return false;
-        }   
-    }else{
+        }
+    } else {
         inputMesVenc.classList.remove("TError");
         inputYearVenc.classList.remove("TError");
     }
     return true;
 }
 
-function ValidarTipoTarjeta(){
+function ValidarTipoTarjeta() {
     let nTarjeta = inputNumTarjeta.value;
     ///////visa////////
-    if(nTarjeta.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/)){
+    if (nTarjeta.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/)) {
         tipoVisa.classList.remove("hidden");
         tipoMaster.classList.add("hidden");
         tipoAmex.classList.add("hidden");
-        cantCVV =3;
+        cantCVV = 3;
         return true;
-    ///////mastercard/////////////    
-    }else if(nTarjeta.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)){
+        ///////mastercard/////////////    
+    } else if (nTarjeta.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)) {
         tipoVisa.classList.add("hidden");
         tipoMaster.classList.remove("hidden");
         tipoAmex.classList.add("hidden");
-        cantCVV =3;
+        cantCVV = 3;
         return true;
         ///////amex/////////////
-    }else if(nTarjeta.match(/^3[4-7]\d{2}-?\d{6}-?\d{5}$/)){
+    } else if (nTarjeta.match(/^3[4-7]\d{2}-?\d{6}-?\d{5}$/)) {
         tipoVisa.classList.add("hidden");
         tipoMaster.classList.add("hidden");
         tipoAmex.classList.remove("hidden");
-        cantCVV =4;
+        cantCVV = 4;
         return true;
-    }
-    else{
+    } else {
         inputNumTarjeta.classList.add("TError");
         Swal.fire({
             icon: 'error',
@@ -261,4 +272,3 @@ function ValidarTipoTarjeta(){
     }
 
 }
-

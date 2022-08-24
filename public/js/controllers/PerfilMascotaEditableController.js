@@ -80,7 +80,7 @@ function ValidarDatosMascota() {
 
     if (sConttxtDireccionM == null || sConttxtDireccionM == undefined || sConttxtDireccionM == "") {
         resaltarInputInvalido("txtDireccionM");
-        MostrarError('Debe ingresar la direccion!');
+        MostrarError('¡Debe ingresar la dirección!');
         return false;
     }
     

@@ -78,7 +78,6 @@ async function GetlistaUsuariosC(){
     let result = await getUsuariosArray();
     if (result != {} && result.resultado == true) {
        listaUsuariosC = result.ListaUsuariosBD;
-       console.log(listaUsuariosC);
     }
   }
 
