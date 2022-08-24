@@ -1,214 +1,215 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/Facturas.css">
-    <link rel="stylesheet" href="css/PagoTarjeta.css">
-    <title>Factura</title>
+    <link rel="stylesheet" href="./css/FacturasNueva.css">
+    <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
+    <title>Factura Veterinaria Moka</title>
 </head>
-
 <body>
-
-    <div class="btns">
-        <input type="button" class="btnCancelar" value="Cancelar" onclick="location.href='App.html'">
-        <input type="button" id="Pagar" class="btnPagar" value="Pagar">
-        <input type="button" id="Enviar" class="btnEnviar" value="Enviar" onclick="alert('Enviado al correo');">
-    </div>
-
-    <header>
-        <h1>Factura</h1>
-        <img width="100" src="./assets/img/MOKA Logo.png">
-    </header>
-
-    <div class="cajaPrincipal">
-
-        <table class="tblinfo1">
-            <tr>
-                <td>Nombre Empresa: </td>
-            </tr>
-            <tr>
-                <td>Cédula Jurídica: </td>
-            </tr>
-            <tr>
-                <td>Teléfono: </td>
-            </tr>
-            <tr>
-                <td>Correo Electrónico: </td>
-            </tr>
-            <tr>
-                <td>Dirección: </td>
-            </tr>
-        </table>
-
-        <table class="tblinfo2">
-            <tr>
-                <td>Documento No.: </td>
-            </tr>
-            <tr>
-                <td>Fecha: </td>
-            </tr>
-            <tr>
-                <td>Mascota: </td>
-            </tr>
-            <tr>
-                <td>Condición: </td>
-            </tr>
-            <tr>
-                <td>Metodo de pago: </td>
-            </tr>
-        </table>
-
-
-        <table class="tblCliente">
-            <tr>
-                <td>Nombre Cliente: </td>
-            </tr>
-            <tr>
-                <td>Cédula: </td>
-            </tr>
-            <tr>
-                <td>Correo Electrónico: </td>
-            </tr>
-            <tr>
-                <td>Dirección: </td>
-            </tr>
-        </table>
-
-        <table class="tblCliente">
-            <th class="infoTh1">Servicio</th>
-            <th class="infoTh1">No.</th>
-            <th class="infoTh1">Fecha</th>
-            <th class="infoTh1">Descripción</th>
-            <th class="infoTh1">Descuento</th>
-            <th class="infoTh1">Precio</th>
-            <tbody>
-                <tr>
-                    <td class="infoTd2">Veterinaria</td>
-                    <td class="infoTd2">123456</td>
-                    <td class="infoTd2">25/7/2022</td>
-                    <td class="infoTd2">Chequeo General</td>
-                    <td class="infoTd2">10%</td>
-                    <td class="infoTd2">80000</td>
-                </tr>
-                <tr>
-                    <td class="infoTd2">Hospedaje</td>
-                    <td class="infoTd2">123456</td>
-                    <td class="infoTd2">25/7/2022</td>
-                    <td class="infoTd2">2 Noches</td>
-                    <td class="infoTd2">10%</td>
-                    <td class="infoTd2">20000</td>
-                </tr>
-                <tr>
-                    <td class="infoTd2">Hospedaje</td>
-                    <td class="infoTd2">123456</td>
-                    <td class="infoTd2">25/7/2022</td>
-                    <td class="infoTd2">2 Noches</td>
-                    <td class="infoTd2">10%</td>
-                    <td class="infoTd2">20000</td>
-                </tr>
-                <tr>
-                    <td class="infoTd2">Veterinaria</td>
-                    <td class="infoTd2">123456</td>
-                    <td class="infoTd2">25/7/2022</td>
-                    <td class="infoTd2">Chequeo General</td>
-                    <td class="infoTd2">10%</td>
-                    <td class="infoTd2">80000</td>
-                </tr>
-            </tbody>
-        </table>
-
-
-
-        <div class="tableTotales">
-            <table class="tblMontosTotales">
-                <tbody>
-                    <tr>
-                        <td class="infoTotales">Subtotales</td>
-                        <td class="infoTotales">₡3450</td>
-                    </tr>
-                    <tr>
-
-                        <td class="infoTotales">IVA</td>
-                        <td class="infoTotales">₡345</td>
-                    </tr>
-                    <tr>
-
-                        <td class="infoTotales">Total Colones</td>
-                        <td class="infoTotales">₡3795</td>
-                    </tr>
-                    <tr>
-
-                        <td class="infoTotales">Total Dolares</td>
-                        <td class="infoTotales">$11.27</td>
-                    </tr>
-                </tbody>
-
-            </table>
+    <nav>
+        <div>
+            <i class="fa-solid fa-file-invoice"></i>
+        </div>
+        <div>
+            <h1> Factura Veterinaria Moka</h1>
+        </div>
+        <div>
+            <div class="accionBtns">
+                <i class="fa-solid fa-print BtnI"></i>
+                <i class="fa-solid fa-share-nodes BtnE" ></i>
+                <i class="fa-solid fa-circle-xmark BtnC"></i>
+            </div>
+        </div>
+    </nav>
+    <!-- ///////////////inicio modal//////////////////////// -->
+    <form class="form-pago-tarjetaFactura hidden">
+        <h1 class="titulo">Agregar tarjeta</h1>
+        <i class="fa-solid fa-circle-xmark cerrarModalX-tarjetaPago"></i>
+        <div>
+            <img src="https://shoplineimg.com/assets/footer/card_visa.png" id="imgVisa" class="hidden">
+            <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
+            <img src="https://shoplineimg.com/assets/footer/card_amex.png" id="imgAmex" class="hidden">
         </div>
 
+        
+        <div >
+            <label for="seletTarjetas" class="labelSelet">Número de tarjeta:</label>
+            <select id="seletTarjetas" class="cajas">
+                <option value="">-------Selecionar tarjeta-------</option>
+                <option value="1">4123123412341234</option>
+                <option value="2">3214456445644564</option>
+            </select>
+        </div>
+        <label for="numTarjetaPago">Número de tarjeta:</label>
+        <input class="cajas" id="numTarjetaPago" type="text" placeholder="Número de tarjeta*" maxlength="20">
 
+        <label for="txtTitularPago">Nombre de titular de la tarjeta:</label>
+        <input class="cajas" id="txtTitularPago" type="text" placeholder="Nombre de titular de la tarjeta*"
+           >
 
-    </div>
-    <form class="form-pago-tarjeta hidden">
-        <h1 class="titulo">Pago</h1>
-        <img src="https://shoplineimg.com/assets/footer/card_visa.png"  id="imgVisa" class="hidden">
+        <label for="txtCvvPago">CVV:</label>
+        <input class="cajas" id="txtCvvPago" type="password" placeholder="CVV*" maxlength="4">
 
-        <img src="https://shoplineimg.com/assets/footer/card_master.png" id="imgMaster" class="hidden">
-
-        <img src="https://shoplineimg.com/assets/footer/card_amex.png" id="imgAmex" class="hidden">
-
-        <input class="cajas" id="txtTitular" type="text" placeholder="Nombre de titular de la tarjeta*"  maxlength="60">
-        <input class="cajas" id="numTarjeta" type="text" placeholder="Número de tarjeta*" maxlength="20">
-        <input class="cajas" id="txtCvv" type="password" placeholder="CVV*" maxlength="4">
-
-        <label for="mes_vencimiento">Vencimiento:</label>
+        <label for="mes_vencimientoPago">Vencimiento:</label>
         <div class="cajasPContainer">
-            <select id="mes_vencimiento" class="cajasP">
-                        <option value="">--Mes--</option>
-                        <option value="01">01</option>
-                        <option value="02">02</option>
-                        <option value="03">03</option>
-                        <option value="04">04</option>
-                        <option value="05">05</option>
-                        <option value="06">06</option>
-                        <option value="07">07</option>
-                        <option value="08">08</option>
-                        <option value="09">09</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                        </select>
+            <select id="mes_vencimientoPago" class="cajasP">
+                <option value="">--Mes--</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
 
-            <select id="year_vencimiento" class="cajasP">
-                        <option value="">--Año--</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                        <option value="2026">2026</option>
-                        <option value="2027">2027</option>
-                        <option value="2028">2028</option>
-                        <option value="2029">2029</option>
-                        <option value="2030">2030</option>
-                        <option value="2031">2031</option>
-                        <option value="2032">2032</option>
-                        <option value="2033">2033</option>
-                        <option value="2034">2034</option>
-                        <option value="2035">2035</option>
-                        </select>
+            <select id="year_vencimientoPago" class="cajasP">
+                <option value="">--Año--</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+                <option value="2026">2026</option>
+                <option value="2027">2027</option>
+                <option value="2028">2028</option>
+                <option value="2029">2029</option>
+                <option value="2030">2030</option>
+                <option value="2031">2031</option>
+                <option value="2032">2032</option>
+                <option value="2033">2033</option>
+                <option value="2034">2034</option>
+                <option value="2035">2035</option>
+            </select>
         </div>
-
-        <input type="button" class="btn-pago-tarjeta" id="btnPagar" value="Pagar" onclick="RealizarPago();">
-        <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelar" value="Cancelar">
+        <div class="lBtns">
+            <input type="button" class="btn-cancerlar-tarjeta" id="btnCancelarPago" value="Cancelar">
+            <input type="button" class="btn-agregar-tarjeta" id="btnPagarFactura" value="Pagar">
+        </div>
     </form>
 
     <div class="overlay hidden"></div>
+<!-- //////////////////////fin modal////////////////// -->
+    <div class="line"></div>
+    <section class="datosContainer">
+        <div class="imgContainer">
+            <img src="./assets/img/MOKA Logo.png" class="imgLogo">
+        </div>
+        <div class="datosMoka">
+            <ul> 
+                <li>MOKA</li> 
+                <li>Moka,Veterinaria,S.A</li> 
+                <li>3-101-271234</li> 
+                <li>San Jose.....Dirección</li>
+                <li>CP 21004,Costa Rica*</li>
+                <li>+506 2201-2543</li>
+                <li>dotcomMoka@gmail.com</li>
+         </ul>
+        </div>
 
+    </section>
+    <section class="datosClienteContainer">
+        <div class="numFactura">
+            <h2>FACTURA No.</h2>
+            <h2>9999*</h2>
+        </div>
+        <div class="cliente-Condiciones">
+            <div class="datosCliente">
+                <h3>Cliente</h3>
+                <ul> 
+                    <li id="nombreClienteFact">Denis Salazar</li> 
+                    <li id="IdClienteFact">206790172</li> 
+                    <li id="EmailClienteFact">dsalzar@gmail.com</li> 
+                    <li id="DireccionClienteFact">San Jose.....Dirección</li>
+             </ul>
+            </div>
+            <div class="datosCondiciones">
+                <h3>Condiciones</h3>
+                <table>
+                    <tr>
+                        <th>Fecha emisión</th>
+                        <td id="FechaFact">18/09/2022</td>
+                    </tr>
+                    <tr>
+                        <th>Condición de venta</th>
+                        <td>Contado</td>
+                    </tr>
+                    <tr>
+                        <th>Plazo</th>
+                        <td>0 días</td>
+                    </tr>
+                    <tr>
+                        <th>Moneda</th>
+                        <td>Colón</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <section class="LineasPagos">
+        <table>
+            <thead>
+                <tr>
+                    <th class="descrip">Descripción</th>
+                    <th class="unid">Unidad</th>
+                    <th class="unid">Cantidad</th>
+                    <th class="unid">Precio</th>
+                    <th class="unid">Total</th>
+                </tr>
+            </thead>
+            <tbody id="LineasFactura">
+                <tr>
+                    <td class="descrip"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, aliquam delectus? Nobis iusto asperiores odit veniam voluptatum deserunt exercitationem nisi rem quidem nesciunt ducimus odio, id voluptate, aut rerum iste. </td>
+                    <td class="unid">Unid</td>
+                    <td class="unid">2</td>
+                    <td class="unid">1800</td>
+                    <td class="unid">3600</td>
+                </tr>
+                <tr>
+                    <td class="descrip"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, aliquam delectus? Nobis iusto asperiores odit veniam voluptatum deserunt exercitationem nisi rem quidem nesciunt ducimus odio, id voluptate, aut rerum iste. </td>
+                    <td class="unid">Unid</td>
+                    <td class="unid">2</td>
+                    <td class="unid">1800</td>
+                    <td class="unid">3600</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="totalFact">
+        <div class="space"></div>
+        <div class="totals">
+            <table>
+                <tr>
+                    <th>SubTotal ₡</th>
+                    <td id="subtotalFact">5000</td>
+                </tr>
+                <tr>
+                    <th>IVA 13%</th>
+                    <td id="IvaFact ">1250</td>
+                </tr>
+                <tr class="totalFinal">
+                    <th>Total ₡</th>
+                    <td id="TotalFact ">1650</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <div class="line"></div>
+
+    <div class="lBtnsFact">
+        <input type="button" class="btn-cancerlar-Factura" id="btnCancelarFacturacion" value="Cancelar">
+        <input type="button" class="btn-agregar-Factura" id="btnMetodosPago" value="RealizarPago">
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
     <script src="./js/controllers/FacturaController.js"></script>
 </body>
-
 </html>

@@ -1,141 +1,470 @@
 /*--ACOMODANDO-MARGENES-PADDING--*/
 @import url(./estilosGenerales.css);
+/*--ACOMODANDO-MARGENES-PADDING--*/
+@import url(./estilosGenerales.css);
 
 * {
     margin: 0px auto;
-    padding: 0px;
+    font-size: 14px;
     box-sizing: border-box;
 }
-
-header {
+.line{
     margin-top: 15px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
+    width: 70%;
+    height: 20px;
+    background-color: var(--silver);
 }
 
-body {
+nav{
+    height: 70px;
+    width: 100%;
+    background-color: var(--headerApp);
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    color: var(--blanco);
+
+}
+h1{
+    font-size: 20px;
+}
+nav .accionBtns .BtnI,.BtnE,.BtnC{
+    margin-right: 15px;
+    transition: all 200ms linear;
+    cursor: pointer;
 }
 
+nav .accionBtns .BtnI:hover{
+    transform: scale(1.2);
+    color: var(--turquesa);
+}
 
+nav .accionBtns .BtnE:hover{
+    transform: scale(1.2);
+    color: var(--naranja);
+}
 
-.cajaPrincipal {
-    width: 80%;
+nav .accionBtns .BtnC:hover{
+    transform: scale(1.2);
+    color: var(--Rojo2);
+}
+
+.datosContainer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    width: 70%;
+
+}
+.datosContainer .imgContainer{
+    width: 30%;
 }
 
-.btns {
+.datosContainer .imgLogo{
+    width: 100%;
+    height: 175px;
+}
+
+.datosContainer .datosMoka{
+    width: 55%;
+}
+li{
+    margin-top:5px ;
+}
+
+.datosClienteContainer{
+    width: 70%;
+}
+
+.datosClienteContainer .numFactura{
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    background-color: var(--headerApp);
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 10px;
+    background-color: var(--silver);
+}
+.datosClienteContainer .numFactura h2{
+    margin: 0px 5px 0px 5px;
+}
+.cliente-Condiciones{
+    display: flex;
+}
+
+.datosCliente{
+    width: 40%; 
+    margin: 0px 5px 0px 5px;
+    border-right: 2px solid var(--silver);
+    
+
+}
+.datosCliente h3,.datosCondiciones h3{
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--silver);
+    width: 100%;
+}
+
+.datosCondiciones{
+    margin: 0px 5px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.datosCondiciones table{
+    margin: 0px 5px 0px 5px;
+}
+.datosCondiciones table tr{
+    margin: 0px 5px 0px 5px;
+    padding-top: 5px;
+}
+.datosCondiciones table th{
+    margin: 0px 5px 0px 5px;
+    width: 60px;
+    text-align: right;
+}
+.datosCondiciones table td{
+    margin: 0px 5px 0px 5px;
+    width: 20px;
+    text-align: right;
+}
+.LineasPagos{
+   width: 70%;
+}
+
+.LineasPagos table{
+    width: 100%;
+ }
+
+.LineasPagos thead{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    background-color: var(--silver);
+}
+.LineasPagos thead tr{
+    width: 100%; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.LineasPagos thead tr th{
+    border-right: 2px solid var(--blanco); 
+    margin: 0;
+}
+.descrip{
+    margin: 0;
+    width: 40%; 
 
 }
 
-.btnPagar {
+.unid{
+    margin: 0;
+    width: 15%;   
+}
+.LineasPagos tbody{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.LineasPagos tbody tr{
+    width: 100%; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--silver);
+    
+}
+td{
+    text-align: center;
+}
+
+.totalFact{
+    display: flex;
+    width: 70%;
+}
+
+.totals{
+width: 100%;
+}
+
+.space{
+    width: 60%;
+}
+
+.totals{
+    border: 1px solid var(--silver);
+    width: 40%;  
+    height: 110px;  
+}
+
+.totals table tbody tr{
+    display: block;
+    margin-top: 10px;
+}
+
+.totals table tbody tr th{
+    width: 120px;
+}
+
+.totalFinal{
+    border-top: 1px solid var(--silver);
+    width: 100%;
+}
+
+.form-pago-tarjetaFactura {
+    width: 450px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 25px;
+    background-color: var(--blanco);
+    border-radius: 5px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+}
+
+select{
+    color: var(--gris);
+    text-align: center;
+}
+
+.btn-agregar-Factura {
+    width: 15%;
     padding: 10px;
     border-radius: 5px;
     border: none;
-    margin: 20px 0;
-    width: 120px;
     font-size: 15px;
-    background-color: var(--naranja);
-    color: white;
+    background-color: var(--verdeagua);
+    color: var(--blanco);
     cursor: pointer;
     transition: all .5s ease;
+
 }
 
-.btnEnviar {
-    width: 100%;
+.btn-agregar-Factura:hover {
+    background-color: var(--turquesa);
+}
+
+.btn-cancerlar-Factura {
+    width: 15%;
     padding: 10px;
     border-radius: 5px;
     border: none;
-    margin: 20px 0;
-    width: 120px;
-    font-size: 15px;
-    background-color: var(--turquesa);
-    color: white;
-    cursor: pointer;
-    transition: all .5s ease;
-}
-
-.btnPagar:hover {
-    background-color: var(--naranja);
-}
-
-.btnEnviar:hover {
-    background-color: var(--turquesa);
-}
-
-.btnCancelar {
-    width: 100%;
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-    margin: 20px 0;
-    width: 120px;
     font-size: 15px;
     background-color: var(--Rojo2);
-    color: white;
+    color: var(--blanco);
     cursor: pointer;
     transition: all .5s ease;
+
 }
 
-.btnCancelar:hover {
+.btn-cancerlar-Factura:hover {
     background-color: var(--Roj1);
 }
 
-.tableTotales {}
-
-
-.tblinfo1 {
-
-    width: 50%;
+.lBtnsFact {
+    width: 70%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 
-.tblinfo2 {
 
-    width: 50%;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*--TITULO-----------------------*/
+.titulo {
+    text-align: center;
+    color: var(--verdeagua);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--silver);
+
 }
 
-.tblCliente {
-
-    width: 50%;
-}
-
-.cajaPrincipal {}
-
-.infoTh1 {
-    border: 1px solid;
-}
-
-.infoTd2 {
-    border: 1px solid;
-}
-
-.infoTotales {}
-
-td {
-    border: 1px solid;
-    padding: 4px;
-}
-
-tbody {}
-
-.tableTotales {
-    width: 50%;
-}
-
-.tblMontosTotales {
- 
+/*--CAJAS-DE-DATOS---------------*/
+.cajas {
     width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+
+
+
 }
+
+.cajas:hover,
+.cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
+
+.cajasP {
+    width: 30%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+}
+
+.cajasP:hover,
+.cajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
+
+.cajasPContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+#mes_vencimiento,
+#year_vencimiento {
+    color: var(--gris);
+}
+
+/*--BOTON-DE-PAGO---------*/
+.btn-agregar-tarjeta {
+    width: 40%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    background-color: var(--verdeagua);
+    color: var(--blanco);
+    cursor: pointer;
+    transition: all .5s ease;
+
+}
+
+.btn-agregar-tarjeta:hover {
+    background-color: var(--turquesa);
+}
+
+.btn-cancerlar-tarjeta {
+    width: 40%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: var(--blanco);
+    cursor: pointer;
+    transition: all .5s ease;
+
+}
+
+.btn-cancerlar-tarjeta:hover {
+    background-color: var(--Roj1);
+}
+
+.tengo-cuenta {
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 15px;
+
+
+}
+
+.tengo-cuenta:hover {
+    color: var(--turquesa);
+}
+
+.Terror {
+    border: 2px solid var(--Rojo2);
+}
+
+label {
+    color: var(--gris);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
+.hidden {
+    display: none;
+    transition: all 600ms linear;
+}
+
+#imgVisa,
+#imgAmex {
+    height: 25px;
+    width: 10%;
+    text-align: center;
+}
+
+#imgMaster {
+    height: 25px;
+    width: 9%;
+    text-align: center;
+}
+
+.TError {
+    border: 2px solid var(--Rojo2);
+    border-left: 10px solid var(--Rojo2);
+}
+
+.cerrarModalX-tarjetaPago {
+    font-size: 22px;
+    color: var(--Rojo2);
+    transition: all 200ms linear;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor: pointer;
+
+}
+
+.cerrarModalX-tarjetaPago:hover {
+    color: var(--Roj1);
+}
+
+.lBtns {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/***********FIN MODAL AGREGAR TARJETA*************/
