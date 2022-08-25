@@ -1,9 +1,11 @@
 @import url('estilosGenerales.css');
 
 body {
-    background-image: url('../assets/img/imagen-golden-header.jpeg');
+    background-image: url('../assets/img/350832-4k-wallpaper.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position-y: -200px;
     z-index: -1;
     height: 100%;
     transition: all 0.1s linear;
@@ -14,7 +16,7 @@ h2 {
 }
 
 .background-animation {
-    background-position-y: -50px;
+    background-position-y: -150px;
 }
 
 .overlay {
