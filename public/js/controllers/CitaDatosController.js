@@ -1,4 +1,7 @@
 'use strict'
+
+let userSessionCD;
+
 let listaCitas = [];
 let listaUsuarios = [];
 
@@ -9,6 +12,7 @@ let factPrecio = document.getElementById('txtPrecio');
 let factCita = {};
 
 window.addEventListener('load', () => {
+    userSessionCD  = GetSesion();
     GetlistaUsuarios();
     GetListaCitas();
 });
@@ -120,8 +124,8 @@ async function agregarLineas(){
     // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
     
    let fact = await crearFactura(factCita.IdentificacionUsuario,factCita.IdMascota,factCita.NombreMascota,new Date().toLocaleDateString(),'');
- 
-    console.log(new Date().toLocaleDateString());
+    console.log(fact);
+   // console.log(new Date().toLocaleDateString());
     //  factDescripcion 
     //  factCantidad 
     //  factPrecio 
