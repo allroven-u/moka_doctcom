@@ -147,7 +147,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
         veterinario.Nombre + " " + veterinario.Apellido;
     }
     let celdaFecha = fila.insertCell();
-    celdaFecha.innerHTML = cita.FechaHora;
+    celdaFecha.innerHTML = cita.Fecha;
 
     let celdaEstado = fila.insertCell();
     celdaEstado.innerHTML = cita.Estado;
