@@ -44,7 +44,7 @@ async function getUsuariosArray(){
   }
 
 
-  async function RegistrarUsuario(pNombre,pApellido,pIdUsuario,pEmail,pPassword,pDireccion,pFoto,pFecha) {
+  async function RegistrarUsuario(pNombre,pApellido,pIdUsuario,pEmail, pPhone,pPassword,pDireccion,pFoto,pFecha) {
     let result ={};
       await axios({
         method:'post',
@@ -55,6 +55,7 @@ async function getUsuariosArray(){
           'Apellido': pApellido,
           'Identificacion': pIdUsuario,
           'Email': pEmail,
+          'Telefono': pPhone,
           'Contrasenia': pPassword,
           'Direccion': pDireccion,
           'CalificacionPromedio': 0,

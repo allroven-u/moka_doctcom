@@ -12,6 +12,7 @@ router.post('/RegistrarUsuario', (req, res) => {
         Apellido: body.Apellido,
         Identificacion: body.Identificacion,
         Email: body.Email,
+        Telefono: body.Telefono,
         Contrasenia: body.Contrasenia,
         Direccion: body.Direccion,
         CalificacionPromedio: body.CalificacionPromedio,

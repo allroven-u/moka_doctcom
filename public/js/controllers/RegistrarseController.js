@@ -6,6 +6,7 @@ let inputNombre = document.getElementById("txtNombre");
 let inputApellido = document.getElementById("txtApellido");
 let inputCedula = document.getElementById("numCedula");
 let inputEmail = document.getElementById("txtEmail");
+let inputPhone = document.getElementById("txtPhone");
 let inputContrasenha1 = document.getElementById("txtContrasenha");
 let inputContrasenha2 = document.getElementById("txtContrasenha2");
 let inputDireccion = document.getElementById("txtDireccion");
@@ -19,12 +20,13 @@ async function Registrar() {
         let sApellido = inputApellido.value;
         let sCedula = inputCedula.value;
         let sEmail = inputEmail.value;
+        let sPhone = inputPhone.value;
         let pwContrasenha = inputContrasenha1.value;
         let sDireccion = inputDireccion.value;
         let sFoto='';
         let pfecha = new Date().toISOString();
 
-        let result = await RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,pwContrasenha,sDireccion,sFoto,pfecha)
+        let result = await RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,sPhone,pwContrasenha,sDireccion,sFoto,pfecha)
         console.log(result.data)
         if (result != {} && result.data.resultado) {
             ConfirmarDatos(result.data.msj);
@@ -41,12 +43,14 @@ function ValidarDatos() {
     let sApellido = inputApellido.value;
     let sCedula = inputCedula.value;
     let sEmail = inputEmail.value;
+    let sPhone = inputPhone.value;
     let pwContrasenha = inputContrasenha1.value;
     let pwContrasenha2 = inputContrasenha2.value;
     let sDireccion = inputDireccion.value;
     const ValidarTexto = /^[a-zA-Z,.'áéíóú -]+$/;
     const ValidarEmail =/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
     let isnum = /^\d+$/.test(sCedula);
+    let isphone=/^\d+$/.test(sPhone);
 
     if (sNombre == null || sNombre == undefined || sNombre == "") {
         inputNombre.classList.add("rError")
@@ -63,7 +67,7 @@ function ValidarDatos() {
     }
     if (sApellido == null || sApellido == undefined || sApellido == "") {
         inputApellido.classList.add("rError")
-        MostrarError("¡Formato de apellido no es valido!");
+        MostrarError("¡El apellido es requerido!");
         return false;
     } else if(sApellido.match(ValidarTexto)) {
         inputApellido.classList.remove("rError")
@@ -103,6 +107,26 @@ function ValidarDatos() {
         inputEmail.classList.add("rError")
         MostrarError("¡Formato de correo electrónico no es valido!");
         return false;
+    }
+
+    if (sPhone == null || sPhone == undefined || sPhone == "") {
+        inputPhone.classList.add("rError")
+        MostrarError("¡El número de télefono es requerido!");
+        return false;
+    }
+    if (isphone == false) {
+        inputPhone.classList.add("rError")
+        MostrarError("¡El teléfono debe contener solo números! No puede contener caracteres especiales como guiones.");
+        return false;
+    }
+
+    if (sPhone.length != 8) {
+        inputPhone.classList.add("rError")
+        MostrarError("¡El teléfono no debe contener mas de 8 números.");
+        return false;
+    }
+    else {
+        inputPhone.classList.remove("rError")
     }
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == "") {
         inputContrasenha1.classList.add("rError")

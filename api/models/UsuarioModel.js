@@ -10,6 +10,7 @@ const schemaUsuario = new mongoose.Schema(
         Apellido:{ type: String, required: true, unique: false },
         Identificacion: { type: String, required: true, unique: true },
         Email: { type: String, required: true, unique: true },
+        Telefono: { type: Number, required: true, unique: true },
         Contrasenia: { type: String, required: true, unique: false },
         Direccion:  { type: String, required: true, unique: false },
         CalificacionPromedio: { type: Number, required: false, unique: false },
