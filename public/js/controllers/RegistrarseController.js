@@ -69,7 +69,7 @@ function ValidarDatos() {
         inputApellido.classList.remove("rError")
     }else{
         inputApellido.classList.add("rError")
-        MostrarError("El campo de apellido(s) no puede contener caracteres especiales ni números!");
+        MostrarError("¡El campo de apellido(s) no puede contener caracteres especiales ni números!");
         return false;
     }
     
@@ -86,7 +86,7 @@ function ValidarDatos() {
 
     if (sCedula.length < 9 || sCedula.length > 12) {
         inputCedula.classList.add("rError")
-        MostrarError("¡La cedula persona física debe tener 9 números, cedula persona jurídica 10 números, NITE 10 números y la DIMEX 11 o 12 números! Todas sin cero al inicio ni guiones.");
+        MostrarError("¡La cedula persona física debe tener 9 números, cedula persona jurídica 10 números, NITE 10 números y la DIMEX 11 o 12 números! Sin cero al inicio ni guiones.");
         return false;
     }
     else {
@@ -101,7 +101,7 @@ function ValidarDatos() {
         inputEmail.classList.remove("rError")
     }else{
         inputEmail.classList.add("rError")
-        MostrarError("¡Formato de correo electrónico no valido!");
+        MostrarError("¡Formato de correo electrónico no es valido!");
         return false;
     }
     if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == "") {
@@ -112,12 +112,12 @@ function ValidarDatos() {
         inputContrasenha1.classList.remove("rError")
     }else{
         inputContrasenha1.classList.add("rError")
-        MostrarError("¡La contraseña debe contener entre 6 y 15 caracteres!");
+        MostrarError("¡La contraseña debe contener entre 6 a 15 caracteres!");
         return false;
     }
     if (pwContrasenha2 == null || pwContrasenha2 == undefined || pwContrasenha2 == "" || pwContrasenha != pwContrasenha2) {
         inputContrasenha2.classList.add("rError")
-        MostrarError('¡Las contraseñas no son iguales!');
+        MostrarError('¡Las contraseñas no coinciden!');
         return false;
 
     } else {

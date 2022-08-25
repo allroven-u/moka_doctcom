@@ -128,9 +128,9 @@ function ImprimirListaReservas(ListaReservasBD) {
         let EstadoCitaif = document.querySelectorAll('.Estado');
 
         if (EstadoCitaif[i].innerHTML == 'AGENDADA') {
-            if (userSessionR.Rol === 2) {
+            if (userSessionR.Rol !== 3) {
                 let BotonV = document.createElement('a');
-                BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol);
+                BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol + '&opcion=ver');
                 let iconoV = document.createElement('i');
                 iconoV.classList.add("fa-solid")
                 iconoV.classList.add("fa-eye")
@@ -142,7 +142,7 @@ function ImprimirListaReservas(ListaReservasBD) {
 
             if (userSessionR.Rol !== 2) {
                 let Boton = document.createElement('a');
-                Boton.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol);
+                Boton.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol + '&opcion=compl');
                 let icono = document.createElement('i');
                 icono.classList.add("fa-solid")
                 icono.classList.add("fa-pen-to-square")
