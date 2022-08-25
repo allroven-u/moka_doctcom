@@ -6,17 +6,15 @@ let inputContrasenha1Login = document.getElementById("txtContrasenha-l");
 btnIniciar.addEventListener("click", IniciarSesion);
 
 async function IniciarSesion() {
-    if (ValidarDatosLogin()) {
+    if (await ValidarDatosLogin()) {
         let Email = inputUsuarioLogin.value;
         Email = Email.trim();
         let result = await validarLogin(Email, inputContrasenha1Login.value);
         if (result) {
-        ConfirmarDatos("¡Sesión iniciada!");
+            ConfirmarDatos("¡Sesión iniciada!");
             location.href = './AppVerCitas.html'
         } else {
-            if (ValidarDatosLogin==true) {
-                MostrarError("¡Usuario o contraseña incorrectos!");
-            } 
+            MostrarError("¡Usuario o contraseña incorrectos!");
         }
     }
 }
@@ -31,11 +29,7 @@ async function ValidarDatosLogin() {
     } else {
         inputUsuarioLogin.classList.remove("lError");
     }
-    if (
-        pwContrasenha == null ||
-        pwContrasenha == undefined ||
-        pwContrasenha == ""
-    ) {
+    if (pwContrasenha == null || pwContrasenha == undefined || pwContrasenha == "") {
         inputContrasenha1Login.classList.add("lError");
         MostrarError("Contraseña requerida");
         return false;

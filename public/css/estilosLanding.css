@@ -925,3 +925,11 @@ input::placeholder , textarea::placeholder{
 .cBtn:hover {
     box-shadow: -2px 2px 10px var(--gris);
 }
+
+.swal2-styled.swal2-confirm{
+    background-color: var(--verdeagua) !important;
+}
+
+.swal2-styled.swal2-confirm:hover{
+    background-color: var(--turquesa) !important;
+}
