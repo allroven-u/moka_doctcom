@@ -42,14 +42,20 @@ function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
     let ultimaReserva = await UltimaReserva();
 
     if(ultimaReserva != {} && ultimaReserva.resultado == true){
-      let NumeroReserva=ultimaReserva.ListaReservasBD
-      
+      let NumeroReserva = 0;
+
+      if(ultimaReserva.ListaReservasBD == "" && ultimaReserva.ListaReservasBD == undefined && ultimaReserva.ListaReservasBD == []){
+        NumeroReserva = 0;
+      }else{
+        NumeroReserva = ultimaReserva.ListaReservasBD[0].NumeroReserva;
+      }
+      console.log(NumeroReserva);
       await axios({
         method:'post',
         url: apiUrl + '/RegistrarReservacion',
         responseType: 'json',
         data: {
-          'NumeroReservacion': NumeroReserva[0].NumeroReservacion + 1,
+          'NumeroReservacion': NumeroReserva + 1,
           'IdentificacionUsuario':pIdUsuario,
           'IdMascota': pIdMascota,
           'NombreMascota': pMascota,
