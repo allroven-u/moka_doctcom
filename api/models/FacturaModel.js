@@ -14,7 +14,7 @@ const schemaFactura = new mongoose.Schema(
         Lineas:[{
             NumeroLinea: { type: Number, required: true, unique: false },
             Descripcion: { type: String, required: true, unique: false },
-            cantidad: { type: Number, required: true, unique: false },
+            Cantidad: { type: Number, required: true, unique: false },
             PrecioUnitario: { type: Number, required: true, unique: false },
         }]
     }

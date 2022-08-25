@@ -55,6 +55,21 @@ async function FiltrarCitas(pFecha1,pFecha2){
      return result;
       };
 
+      
+
+      async function getCita(p_id){
+        let result = {};
+        await  axios.get(apiUrl + '/BuscarCitaPorId',{params: {_id: p_id}} , {
+          responseType: 'json'
+        }).then((res)=>{
+          result = res.data
+        }).catch((err)=>{
+          console.log(err);
+        });
+      
+       return result;
+      };
+
 async function UltimaCita(){
     let result = {};
     await  axios.get(apiUrl + '/UltimaCita', {
@@ -115,6 +130,7 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
 
     return result;
   }
+
   async function CancelarCita(pNumCita,pEstado, pObsCancelar) {
     let result ={};
       await axios({
@@ -137,3 +153,27 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
 
     return result;
   }
+
+  async function UpdateCitaFactura(p_id,pNumeroFactura) {
+    let result ={}; 
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+          '_id': p_id,
+          'NumeroFactura':pNumeroFactura,      
+        }
+
+       })
+      .then(function (res) {
+        result = res.data;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    return result;
+  }
+
+  
