@@ -49,28 +49,37 @@ async function IdentificarAccion() {
     _id = urlParams.get('_id');
     usuarioRol = urlParams.get('rol');
     opcionVer = urlParams.get('opcion');
+    console.log(opcionVer);
 }
 
 usuarioRol = Number(usuarioRol);
 const boxDiagnosticos = document.querySelector('.box-2');
 const boxCancelacion = document.querySelector('.box-3');
+const box4 = document.querySelector('.box-4');
 const btnsVD = document.querySelector('.btns');
 const buttonVerCita = document.getElementById('Pagar');
 
 const boxDescripcion = document.getElementById('boxDescripcion');
-const boxPrecio = document.getElementById('boxPrecio');
-const boxBtn = document.getElementById('boxBtn');
-const tableInfoCita = document.querySelector('.box-client');
+const txtDescripcion = document.getElementById('txtDescricionR');
+const boxExterna = document.querySelector('.box-externa');
+const tableInfoCita = document.querySelector('.box-all');
 
 if (usuarioRol !== 3 && opcionVer === 'ver') {
-    boxDescripcion.classList.add('hidden');
-    boxPrecio.classList.add('hidden')
-    boxBtn.classList.add('hidden')
+    box4.classList.remove('hidden');
+    boxDiagnosticos.classList.remove('hidden');
+    boxDescripcion.classList.remove('hidden');
+    txtDescripcion.setAttribute('readonly', true);
     tableInfoCita.classList.remove('hidden');
+    tableInfoCita.style = 'margin-top: 0px';
     //boxDiagnosticos.classList.add('hidden');
-}else if(usuarioRol !== 2){
-    buttonVerCita.classList.toggle('btn-doctor')
+}else if(usuarioRol !== 2 && opcionVer === 'compl'){
+    buttonVerCita.classList.toggle('btn-doctor');
     buttonVerCita.value = 'Enviar';
+    box4.classList.remove('hidden');
+    boxDiagnosticos.classList.remove('hidden');
+    boxExterna.classList.remove('hidden')
+    tableInfoCita.classList.remove('hidden');
+    boxDescripcion.classList.remove('hidden');
 }
 
 let inputNumReservaDatos = document.getElementById('numCitaDatos');
@@ -81,8 +90,6 @@ let OutfechaCita = document.getElementById('fechaCita');
 let Outobservaciones = document.getElementById('observaciones');
 let OutestadoCita = document.getElementById('estadoCita');
 let OutMotivoCancelar = document.getElementById('txtMotivoCancelar');
-let OutNumFactura = document.getElementById('NumFactura');
-
 
 
 function llenarCompletarCita() {
@@ -116,7 +123,7 @@ function llenarCompletarCita() {
                 boxCancelacion.classList.remove('hidden');
 
             }
-            OutNumFactura.innerHTML = listaCitas[i].NumeroFactura;
+
         }
     }
 }
@@ -124,33 +131,14 @@ function llenarCompletarCita() {
 
 async function agregarLineas(){
 
-    let cita =  await getCita(_id);
-
-    console.log(cita);
-    if(cita.CitaDB.NumeroFactura == "" || cita.CitaDB.NumeroFactura == undefined || cita.CitaDB.NumeroFactura == null ){
     // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
-   
-    let fact = await crearFactura(factCita.IdentificacionUsuario,factCita.IdMascota,factCita.NombreMascota,new Date().toISOString(),'');
-
-    if(fact.resultado == true){
-      let NumNewFactura = fact.facturaDB.NumeroFactura;
-    //   console.log(NumNewFactura);
-      let CitaUpdate =  await  UpdateCitaFactura(_id,NumNewFactura);
-      
-      let linea = await  RegistrarLineaFactura(fact.facturaDB._id,1,factDescripcion.value,factCantidad.value,factPrecio.value);
-      factDescripcion.innerHTML = '';
-      factCantidad.innerHTML = '';
-      factPrecio.innerHTML = '';
-    }
-    }else{
-        let Factura = await getFactura(cita.CitaDB.NumeroFactura);
-        let _idFactura = Factura.FacturaDB._id;
-        console.log(_idFactura);
-        let linea = await  RegistrarLineaFactura(_idFactura,2,factDescripcion.value,factCantidad.value,factPrecio.value);
-        factDescripcion.innerHTML = '';
-        factCantidad.innerHTML = '';
-        factPrecio.innerHTML = '';
-    }
+    
+   let fact = await crearFactura(factCita.IdentificacionUsuario,factCita.IdMascota,factCita.NombreMascota,new Date().toLocaleDateString(),'');
+    console.log(fact);
+   // console.log(new Date().toLocaleDateString());
+    //  factDescripcion 
+    //  factCantidad 
+    //  factPrecio 
     
 
 }

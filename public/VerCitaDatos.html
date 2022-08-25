@@ -140,6 +140,9 @@
                     </div>
                 </div>
                 <div class="boxes-container">
+
+
+                    <!--box 1-->
                     <div class="box-completar box-1">
                         <div class="h2">
                             <h2>Descripción de Cita
@@ -156,7 +159,6 @@
                                                 <th>Fecha</th>
                                                 <th>Descripción</th>
                                                 <th>Estado</th>
-                                                <th>Número Factura</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody-info-cita">
@@ -166,7 +168,6 @@
                                                 <td id="fechaCita">...</td>
                                                 <td id="observaciones">...</td>
                                                 <td id="estadoCita">...</td>
-                                                <td id="NumFactura">...</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -174,59 +175,68 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-completar box-2">
+
+                    <!--box 2-->
+                    <div class="box-completar box-2 hidden">
                         <div class="h2">
-                            <h2> Datos Facturación
+                            <h2> Diagnostico
                             </h2>
                         </div>
 
                         <div class="DescripcionParrafo diagnostico">
-                            <div id="boxDescripcion">
-                                <p style="color: #222;">Descripción</p>
-                                <textarea id="txtDiagnostico" class="cajas white" style="width: 400px; height: 100px;"></textarea>
+                            <div id="boxDescripcion" class="hidden" style="width:100%">
+                                <p style="color: #222;">Diagnostico</p>
+                                <textarea id="txtDescricionR" class="cajas white"
+                                    style="width: 90%; height: 300px;"></textarea>
                             </div>
-                            <div>
-                                <div id="boxPrecio">
-                                    <p style="color:#222;">Cantidad</p>
-                                    <input id="txtCantidad" class="cajas white">
-                                    <p style="color:#222;">Precio</p>
-                                    <input id="txtPrecio" class="cajas white">
-                                </div>
-                                <div id="boxBtn">
-                                    <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir" onclick="agregarLineas()">
-                                </div>
+                        </div>
+                       
+                    </div>
 
+                    <!--box 4-->
+                    <div class="box-completar box-4 hidden">
+                        <div class="h2">
+                            <h2> Medicacion & Costos
+                            </h2>
+                        </div>
+                        <div class="DescripcionParrafo">
+                            <div class="box-externa hidden">
+                                <div id="boxPrecio" class="box-medicamentos">
+                                    <div class="boxInterna">
+                                        <p style="color: #222;">Descripción</p>
+                                        <input id="txtDiagnostico" class="cajas white"></input>
+                                    </div>
+                                    <div class="boxInterna">
+                                        <p style="color:#222;">Cantidad</p>
+                                        <input id="txtCantidad" class="cajas white">
+                                    </div>
+                                    <div class="boxInterna">
+                                        <p style="color:#222;">Precio</p>
+                                        <input id="txtPrecio" class="cajas white">
+                                    </div>
+                                    <div id="boxBtn" class="boxInterna">
+                                        <p>&nbsp;</p>
+                                        <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir"
+                                            onclick="agregarLineas()">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="table-description box-client hidden">
-                                <table>
-                                    <thead>
+                            <div class="table-description box-all hidden">
+                                <table id="TLineasFactura">
+                                    <thead id="THlineas">
                                         <tr>
-                                            <th>Descripción</th>
+                                            <th>Descripcion</th>
+                                            <th>Cantidad</th>
                                             <th>Precio</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae aspernatur, consequatur placeat vitae recusandae sit nulla ratione ullam laudantium fuga laborum quasi id blanditiis nihil officiis, a explicabo est iure.</td>
-                                            <td>25000</td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="TBLienas"></tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="table-description">
-                        <table id="TLineasFactura">
-                            <thead id="THlineas" >
-                                <tr>
-                                    <th>Descripcion</th>
-                                    <th>Cantidad</th>
-                                    <th>Precio</th>
-                                </tr>
-                            </thead>
-                            <tbody id="TBLienas"></tbody>
-                        </table>
                     </div>
-                    </div>
+
+                    <!--box 3-->
                     <div class="box-completar box-3 hidden">
                         <div class="h2">
                             <h2>Motivo de Cancelación</h2>
@@ -266,3 +276,26 @@
 </body>
 
 </html>
+
+
+
+
+<!-- <div class="table-description box-client hidden">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Descripción</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae
+                                                aspernatur, consequatur placeat vitae recusandae sit nulla ratione ullam
+                                                laudantium fuga laborum quasi id blanditiis nihil officiis, a explicabo
+                                                est iure.</td>
+                                            <td>25000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>-->

@@ -276,9 +276,9 @@ tr {
 }
 
 .cajas {
-	width: 100%;
+	width: ;
 	padding: 15px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	border-radius: 5px;
 	border: none;
 	border-left: 10px solid var(--blanco);
@@ -393,14 +393,17 @@ tr {
 }
 
 .box-completar {
-	width: 80%;
+	width: 90%;
 	margin-top: 20px;
 }
 
 .box-2 {
-	width: 55%;
+	width: 25%;
 }
 
+.box-4{
+	width: 60%;
+}
 .boxes-container {
 	width: 100%;
 	display: flex;
@@ -410,6 +413,7 @@ tr {
 }
 
 .agregar-btn{
+	width: 200px;
 	background-color: var(--verde);
 	border: none;
 	padding: 12px 75px;
@@ -435,9 +439,27 @@ tr {
 	width: 50% !important;
 }
 
+
+.box-all{
+	margin-top: 40px;
+}
+
 #boxDescripcion  p,
 #boxPrecio p{
 	padding: 10px;
+}
+
+.box-medicamentos{
+	display: flex;
+}
+
+.boxInterna{
+	width: 25%;
+	margin: 0 20px;
+}
+
+.box-externa{
+	width: 90%;	
 }
 
 
