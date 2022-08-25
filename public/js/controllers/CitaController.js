@@ -157,7 +157,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
 
     let EstadoCitaif = document.querySelectorAll(".Estado");
     if (EstadoCitaif[i].innerHTML == "AGENDADA") {
-      if (userSessionC.Rol === 2) {
+    //  if (userSessionC.Rol !== 3) {
         let BotonV = document.createElement("a");
         BotonV.setAttribute(
           "href",
@@ -172,7 +172,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
         iconoV.classList.add("btnV");
         BotonV.appendChild(iconoV);
         celdaBoton.appendChild(BotonV);
-      }
+    //  }
 
       if (userSessionC.Rol !== 2) {
         let Boton = document.createElement("a");
