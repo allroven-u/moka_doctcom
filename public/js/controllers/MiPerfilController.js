@@ -121,7 +121,7 @@ function ImprimirListaCitas(ListaCitasBD, listaUsuarios, idUser) {
           celdaVeterinario.innerHTML = listaUsuarios[j].Nombre + ' ' + listaUsuarios[j].Apellido;
       }
       celdaVeterinario.classList.add('h-citas');
-      celdaFecha.innerHTML = cita.FechaHora;
+      celdaFecha.innerHTML = cita.Fecha;
       celdaFecha.classList.add('h-citas');
     }
   };

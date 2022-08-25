@@ -136,7 +136,7 @@ async function ImprimirListaCitas(pp_id) {
             celdaMascota.classList.add('h-citas');
             celdaVeterinario.innerHTML = veterinario.Nombre + ' ' + veterinario.Apellido;
             celdaVeterinario.classList.add('h-citas');
-            celdaFecha.innerHTML = cita.FechaHora;
+            celdaFecha.innerHTML = cita.Fecha;
             celdaFecha.classList.add('h-citas');
             celdaEstado.innerHTML = cita.Estado;
             celdaEstado.classList.add('Estado');
