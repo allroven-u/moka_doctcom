@@ -114,9 +114,6 @@ header {
   text-align: left;
 }
 
-.nav__link--inside:hover {
-  border-left: 2px solid var(--turquesa);
-}
 
 .list {
   padding-top: 20px;
