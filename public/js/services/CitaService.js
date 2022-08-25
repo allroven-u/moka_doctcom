@@ -131,7 +131,7 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
     return result;
   }
 
-  async function CancelarCita(pNumCita,pEstado, pObsCancelar) {
+  async function CancelarCita(pNumCita, pEstado, pObsCancelar) {
     let result ={};
       await axios({
         method:'put',

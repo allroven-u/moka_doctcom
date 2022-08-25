@@ -120,9 +120,9 @@ function ValidarDatos() {
         return false;
     }
 
-    if (sPhone.length != 8) {
+    if (sPhone.length !== 8) {
         inputPhone.classList.add("rError")
-        MostrarError("¡El teléfono no debe contener mas de 8 números.");
+        MostrarError("¡El teléfono no debe contener mas, ni menos de 8 números.");
         return false;
     }
     else {
