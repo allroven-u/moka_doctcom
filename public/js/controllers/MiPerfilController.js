@@ -5,7 +5,7 @@ let txtNombreP = document.getElementById('txtNombreP');
 let txtApellidosP = document.getElementById('txtApellidosP');
 let txtCedulaP = document.getElementById('txtCedulaP');
 let txtEmailP = document.getElementById('txtEmailP');
-let txtUsuarioP = document.getElementById('txtUsuarioP');
+let txtPhoneP = document.getElementById('txtPhoneP');
 let txtContraseniaP = document.getElementById('txtContraseniaP');
 let txtDireccionP = document.getElementById('txtDireccionP');
 let txtFotoPerfil = document.getElementById('FotoPerfilUser');
@@ -67,6 +67,7 @@ function CargarDatosUser(userSession, listaUsuarios) {
       txtApellidosP.textContent = listaUsuarios[i].Apellido;
       txtCedulaP.textContent = listaUsuarios[i].Identificacion;
       txtEmailP.textContent = listaUsuarios[i].Email;
+      txtPhoneP.textContent = listaUsuarios[i].Telefono;
       txtDireccionP.innerHTML = listaUsuarios[i].Direccion;
       txtFotoPerfil.src = listaUsuarios[i].Foto;
     }
@@ -86,6 +87,7 @@ function CargarDatosAdmin(listaUsuarios) {
       txtApellidosP.textContent = listaUsuarios[i].Apellido;
       txtCedulaP.textContent = listaUsuarios[i].Identificacion;
       txtEmailP.textContent = listaUsuarios[i].Email;
+      txtPhoneP.textContent = listaUsuarios[i].Telefono;
       txtDireccionP.innerHTML = listaUsuarios[i].Direccion;
       txtFotoPerfil.src = listaUsuarios[i].Foto;
     }

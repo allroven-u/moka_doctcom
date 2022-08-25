@@ -87,7 +87,7 @@ async function getUsuariosArray(){
     return result;
   }
 
-  async function EditarUsuario(pID,pNombre,pApellido,pIdUsuario,pEmail,pDireccion,pFoto,pRol,pEstado) {
+  async function EditarUsuario(pID,pNombre,pApellido,pIdUsuario,pEmail,pPhone,pDireccion,pFoto,pRol,pEstado) {
     let result ={};
       await axios({
         method:'put',
@@ -99,6 +99,7 @@ async function getUsuariosArray(){
           'Apellido': pApellido,
           'Identificacion': pIdUsuario,
           'Email': pEmail,
+          'Telefono': pPhone,
           'Direccion': pDireccion,
           'Foto': pFoto,
           'Activo': pEstado,

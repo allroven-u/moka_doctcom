@@ -9,6 +9,7 @@ let inputtxtNombreP = document.getElementById("txtNombreP");
 let inputtxtApellidosP = document.getElementById("txtApellidosP");
 let inputtxtCedulaP = document.getElementById("txtCedulaP");
 let inputtxtEmailP = document.getElementById("txtEmailP");
+let inputtxtPhoneP = document.getElementById("txtPhoneP");
 let inputFotoUser= document.getElementById('imgFotoUser');
 let selectRolUser= document.getElementById('SelectRol');
 let selectEstadoUser= document.getElementById('SelectEstado');
@@ -70,13 +71,11 @@ function CargarDatosUser(userSession){
             inputtxtApellidosP.value = listaUsuarios[i].Apellido;
             inputtxtCedulaP.value = listaUsuarios[i].Identificacion;
             inputtxtEmailP.value=listaUsuarios[i].Email;
+            inputtxtPhoneP.value=listaUsuarios[i].Telefono;
             inputFotoUser.src= listaUsuarios[i].Foto;
             inputtxtDireccionP.value = listaUsuarios[i].Direccion;
             selectRolUser.value = listaUsuarios[i].Rol;
             selectEstadoUser.value = listaUsuarios[i].Activo;
-
-
-
         }
         
     }
@@ -91,6 +90,7 @@ function CargarDatosAdmin(listaUsuarios) {
         inputtxtApellidosP.value = listaUsuarios[i].Apellido;
         inputtxtCedulaP.value = listaUsuarios[i].Identificacion;
         inputtxtEmailP.value=listaUsuarios[i].Email;
+        inputtxtPhoneP.value=listaUsuarios[i].Telefono;
         inputFotoUser.src= listaUsuarios[i].Foto;
         inputtxtDireccionP.value = listaUsuarios[i].Direccion;
         selectRolUser.value = listaUsuarios[i].Rol;
@@ -121,11 +121,12 @@ async function EditarDatosUser() {
         let sConttxtApellidosP = inputtxtApellidosP.value;
         let sConttxtCedulaP = inputtxtCedulaP.value;
         let sConttxtEmailP = inputtxtEmailP.value;
+        let sConttxtPhoneP = inputtxtPhoneP.value;
         let sConttxtDireccionP = inputtxtDireccionP.value;
         let sFoto = inputFotoUser.src;
         let sRol = Number(selectRolUser.value);
         let sEstado = Number(selectEstadoUser.value);
-        let result = await EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtDireccionP,sFoto,sRol,sEstado);
+        let result = await EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtPhoneP,sConttxtDireccionP,sFoto,sRol,sEstado);
         if (result != {} && result.resultado) {
             
              ConfirmarDatos(result.msj);
@@ -149,9 +150,11 @@ function ValidarDatosUser() {
     let sConttxtApellidosP = inputtxtApellidosP.value;
     let sConttxtCedulaP = inputtxtCedulaP.value;
     let sConttxtEmailP = inputtxtEmailP.value;
+    let sConttxtPhoneP = inputtxtPhoneP.value;
     let sConttxtDireccionP = inputtxtDireccionP.value;
     const ValidarEmail =/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
     let isnum = /^\d+$/.test(sConttxtCedulaP);
+    let isphone = /^\d+$/.test(sConttxtPhoneP);
 
     if (sConttxtNombreP == null || sConttxtNombreP == undefined || sConttxtNombreP == "") {
         resaltarInputInvalido("txtNombreP");
@@ -192,9 +195,29 @@ function ValidarDatosUser() {
         return false;
     }
 
+    if (sConttxtPhoneP == null || sConttxtPhoneP == undefined || sConttxtPhoneP == "") {
+        inputtxtPhoneP.classList.add("rError")
+        MostrarError("¡El número de télefono es requerido!");
+        return false;
+    }
+    if (isphone == false) {
+        inputtxtPhoneP.classList.add("rError")
+        MostrarError("¡El teléfono debe contener solo números! No puede contener caracteres especiales como guiones.");
+        return false;
+    }
+
+    if (sConttxtPhoneP.length !== 8) {
+        inputtxtPhoneP.classList.add("rError")
+        MostrarError("¡El teléfono no debe contener mas, ni menos de 8 números.");
+        return false;
+    }
+    else {
+        inputtxtPhoneP.classList.remove("rError")
+    }
+
     if (sConttxtDireccionP == null || sConttxtDireccionP == undefined || sConttxtDireccionP == "") {
         resaltarInputInvalido("txtDireccionP");
-        MostrarError();
+        MostrarError("¡La dirección es requerida!");
         return false;
     }
 

@@ -122,7 +122,7 @@
                     <div class="box-usuario_img">
                         <div class="box-img">
                             <i class="fa-solid fa-pen-to-square edit-icon" onclick="AbrirCloudinary('imgFotoUser')"></i>
-                            <img id="imgFotoUser" class="avatarUser">
+                            <img id="imgFotoUser" class="avatarUser" src="./assets/img/default-user-image.jpg">
                         </div>
 
                         <div class="resetearcontrasena border-radius">
@@ -157,13 +157,13 @@
                         </div>
                         <div class="perfilContainer">
                             <label for="txtNombreP">Nombre:</label>
-                            <input class="cajas" id="txtNombreP" type="text" placeholder="Nombre: " maxlength="30">
+                            <input class="cajas" id="txtNombreP" type="text" placeholder="Nombre: " >
                         </div>
 
                         <div class="perfilContainer">
                             <label for="txtApellidosP">Apellido(s):</label>
                             <input class="cajas" id="txtApellidosP" type="text" placeholder="Apellido(s): "
-                                maxlength="30">
+                                >
                         </div>
 
                         <div class="perfilContainer">
@@ -174,8 +174,15 @@
 
                         <div class="perfilContainer">
                             <label for="txtEmailP">Correo electrónico: </label>
-                            <input class="cajas" id="txtEmailP" type="text" placeholder="Correo electrónico: " maxlength="30">
+                            <input class="cajas" id="txtEmailP" type="text" placeholder="Correo electrónico: " >
                         </div>
+
+                        <div class="perfilContainer">
+                            <label for="txtPhoneP">Teléfono: </label>
+                            <input class="cajas" id="txtPhoneP" type="number" placeholder="Teléfono: " maxlength="8">
+                        </div>
+
+
                         <div class="perfilContainer hidden">
                             <label for="txtPassword">Contraseña:</label> <input class="cajas" id="txtPassword"
                                 type="text" placeholder="Contraseña: " maxlength="30">
