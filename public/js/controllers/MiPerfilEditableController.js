@@ -150,6 +150,8 @@ function ValidarDatosUser() {
     let sConttxtCedulaP = inputtxtCedulaP.value;
     let sConttxtEmailP = inputtxtEmailP.value;
     let sConttxtDireccionP = inputtxtDireccionP.value;
+    const ValidarEmail =/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
+    let isnum = /^\d+$/.test(sConttxtCedulaP);
 
     if (sConttxtNombreP == null || sConttxtNombreP == undefined || sConttxtNombreP == "") {
         resaltarInputInvalido("txtNombreP");
@@ -165,7 +167,18 @@ function ValidarDatosUser() {
 
     if (sConttxtCedulaP == null || sConttxtCedulaP == undefined || sConttxtCedulaP == "") {
         resaltarInputInvalido("txtCedulaP");
-        MostrarError("¡La cédula es requerida!");
+        MostrarError("¡La identificación es requerida!");
+        return false;
+    }
+    if (isnum == false) {
+        resaltarInputInvalido("txtCedulaP");
+        MostrarError("¡La identificación debe contener solo números! No puede contener caracteres especiales como guiones.");
+        return false;
+    }
+
+    if (sConttxtCedulaP.length < 9 || sConttxtCedulaP.length > 12) {
+        resaltarInputInvalido("txtCedulaP");
+        MostrarError("¡La cedula persona física debe tener 9 números, cedula persona jurídica 10 números, NITE 10 números y la DIMEX 11 o 12 números! Todas sin cero al inicio ni guiones.");
         return false;
     }
 
