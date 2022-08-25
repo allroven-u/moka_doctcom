@@ -92,9 +92,6 @@ router.get('/MiListarfacturas', (req, res) => {
 
 
 
-
-
-
 router.get('/FiltarFactura', (req, res) => {
     let params = req.query;
     
@@ -142,7 +139,7 @@ router.post('/RegistrarLinea', (req, res) =>{
             Lineas:{
                 NumeroLinea: body.NumeroLinea,
                 Descripcion: body.Descripcion,
-                cantidad: body.cantidad,
+                Cantidad: body.Cantidad,
                 PrecioUnitario: body.PrecioUnitario
             }
         }

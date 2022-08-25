@@ -178,7 +178,7 @@ router.get('/BuscarCitaPorId', (req, res) => {
 
 router.put('/ModificarCita', function (req, res) {
     let body = req.body;
-    Cita.updateMany({ NumeroCita: body.NumeroCita }, {
+    Cita.updateMany({ _id: body._id }, {
         $set: req.body 
         // $set: {
         //     Nombre: body.Nombre,

@@ -27,20 +27,33 @@
   return result;
   }
 
+  async function getFactura(pNumeroFactura){
+    let result = {};
+    await  axios.get(apiUrl + '/BuscarFacturas',{params: {NumeroFactura: pNumeroFactura}} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  
+   return result;
+  };
+
 async function crearFactura(pIdentificacionUsuario,pIdMascota,pNombreMascota,pFecha,pObservacionesFactura) {
     let result = {}
     let ultimaFact = await UltimaFactura();
     
 
-    if(result != {} && result.resultado == true  ){
+    if(ultimaFact != {} && ultimaFact.resultado == true  ){
         let NumeroFact = 0;
 
-        if(ultimaFact.facturaDB == "" || ultimaFact.facturaDB == undefined || ultimaFact.facturaDB == []){
+        if(ultimaFact.UltimaFacturaBD == "" || ultimaFact.UltimaFacturaBD == undefined || ultimaFact.UltimaFacturaBD == []){
           NumeroFact = 0;
         }else{
-          NumeroFact = ultimaFact.facturaDB[0].NumeroFactura ;
+          NumeroFact = ultimaFact.UltimaFacturaBD[0].NumeroFactura ;
         }
-
+        console.log();
       await axios({
         method:'post',
         url: apiUrl + '/RegistrarFactura',
@@ -57,7 +70,7 @@ async function crearFactura(pIdentificacionUsuario,pIdMascota,pNombreMascota,pFe
 
        })
       .then(function (res) {
-        result = res;
+        result = res.data;
         console.log(res);
       })
       .catch(function (err) {
@@ -67,4 +80,25 @@ async function crearFactura(pIdentificacionUsuario,pIdMascota,pNombreMascota,pFe
 
     return result;
   }
-  
+
+  async function RegistrarLineaFactura(p_id,pNumeroLinea,pDescripcion,pCantidad,pPrecioUnitario) {
+    let result = {};
+    await axios({
+        method: 'post',
+        url: apiUrl + '/RegistrarLinea',
+        responseType: 'json',
+        data: {
+            '_id': p_id,
+            'NumeroLinea': pNumeroLinea,
+            'Descripcion': pDescripcion,
+            'Cantidad' : pCantidad,
+            'PrecioUnitario':pPrecioUnitario
+        }
+    }).then((res) => {
+        result = res.data;
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}
+
