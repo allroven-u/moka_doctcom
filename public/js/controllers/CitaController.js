@@ -400,7 +400,7 @@ async function CrearCita() {
       FechaHora,
       IdentificacionVeterinario,
       ObservacionesCita,
-      new Date().toLocaleDateString(),
+      new Date().toISOString(),
       userSessionC.Email
     );
     if (result != {} && result.data.resultado == true) {
