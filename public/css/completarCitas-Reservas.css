@@ -170,6 +170,7 @@ tr {
 
 .diagnostico {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
 }
@@ -460,6 +461,14 @@ tr {
 
 .box-externa{
 	width: 100%;	
+}
+
+.btn-diag{
+	width: 90%;
+}
+
+.btnDiag{
+	width: 100%;
 }
 
 
