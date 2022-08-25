@@ -1,4 +1,7 @@
 'use strict'
+
+let userSessionCD;
+
 let listaCitas = [];
 let listaUsuarios = [];
 
@@ -9,6 +12,7 @@ let factPrecio = document.getElementById('txtPrecio');
 let factCita = {};
 
 window.addEventListener('load', () => {
+    userSessionCD  = GetSesion();
     GetlistaUsuarios();
     GetListaCitas();
 });
@@ -35,7 +39,7 @@ async function GetlistaUsuarios() {
 
 
 ///////////Obtener id url/////////////////
-let queryString, urlParams, _id, usuarioRol;
+let queryString, urlParams, _id, usuarioRol, opcionVer;
 IdentificarAccion();
 async function IdentificarAccion() {
     queryString = window.location.search;
@@ -44,6 +48,7 @@ async function IdentificarAccion() {
 
     _id = urlParams.get('_id');
     usuarioRol = urlParams.get('rol');
+    opcionVer = urlParams.get('opcion');
 }
 
 usuarioRol = Number(usuarioRol);
@@ -57,7 +62,7 @@ const boxPrecio = document.getElementById('boxPrecio');
 const boxBtn = document.getElementById('boxBtn');
 const tableInfoCita = document.querySelector('.box-client');
 
-if (usuarioRol === 2) {
+if (usuarioRol !== 3 && opcionVer === 'ver') {
     boxDescripcion.classList.add('hidden');
     boxPrecio.classList.add('hidden')
     boxBtn.classList.add('hidden')
@@ -98,7 +103,7 @@ function llenarCompletarCita() {
 
             OutnumCita.innerHTML = listaCitas[i].NumeroCita;
             OutVeterinario.innerHTML = veterinario;
-            OutfechaCita.innerHTML = listaCitas[i].FechaHora;
+            OutfechaCita.innerHTML = listaCitas[i].Fecha;
             Outobservaciones.innerHTML = listaCitas[i].ObservacionesCita;
             OutestadoCita.innerHTML = listaCitas[i].Estado;
             OutMotivoCancelar.innerHTML = listaCitas[i].NotasCancelacion;
@@ -120,8 +125,8 @@ async function agregarLineas(){
     // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
     
    let fact = await crearFactura(factCita.IdentificacionUsuario,factCita.IdMascota,factCita.NombreMascota,new Date().toLocaleDateString(),'');
- 
-    console.log(new Date().toLocaleDateString());
+    console.log(fact);
+   // console.log(new Date().toLocaleDateString());
     //  factDescripcion 
     //  factCantidad 
     //  factPrecio 

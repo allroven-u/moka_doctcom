@@ -28,14 +28,18 @@
   }
 
 async function crearFactura(pIdentificacionUsuario,pIdMascota,pNombreMascota,pFecha,pObservacionesFactura) {
-    let result = await UltimaFactura();
-    let NumeroFact = 0;
+    let result = {}
+    let ultimaFact = await UltimaFactura();
+    
 
     if(result != {} && result.resultado == true  ){
-          console.log(result);
+        let NumeroFact = 0;
 
-        NumeroFact = result.UltimaFacturaBD[0].NumeroFactura;
-        console.log(NumeroFact);
+        if(ultimaFact.facturaDB == "" || ultimaFact.facturaDB == undefined || ultimaFact.facturaDB == []){
+          NumeroFact = 0;
+        }else{
+          NumeroFact = ultimaFact.facturaDB[0].NumeroFactura ;
+        }
 
       await axios({
         method:'post',

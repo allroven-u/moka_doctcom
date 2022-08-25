@@ -157,14 +157,14 @@ async function ImprimirListaCitas(ListaCitasBD) {
 
     let EstadoCitaif = document.querySelectorAll(".Estado");
     if (EstadoCitaif[i].innerHTML == "AGENDADA") {
-      if (userSessionC.Rol === 2) {
+      if (userSessionC.Rol !== 3) {
         let BotonV = document.createElement("a");
         BotonV.setAttribute(
           "href",
           "/public/VerCitaDatos.html?_id=" +
           cita._id +
           "&rol=" +
-          userSessionC.Rol
+          userSessionC.Rol + '&opcion=ver' 
         );
         let iconoV = document.createElement("i");
         iconoV.classList.add("fa-solid");
@@ -181,7 +181,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
           "/public/VerCitaDatos.html?_id=" +
           cita._id +
           "&rol=" +
-          userSessionC.Rol
+          userSessionC.Rol + '&opcion=compl'
         );
         let icono = document.createElement("i");
         icono.classList.add("fa-solid");

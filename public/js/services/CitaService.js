@@ -125,9 +125,7 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
           'NumeroCita': pNumCita,
           'Estado':pEstado,
           'NotasCancelacion':pObsCancelar
-
         }
-
        })
       .then(function (res) {
         result = res;
