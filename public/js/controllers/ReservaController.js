@@ -244,7 +244,7 @@ async function CrearReserva() {
         let dFechaE = inputEntrada.value;
         let dFechaS = inputSalida.value;
         let sCiuidadosEsp = inputCuidadosReserva.value;
-        let FechaCreacion = new Date().toLocaleDateString();
+        let FechaCreacion = new Date().toISOString();
         let UsuarioCreacion = userSessionR.Email;
         
         let result = await crearReserva(IdentificacionUsuario, IdMascota, NombreMascota, dFechaE, dFechaS, sCiuidadosEsp,FechaCreacion,UsuarioCreacion)
@@ -294,7 +294,7 @@ function ValidarDatos() {
     }
     if (sNombreMascota == null || sNombreMascota == undefined || sNombreMascota == "") {
         inputNombreMascotaReserva.classList.add("error")
-        MostrarError("El nombre de la mascota es requerido!");
+        MostrarError("¡El nombre de la mascota es requerido!");
         return false;
     } else {
         inputNombreMascotaReserva.classList.remove("error")
@@ -302,7 +302,7 @@ function ValidarDatos() {
 
     if (dFechaEnt == null || dFechaEnt == undefined || dFechaEnt == "") {
         inputEntrada.classList.add("error")
-        MostrarError("La fecha de entrada es requerida!");
+        MostrarError("¡La fecha de entrada es requerida!");
         return false;
     } else {
         inputEntrada.classList.remove("error")
@@ -313,7 +313,7 @@ function ValidarDatos() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'la fecha no pueder ser menor al dia de hoy!',
+            text: '¡La fecha no puede ser menor a la fecha de hoy!',
         })
         inputFecha.classList.add("error")
         return false;
@@ -325,7 +325,7 @@ function ValidarDatos() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'No se pueden hacer reservas con mas de 15 días de anticipación!',
+            text: '¡No se pueden hacer reservas con más de 15 días de anticipación!',
         })
         inputFecha.classList.add("error")
         return false;
@@ -333,7 +333,7 @@ function ValidarDatos() {
 
     if (dFechaSalida == null || dFechaSalida == undefined || dFechaSalida == "") {
         inputSalida.classList.add("error")
-        MostrarError("La fecha de salida es requerida!");
+        MostrarError("¡La fecha de salida es requerida!");
         return false;
     } else {
         inputSalida.classList.remove("error")
@@ -343,7 +343,7 @@ function ValidarDatos() {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'La fecha de salida no puede ser menor a la de entrada',
+            text: '¡La fecha de salida no puede ser menor a la fecha de entrada!',
         })
         inputSalida.classList.add("error")
         return false;
@@ -351,7 +351,7 @@ function ValidarDatos() {
 
     if (sDireccion == null || sDireccion == undefined || sDireccion == "") {
         inputCuidadosReserva.classList.add("error")
-        MostrarError("La dirección es requerida!");
+        MostrarError("¡La dirección es requerida!");
         return false;
     } else {
         inputCuidadosReserva.classList.remove("error")
@@ -475,7 +475,7 @@ async function CancelarReserva() {
 
     if (sMotivoCancelar == null || sMotivoCancelar == undefined || sMotivoCancelar == "") {
         inputCancelar.classList.add("error")
-        MostrarError('Debe ingresar motivo de cancelación');
+        MostrarError('Debe ingresar motivo de cancelación.');
         return false;
     } else {
         inputCancelar.classList.remove("error")
