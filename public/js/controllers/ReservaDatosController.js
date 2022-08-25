@@ -17,7 +17,7 @@ async function GetListaReservas() {
 }
 
 ///////////Obtener id url/////////////////
-let queryString, urlParams, _id, usuarioRol;
+let queryString, urlParams, _id, usuarioRol, opcionVer;
 IdentificarAccion();
 async function IdentificarAccion() {
     queryString = window.location.search;
@@ -25,9 +25,8 @@ async function IdentificarAccion() {
     urlParams = new URLSearchParams(queryString);
 
     _id = urlParams.get('_id');
-    console.log(_id);
     usuarioRol = urlParams.get('rol');
-    console.log(usuarioRol);
+    opcionVer = urlParams.get('opcion');
 }
 
 usuarioRol = Number(usuarioRol);
@@ -42,7 +41,7 @@ const boxBtn = document.getElementById('boxBtn');
 const tableInfoCita = document.querySelector('.box-client');
 
 
-if (usuarioRol === 2) {
+if (usuarioRol !== 3 && opcionVer === 'ver') {
     boxDescripcion.classList.add('hidden');
     boxPrecio.classList.add('hidden')
     boxBtn.classList.add('hidden')
