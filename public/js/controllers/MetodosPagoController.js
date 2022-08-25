@@ -218,7 +218,7 @@ async function registarTarjeta() {
     if (ValidarDatostarjeta() == true) {
         let result = await RegistrarTarjetaNueva(userSessionT._id, inputNombreTitular.value, inputNumTarjeta.value, inputMesVenc.value, inputYearVenc.value, inputNumCVV.value);
         if (result.resultado == true) {
-            ConfirmarDatos("Tarjeta registrada con éxito!");
+            ConfirmarDatos("¡Tarjeta registrada con éxito!");
             setTimeout(function () {
                 hiddenAgregar();
                 location.href = "./MetodosPago.html";
@@ -243,7 +243,7 @@ function ValidarDatostarjeta() {
 
     if (sNombreTitular == null || sNombreTitular == undefined || sNombreTitular == "") {
         inputNombreTitular.classList.add("TError");
-        MostrarError("El nombre es requerido!");
+        MostrarError("¡El nombre es requerido!");
         return false;
     }
     if (sNombreTitular.match(/^[a-zA-Z,.' -]+$/)) {
@@ -265,7 +265,7 @@ function ValidarDatostarjeta() {
     }
     if (sNumCVV == null || sNumCVV == undefined || sNumCVV == "") {
         inputNumCVV.classList.add("TError");
-        MostrarError("El código de seguridad es requerido!");
+        MostrarError("¡El código de seguridad es requerido!");
         return false;
     } else {
         console.log("cvv " + sNumCVV);
@@ -284,14 +284,14 @@ function ValidarDatostarjeta() {
     }
     if (nMesV == null || nMesV == undefined || nMesV == "") {
         inputMesVenc.classList.add("TError");
-        MostrarError("El mes de vencimiento es requerido!");
+        MostrarError("¡El mes de vencimiento es requerido!");
         return false;
     } else {
         inputMesVenc.classList.remove("TError");
     }
     if (nYearV == null || nYearV == undefined || nYearV == "") {
         inputYearVenc.classList.add("TError");
-        MostrarError("El año de vencimiento es requerido!");
+        MostrarError("¡El año de vencimiento es requerido!");
         return false;
     } else {
         inputYearVenc.classList.remove("TError");
