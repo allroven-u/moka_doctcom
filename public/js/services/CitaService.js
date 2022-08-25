@@ -135,7 +135,7 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
     let result ={};
       await axios({
         method:'put',
-        url: apiUrl + '/ModificarCita',
+        url: apiUrl + '/CancelarCita',
         responseType: 'json',
         data: {
           'NumeroCita': pNumCita,

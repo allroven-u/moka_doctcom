@@ -176,9 +176,9 @@ router.get('/BuscarCitaPorId', (req, res) => {
     });
 });
 
-router.put('/ModificarCita', function (req, res) {
+router.put('/CancelarCita', function (req, res) {
     let body = req.body;
-    Cita.updateMany({ _id: body._id }, {
+    Cita.updateMany({ NumeroCita: body.NumeroCita }, {
         $set: req.body 
         // $set: {
         //     Nombre: body.Nombre,
