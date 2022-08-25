@@ -96,6 +96,7 @@ header {
 .navClose {
   width: 25px;
 }
+
 .nav__link {
   color: #ecf0f1;
   display: block;
@@ -103,14 +104,18 @@ header {
   text-decoration: none;
 }
 
+.list__item:hover {
+  border-left: 2px solid var(--turquesa);
+}
+
 .nav__link--inside {
   border-radius: 6px;
-  padding-left: 20px;
+  padding-left: 10px;
   text-align: left;
 }
 
 .nav__link--inside:hover {
-  background: var(--turquesa);
+  border-left: 2px solid var(--turquesa);
 }
 
 .list {
@@ -205,4 +210,8 @@ header {
 
 .swal2-styled.swal2-deny:hover{
   background-color: var(--Roj1) !important;
+}
+
+.selector{
+  background-color: var(--turquesa);
 }
