@@ -22,10 +22,10 @@ async function Registrar() {
         let pwContrasenha = inputContrasenha1.value;
         let sDireccion = inputDireccion.value;
         let sFoto='';
-        let pfecha = new Date().toLocaleDateString();
+        let pfecha = new Date().toISOString();
 
         let result = await RegistrarUsuario(sNombre,sApellido,sCedula,sEmail,pwContrasenha,sDireccion,sFoto,pfecha)
-        console.log(result.data.resultado)
+        console.log(result.data)
         if (result != {} && result.data.resultado) {
             ConfirmarDatos(result.data.msj);
             limpiarForm('formRegistroUser');
@@ -44,7 +44,7 @@ function ValidarDatos() {
     let pwContrasenha = inputContrasenha1.value;
     let pwContrasenha2 = inputContrasenha2.value;
     let sDireccion = inputDireccion.value;
-    const ValidarTexto = /^[a-zA-Z,.' -]+$/;
+    const ValidarTexto = /^[a-zA-Z,.'áéíóú -]+$/;
     const ValidarEmail =/^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
     let isnum = /^\d+$/.test(sCedula);
 
