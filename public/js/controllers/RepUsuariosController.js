@@ -127,3 +127,51 @@ function ImprimirListaUsuarios(listaUsuariosBD) {
     }
 
 }
+/////////////////////////////pruebas///////////////////////////
+
+const signinModal = document.querySelector(".rModal-form");
+const showModalSignin = document.getElementById("showCrearUser")
+const closeModalsignin = document.getElementById("cerrarRmodal");
+const overlay = document.querySelector(".overlay");
+var cerrarModalesX = document.querySelector('.cerrarModalInicio');
+
+///////////////////// SHOW MODAL SIGNIN AND HIDE CODE //////////////////
+
+function hiddenModalSignin() {
+      signinModal.classList.add("hidden");
+      overlay.classList.add("hidden");
+      window.removeEventListener("scroll", disableScroll);
+      limpiarFormSignin();
+  };
+
+  // start function show modal
+  function ShowModalSigninFunct() {
+      signinModal.classList.remove("hidden");
+      overlay.classList.remove("hidden");
+      location.href = "#top-page";
+      window.addEventListener("scroll", disableScroll);
+
+      closeModalsignin.addEventListener("click",hiddenModalSignin);
+      
+   
+       cerrarModalesX.addEventListener('click',hiddenModalSignin);
+            
+      overlay.addEventListener("click", hiddenModalSignin);
+      document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && !signinModal.classList.contains("hidden")) {
+              hiddenModalSignin();
+          }
+      });
+  };
+
+  showModalSignin.addEventListener("click",ShowModalSigninFunct);
+  
+
+
+function disableScroll() {
+  window.scrollTo(0, 0);
+}
+
+const limpiarFormSignin = function () {
+  signinModal.reset();
+}

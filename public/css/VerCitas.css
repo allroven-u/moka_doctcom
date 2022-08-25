@@ -451,6 +451,156 @@ label {
 	transform: translate(-50%,-50%);
 	z-index: 11;
 }
+/*REGISTRARSE ESTILOS*/
+.rModal-form {
+    position: absolute;
+    z-index: 11;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    padding: 30px;
+    margin: auto;
+    margin-top: 25px;
+    background-color: var(--blanco);
+    border-radius: 5px;
+    animation: modal-signin 500ms ease;
+}
+
+/*--TITULO-----------------------*/
+.rTitulo {
+    color: var(--verdeagua);
+    margin-bottom: 20px;
+}
+
+/*--CAJAS-DE-DATOS---------------*/
+.rCajas {
+    width: 100%;
+    margin-top: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    border-left: 10px solid var(--silver);
+    transition: all .5s ease;
+}
+
+.rCajas:hover,
+.rcajas:focus {
+    border-left: 10px solid var(--verdeagua);
+}
+
+/*--BOTON-DE-REGISTRARSE---------*/
+.rBtn {
+    width: 120px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    font-size: 15px;
+    background-color: var(--verdeagua);
+    color: var(--blanco);
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.rBtn:hover {
+    background-color: var(--turquesa);
+}
+
+/*--YA-TENGO-CUENTA--------------*/
+.rBtnCancelar {
+    text-align: center;
+    color: var(--gris);
+    text-decoration: none;
+    font-size: 17px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.rBtnCancelar:hover {
+    color: var(--turquesa);
+}
+
+.rError {
+    border: 2px solid var(--Rojo2);
+    border-left: 10px solid var(--Rojo2);
+}
+.btnsRegistro{
+    display: flex;
+    justify-content: space-around;
+}
+
+@keyframes modal-signin {
+    0% {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -250%);
+    }
+
+    100% {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.rBtn:hover,
+.lBtn:hover,
+.lBtnCancelar:hover,
+.cBtn:hover {
+    box-shadow: -2px 2px 10px var(--gris);
+}
+
+.swal2-styled.swal2-confirm{
+    background-color: var(--verdeagua) !important;
+}
+
+.swal2-styled.swal2-confirm:hover{
+    background-color: var(--turquesa) !important;
+}
+
+.lBtnCancelar {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 20px 0;
+    width: 120px;
+    font-size: 15px;
+    background-color: var(--Rojo2);
+    color: white;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.lBtnCancelar:hover {
+    background-color: var(--Roj1);
+}
+
+/*--Cerrar Modal Inicio--------------*/
+.cerrarModalInicio{
+    font-size: 22px;
+    color: var(--Rojo2);
+    transition: all 200ms linear;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    cursor:pointer;
+}
+.cerrarModalInicio:hover{
+    color: var(--Roj1);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 140%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+}
+
 	
 
 

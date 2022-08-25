@@ -117,15 +117,56 @@
                 </li>
             </ul>
         </nav>
+        <div id="top-page"></div>
+
+        <!--REGISTRARSE-->
+    <form class="rModal-form hidden" id="formRegistroUser">
+
+        <div class="InicioSesion-titleContainer">
+            <h1 class="rTitulo">Registrar Usuario</h1>
+            <i class="fa-solid fa-circle-xmark cerrarModalInicio cerrar"></i>
+        </div>
+        <label for="txtNombre">Nombre:</label>
+        <input class="rCajas" id="txtNombre" type="text" placeholder="Nombre*" >
+
+        <label for="txtApellido">Apellido(s):</label>
+        <input class="rCajas" id="txtApellido" type="text" placeholder="Apellido(s)*" >
+
+        <label for="numCedula">Identificación:</label>
+        <input class="rCajas" id="numCedula" type="text" placeholder="Cédula física, jurídica, DIMEX o NITE*">
+
+        <label for="txtEmail">Correo electrónico:</label>
+        <input class="rCajas" id="txtEmail" type="email" placeholder="Correo electrónico*" >
+
+        <label for="txtPhone">Número de teléfono:</label>
+        <input class="rCajas" id="txtPhone" type="number" placeholder="Número de teléfono*" maxlength="8">
+
+        <label for="txtContrasenha">Contraseña:</label>
+        <input class="rCajas" id="txtContrasenha" type="password" placeholder="Contraseña(6-15)*" >
+
+        <label for="txtContrasenha2">Confirmar contraseña:</label>
+        <input class="rCajas" id="txtContrasenha2" type="password" placeholder="Confirmar contraseña(6-15)*">
+
+        <label for="txtDireccion">Dirección exacta:</label>
+        <textarea class="rCajas" name="Dirección" id="txtDireccion" cols="30" rows="2" placeholder="Dirección exacta*"></textarea>
+        <div class="btnsRegistro">
+            <input type="button" class="lBtnCancelar" id="cerrarRmodal" value="Cancelar">
+            <input type="button" class="rBtn" id="btnRegistrar" value="Registrar">
+        </div>
+    </form>
+
         <div class="home">
 
             <div class="tContainer">
                 <div class="tTituloContainer">
-                   
+                    <div><i class="fa-solid fa-list iconNuevaCita"></i></div>
                     <div class="tituloCitas">
                         <h2>Listado de usuarios</h2>
                     </div>
-
+                    <div class="btnNuevaCitaContainer">
+                        <a id="showCrearUser"><i class="fa-solid fa-square-plus fa-3x NuevaCita"></i></a>
+                        <p>Nuevo Usuario</p>
+                </div>
                 </div>
 
                 <div class="tFiltros">
@@ -196,13 +237,13 @@
             </div>
         </div>
     </div>
-  
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
     <script src="./js/Constantes.js"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/controllers/RegistrarseController.js"></script>
     <script src="./js/controllers/appController.js"></script>
     <script src="./js/controllers/RepUsuariosController.js"></script>
 
