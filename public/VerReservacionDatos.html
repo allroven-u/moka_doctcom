@@ -137,6 +137,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!--box 1-->
                 <div class="boxes-container">
                     <div class="box-completar">
                         <div class="h2">
@@ -171,48 +173,76 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-completar box-2">
+
+                    <!--box 2-->
+                    <div class="box-completar box-2 hidden">
                         <div class="h2">
-                            <h2>Servicios y productos utilizados
+                            <h2> Observaciones
                             </h2>
                         </div>
 
                         <div class="DescripcionParrafo diagnostico">
-                            <div id="boxDescripcion">
-                                <p style="color: #222;">Descripción</p>
-                                <textarea id="txtDescricionR" class="cajas white"
-                                    style="width: 400px; height: 200px;"></textarea>
+                            <div id="boxDescripcion" class="hidden" style="width:100%">
+                                <p style="color: #222;">Observaciones</p>
+                                <textarea id="txtDescricionO" class="cajas white"
+                                    style="width: 90%; height: 300px;"></textarea>
                             </div>
-                            <div>
-                                <div id="boxPrecio">
-                                    <p style="color:#222;">Precio</p>
-                                    <input id="txtPecioR" class="cajas white">
-                                </div>
-                                <div id="boxBtn">
-                                    <input type="button" class="agregar-btn" id="agregar-subdocR" value="Añadir">
+                            <div id="boxBtn" class="btn-diag hidden">
+                                <p>&nbsp;</p>
+                                <input type="button" class="agregar-btn btnDiag" id="agregar-diagnostico"
+                                    value="Añadir">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!--box 4-->
+                    <div class="box-completar box-4 hidden">
+                        <div class="h2">
+                            <h2> Servicios & Costos
+                            </h2>
+                        </div>
+                        <div class="DescripcionParrafo">
+                            <div class="box-externa hidden">
+                                <div id="boxPrecio" class="box-medicamentos">
+                                    <div class="boxInterna">
+                                        <p style="color: #222;">Descripción</p>
+                                        <input id="txtDescripcionS" class="cajas white"></input>
+                                    </div>
+                                    <div class="boxInterna">
+                                        <p style="color:#222;">Cantidad</p>
+                                        <input id="txtCantidad" class="cajas white">
+                                    </div>
+                                    <div class="boxInterna">
+                                        <p style="color:#222;">Precio</p>
+                                        <input id="txtPrecio" class="cajas white">
+                                    </div>
+                                    <div id="boxBtn" class="boxInterna">
+                                        <p>&nbsp;</p>
+                                        <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="table-description box-client hidden">
-                                <table>
-                                    <thead>
+                            <div class="table-description box-all hidden">
+                                <table id="TLineasFactura">
+                                    <thead id="THlineas">
                                         <tr>
-                                            <th>Descripción</th>
+                                            <th>Descripcion</th>
+                                            <th>Cantidad</th>
                                             <th>Precio</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>..</td>
-                                            <td>..</td>
-                                        </tr>
-                                    </tbody>
+                                    <tbody id="TBLienas"></tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
+
+
+                    <!--box 3-->
                     <div class="box-completar box-3 hidden">
                         <div class="h2">
-                            <h2>Motivo de cancelación</h2>
+                            <h2>Motivo de Cancelación</h2>
                         </div>
                         <div class="DescripcionParrafo">
                             <div class="cajasOut white">
@@ -220,12 +250,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="box-completar"></div>
                     <div class="btns">
                         <input type="button" class="btnCancelar" value="Cancelar"
                             onclick="location.href='./AppVerReservas.html'">
                         <input type="button" id="Pagar" class="btn" value="Factura"
-                            onclick="location.href='./Factura.html'">
+                            onclick="window.open('./Factura.html', '_blank');">
                     </div>
                 </div>
 
@@ -241,7 +270,7 @@
 
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/ReservaService.js"></script>
- 
+
     <script src="./js/controllers/ReservaDatosController.js"></script>
     <script src="./js/services/SessionService.js"></script>
     <script src="./js/controllers/appController.js"></script>

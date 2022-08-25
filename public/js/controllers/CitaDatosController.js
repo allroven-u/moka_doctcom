@@ -53,6 +53,7 @@ async function IdentificarAccion() {
 }
 
 usuarioRol = Number(usuarioRol);
+const btnDescrip = document.getElementById('boxBtn');
 const boxDiagnosticos = document.querySelector('.box-2');
 const boxCancelacion = document.querySelector('.box-3');
 const box4 = document.querySelector('.box-4');
@@ -73,6 +74,7 @@ if (usuarioRol !== 3 && opcionVer === 'ver') {
     tableInfoCita.style = 'margin-top: 0px';
     //boxDiagnosticos.classList.add('hidden');
 }else if(usuarioRol !== 2 && opcionVer === 'compl'){
+    btnDescrip.classList.remove('hidden');
     buttonVerCita.classList.toggle('btn-doctor');
     buttonVerCita.value = 'Enviar';
     box4.classList.remove('hidden');
