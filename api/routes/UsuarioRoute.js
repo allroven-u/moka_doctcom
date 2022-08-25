@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Usuario = require('../models/UsuarioModel');
-
+const mailer = require('../templates/RegistroTemplate');
 
 router.post('/RegistrarUsuario', (req, res) => {
     let body = req.body;
@@ -34,6 +34,10 @@ router.post('/RegistrarUsuario', (req, res) => {
                 msj: 'Registro realizado de manera correcta',
                 usuarioDB
             });
+
+            let nombreCompleto = usuarioDB.Nombre + ' ' + usuarioDB.Apellido;
+            let correo = usuarioDB.Email;
+            mailer.EnviarMail(nombreCompleto,correo);
         }
     });
 });

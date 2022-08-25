@@ -76,12 +76,12 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
     if(ultimaCita != {} && ultimaCita.resultado == true){
       let NumeroCita = 0;
 
-      if(ultimaCita.ListaCitasBD == "" && ultimaCita.ListaCitasBD == undefined && ultimaCita.ListaCitasBD == []){
+      if(ultimaCita.ListaCitasBD == "" || ultimaCita.ListaCitasBD == undefined || ultimaCita.ListaCitasBD == []){
         NumeroCita = 0;
       }else{
         NumeroCita = ultimaCita.ListaCitasBD[0].NumeroCita ;
       }
-      console.log(NumeroCita);
+    
       await axios({
         method:'post',
         url: apiUrl + '/RegistrarCita',

@@ -18,7 +18,10 @@ router.post('/RegistrarReservacion', (req, res) => {
         Calificacion:body.Calificacion,
         Estado: body.Estado,
         ObservacionesReservacion: body.ObservacionesReservacion,
-        NotasCancelacion : body.NotasCancelacion
+        NotasCancelacion : body.NotasCancelacion,
+        NumeroFactura:body.NumeroFactura,
+        FechaCreacion:body.FechaCreacion,
+        UsuarioCreacion: body.UsuarioCreacion
     });
 
     nuevaReservacion.save((err, reservacionDB) => {

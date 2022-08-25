@@ -14,7 +14,7 @@ const schemaReserva = new mongoose.Schema(
         Estado: { type: String, required: true, unique: false },
         ObservacionesReservacion: { type: String, required: false, unique: false },
         NotasCancelacion: { type: String, required: false, unique: false },
-        NumeroFactura: { type: Number, required: false, unique: true },
+        NumeroFactura: { type: Number, required: false, unique: false },
         FechaCreacion: {type:Date,require:true,unique:false},
         UsuarioCreacion:{ type: String, required: true, unique: false }
     }

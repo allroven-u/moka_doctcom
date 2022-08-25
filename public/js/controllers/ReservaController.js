@@ -244,7 +244,10 @@ async function CrearReserva() {
         let dFechaE = inputEntrada.value;
         let dFechaS = inputSalida.value;
         let sCiuidadosEsp = inputCuidadosReserva.value;
-        let result = await crearReserva(IdentificacionUsuario, IdMascota, NombreMascota, dFechaE, dFechaS, sCiuidadosEsp)
+        let FechaCreacion = new Date().toLocaleDateString();
+        let UsuarioCreacion = userSessionR.Email;
+        
+        let result = await crearReserva(IdentificacionUsuario, IdMascota, NombreMascota, dFechaE, dFechaS, sCiuidadosEsp,FechaCreacion,UsuarioCreacion)
         if (result != {} && result.data.resultado) {
             ConfirmarDatos(result.data.msj);
             setTimeout(() => {

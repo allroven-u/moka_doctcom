@@ -37,19 +37,26 @@ function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
   }
 
 
-  async function crearReserva(pIdUsuario,pIdMascota,pMascota,pFechaEnt,pFechaSal,pDescripcionReserva) {
+  async function crearReserva(pIdUsuario,pIdMascota,pMascota,pFechaEnt,pFechaSal,pDescripcionReserva,pFechaCreacion,pUsuarioCreacion) {
     let result ={};
+    let NumeroReserva = 0;
     let ultimaReserva = await UltimaReserva();
 
     if(ultimaReserva != {} && ultimaReserva.resultado == true){
-      let NumeroReserva=ultimaReserva.ListaReservasBD
-      
+  
+      console.log(ultimaReserva);
+      if(ultimaReserva.ListaReservasBD == "" || ultimaReserva.ListaReservasBD == undefined || ultimaReserva.ListaReservasBD == []){
+        NumeroReserva = 0;
+      }else{
+        NumeroReserva = ultimaReserva.ListaReservasBD[0].NumeroReservacion ;
+      }
+      console.log(NumeroReserva);
       await axios({
         method:'post',
         url: apiUrl + '/RegistrarReservacion',
         responseType: 'json',
         data: {
-          'NumeroReservacion': NumeroReserva[0].NumeroReservacion + 1,
+          'NumeroReservacion': NumeroReserva + 1,
           'IdentificacionUsuario':pIdUsuario,
           'IdMascota': pIdMascota,
           'NombreMascota': pMascota,
@@ -58,7 +65,10 @@ function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
           'Calificacion':0,
           'Estado': 'AGENDADA',
           'ObservacionesReservacion':pDescripcionReserva,
-          'NotasCancelacion' : ''
+          'NotasCancelacion' : '',
+          'NumeroFactura':'',
+          'FechaCreacion':pFechaCreacion,
+          'UsuarioCreacion':pUsuarioCreacion
         }
 
        })
