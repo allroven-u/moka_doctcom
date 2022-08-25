@@ -147,7 +147,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
         veterinario.Nombre + " " + veterinario.Apellido;
     }
     let celdaFecha = fila.insertCell();
-    celdaFecha.innerHTML = cita.Fecha;
+    celdaFecha.innerHTML = cita.FechaHora;
 
     let celdaEstado = fila.insertCell();
     celdaEstado.innerHTML = cita.Estado;
@@ -157,14 +157,14 @@ async function ImprimirListaCitas(ListaCitasBD) {
 
     let EstadoCitaif = document.querySelectorAll(".Estado");
     if (EstadoCitaif[i].innerHTML == "AGENDADA") {
-    //  if (userSessionC.Rol !== 3) {
+      if (userSessionC.Rol !== 3) {
         let BotonV = document.createElement("a");
         BotonV.setAttribute(
           "href",
           "/public/VerCitaDatos.html?_id=" +
           cita._id +
           "&rol=" +
-          userSessionC.Rol
+          userSessionC.Rol + '&opcion=ver' 
         );
         let iconoV = document.createElement("i");
         iconoV.classList.add("fa-solid");
@@ -172,7 +172,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
         iconoV.classList.add("btnV");
         BotonV.appendChild(iconoV);
         celdaBoton.appendChild(BotonV);
-    //  }
+      }
 
       if (userSessionC.Rol !== 2) {
         let Boton = document.createElement("a");
@@ -181,7 +181,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
           "/public/VerCitaDatos.html?_id=" +
           cita._id +
           "&rol=" +
-          userSessionC.Rol
+          userSessionC.Rol + '&opcion=compl'
         );
         let icono = document.createElement("i");
         icono.classList.add("fa-solid");
