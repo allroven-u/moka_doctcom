@@ -39,7 +39,7 @@ function ValidarCambioContrasenha(){
 
     if (sNombre == null || sNombre == undefined || sNombre == ""){
         inputNombreC.classList.add("rError")
-        MostrarError("¡El usuario es requerido!");
+        MostrarError("¡El correo electrónico es requerido!");
         return false;
 
     }else{
