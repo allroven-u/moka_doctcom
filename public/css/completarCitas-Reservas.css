@@ -276,7 +276,6 @@ tr {
 }
 
 .cajas {
-	width: ;
 	padding: 15px;
 	margin-bottom: 10px;
 	border-radius: 5px;
@@ -451,6 +450,7 @@ tr {
 
 .box-medicamentos{
 	display: flex;
+	width: 100%;
 }
 
 .boxInterna{
@@ -459,7 +459,7 @@ tr {
 }
 
 .box-externa{
-	width: 90%;	
+	width: 100%;	
 }
 
 
