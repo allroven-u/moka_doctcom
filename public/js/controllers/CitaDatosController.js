@@ -102,7 +102,7 @@ function llenarCompletarCita() {
 
             OutnumCita.innerHTML = listaCitas[i].NumeroCita;
             OutVeterinario.innerHTML = veterinario;
-            OutfechaCita.innerHTML = listaCitas[i].FechaHora;
+            OutfechaCita.innerHTML = listaCitas[i].Fecha;
             Outobservaciones.innerHTML = listaCitas[i].ObservacionesCita;
             OutestadoCita.innerHTML = listaCitas[i].Estado;
             OutMotivoCancelar.innerHTML = listaCitas[i].NotasCancelacion;

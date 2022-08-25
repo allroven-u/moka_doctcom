@@ -66,7 +66,7 @@ function llenarCompletarReserva(){
     for (let i = 0; i < listaReservas.length; i++) {
         if(listaReservas[i]._id == _id){
             
-            inputNumReservaDatos.innerHTML= 'Reservación Número: '+listaReservas[i].NumeroReservacion;
+            inputNumReservaDatos.innerHTML= 'Número reservación: '+listaReservas[i].NumeroReservacion;
             inputNombreReservaDatos.innerHTML=listaReservas[i].NombreMascota;
 
             OutnumReserva.innerHTML=listaReservas[i].NumeroReservacion;
