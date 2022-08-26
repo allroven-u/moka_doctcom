@@ -169,6 +169,7 @@ btnEnviar.addEventListener('click', async function(){
     if(txtDescripcion.value === null || txtDescripcion.value === "" || txtDescripcion.value === undefined){
         MostrarError('¡Debe ingresar las observaciones!');
         resaltarInputInvalido(txtDescripcion);
+        return false;
     }
     return true;
   }

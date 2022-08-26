@@ -318,6 +318,11 @@ function ValidarDatosEstrellas(){
     MostrarError('Debe ingresar la calificacion del Veterinario');
     return false;
   }
+  if(Diagnostico.value === null || Diagnostico.value === "" || Diagnostico.value === undefined){
+    MostrarError('Debe ingresar las observaciones');
+    resaltarInputInvalido(Diagnostico);
+    return false;
+}
   return true;
 }
 
