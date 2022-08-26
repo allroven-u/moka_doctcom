@@ -274,9 +274,17 @@ tr {
 
 
 .fa-star {
-	color: var(--amarillo);
+	
 	font-size: 30px;
 	margin: 10px;
+}
+
+.fa-star:hover{
+	color: var(--amarillo);
+}
+
+.star{
+	color: var(--amarillo);
 }
 
 .cajas {
