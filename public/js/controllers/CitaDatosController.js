@@ -10,6 +10,7 @@ let factDescripcion = document.getElementById("txtDiagnostico");
 let factCantidad = document.getElementById("txtCantidad");
 let factPrecio = document.getElementById("txtPrecio");
 let factCita = {};
+const btnEnviar = document.getElementById('Pagar');
 
 window.addEventListener("load", () => {
   userSessionCD = GetSesion();
@@ -89,6 +90,27 @@ let Outobservaciones = document.getElementById("observaciones");
 let OutestadoCita = document.getElementById("estadoCita");
 let OutMotivoCancelar = document.getElementById("txtMotivoCancelar");
 let OutNumFactura = document.getElementById("NumFactura");
+const estrellas = document.querySelectorAll('.fa-star');
+
+
+
+
+
+  var cantidadS = 0;
+  for(let i = 0; i < estrellas.length; i++){
+    estrellas[i].addEventListener('click', function(){
+      cantidadS = i + 1;
+      for(let p = 0; p  < cantidadS; p++){
+        estrellas[p].classList.add('star');
+      }
+      console.log(cantidadS );
+      return cantidadS;
+    })
+  }
+
+
+
+
 
 async function llenarCompletarCita() {
   let veterinario;
@@ -212,10 +234,32 @@ function ImprimirDetalleFactura(factura) {
         celdaPrecio.innerHTML = linea.PrecioUnitario;
     }
 
+}
 
-
+btnEnviar.addEventListener('click', async function(){
+  for (let i = 0; i < listaCitas.length; i++) {
+    if (listaCitas[i]._id === _id) {
+      if (ValidarDatosCita() === true) {
+        let result = await  UpdateCitaCalificacion(_id, cantidadS) 
+        if (result != {} && result.resultado) {
+            ConfirmarDatos(result.msj);
+        }else{
+            MostrarError(result.msj);
+        };
+    }
+    }
+  }
    
 
+})
+
+
+function ValidarDatosCita(){
+  if(cantidadS === null || cantidadS === undefined || cantidadS === ' '){
+    MostrarError('Debe ingresar la calificacion de la mascota');
+    return false;
+  }
+  return true;
 }
 
 
