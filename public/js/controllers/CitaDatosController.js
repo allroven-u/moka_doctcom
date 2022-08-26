@@ -10,6 +10,9 @@ let factDescripcion = document.getElementById("txtDiagnostico");
 let factCantidad = document.getElementById("txtCantidad");
 let factPrecio = document.getElementById("txtPrecio");
 let factCita = {};
+const btnEnviar = document.getElementById('enviar');
+const btnFactura = document.getElementById('factura');
+const btnEnviarSV = document.getElementById('btnEnviarVete');
 
 window.addEventListener("load", () => {
   userSessionCD = GetSesion();
@@ -35,7 +38,7 @@ async function GetlistaUsuarios() {
 }
 
 ///////////Obtener id url/////////////////
-let queryString, urlParams, _id, usuarioRol, opcionVer;
+let queryString, urlParams, _id, usuarioRol, opcionVer, estadoC;
 IdentificarAccion();
 async function IdentificarAccion() {
   queryString = window.location.search;
@@ -45,6 +48,7 @@ async function IdentificarAccion() {
   _id = urlParams.get("_id");
   usuarioRol = urlParams.get("rol");
   opcionVer = urlParams.get("opcion");
+  estadoC = urlParams.get("estado");
   console.log(opcionVer);
 }
 
@@ -53,13 +57,15 @@ const btnDescrip = document.getElementById("boxBtn");
 const boxDiagnosticos = document.querySelector(".box-2");
 const boxCancelacion = document.querySelector(".box-3");
 const box4 = document.querySelector(".box-4");
-const btnsVD = document.querySelector(".btns");
-const buttonVerCita = document.getElementById("Pagar");
+const btnsVDE = document.querySelector(".btnsE");
+const btnsVDF = document.querySelector(".btnsF");
 
 const boxDescripcion = document.getElementById("boxDescripcion");
 const txtDescripcion = document.getElementById("txtDescricionR");
 const boxExterna = document.querySelector(".box-externa");
 const tableInfoCita = document.querySelector(".box-all");
+const boxCalificacion = document.querySelector('.califContainer');
+const titleCalf = document.getElementById('titleCalf');
 
 if (usuarioRol !== 3 && opcionVer === "ver") {
   box4.classList.remove("hidden");
@@ -68,16 +74,32 @@ if (usuarioRol !== 3 && opcionVer === "ver") {
   txtDescripcion.setAttribute("readonly", true);
   tableInfoCita.classList.remove("hidden");
   tableInfoCita.style = "margin-top: 0px";
+  boxCalificacion.classList.add('hidden');
   //boxDiagnosticos.classList.add('hidden');
 } else if (usuarioRol !== 2 && opcionVer === "compl") {
   btnDescrip.classList.remove("hidden");
-  buttonVerCita.classList.toggle("btn-doctor");
-  buttonVerCita.value = "Enviar";
   box4.classList.remove("hidden");
   boxDiagnosticos.classList.remove("hidden");
   boxExterna.classList.remove("hidden");
   tableInfoCita.classList.remove("hidden");
   boxDescripcion.classList.remove("hidden");
+  btnsVDE.classList.remove('hidden');
+
+}else if(opcionVer === 'final' &&  estadoC === 'CANCELADA'){
+   boxCalificacion.classList.add('hidden');
+   boxCancelacion.classList.remove("hidden");
+}else if(usuarioRol !== 3 && opcionVer === 'final' && estadoC === "FINALIZADA"){
+  titleCalf.textContent = "Calificación Veterinario";
+  btnsVDF.classList.remove('hidden');
+  box4.classList.remove("hidden");
+  boxDiagnosticos.classList.remove("hidden");
+  boxDescripcion.classList.remove("hidden");
+  txtDescripcion.setAttribute("readonly", true);
+  tableInfoCita.classList.remove("hidden");
+  tableInfoCita.style = "margin-top: 0px";
+
+}else if(usuarioRol === 3 && opcionVer === 'final'){
+  boxCalificacion.classList.add('hidden');
 }
 
 let inputNumReservaDatos = document.getElementById("numCitaDatos");
@@ -89,6 +111,20 @@ let Outobservaciones = document.getElementById("observaciones");
 let OutestadoCita = document.getElementById("estadoCita");
 let OutMotivoCancelar = document.getElementById("txtMotivoCancelar");
 let OutNumFactura = document.getElementById("NumFactura");
+const estrellas = document.querySelectorAll('.fa-star');
+
+//agrega estrellas
+  var cantidadS = 0;
+  for(let i = 0; i < estrellas.length; i++){
+    estrellas[i].addEventListener('click', function(){
+      cantidadS = i + 1;
+      for(let p = 0; p  < cantidadS; p++){
+        estrellas[p].classList.add('star');
+      }
+      console.log(cantidadS);
+      return cantidadS;
+    })
+  }
 
 async function llenarCompletarCita() {
   let veterinario;
@@ -125,7 +161,6 @@ async function llenarCompletarCita() {
       OutNumFactura.innerHTML = listaCitas[i].NumeroFactura;
       if (listaCitas[i].Estado === "CANCELADA") {
         boxDiagnosticos.classList.add("hidden");
-        btnsVD.style = "display: none;";
         boxCancelacion.classList.remove("hidden");
       }
     }
@@ -212,10 +247,60 @@ function ImprimirDetalleFactura(factura) {
         celdaPrecio.innerHTML = linea.PrecioUnitario;
     }
 
+}
 
 
-   
 
+
+//envia estrellas mascota
+
+btnEnviar.addEventListener('click', async function(){
+  for (let i = 0; i < listaCitas.length; i++) {
+    if (listaCitas[i]._id === _id) {
+      if (ValidarDatosCita() === true) {
+        let result = await  UpdateCitaCalificacion(_id, cantidadS) 
+        if (result != {} && result.resultado) {
+            ConfirmarDatos(result.msj);
+        }else{
+            MostrarError(result.msj);
+        };
+    }
+    }
+  }
+})
+function ValidarDatosCita(){
+  if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
+    MostrarError('Debe ingresar la calificacion de la mascota');
+    return false;
+  }
+  return true;
+}
+
+
+
+
+//envia estrellas veterinario
+
+btnEnviarSV.addEventListener('click', async function(){
+  for (let i = 0; i < listaCitas.length; i++) {
+    if (listaCitas[i]._id === _id) {
+      if (ValidarDatosEstrellas() === true) {
+        let result = await  UpdateCitaCalificacionVeterinario(_id, cantidadS) 
+        if (result != {} && result.resultado) {
+            ConfirmarDatos(result.msj);
+        }else{
+            MostrarError(result.msj);
+        };
+    }
+    }
+  }
+})
+function ValidarDatosEstrellas(){
+  if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
+    MostrarError('Debe ingresar la calificacion del Veterinario');
+    return false;
+  }
+  return true;
 }
 
 

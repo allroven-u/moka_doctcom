@@ -267,6 +267,7 @@ tr {
 }
 
 .stars {
+	margin-top: 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -274,9 +275,17 @@ tr {
 
 
 .fa-star {
-	color: var(--amarillo);
+	
 	font-size: 30px;
 	margin: 10px;
+}
+
+.fa-star:hover{
+	color: var(--amarillo);
+}
+
+.star{
+	color: var(--amarillo);
 }
 
 .cajas {
@@ -390,7 +399,7 @@ tr {
 	padding: 20px;
 	color: var(--blanco);
 	width: 300px;
-	height: 120px;
+	height: auto;
 }
 
 .box-completar {
@@ -481,4 +490,19 @@ tr {
 
 .btnDiag {
 	width: 100%;
+}
+
+.btnVete{
+	border-radius: 5px;
+	font-family: Roboto300;
+	color: var(--blanco);
+	font-size: 16px;
+	padding: 10px 30px;
+	border: none;
+	background-color: var(--verde);
+	transition: all 200ms linear;
+}
+
+.btnVete:hover{
+	background-color: var(--esmeralda);
 }

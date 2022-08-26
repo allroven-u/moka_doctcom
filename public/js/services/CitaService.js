@@ -153,7 +153,7 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
     return result;
   }
 
-  async function UpdateCitaFactura(p_id,pNumeroFactura) {
+  async function UpdateCitaFactura(p_id,pNumeroFactura, pCalificacion) {
     let result ={}; 
       await axios({
         method:'put',
@@ -161,7 +161,8 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
         responseType: 'json',
         data: {
           '_id': p_id,
-          'NumeroFactura':pNumeroFactura,      
+          'NumeroFactura':pNumeroFactura,     
+          'Calificacion':pCalificacion 
         }
 
        })
@@ -174,5 +175,54 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
       });
     return result;
   }
+
+  
+  async function UpdateCitaCalificacion(p_id, pCalificacion) {
+    let result ={}; 
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+          '_id': p_id,  
+          'Calificacion':pCalificacion 
+        }
+
+       })
+      .then(function (res) {
+        result = res.data;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    return result;
+  }
+
+  async function UpdateCitaCalificacionVeterinario(p_id, pCalificacionVete) {
+    let result ={}; 
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+          '_id': p_id,  
+          'CalificacionVeterinario':pCalificacionVete 
+        }
+
+       })
+      .then(function (res) {
+        result = res.data;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    return result;
+  }
+
+
+  
+
 
   
