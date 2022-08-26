@@ -189,7 +189,7 @@ header {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
   transition: all 600ms linear;
 }
 
