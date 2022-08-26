@@ -36,7 +36,7 @@ async function GetlistaUsuarios() {
 }
 
 ///////////Obtener id url/////////////////
-let queryString, urlParams, _id, usuarioRol, opcionVer;
+let queryString, urlParams, _id, usuarioRol, opcionVer, estadoC;
 IdentificarAccion();
 async function IdentificarAccion() {
   queryString = window.location.search;
@@ -46,6 +46,7 @@ async function IdentificarAccion() {
   _id = urlParams.get("_id");
   usuarioRol = urlParams.get("rol");
   opcionVer = urlParams.get("opcion");
+  estadoC = urlParams.get("estado");
   console.log(opcionVer);
 }
 
@@ -92,10 +93,7 @@ let OutMotivoCancelar = document.getElementById("txtMotivoCancelar");
 let OutNumFactura = document.getElementById("NumFactura");
 const estrellas = document.querySelectorAll('.fa-star');
 
-
-
-
-
+//agrega estrellas
   var cantidadS = 0;
   for(let i = 0; i < estrellas.length; i++){
     estrellas[i].addEventListener('click', function(){
@@ -103,14 +101,10 @@ const estrellas = document.querySelectorAll('.fa-star');
       for(let p = 0; p  < cantidadS; p++){
         estrellas[p].classList.add('star');
       }
-      console.log(cantidadS );
+      console.log(cantidadS);
       return cantidadS;
     })
   }
-
-
-
-
 
 async function llenarCompletarCita() {
   let veterinario;
@@ -236,6 +230,8 @@ function ImprimirDetalleFactura(factura) {
 
 }
 
+
+//envia estrellas
 btnEnviar.addEventListener('click', async function(){
   for (let i = 0; i < listaCitas.length; i++) {
     if (listaCitas[i]._id === _id) {

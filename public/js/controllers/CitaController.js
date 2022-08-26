@@ -204,7 +204,7 @@ async function ImprimirListaCitas(ListaCitasBD) {
       let BotonV = document.createElement("a");
       BotonV.setAttribute(
         "href",
-        "/public/VerCitaDatos.html?_id=" + cita._id + "&rol=" + userSessionC.Rol
+        "/public/VerCitaDatos.html?_id=" + cita._id + "&rol=" + userSessionC.Rol + '&opcion=final' + "&estado=" + cita.Estado
       );
       let iconoV = document.createElement("i");
       iconoV.classList.add("fa-solid");
