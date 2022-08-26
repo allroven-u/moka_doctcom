@@ -13,9 +13,19 @@ btnRemoverMascota.addEventListener('click', EliminarMascota);
 
 
 async function GetlistaMascota() {
-    let result = await getMascotasArray(userSessionM.Identificacion);
-    if (result != {} && result.resultado == true) {
-        listaMascotas = result.MascotasDB;
+
+        let result=[];
+    if (userSessionM.Rol == 2) {
+        result = await getMascotasArray(userSessionM.Identificacion);
+        if (result != {} && result.resultado == true) {
+            listaMascotas = result.MascotasDB;
+        }
+    }else{
+        result = await getMascotasArrayAdmin();
+        console.log(result)
+        if (result != {} && result.resultado == true) {
+            listaMascotas = result.MascotasDB;
+        }
     }
     return listaMascotas;
 }
@@ -110,7 +120,7 @@ async function EliminarMascota() {
 async function ImprimirListaCitas(pp_id) {
     let tbody = document.getElementById('tbbody-ultimas-citas');
 
-    let listaCitas = await getCitasUsuario(userSessionM.Identificacion);
+    let listaCitas = await getCitasArray();
     listaCitas = listaCitas.ListaCitasBD;
 
     tbody.innerHTML = '';

@@ -41,7 +41,7 @@ router.post('/RegistrarMascota', (req, res) => {
 });
 
 router.get('/ListarMascota', (req, res) => {
-    Mascota.find((err, ListaMascotasBD) => {
+    Mascota.find((err, MascotasDB) => {
         if (err) {
             res.json({
                 resultado: false,
@@ -52,7 +52,7 @@ router.get('/ListarMascota', (req, res) => {
             res.json({
                 resultado: true,
                 msj: 'Los datos se obtuvieron de manera correcta: ',
-                ListaMascotasBD
+                MascotasDB
             });
         }
     });
