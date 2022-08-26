@@ -75,7 +75,7 @@ if (usuarioRol !== 3 && opcionVer === 'ver') {
     boxCalificacion.classList.add('hidden');
     boxCancelacion.classList.remove("hidden");
  }else if(usuarioRol !== 3 && opcionVer === 'final' && estadoR === "FINALIZADA"){
-   titleCalf.textContent = "Calificación Veterinario";
+   titleCalf.textContent = "Calificación veterinario";
    btnsVDF.classList.remove('hidden');
    box4.classList.remove("hidden");
    boxDiagnosticos.classList.remove("hidden");
@@ -122,7 +122,7 @@ function llenarCompletarReserva(){
     for (let i = 0; i < listaReservas.length; i++) {
         if(listaReservas[i]._id == _id){
             
-            inputNumReservaDatos.innerHTML= 'Número reservación: '+listaReservas[i].NumeroReservacion;
+            inputNumReservaDatos.innerHTML= 'Número de reservación: '+listaReservas[i].NumeroReservacion;
             inputNombreReservaDatos.innerHTML=listaReservas[i].NombreMascota;
 
             OutnumReserva.innerHTML=listaReservas[i].NumeroReservacion;
@@ -163,11 +163,11 @@ btnEnviar.addEventListener('click', async function(){
   })
   function ValidarDatosReserva(){
     if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
-      MostrarError('Debe ingresar la calificacion de la mascota');
+      MostrarError('¡Debe ingresar la calificación de la mascota!');
       return false;
     }
     if(txtDescripcion.value === null || txtDescripcion.value === "" || txtDescripcion.value === undefined){
-        MostrarError('Debe ingresar las observaciones');
+        MostrarError('Debe ingresar las observaciones!');
         resaltarInputInvalido("txtDescricionO");
         return false;
     }
