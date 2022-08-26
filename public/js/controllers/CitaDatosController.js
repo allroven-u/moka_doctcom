@@ -66,6 +66,7 @@ const boxExterna = document.querySelector(".box-externa");
 const tableInfoCita = document.querySelector(".box-all");
 const boxCalificacion = document.querySelector('.califContainer');
 const titleCalf = document.getElementById('titleCalf');
+const btnVete = document.querySelector('.button-env');
 
 if (usuarioRol !== 3 && opcionVer === "ver") {
   box4.classList.remove("hidden");
@@ -97,8 +98,15 @@ if (usuarioRol !== 3 && opcionVer === "ver") {
   txtDescripcion.setAttribute("readonly", true);
   tableInfoCita.classList.remove("hidden");
   tableInfoCita.style = "margin-top: 0px";
-
+  btnVete.classList.remove('hidden');
 }else if(usuarioRol === 3 && opcionVer === 'final'){
+  boxCalificacion.classList.add('hidden');
+  box4.classList.remove("hidden");
+  boxDiagnosticos.classList.remove("hidden");
+  boxDescripcion.classList.remove("hidden");
+  txtDescripcion.setAttribute("readonly", true);
+  tableInfoCita.classList.remove("hidden");
+  tableInfoCita.style = "margin-top: 0px";
   boxCalificacion.classList.add('hidden');
 }
 
