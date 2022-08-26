@@ -49,7 +49,7 @@ function cerrar() {
 const navReservas =  document.getElementById('reservasTab');
 const navMascotas =  document.getElementById('mascotasTab');
 const navReportes =  document.getElementById('reportesTab');
-const crearCitaNueva = document.querySelector('.containerCrearCita');
+const crearCitaNueva = document.querySelector('.btnNuevaCitaContainer');
 
 let user = GetSesion();
 
