@@ -189,57 +189,56 @@ async function llenarCompletarCita() {
 async function agregarLineas() {
   let cita = await getCita(_id);
 
-  if (cita.CitaDB.NumeroFactura == "" ||cita.CitaDB.NumeroFactura == undefined ||cita.CitaDB.NumeroFactura == null
-  ) {
-    // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
-    let fact = await crearFactura(
-      factCita.IdentificacionUsuario,
-      factCita.IdMascota,
-      factCita.NombreMascota,
-      new Date().toISOString(),
-      ""
-    );
-    if (fact.resultado == true) {
-      let NumNewFactura = fact.facturaDB.NumeroFactura;
- 
-      let CitaUpdate = await UpdateCitaFactura(_id, NumNewFactura);
-
-      let linea = await RegistrarLineaFactura(
-        fact.facturaDB._id,
-        1,
-        factDescripcion.value,
-        factCantidad.value,
-        factPrecio.value
+    if (cita.CitaDB.NumeroFactura == "" ||cita.CitaDB.NumeroFactura == undefined ||cita.CitaDB.NumeroFactura == null
+    ) {
+      // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
+      let fact = await crearFactura(
+        factCita.IdentificacionUsuario,
+        factCita.IdMascota,
+        factCita.NombreMascota,
+        new Date().toISOString(),
+        ""
       );
-      factDescripcion.innerHTML = "";
-      factCantidad.innerHTML = "";
-      factPrecio.innerHTML = "";
+      if (fact.resultado == true) {
+        let NumNewFactura = fact.facturaDB.NumeroFactura;
+  
+        let CitaUpdate = await UpdateCitaFactura(_id, NumNewFactura);
 
-      ImprimirDetalleFactura(fact);
+        let linea = await RegistrarLineaFactura(
+          fact.facturaDB._id,
+          1,
+          factDescripcion.value,
+          factCantidad.value,
+          factPrecio.value
+        );
+        factDescripcion.innerHTML = "";
+        factCantidad.innerHTML = "";
+        factPrecio.innerHTML = "";
 
-    } else {
-      
-    }
-  }else{
-    let Factura = await getFactura(cita.CitaDB.NumeroFactura);
-      let _idFactura = Factura.FacturaDB._id;
-      let ultLinea = Factura.FacturaDB.Lineas[Factura.FacturaDB.Lineas.length - 1];
+        ImprimirDetalleFactura(fact);
 
-      let linea = await RegistrarLineaFactura(
-        _idFactura,
-        ultLinea.NumeroLinea + 1,
-        factDescripcion.value,
-        factCantidad.value,
-        factPrecio.value
-      );
-      factDescripcion.innerHTML = "";
-      factCantidad.innerHTML = "";
-      factPrecio.innerHTML = "";
+      } else {
+        
+      }
+    }else{
+      let Factura = await getFactura(cita.CitaDB.NumeroFactura);
+        let _idFactura = Factura.FacturaDB._id;
+        let ultLinea = Factura.FacturaDB.Lineas[Factura.FacturaDB.Lineas.length - 1];
 
-      ImprimirDetalleFactura(Factura);
-  } 
-}
+        let linea = await RegistrarLineaFactura(
+          _idFactura,
+          ultLinea.NumeroLinea + 1,
+          factDescripcion.value,
+          factCantidad.value,
+          factPrecio.value
+        );
+        factDescripcion.innerHTML = "";
+        factCantidad.innerHTML = "";
+        factPrecio.innerHTML = "";
 
+        ImprimirDetalleFactura(Factura);
+    } 
+  }
 
 function ImprimirDetalleFactura(factura) {
 
@@ -286,6 +285,7 @@ btnEnviar.addEventListener('click', async function(){
     }
   }
 })
+
 function ValidarDatosCita(){
   if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
     MostrarError('Debe ingresar la calificacion de la mascota');
@@ -322,3 +322,36 @@ function ValidarDatosEstrellas(){
 }
 
 
+function ValidarDatosMedicacionCostos() {
+  let sfactDescripcion = factDescripcion.value;
+  let sfactCantidad = factCantidad.value;
+  let sfactPrecio = factPrecio.value;
+
+
+  if (sfactDescripcion == null || sfactDescripcion == undefined || sfactDescripcion == "") {
+      resaltarInputInvalido("txtDiagnostico");
+      MostrarError("¡La descripción es requerida!");
+      return false;
+  }
+
+  if (sfactCantidad == null || sfactCantidad == undefined || sfactCantidad == "") {
+      resaltarInputInvalido("txtCantidad");
+      MostrarError("¡La cantidad es requerida!");
+      return false;
+  }else if(Number(sfactCantidad) <= 0){
+    MostrarError('¡Debe ingresar una cantidad mayor a 0!');
+    resaltarInputInvalidoj("txtCantidad");
+    return false;
+  }
+
+  if (sfactPrecio == null || sfactPrecio == undefined || sfactPrecio == "") {
+    resaltarInputInvalido("txtPrecio");
+    MostrarError("¡El precio es requerido!");
+    return false;
+  }else if(Number(sfactPrecio) <= 0){
+    MostrarError('¡Debe ingresar un precio mayor a 0!');
+    resaltarInputInvalidoj("txtPrecio");
+    return false;
+  }
+  return true;
+}
