@@ -83,10 +83,12 @@ if (usuarioRol !== 3 && opcionVer === "ver") {
   boxExterna.classList.remove("hidden");
   tableInfoCita.classList.remove("hidden");
   boxDescripcion.classList.remove("hidden");
+  btnsVD.classList.remove('hidden');
 }else if(opcionVer === 'final' &&  estadoC === 'CANCELADA'){
    boxCalificacion.classList.add('hidden');
 }else if(usuarioRol !== 3 && opcionVer === 'final' && estadoC === "FINALIZADA"){
   titleCalf.textContent = "Calificación Veterinario";
+  btnsVD.classList.remove('hidden');
 }else if(usuarioRol === 3 && opcionVer === 'final'){
   boxCalificacion.classList.add('hidden');
 }
