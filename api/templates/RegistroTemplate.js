@@ -17,23 +17,25 @@ this.EnviarMail = (pNombreCompleto,pCorreo) => {
         from:process.env.MAILUSER,
         to:pCorreo,
         subject:'Correo de bienvenida',
-        html: `<table border="0" cellpadding="0" cellspacing="0" width="600px" background-color="2d3436" bgcolor
+        html: `
+        <table border="0" cellpadding="0" cellspacing="0" width="600px" background-color="2d3436" bgcolorbgcolor="#2d3436">
         <tr heigth="200px">
             <td>
-                <h1 style="color:#fff; text-align:center">
-                    Bienvenido
+            <p stryle="color:#000; text-align:center">
+            Hola 
+            <span>
+                ${pNombreCompleto}
+            </span>
+            </p>
+                <h1 style="color:#000; text-align:center">
+                    ¡Bienvenido a Moka veterinaria!
                 </h1>
-                <p stryle="color:#fff; text-align:center">
-                    <span style:"color:#e84343">
-                        ${pNombreCompleto}
-                    </span>
-                    a la aplicacion
-                </p>
+
             </td>
-    ]   </tr>
+       </tr>
         <tr>
             <td style="text-align:center;">
-            <ps tyle="color:#000;"> Un mundo de servicios a su disposición</p>
+            <p style="color:#000;"> Moka la mejor amiga de tu mascota.</p>
             </td>
         </tr>
         `
