@@ -174,7 +174,7 @@ tr {
 	align-items: center;
 }
 
-.diagnostico .cajasOut{
+.diagnostico .cajasOut {
 	width: 220px;
 }
 
@@ -323,42 +323,48 @@ tr {
 }
 
 .table-description {
-	width: 100%; 
+	width: 100%;
 }
 
 .table-description table {
-	border-collapse: collapse;
 	width: 100%;
+	border-collapse: collapse;
 	border-radius: 5px;
+	overflow: hidden;
 }
 
 .table-description thead {
+	width: 100%;
+
 }
 
-.table-description thead tr{
+.table-description thead tr {
 	width: 100%;
 	background-color: var(--verdeagua);
 	color: var(--blanco);
 }
 
-.table-description thead th {
+.table-description th {
 	width: 16.667%;
 	padding: 20px;
-	border: 1px solid #bbb;
 }
 
-.table-description tbody{
+.table-description tbody {
+	width: 100%;
 }
 
 .table-description tbody tr {
 	width: 100%;
+	background-color: #ccc;
+}
+.table-description tbody tr:nth-child(even){
+	background-color: #c7c7c7;
 }
 
 .table-description tbody td {
 	width: 16.667%;
 	padding: 20px;
 	color: #222;
-	border: 1px solid #bbb;
 }
 
 
@@ -392,9 +398,10 @@ tr {
 	width: 25%;
 }
 
-.box-4{
+.box-4 {
 	width: 60%;
 }
+
 .boxes-container {
 	width: 100%;
 	display: flex;
@@ -403,7 +410,7 @@ tr {
 	justify-content: space-evenly;
 }
 
-.agregar-btn{
+.agregar-btn {
 	width: 90%;
 	background-color: var(--verde);
 	border: none;
@@ -414,62 +421,60 @@ tr {
 	border-radius: 5px;
 }
 
-.agregar-btn:hover{
+.agregar-btn:hover {
 	background-color: var(--esmeralda);
 }
 
-.btn-doctor{
-	 background-color: var(--verdeagua);
+.btn-doctor {
+	background-color: var(--verdeagua);
 }
 
-.btn-doctor:hover{
+.btn-doctor:hover {
 	background-color: var(--turquesa);
 }
 
-.box-client th, .box-client td{
+.box-client th,
+.box-client td {
 	width: 33.33% !important;
 }
 
 
-.box-all{
+.box-all {
 	margin-top: 40px;
 }
 
-#boxDescripcion  p,
-#boxPrecio p{
+#boxDescripcion p,
+#boxPrecio p {
 	padding: 10px;
 }
 
-.box-medicamentos{
+.box-medicamentos {
 	display: flex;
 	width: 90%;
 }
 
-.boxInterna{
+.boxInterna {
 	width: 90%;
 	margin: 0 20px;
 }
 
-.box-externa{
+.box-externa {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 }
 
-.box-central{
+.box-central {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	width: 50%;
 }
 
-.btn-diag{
+.btn-diag {
 	width: 90%;
 }
 
-.btnDiag{
+.btnDiag {
 	width: 100%;
 }
-
-
-
