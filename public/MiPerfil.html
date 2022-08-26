@@ -51,7 +51,7 @@
 
                         <li class="list__inside">
                             <a href="Mascotas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i> <span id="misMascotas">Mis Mascotas</span></a>
                         </li>
                     </ul>
 
@@ -119,107 +119,108 @@
 
         <div class="home">
 
-            
+
 
             <div class="perfil-main">
                 <div class="perfil-contenido">
-                    <div class="orden" >
-                    <div class="box-usuario_img">
-                        <div class="box-img border-radius">
-                            <img id="FotoPerfilUser" class="FotoPerfilUser" >
+                    <div class="orden">
+                        <div class="box-usuario_img">
+                            <div class="box-img border-radius">
+                                <img id="FotoPerfilUser" class="FotoPerfilUser">
+                            </div>
+                            <div class="usuario border-radius">
+                                <p id="TxtUsuarioLogueado2"></p>
+                            </div>
+                            <div class="metodos-de-pago">
+                                <a href="metodosPago.html" class="agregar-metodos border-radius">
+                                    Métodos de pago
+                                </a>
+                            </div>
                         </div>
-                        <div class="usuario border-radius">
-                            <p id="TxtUsuarioLogueado2"></p>
-                        </div>
-                        <div class="metodos-de-pago">
-                            <a href="metodosPago.html" class="agregar-metodos border-radius">
-                                Métodos de pago
-                            </a>
-                        </div>
-                    </div>
-                    
 
-                    
-                    <div class="informacion-personal border-radius">
-                        <div class="titulo-info-usario">
-                            <h2>Información personal</h2>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Nombre: <span id="txtNombreP"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Apellido(s): <span id="txtApellidosP"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Identificación: <span id="txtCedulaP"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Correo electrónico: <span id="txtEmailP"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius">
-                            <p>Teléfono: <span id="txtPhoneP"></span></p>
-                        </div>
-                        <div class="box-info-usuario border-radius direccion">
-                            <p>Dirección: <span id="txtDireccionP"></span></p>
-                        </div>
-                        <button class="btn-editar border-radius" type="button" onclick="location.href='./MiPerfilEditable.html'">Editar información personal</button>
-                    </div>
-                </div>
-                    <div class="orden" >
-                    <div class="historial-de-pagos border-radius">
-                        <div class="titulo-historial">
-                            <h2>Historial de pagos</h2>
-                        </div>
-                        <table>
-                            <thead class="thTitle">
-                                <tr>
-                                    <th class="tblTitle">Fecha</th>
-                                    <th class="tblTitle">Costo</th>
-                                </tr>
-                            </thead>
-                            <tr>
-                                <td class="detalle">01/08/2022 14:00</td>
-                                <td class="precio">&#8353;5000</td>
-                            </tr>
-                            <tr>
-                                <td class="detalle">07/05/2022 13:00</td>
-                                <td class="precio">&#8353;5000</td>
-                            </tr>
-                            <tr>
-                                <td class="detalle">03/18/2022 15:00</td>
-                                <td class="precio">&#8353;5000</td>
-                            </tr>
-                            <tr>
-                                <td class="detalle">07/12/2022 18:00</td>
-                                <td class="precio">&#8353;5000</td>
-                            </tr>
-                            <tr>
-                                <td class="detalle">04/22/2022 20:00</td>
-                                <td class="precio">&#8353;5000</td>
-                            </tr>
-                        </table>
-                    </div>
-                
-                    <div class="historial-mascota border-radius">
-                        <div class="titulo-lastCitas">
-                            <h2>Últimas citas de mascotas</h2>
-                        </div>
-                        <table>
-                            <thead class="thTitle">
-                                <tr>
-                                    <th class="tblTitle">No. Cita</th>
-                                    <th class="tblTitle">Mascota</th>
-                                    <th class="tblTitle">Veterinario(a)</th>
-                                    <th class="tblTitle">Fecha</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbbody-ultimas-citas">
-                            </tbody>
 
-                        </table>
+
+                        <div class="informacion-personal border-radius">
+                            <div class="titulo-info-usario">
+                                <h2>Información personal</h2>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Nombre: <span id="txtNombreP"></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Apellido(s): <span id="txtApellidosP"></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Identificación: <span id="txtCedulaP"></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Correo electrónico: <span id="txtEmailP"></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius">
+                                <p>Teléfono: <span id="txtPhoneP"></span></p>
+                            </div>
+                            <div class="box-info-usuario border-radius direccion">
+                                <p>Dirección: <span id="txtDireccionP"></span></p>
+                            </div>
+                            <button class="btn-editar border-radius" type="button"
+                                onclick="location.href='./MiPerfilEditable.html'">Editar información personal</button>
+                        </div>
                     </div>
-                </div>
-                    <div class="InfoVetContainer-Principal">
+                    <div class="orden">
+                        <div class="historial-de-pagos border-radius hidden">
+                            <div class="titulo-historial">
+                                <h2>Historial de pagos</h2>
+                            </div>
+                            <table>
+                                <thead class="thTitle">
+                                    <tr>
+                                        <th class="tblTitle">Fecha</th>
+                                        <th class="tblTitle">Costo</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td class="detalle">01/08/2022 14:00</td>
+                                    <td class="precio">&#8353;5000</td>
+                                </tr>
+                                <tr>
+                                    <td class="detalle">07/05/2022 13:00</td>
+                                    <td class="precio">&#8353;5000</td>
+                                </tr>
+                                <tr>
+                                    <td class="detalle">03/18/2022 15:00</td>
+                                    <td class="precio">&#8353;5000</td>
+                                </tr>
+                                <tr>
+                                    <td class="detalle">07/12/2022 18:00</td>
+                                    <td class="precio">&#8353;5000</td>
+                                </tr>
+                                <tr>
+                                    <td class="detalle">04/22/2022 20:00</td>
+                                    <td class="precio">&#8353;5000</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="historial-mascota border-radius hidden">
+                            <div class="titulo-lastCitas">
+                                <h2>Últimas citas de mascotas</h2>
+                            </div>
+                            <table>
+                                <thead class="thTitle">
+                                    <tr>
+                                        <th class="tblTitle">No. Cita</th>
+                                        <th class="tblTitle">Mascota</th>
+                                        <th class="tblTitle">Veterinario(a)</th>
+                                        <th class="tblTitle">Fecha</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbbody-ultimas-citas">
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                    <div class="InfoVetContainer-Principal hidden">
                         <div class="InfoVetContainer border-radius">
                             <div class="titulo-lastCitas">
                                 <h2>Información Veterinario</h2>
@@ -250,7 +251,7 @@
     <script src="./js/services/VeterinarioService.js"></script>
     <script src="./js/controllers/MiPerfilController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
-   
+
 </body>
 
 </html>
