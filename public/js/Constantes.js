@@ -32,3 +32,24 @@ function resaltarInputInvalido(pinputID) {
   }, 5000);
 }
 
+
+function shortDate(pDate) {
+  let fecha = new Date(pDate);
+  return fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear() + ' '+ fecha.getHours() + ':'+ fecha.getMinutes();
+}
+
+function FilterStartDate(pFecha) {
+
+  let fecha = new Date(pFecha);
+        fecha.setHours(fecha.getHours()+0);
+        fecha =  fecha.toISOString();
+  return fecha; 
+}
+
+function FilterEndDate(pFecha) {
+
+  let fecha = new Date(pFecha);
+        fecha.setHours(fecha.getHours()+24);
+        fecha =  fecha.toISOString();
+  return fecha; 
+}

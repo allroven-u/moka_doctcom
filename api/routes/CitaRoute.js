@@ -123,7 +123,8 @@ router.get('/ListarCitasVet', (req, res) => {
 router.get('/FiltarCita', (req, res) => {
     let params = req.query;
     
-    Cita.find({"Fecha":{"$gte" : new Date(params.fechaInicio),"$lte": new Date(params.fechaFinal)}},(err, ListaCitasBD) => {
+    Cita.find({"Fecha":{"$gte" : params.fechaInicio,"$lte": params.fechaFinal},"Estado":{"$in" : params.Estado}
+},(err, ListaCitasBD) => {
         if (err) {
             res.json({
                 resultado: false,
