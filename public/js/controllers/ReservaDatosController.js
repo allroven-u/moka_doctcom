@@ -2,9 +2,12 @@
 let listaReservas = [];
 
 
-
+let factDescripcion = document.getElementById("txtDescripcionS");
+let factCantidad = document.getElementById("txtCantidad");
+let factPrecio = document.getElementById("txtPrecio");
 const btnEnviar = document.getElementById('enviar');
 const btnFactura = document.getElementById('factura');
+const btnAgregarSub = document.getElementById('agregar-subdoc');
 
 window.addEventListener('load', () =>{
 
@@ -162,6 +165,38 @@ btnEnviar.addEventListener('click', async function(){
     if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
       MostrarError('Debe ingresar la calificacion de la mascota');
       return false;
+    }
+    if(txtDescripcion.value === null || txtDescripcion.value === "" || txtDescripcion.value === undefined){
+        MostrarError('Debe ingresar las observaciones');
+        resaltarInputInvalido(txtDescripcion);
+    }
+    return true;
+  }
+
+
+  function ValidarReservaServicios(){
+    if(factDescripcion.value === null || factDescripcion.value === "" || factDescripcion.value === undefined){
+        MostrarError('Debe ingresar la descripción!');
+        resaltarInputInvalido(factDescripcion);
+        return false;
+    }
+    if(factCantidad.value === null || factCantidad.value === "" || factCantidad.value === undefined){
+        MostrarError('Debe ingresar la cantidad!');
+        resaltarInputInvalido(factCantidad);
+        return false;
+    }else if(Number(factCantidad.value) <= 0){
+        MostrarError('Debe ingresar una cantidad mayor a 0!');
+        resaltarInputInvalido(factCantidad);
+        return false;
+    }
+    if(factPrecio.value === null || factPrecio.value === "" || factPrecio.value === undefined){
+        MostrarError('Debe ingresar el precio!');
+        resaltarInputInvalidoj(factPrecio);
+        return false;
+    }else if(Number(factPrecio.value) <= 0){
+        MostrarError('Debe ingresar un precio mayor a 0!');
+        resaltarInputInvalidoj(factPrecio);
+        return false;
     }
     return true;
   }
