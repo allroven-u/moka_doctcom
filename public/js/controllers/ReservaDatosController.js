@@ -168,35 +168,36 @@ btnEnviar.addEventListener('click', async function(){
     }
     if(txtDescripcion.value === null || txtDescripcion.value === "" || txtDescripcion.value === undefined){
         MostrarError('Debe ingresar las observaciones');
-        resaltarInputInvalido(txtDescripcion);
+        resaltarInputInvalido("txtDescricionO");
         return false;
     }
     return true;
   }
+/////////////////////
 
 
   function ValidarReservaServicios(){
     if(factDescripcion.value === null || factDescripcion.value === "" || factDescripcion.value === undefined){
         MostrarError('Debe ingresar la descripción!');
-        resaltarInputInvalido(factDescripcion);
+        resaltarInputInvalido("txtDescripcionS");
         return false;
     }
     if(factCantidad.value === null || factCantidad.value === "" || factCantidad.value === undefined){
         MostrarError('Debe ingresar la cantidad!');
-        resaltarInputInvalido(factCantidad);
+        resaltarInputInvalido("txtCantidad");
         return false;
     }else if(Number(factCantidad.value) <= 0){
         MostrarError('Debe ingresar una cantidad mayor a 0!');
-        resaltarInputInvalido(factCantidad);
+        resaltarInputInvalido("txtCantidad");
         return false;
     }
     if(factPrecio.value === null || factPrecio.value === "" || factPrecio.value === undefined){
         MostrarError('Debe ingresar el precio!');
-        resaltarInputInvalidoj(factPrecio);
+        resaltarInputInvalidoj("txtPrecio");
         return false;
     }else if(Number(factPrecio.value) <= 0){
         MostrarError('Debe ingresar un precio mayor a 0!');
-        resaltarInputInvalidoj(factPrecio);
+        resaltarInputInvalidoj("txtPrecio");
         return false;
     }
     return true;
