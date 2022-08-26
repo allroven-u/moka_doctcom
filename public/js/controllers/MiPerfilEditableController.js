@@ -252,13 +252,13 @@ function ValidarDatosUser() {
     }
     if (isphone == false) {
         inputtxtPhoneP.classList.add("rError")
-        MostrarError("¡El teléfono debe contener solo números! No puede contener caracteres especiales como guiones.");
+        MostrarError("¡El teléfono debe contener solo números! No puede contener caracteres especiales como guiones!");
         return false;
     }
 
     if (sConttxtPhoneP.length !== 8) {
         inputtxtPhoneP.classList.add("rError")
-        MostrarError("¡El teléfono no debe contener mas, ni menos de 8 números.");
+        MostrarError("¡El teléfono no debe contener mas, ni menos de 8 números!");
         return false;
     }
     else {
