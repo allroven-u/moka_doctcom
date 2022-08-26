@@ -138,7 +138,7 @@
 
                 <div class="tFiltros">
 
-                    <div for="txtNumCita" class="filtrosCajas">
+                    <!-- <div for="txtNumCita" class="filtrosCajas">
                         <label for="txtNumCita">No. cita</label>
                         <input id="txtNumCita" class="cajasCitas" type="text">
                     </div>
@@ -154,7 +154,13 @@
                     <div for="txtVeterinarioCita" class="filtrosCajas">
                         <label for="txtVeterinarioCita">Veterinario(a)</label>
                         <input id="txtVeterinarioCita" class="cajasCitas" type="text">
+                    </div> -->
+                    <div for="txtFiltro" class="filtrosCajas">
+                        <label for="txtFiltro">Filtrar</label>
+                        <input id="txtFiltro" class="cajasCitas" type="text">
                     </div>
+                    
+
                     <div class="filtroFecha">
                         <div for="DateFecha1" class="filtrosCajas">
                             <label for="DateFecha1">Fecha inicio</label>
@@ -174,15 +180,15 @@
                         <p>Estado cita</p>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoAgendada">Agendada</label>
-                            <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                            <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox" value="AGENDADA">
                         </div>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoFinalizada">Finalizada</label>
-                            <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                            <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox" value="FINALIZADA">
                         </div>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoCancelada">Cancelada</label>
-                            <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
+                            <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox" value="CANCELADA">
                         </div>
                     </div>
 
