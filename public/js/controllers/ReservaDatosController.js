@@ -166,6 +166,10 @@ btnEnviar.addEventListener('click', async function(){
       MostrarError('Debe ingresar la calificacion de la mascota');
       return false;
     }
+    if(txtDescripcion.value === null || txtDescripcion.value === "" || txtDescripcion.value === undefined){
+        MostrarError('Debe ingresar las observaciones');
+        resaltarInputInvalido(txtDescripcion);
+    }
     return true;
   }
 
