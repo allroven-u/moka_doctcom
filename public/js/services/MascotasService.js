@@ -77,6 +77,24 @@ async function EditarDatosMascota(pId, pDireccion, pEstado, pFoto) {
   return result;
 }
 
+async function EditarCalificacionPromMascota(pId, pCalificacionPromedio) {
+  let result = {};
+    await axios({
+      method:'put',
+      url: apiUrl + '/ModificarMascota',
+      responseType: 'json',
+      data: {
+        '_id': pId,
+        'CalificacionPromedio': pCalificacionPromedio,
+      }
+    }).then((res) => {
+      result = res.data;
+  }).catch((err) => {
+      console.log(err);
+  });
+  return result;
+}
+
 async function DesactivarMascota(pId){
   let result = {};
   await axios({

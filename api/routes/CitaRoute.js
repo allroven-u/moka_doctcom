@@ -120,8 +120,6 @@ router.get('/ListarCitasVet', (req, res) => {
 });
 
 
-
-
 router.get('/FiltarCita', (req, res) => {
     let params = req.query;
     
@@ -140,6 +138,33 @@ router.get('/FiltarCita', (req, res) => {
             });
         }
     },).sort({$natural:-1}).limit(50);
+});
+
+
+router.get('/AvgCalificacionMascota', (req, res) => {
+    let params = req.query;
+
+    Cita.aggregate([ 
+        { "$match": {IdMascota: params.IdMascota} },
+        {
+            "$group": {
+                _id: "$IdMascota", "Promedio":{$avg:"$Calificacion"}
+                }
+        }] ,(err, info) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                info
+            });
+        }
+    },);
 });
 
 router.get('/BuscarCita', (req, res) => {

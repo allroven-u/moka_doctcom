@@ -103,6 +103,7 @@ router.get('/BuscarUsuario', (req, res) => {
 });
 
 
+
 router.get('/AutenticarUsuario', (req, res) => {
     let params = req.query;
     Usuario.findOne({

@@ -108,3 +108,26 @@ function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
 
     return result;
   }
+
+
+  async function UpdateReservaCalificacion(pNumR, pCalificacion) {
+    let result ={}; 
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarReservacion',
+        responseType: 'json',
+        data: {
+          'NumeroReservacion': pNumR,  
+          'Calificacion':pCalificacion 
+        }
+
+       })
+      .then(function (res) {
+        result = res.data;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    return result;
+  }

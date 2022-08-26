@@ -9,6 +9,7 @@ let listaUsuarios = [];
 let factDescripcion = document.getElementById("txtDiagnostico");
 let factCantidad = document.getElementById("txtCantidad");
 let factPrecio = document.getElementById("txtPrecio");
+let Diagnostico = document.getElementById("txtDescricionR");
 let factCita = {};
 const btnEnviar = document.getElementById('enviar');
 const btnFactura = document.getElementById('factura');
@@ -51,7 +52,7 @@ async function IdentificarAccion() {
   usuarioRol = urlParams.get("rol");
   opcionVer = urlParams.get("opcion");
   estadoC = urlParams.get("estado");
-  console.log(opcionVer);
+ // console.log(opcionVer);
 }
 
 usuarioRol = Number(usuarioRol);
@@ -131,7 +132,7 @@ const estrellas = document.querySelectorAll('.fa-star');
       for(let p = 0; p  < cantidadS; p++){
         estrellas[p].classList.add('star');
       }
-      console.log(cantidadS);
+      console.log(cantidadS) + 'Estrellas';
       return cantidadS;
     })
   }
@@ -152,7 +153,7 @@ async function llenarCompletarCita() {
       }
  
       let Factura = await getFactura(factCita.NumeroFactura);
-      console.log(Factura)
+    
       if (Factura.FacturaDB != null && Factura.FacturaDB != undefined && Factura.FacturaDB !=""){
            ImprimirDetalleFactura(Factura); 
       }
@@ -200,9 +201,9 @@ async function agregarLineas() {
     );
     if (fact.resultado == true) {
       let NumNewFactura = fact.facturaDB.NumeroFactura;
-      //   console.log(NumNewFactura);
+ 
       let CitaUpdate = await UpdateCitaFactura(_id, NumNewFactura);
-      console.log(CitaUpdate);
+
       let linea = await RegistrarLineaFactura(
         fact.facturaDB._id,
         1,
@@ -214,7 +215,7 @@ async function agregarLineas() {
       factCantidad.innerHTML = "";
       factPrecio.innerHTML = "";
 
-      ImprimirDetalleFactura(fact.facturaDB);
+      ImprimirDetalleFactura(fact);
 
     } else {
       
@@ -223,7 +224,7 @@ async function agregarLineas() {
     let Factura = await getFactura(cita.CitaDB.NumeroFactura);
       let _idFactura = Factura.FacturaDB._id;
       let ultLinea = Factura.FacturaDB.Lineas[Factura.FacturaDB.Lineas.length - 1];
-      console.log(ultLinea.NumeroLinea + 1);
+
       let linea = await RegistrarLineaFactura(
         _idFactura,
         ultLinea.NumeroLinea + 1,
@@ -273,8 +274,9 @@ function ImprimirDetalleFactura(factura) {
 btnEnviar.addEventListener('click', async function(){
   for (let i = 0; i < listaCitas.length; i++) {
     if (listaCitas[i]._id === _id) {
+      let pIdMascota = listaCitas[i].IdMascota;
       if (ValidarDatosCita() === true) {
-        let result = await  UpdateCitaCalificacion(_id, cantidadS) 
+        let result = await  UpdateCitaCalificacion(_id, cantidadS,pIdMascota,Diagnostico.value) 
         if (result != {} && result.resultado) {
             ConfirmarDatos(result.msj);
         }else{
