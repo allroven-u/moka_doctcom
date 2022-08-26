@@ -204,6 +204,29 @@ router.put('/CancelarCita', function (req, res) {
     }
     );
 });
+
+router.put('/ModificarCita', function (req, res) {
+    let body = req.body;
+    Cita.updateMany({_id: body._id }, {
+        $set: req.body 
+    }, function (err, info) {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se actualizaron de manera correcta',
+                info
+            });
+        }
+    }
+    );
+});
+
 // router.put('/CancelarCita', function(req, res){
 //     let body = req.body;
 //     Cita.updateOne({ NumeroCita: body.NumeroCita }, {
