@@ -277,8 +277,8 @@ tr {
 }
 
 .cajas {
+	width: 90%;
 	padding: 15px;
-	margin-bottom: 10px;
 	border-radius: 5px;
 	border: none;
 	border-left: 10px solid var(--blanco);
@@ -413,7 +413,7 @@ tr {
 }
 
 .agregar-btn{
-	width: 200px;
+	width: 90%;
 	background-color: var(--verde);
 	border: none;
 	padding: 12px 75px;
@@ -451,16 +451,25 @@ tr {
 
 .box-medicamentos{
 	display: flex;
-	width: 100%;
+	width: 90%;
 }
 
 .boxInterna{
-	width: 25%;
+	width: 90%;
 	margin: 0 20px;
 }
 
 .box-externa{
-	width: 100%;	
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.box-central{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 50%;
 }
 
 .btn-diag{

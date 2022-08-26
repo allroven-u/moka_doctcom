@@ -208,22 +208,27 @@
                         <div class="DescripcionParrafo">
                             <div class="box-externa hidden">
                                 <div id="boxPrecio" class="box-medicamentos">
-                                    <div class="boxInterna">
-                                        <p style="color: #222;">Descripción</p>
-                                        <input id="txtDiagnostico" class="cajas white"></input>
+                                    <div class="box-central">
+                                        <div class="boxInterna">
+                                            <p style="color: #222;">Descripción</p>
+                                            <input id="txtDiagnostico" class="cajas white"></input>
+                                        </div>
+                                        <div class="boxInterna">
+                                            <p style="color:#222;">Cantidad</p>
+                                            <input id="txtCantidad" class="cajas white">
+                                        </div>
+
                                     </div>
-                                    <div class="boxInterna">
-                                        <p style="color:#222;">Cantidad</p>
-                                        <input id="txtCantidad" class="cajas white">
-                                    </div>
-                                    <div class="boxInterna">
-                                        <p style="color:#222;">Precio</p>
-                                        <input id="txtPrecio" class="cajas white">
-                                    </div>
-                                    <div id="boxBtn" class="boxInterna">
-                                        <p>&nbsp;</p>
-                                        <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir"
-                                            onclick="agregarLineas()">
+                                    <div class="box-central">
+                                        <div class="boxInterna">
+                                            <p style="color:#222;">Precio</p>
+                                            <input id="txtPrecio" class="cajas white">
+                                        </div>
+                                        <div id="boxBtn" class="boxInterna">
+                                            <p>&nbsp;</p>
+                                            <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir"
+                                                onclick="agregarLineas()">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
