@@ -62,6 +62,26 @@ router.get('/ListarUsuario', (req, res) => {
     });
 });
 
+router.get('/BuscarUsuarioByRol', (req, res) => {
+    let params = req.query;
+    Usuario.find({"Rol":params.Rol},(err, ListaUsuariosBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaUsuariosBD
+            });
+        }
+    }).sort({$natural:-1});
+});
+
+
 router.get('/BuscarUsuario', (req, res) => {
     let params = req.query;
     Usuario.findOne({ Identificacion: params.Identificacion }, (err, usuarioDB) => {
@@ -81,6 +101,7 @@ router.get('/BuscarUsuario', (req, res) => {
         }
     });
 });
+
 
 router.get('/AutenticarUsuario', (req, res) => {
     let params = req.query;

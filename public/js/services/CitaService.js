@@ -176,7 +176,7 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
     return result;
   }
 
-
+  
   async function UpdateCitaCalificacion(p_id, pCalificacion) {
     let result ={}; 
       await axios({
