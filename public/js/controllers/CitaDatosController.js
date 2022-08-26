@@ -199,44 +199,73 @@ async function agregarLineas() {
       new Date().toISOString(),
       ""
     );
+
+
+
     if (fact.resultado == true) {
       let NumNewFactura = fact.facturaDB.NumeroFactura;
-
       let CitaUpdate = await UpdateCitaFactura(_id, NumNewFactura);
 
+
+      if (ValidarDatosMedicacionCostos() === true) {
+        let linea = await RegistrarLineaFactura(
+          fact.facturaDB._id,
+          1,
+          factDescripcion.value,
+          factCantidad.value,
+          factPrecio.value
+        );
+        if (linea != {} && linea.resultado) {
+          let fact2 = await getFactura(cita.CitaDB.NumeroFactura);
+          ConfirmarDatos(linea.msj);
+          ImprimirDetalleFactura(fact2);
+          setTimeout(function () {
+            location.reload();
+          }, 2000);
+        } else {
+          MostrarError(linea.msj);
+        }
+        factDescripcion.innerHTML = "";
+        factCantidad.innerHTML = "";
+        factPrecio.innerHTML = "";
+
+
+      }
+
+    }
+
+
+
+  } else {
+    let Factura = await getFactura(cita.CitaDB.NumeroFactura);
+    let _idFactura = Factura.FacturaDB._id;
+    let ultLinea = Factura.FacturaDB.Lineas;
+    ultLinea[Factura.FacturaDB.Lineas.length - 1];
+
+    if (ValidarDatosMedicacionCostos() === true) {
+
       let linea = await RegistrarLineaFactura(
-        fact.facturaDB._id,
-        1,
+        _idFactura,
+        ultLinea.NumeroLinea + 1,
         factDescripcion.value,
         factCantidad.value,
         factPrecio.value
       );
+      if (linea != {} && linea.resultado) {
+        ConfirmarDatos(linea.msj);
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
+        ImprimirDetalleFactura(Factura);
+      } else {
+        MostrarError(linea.msj);
+      }
       factDescripcion.innerHTML = "";
       factCantidad.innerHTML = "";
       factPrecio.innerHTML = "";
 
-      ImprimirDetalleFactura(fact);
-
-    } else {
-
     }
-  } else {
-    let Factura = await getFactura(cita.CitaDB.NumeroFactura);
-    let _idFactura = Factura.FacturaDB._id;
-    let ultLinea = Factura.FacturaDB.Lineas[Factura.FacturaDB.Lineas.length - 1];
 
-    let linea = await RegistrarLineaFactura(
-      _idFactura,
-      ultLinea.NumeroLinea + 1,
-      factDescripcion.value,
-      factCantidad.value,
-      factPrecio.value
-    );
-    factDescripcion.innerHTML = "";
-    factCantidad.innerHTML = "";
-    factPrecio.innerHTML = "";
-
-    ImprimirDetalleFactura(Factura);
   }
 }
 
@@ -247,21 +276,22 @@ function ImprimirDetalleFactura(factura) {
 
   Tbody.innerHTML = "";
 
-  let cantLinea = factura.FacturaDB.Lineas.length;
+  let cantLinea = factura.FacturaDB.Lineas;
+  console.log(cantLinea);
 
 
-  for (let i = 0; i < cantLinea; i++) {
-
-    let fila = Tbody.insertRow();
-    let linea = factura.FacturaDB.Lineas[i];
-
-    let celdaDescripcion = fila.insertCell();
-    celdaDescripcion.innerHTML = linea.Descripcion;
-    let celdaCantidad = fila.insertCell();
-    celdaCantidad.innerHTML = linea.Cantidad;
-    let celdaPrecio = fila.insertCell();
-    celdaPrecio.innerHTML = linea.PrecioUnitario;
-  }
+    for (let i = 0; i < cantLinea.length; i++) {
+      let fila = Tbody.insertRow();
+      let linea = factura.FacturaDB.Lineas[i];
+  
+      let celdaDescripcion = fila.insertCell();
+      celdaDescripcion.innerHTML = linea.Descripcion;
+      let celdaCantidad = fila.insertCell();
+      celdaCantidad.innerHTML = linea.Cantidad;
+      let celdaPrecio = fila.insertCell();
+      celdaPrecio.innerHTML = linea.PrecioUnitario;
+    }
+ 
 
 }
 
