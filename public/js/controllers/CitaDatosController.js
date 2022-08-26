@@ -283,7 +283,6 @@ function ImprimirDetalleFactura(factura) {
     for (let i = 0; i < cantLinea.length; i++) {
       let fila = Tbody.insertRow();
       let linea = factura.FacturaDB.Lineas[i];
-  
       let celdaDescripcion = fila.insertCell();
       celdaDescripcion.innerHTML = linea.Descripcion;
       let celdaCantidad = fila.insertCell();
