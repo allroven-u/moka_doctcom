@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 
-this.EnviarMail = (pNombreCompleto,pCorreo) => {
+this.EnviarMail = (pCorreo) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth:{
@@ -16,20 +16,17 @@ this.EnviarMail = (pNombreCompleto,pCorreo) => {
     let mailOptions = {
         from:process.env.MAILUSER,
         to:pCorreo,
-        subject:'Correo de bienvenida',
+        subject:'Correo de recuperación',
         html: `
         <table border="0" cellpadding="0" cellspacing="0" width="600px" background-color="2d3436">
         <tr heigth="200px">
             <td>
-            <p stryle="color:#000; text-align:center">
-            Hola 
-            <span>
-                ${pNombreCompleto}
-            </span>
-            </p>
-                <h1 style="color:#000; text-align:center">
-                    ¡Bienvenido a Moka veterinaria!
-                </h1>
+                <h3 style="color:#000; text-align:center">
+                    ¡El proceso de recuperación de contraseña fue realizado con éxito!
+                </h3>
+                
+                <p style="color:#000;"> Usuario: ${pCorreo} </p>
+                <p style="color:#000;"> Contraseña: Df1234</p>
 
             </td>
        </tr>

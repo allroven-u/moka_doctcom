@@ -147,6 +147,27 @@ async function getUsuariosArray(){
     return result;
   }
 
+  async function RecuperarCotrasenhaUsuario(pEmail) {
+    let result ={};
+      await axios({
+        method:'put',
+        url: apiUrl + '/RecuperarContrasenha',
+        responseType: 'json',
+        data: {
+          'Email': pEmail,
+        }
+
+       })
+      .then(function (res) {
+        result = res;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+
+    return result;
+  }
 
   async function RegistrarTarjetaNueva(p_id,pNombre,pNumeroTarjeta,pMesVencimiento,pAnioVencimiento,pCVV) {
     let result = {};

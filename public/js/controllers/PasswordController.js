@@ -97,7 +97,24 @@ async function CambiarPassword(){
     }
     return result;
 }
+// let btnRecuperarC = document.getElementById('btnRecuperar');
+// btnRecuperarC.addEventListener('click',RecuperarContrasenha);
+async function RecuperarContrasenha(){
+    let sEmail = inputNombreC.value;
+    console.log(sEmail)
 
+    for (let i = 0; i < listaUsuariosC.length; i++) {
+        if(listaUsuariosC[i].Email == sEmail ){
+            await RecuperarCotrasenhaUsuario(sEmail);
+            ConfirmarDatos('¡Se le ha enviado un correo electrónico con su nueva contraseña!');
+            return
+        } else{
+            if (i == listaUsuariosC.length-1) {
+                MostrarError('¡La cuenta de correo Ingresada no existe!')
+            }
+        }  
+    }
+}
 
 
 function limpiarForm(idForm){
