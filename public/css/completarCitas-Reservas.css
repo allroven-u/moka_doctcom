@@ -341,7 +341,7 @@ tr {
 }
 
 .table-description thead tr{
-	display: contents;
+	display: block;
 	width: 100%;
 }
 
@@ -357,7 +357,7 @@ tr {
 
 .table-description tbody tr {
 	width: 100%;
-	display: contents;
+	display: block;
 }
 
 .table-description tbody td {
@@ -366,9 +366,6 @@ tr {
 	color: #222;
 	border: 1px solid #bbb;
 }
-
-
-
 
 
 .headCompletarCita {
