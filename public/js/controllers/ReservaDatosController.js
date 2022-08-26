@@ -167,36 +167,37 @@ btnEnviar.addEventListener('click', async function(){
       return false;
     }
     if(txtDescripcion.value === null || txtDescripcion.value === "" || txtDescripcion.value === undefined){
-        MostrarError('¡Debe ingresar las observaciones!');
-        resaltarInputInvalido(txtDescripcion);
+        MostrarError('Debe ingresar las observaciones!');
+        resaltarInputInvalido("txtDescricionO");
         return false;
     }
     return true;
   }
+/////////////////////
 
 
   function ValidarReservaServicios(){
     if(factDescripcion.value === null || factDescripcion.value === "" || factDescripcion.value === undefined){
-        MostrarError('¡Debe ingresar la descripción!');
-        resaltarInputInvalido(factDescripcion);
+        MostrarError('Debe ingresar la descripción!');
+        resaltarInputInvalido("txtDescripcionS");
         return false;
     }
     if(factCantidad.value === null || factCantidad.value === "" || factCantidad.value === undefined){
-        MostrarError('¡Debe ingresar la cantidad!');
-        resaltarInputInvalido(factCantidad);
+        MostrarError('Debe ingresar la cantidad!');
+        resaltarInputInvalido("txtCantidad");
         return false;
     }else if(Number(factCantidad.value) <= 0){
-        MostrarError('¡Debe ingresar una cantidad mayor a 0!');
-        resaltarInputInvalido(factCantidad);
+        MostrarError('Debe ingresar una cantidad mayor a 0!');
+        resaltarInputInvalido("txtCantidad");
         return false;
     }
     if(factPrecio.value === null || factPrecio.value === "" || factPrecio.value === undefined){
-        MostrarError('¡Debe ingresar el precio!');
-        resaltarInputInvalidoj(factPrecio);
+        MostrarError('Debe ingresar el precio!');
+        resaltarInputInvalidoj("txtPrecio");
         return false;
     }else if(Number(factPrecio.value) <= 0){
-        MostrarError('¡Debe ingresar un precio mayor a 0!');
-        resaltarInputInvalidoj(factPrecio);
+        MostrarError('Debe ingresar un precio mayor a 0!');
+        resaltarInputInvalidoj("txtPrecio");
         return false;
     }
     return true;
