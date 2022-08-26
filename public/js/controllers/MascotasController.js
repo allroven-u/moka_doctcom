@@ -42,7 +42,16 @@ btnAnnadirMascota.addEventListener('click', function () {
 GetlistaMascota()
 
 async function GetlistaMascota() {
-    let result = await getMascotasArray(userSessionM.Identificacion);
+    let result=[];
+    if (userSessionM.Rol == 2) {
+        result = await getMascotasArray(userSessionM.Identificacion);
+    }else{
+        result = await getMascotasArrayAdmin();
+        console.log(result)
+    }
+
+
+    
     if (result != {} && result.resultado == true) {
       listaMascotas = result.MascotasDB;
       await imprimirMascotas();

@@ -15,6 +15,18 @@ async function getMascotasArray(idCliente){
   return result;
 }
 
+async function getMascotasArrayAdmin(){
+  let result = {};
+  await  axios.get(apiUrl + '/ListarMascota', {
+    responseType: 'json',
+  }).then((res)=>{
+    result = res.data;
+  }).catch((err)=>{
+    console.log(err);
+  });
+  return result;
+}
+
 async function RegistrarMascota(pIdUsuario,pMascota,pDireccion,platitud,plongitud,pFoto) {
   let result ={};
     await axios({
