@@ -14,10 +14,10 @@ async function getCitasArray(){
  return result;
 };
 
-async function FiltrarCitas(pFecha1,pFecha2){
+async function FiltrarCitas(pFecha1,pFecha2,pEstado){
   let result = {};
  
-  await  axios.get(apiUrl + '/FiltarCita',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2}} , {
+  await  axios.get(apiUrl + '/FiltarCita',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2,Estado:pEstado}} , {
     responseType: 'json'
   }).then((res)=>{
     result = res.data
