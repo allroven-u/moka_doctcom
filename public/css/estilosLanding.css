@@ -1,4 +1,13 @@
 @import url('estilosGenerales.css');
+html {
+	scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
 
 body {
     background-image: url('../assets/img/350832-4k-wallpaper.jpg');
@@ -226,7 +235,7 @@ h2 {
 .info h2 {
     color: #222;
     font-size: 55px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .info h2 span {
@@ -245,6 +254,15 @@ h2 {
 .container-info p {
     text-align: justify;
     font-size: 18px;
+
+}
+
+.nuestros_servios{
+    margin-bottom: 50px;
+}
+
+.nuestros_servios_texto{
+    margin-bottom: 10px;
 }
 
 .info-img {
