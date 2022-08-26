@@ -157,7 +157,7 @@ async function llenarCompletarCita() {
 
 
       inputNumReservaDatos.innerHTML =
-        "Cita Numero: " + listaCitas[i].NumeroCita;
+        "Número de cita: " + listaCitas[i].NumeroCita;
       inputNombreReservaDatos.innerHTML = listaCitas[i].NombreMascota;
 
       OutnumCita.innerHTML = listaCitas[i].NumeroCita;
