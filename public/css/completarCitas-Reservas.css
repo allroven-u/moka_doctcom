@@ -15,6 +15,10 @@ h2 {
 	width: 100%;
 }
 
+.container{
+	max-width: 1600px;
+}
+
 .infoTd {
 	border: 1px solid var(--silver);
 	border-radius: 5px;
