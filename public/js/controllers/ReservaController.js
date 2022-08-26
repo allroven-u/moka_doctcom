@@ -163,7 +163,7 @@ function ImprimirListaReservas(ListaReservasBD) {
 
         } else {
             let BotonV = document.createElement('a');
-            BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol);
+            BotonV.setAttribute('href', '/public/VerReservacionDatos.html?_id=' + reserva._id + '&rol=' + userSessionR.Rol + '&opcion=final' + "&estado=" + reserva.Estado);
             let iconoV = document.createElement('i');
             iconoV.classList.add("fa-solid")
             iconoV.classList.add("fa-eye")
