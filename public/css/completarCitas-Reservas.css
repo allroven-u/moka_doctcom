@@ -165,7 +165,6 @@ tr {
 	border-radius: 0 0 5px 5px;
 	color: var(--blanco);
 	padding: 20px;
-	margin-top: 0%;
 }
 
 .diagnostico {
@@ -328,41 +327,36 @@ tr {
 }
 
 .table-description table {
-	width: 100%;
-	overflow: hidden;
 	border-collapse: collapse;
+	width: 100%;
 	border-radius: 5px;
 }
 
 .table-description thead {
+}
+
+.table-description thead tr{
 	width: 100%;
 	background-color: var(--verdeagua);
 	color: var(--blanco);
 }
 
-.table-description thead tr{
-	display: block;
-	width: 100%;
-}
-
 .table-description thead th {
-	width: 16.50%;
-	padding: 10px 0px;
+	width: 16.667%;
+	padding: 20px;
 	border: 1px solid #bbb;
 }
-.table-description tbody{
-	width: 100%;
 
+.table-description tbody{
 }
 
 .table-description tbody tr {
 	width: 100%;
-	display: block;
 }
 
 .table-description tbody td {
-	width: 16.50%;
-	padding: 10px 10px;
+	width: 16.667%;
+	padding: 20px;
 	color: #222;
 	border: 1px solid #bbb;
 }
@@ -433,7 +427,7 @@ tr {
 }
 
 .box-client th, .box-client td{
-	width: 50% !important;
+	width: 33.33% !important;
 }
 
 
