@@ -119,9 +119,11 @@
 
         <div class="home">
 
+            
 
             <div class="perfil-main">
                 <div class="perfil-contenido">
+                    <div class="orden" >
                     <div class="box-usuario_img">
                         <div class="box-img border-radius">
                             <img id="FotoPerfilUser" class="FotoPerfilUser" >
@@ -135,6 +137,9 @@
                             </a>
                         </div>
                     </div>
+                    
+
+                    
                     <div class="informacion-personal border-radius">
                         <div class="titulo-info-usario">
                             <h2>Información personal</h2>
@@ -158,8 +163,9 @@
                             <p>Dirección: <span id="txtDireccionP"></span></p>
                         </div>
                         <button class="btn-editar border-radius" type="button" onclick="location.href='./MiPerfilEditable.html'">Editar información personal</button>
-
                     </div>
+                </div>
+                    <div class="orden" >
                     <div class="historial-de-pagos border-radius">
                         <div class="titulo-historial">
                             <h2>Historial de pagos</h2>
@@ -193,6 +199,7 @@
                             </tr>
                         </table>
                     </div>
+                
                     <div class="historial-mascota border-radius">
                         <div class="titulo-lastCitas">
                             <h2>Últimas citas de mascotas</h2>
@@ -212,6 +219,21 @@
                         </table>
                     </div>
                 </div>
+                    <div class="InfoVetContainer-Principal">
+                        <div class="InfoVetContainer border-radius">
+                            <div class="titulo-lastCitas">
+                                <h2>Información Veterinario</h2>
+                            </div>
+                            <div class="box-info-vet border-radius">
+                                <p>Especialidad: <span id="txtEspecialidad"></span></p>
+                            </div>
+                            <div class="box-info-vet border-radius">
+                                <p>Acerca de: <span id="txtInfoVet"></span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
             <!--PERFIL USUSARIO-->
         </div>
@@ -225,6 +247,7 @@
     <script src="./js/Constantes.js"></script>
     <script src="./js/services/UsuarioService.js"></script>
     <script src="./js/services/SessionService.js"></script>
+    <script src="./js/services/VeterinarioService.js"></script>
     <script src="./js/controllers/MiPerfilController.js"></script>
     <script src="./js/controllers/AppController.js"></script>
    

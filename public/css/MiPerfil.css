@@ -7,7 +7,8 @@
 .historial-de-pagos,
 .historial-mascota,
 .informacion-personal,
-.box-usuario_img{
+.box-usuario_img,
+.InfoVetContainer{
     margin: 20px;
 }
 
@@ -18,11 +19,12 @@
 }
 
 .perfil-contenido {
-    width: 80%;
+    width: 100%;
+    max-width: 1600px;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .box-usuario_img {
@@ -62,13 +64,21 @@
 .informacion-personal {
     overflow: hidden;
     background-color: #ddd;
-    width: 70%;
-    height: 50%;
+    width: 60%;
+    height: 500px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 }
+.orden{
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+
 
 .titulo-info-usario {
     background-color: var(--verdeagua);
@@ -78,7 +88,11 @@
     text-align: center;
     padding: 10px;
 }
-
+.InfoVetContainer-Principal{
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
 .box-info-usuario {
     background-color: var(--blanco);
     width: 45%;
@@ -89,8 +103,30 @@
     justify-content: center;
     align-items: center;
 }
+.box-info-vet {
+    background-color: var(--blanco);
+    width: 90%;
+    height: auto;
+    margin: 15px 12px;
+    color: var(--blanco);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
 
 .box-info-usuario p{
+    color: #333;
+    font-family: Roboto500;
+   /* text-align: center;
+    padding-top: 10px;*/
+}
+
+.box-info-vet span{
+    font-family: Roboto300;
+}
+
+.box-info-vet p{
     color: #333;
     font-family: Roboto500;
    /* text-align: center;
@@ -115,7 +151,18 @@
     display: flex;
     flex-direction: column;
 }
+.InfoVetContainer {
+    overflow: hidden;
+    background-color: #ddd;
+    width: 60%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+    display: grid;
+    place-items: center;
 
+}
 .titulo-historial,
 .titulo-lastCitas {
     background-color: var(--verdeagua);

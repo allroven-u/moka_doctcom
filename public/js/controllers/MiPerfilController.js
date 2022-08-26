@@ -9,6 +9,10 @@ let txtPhoneP = document.getElementById('txtPhoneP');
 let txtContraseniaP = document.getElementById('txtContraseniaP');
 let txtDireccionP = document.getElementById('txtDireccionP');
 let txtFotoPerfil = document.getElementById('FotoPerfilUser');
+let txtEpecialidad = document.getElementById('txtEspecialidad');
+let txtInfoVet = document.getElementById('txtInfoVet');
+
+
 let usuario;
 
 
@@ -57,7 +61,7 @@ async function GetlistaUsuarios(ListaCitasBD, idUser) {
 
 
 
-function CargarDatosUser(userSession, listaUsuarios) {
+async function CargarDatosUser(userSession, listaUsuarios) {
 
   for (let i = 0; i < listaUsuarios.length; i++) {
 
@@ -70,6 +74,13 @@ function CargarDatosUser(userSession, listaUsuarios) {
       txtPhoneP.textContent = listaUsuarios[i].Telefono;
       txtDireccionP.innerHTML = listaUsuarios[i].Direccion;
       txtFotoPerfil.src = listaUsuarios[i].Foto;
+      if (listaUsuarios[i].Rol == 3) {
+        let result = await buscaVeterinarioID(listaUsuarios[i].Identificacion);
+        if (result.VeterinarioDB != null){
+          txtEpecialidad.textContent = result.VeterinarioDB.Especialidad;
+          txtInfoVet.textContent = result.VeterinarioDB.InfoVet;
+        }
+      }
     }
 
   }

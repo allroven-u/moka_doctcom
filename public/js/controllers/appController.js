@@ -59,6 +59,7 @@ if(Number(user.Rol) === 3){
     navMascotas.style = "display: none;";
     crearCitaNueva.style = "display: none;";
 
+
 }else if(Number(user.Rol) === 4){
     navReportes.style = "display: none;";
     navMascotas.style = "display: none;";
