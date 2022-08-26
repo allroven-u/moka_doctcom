@@ -13,6 +13,8 @@ let factCita = {};
 const btnEnviar = document.getElementById('enviar');
 const btnFactura = document.getElementById('factura');
 const btnEnviarSV = document.getElementById('btnEnviarVete');
+let numFactura = document.getElementById('NumFactura')
+
 
 window.addEventListener("load", () => {
   userSessionCD = GetSesion();
@@ -167,9 +169,15 @@ async function llenarCompletarCita() {
       OutestadoCita.innerHTML = listaCitas[i].Estado;
       OutMotivoCancelar.innerHTML = listaCitas[i].NotasCancelacion;
       OutNumFactura.innerHTML = listaCitas[i].NumeroFactura;
+   
+      btnFactura.setAttribute(
+        "href",
+        "/public/Factura.html?_id="+listaCitas[i]._id+"&numFact="+listaCitas[i].NumeroFactura
+      );
       if (listaCitas[i].Estado === "CANCELADA") {
         boxDiagnosticos.classList.add("hidden");
         boxCancelacion.classList.remove("hidden");
+
       }
     }
   }
