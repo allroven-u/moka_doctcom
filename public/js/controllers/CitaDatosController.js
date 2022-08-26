@@ -192,7 +192,8 @@ function ImprimirDetalleFactura(factura) {
 
     let cantLinea = factura.FacturaDB.Lineas.length;
 
-    for (let i = 0; i < cantLinea; i++) {
+  
+      for (let i = 0; i < cantLinea; i++) {
 
         let fila = Tbody.insertRow();
         let linea = factura.FacturaDB.Lineas[i];
@@ -205,4 +206,8 @@ function ImprimirDetalleFactura(factura) {
         celdaPrecio.innerHTML = linea.PrecioUnitario;
     }
 
+
+   
+
 }
+
