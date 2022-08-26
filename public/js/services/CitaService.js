@@ -1,7 +1,6 @@
 "use strict";
 
 
-
 async function getCitasArray(){
   let result = {};
   await  axios.get(apiUrl + '/ListarCitas', {
