@@ -17,7 +17,8 @@ const schemaCita = new mongoose.Schema(
         Fecha: {type:Date,require:true,unique:false},
         NumeroFactura: { type: Number, required: false, unique: false },
         FechaCreacion: {type:Date,require:true,unique:false},
-        UsuarioCreacion:{ type: String, required: true, unique: false }
+        UsuarioCreacion:{ type: String, required: true, unique: false },
+        CalificacionVeterinario: { type: Number, required: false, unique: false },
     }
 );
 

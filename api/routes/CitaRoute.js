@@ -22,7 +22,8 @@ router.post('/RegistrarCita', (req, res) => {
         NotasCancelacion : body.NotasCancelacion,
         NumeroFactura : body.NumeroFactura,
         FechaCreacion : body.FechaCreacion,
-        UsuarioCreacion : body.UsuarioCreacion
+        UsuarioCreacion : body.UsuarioCreacion,
+        CalificacionVeterinario : body.CalificacionVeterinario
     });
 
     nuevaCita.save((err, citaDB) => {
