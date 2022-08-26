@@ -249,13 +249,9 @@ btnEnviar.addEventListener('click', async function(){
     }
     }
   }
-   
-
 })
-
-
 function ValidarDatosCita(){
-  if(cantidadS === null || cantidadS === undefined || cantidadS === ' '){
+  if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
     MostrarError('Debe ingresar la calificacion de la mascota');
     return false;
   }
