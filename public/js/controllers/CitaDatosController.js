@@ -62,6 +62,8 @@ const boxDescripcion = document.getElementById("boxDescripcion");
 const txtDescripcion = document.getElementById("txtDescricionR");
 const boxExterna = document.querySelector(".box-externa");
 const tableInfoCita = document.querySelector(".box-all");
+const boxCalificacion = document.querySelector('.califContainer');
+const titleCalf = document.getElementById('titleCalf');
 
 if (usuarioRol !== 3 && opcionVer === "ver") {
   box4.classList.remove("hidden");
@@ -70,6 +72,7 @@ if (usuarioRol !== 3 && opcionVer === "ver") {
   txtDescripcion.setAttribute("readonly", true);
   tableInfoCita.classList.remove("hidden");
   tableInfoCita.style = "margin-top: 0px";
+  boxCalificacion.classList.add('hidden');
   //boxDiagnosticos.classList.add('hidden');
 } else if (usuarioRol !== 2 && opcionVer === "compl") {
   btnDescrip.classList.remove("hidden");
@@ -80,6 +83,12 @@ if (usuarioRol !== 3 && opcionVer === "ver") {
   boxExterna.classList.remove("hidden");
   tableInfoCita.classList.remove("hidden");
   boxDescripcion.classList.remove("hidden");
+}else if(opcionVer === 'final' &&  estadoC === 'CANCELADA'){
+   boxCalificacion.classList.add('hidden');
+}else if(usuarioRol !== 3 && opcionVer === 'final' && estadoC === "FINALIZADA"){
+  titleCalf.textContent = "Calificación Veterinario";
+}else if(usuarioRol === 3 && opcionVer === 'final'){
+  boxCalificacion.classList.add('hidden');
 }
 
 let inputNumReservaDatos = document.getElementById("numCitaDatos");
