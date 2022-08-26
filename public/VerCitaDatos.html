@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moka Veterinaria App</title>
+    <link rel="icon" href="./assets/img/Moka Logo Icon.png">
+    <title>Ver Citas - Moka Veterinaria</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="./css/completarCitas-Reservas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
@@ -51,14 +52,14 @@
 
                         <li class="list__inside" id="mascotasTab">
                             <a href="Mascotas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> Mis Mascotas</a>
+                                <i class="fa-solid fa-paw" list__arrow></i> Mis mascotas</a>
                         </li>
                     </ul>
 
                 </li>
 
 
-                <li class="list__item list__item--click">
+                <li class="list__item list__item--click selector">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-house-chimney-medical list__img"></i>
                         <a href="AppVerCitas.html" class="nav__link">Citas</a>
@@ -118,19 +119,19 @@
         <div class="home">
             <div class="tblCaja">
                 <div class="tituloCaja">
-                    <h2 id="numCitaDatos">Cita Numero: </h2>
+                    <h2 id="numCitaDatos">Número de cita: </h2>
                     <a href="./AppVerCitas.html" class="back-mi-perfil"><i class="fa-solid fa-arrow-left"></i></a>
 
                 </div>
                 <div class="container">
                 <div class="headCompletarCita">
                     <div class="h3">
-                        <label for="txtNombreMascota">Nombre Mascota</label>
+                        <label for="txtNombreMascota">Nombre de mascota</label>
                         <output id="txtNombreMascota" name="txtNombreMascota" class="cajasOut white"
                             for="txtNombreMascota"></output>
                     </div>
                     <div class="califContainer">
-                        <h2 id="titleCalf">Calificación Mascota</h2>
+                        <h2 id="titleCalf">Calificación de mascota</h2>
                         <div class="stars">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -140,7 +141,7 @@
                         </div>
                         <br>
                         <div class="button-env hidden">
-                            <button type="button" id="btnEnviarVete" class="btnVete">Enviar Calificacion</button>
+                            <button type="button" id="btnEnviarVete" class="btnVete">Enviar calificación</button>
                         </div>
                     </div>
                 </div>
@@ -150,7 +151,7 @@
                     <!--box 1-->
                     <div class="box-completar box-1">
                         <div class="h2">
-                            <h2>Descripción de Cita
+                            <h2>Descripción de cita
                             </h2>
                         </div>
                         <div class="DescripcionParrafo">
@@ -159,12 +160,12 @@
                                     <table>
                                         <thead>
                                             <tr>
-                                                <th>Num.cita</th>
-                                                <th>Veterinario</th>
+                                                <th>Num. cita</th>
+                                                <th>Veterinario(a)</th>
                                                 <th>Fecha</th>
                                                 <th>Descripción</th>
                                                 <th>Estado</th>
-                                                <th>Número Factura</th>
+                                                <th>Número de factura</th>
                                             </tr>
                                         </thead>
                                         <tbody id="tbody-info-cita">
@@ -186,13 +187,13 @@
                     <!--box 2-->
                     <div class="box-completar box-2 hidden">
                         <div class="h2">
-                            <h2> Diagnostico
+                            <h2> Diagnóstico
                             </h2>
                         </div>
 
                         <div class="DescripcionParrafo diagnostico">
                             <div id="boxDescripcion" class="hidden" style="width:100%">
-                                <p style="color: #222;">Diagnostico</p>
+                                <p style="color: #222;">Diagnóstico</p>
                                 <textarea id="txtDescricionR" class="cajas white"
                                     style="width: 90%; height: 300px;"></textarea>
                             </div>
@@ -207,7 +208,7 @@
                     <!--box 4-->
                     <div class="box-completar box-4 hidden">
                         <div class="h2">
-                            <h2> Medicacion & Costos
+                            <h2> Medicación y costos
                             </h2>
                         </div>
                         <div class="DescripcionParrafo">
@@ -242,7 +243,7 @@
                                 <table id="TLineasFactura">
                                     <thead id="THlineas" class="box-client">
                                         <tr>
-                                            <th>Descripcion</th>
+                                            <th>Descripción</th>
                                             <th>Cantidad</th>
                                             <th>Precio</th>
                                         </tr>
@@ -256,7 +257,7 @@
                     <!--box 3-->
                     <div class="box-completar box-3 hidden">
                         <div class="h2">
-                            <h2>Motivo de Cancelación</h2>
+                            <h2>Motivo de cancelación</h2>
                         </div>
                         <div class="DescripcionParrafo">
                             <div class="cajasOut white">

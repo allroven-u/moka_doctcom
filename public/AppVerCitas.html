@@ -60,7 +60,7 @@
                 </li>
 
 
-                <li class="list__item list__item--click">
+                <li class="list__item list__item--click selector">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-house-chimney-medical list__img"></i>
                         <a href="AppVerCitas.html" class="nav__link">Citas</a>
@@ -109,7 +109,7 @@
 
                         <li class="list__inside">
                             <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-file-lines list__arrow"></i>Usuarios Registrados</a>
+                                <i class="fa-solid fa-file-lines list__arrow"></i>Usuarios registrados</a>
                         </li>
 
                     </ul>
@@ -139,11 +139,11 @@
                 <div class="tFiltros">
 
                     <div for="txtNumCita" class="filtrosCajas">
-                        <label for="txtNumCita">No. Cita</label>
+                        <label for="txtNumCita">No. cita</label>
                         <input id="txtNumCita" class="cajasCitas" type="text">
                     </div>
                     <div for="txtDuenhoCita" class="filtrosCajas">
-                        <label for="txtDuenhoCita">Propietario</label>
+                        <label for="txtDuenhoCita">Propietario(a)</label>
                         <input id="txtDuenhoCita" class="cajasCitas" type="text">
                     </div>
                     <div for="txtMascotaCita" class="filtrosCajas">
@@ -214,24 +214,24 @@
                     <div class="crearCita-Comtainer">
                         <div id="RegistroContainer" class="NuevoUser hidden">
                             <div id="IdCliente" class="">
-                                <label for="txtidCliente">Identificacion cliente</label>
-                                <input type="text" id="txtidCliente" placeholder="Identificación cliente" class="cajas" onblur="validarUser();">
+                                <label for="txtidCliente">Identificación del cliente</label>
+                                <input type="text" id="txtidCliente" placeholder="Identificación del cliente" class="cajas" onblur="validarUser();">
                             </div>
                             <div id="nombreCliente" class="">
-                                <label for="txtNombreCliente">Nombre cliente</label>
-                                <input type="text" id="txtNombreCliente" placeholder="Nombre cliente" class="cajas" >
+                                <label for="txtNombreCliente">Nombre del cliente</label>
+                                <input type="text" id="txtNombreCliente" placeholder="Nombre del cliente" class="cajas" >
                             </div>
                             <div id="ApellidoCliente" class="">
-                                <label for="txtApellidoCliente">Apellido cliente</label>
-                                <input type="text" id="txtApellidoCliente" placeholder="Apellido cliente" class="cajas" >
+                                <label for="txtApellidoCliente">Apellido del cliente</label>
+                                <input type="text" id="txtApellidoCliente" placeholder="Apellido del cliente" class="cajas" >
                             </div>
                             <div id="emailCliente" class="">
-                                <label for="txtEmailCliente">Email cliente</label>
-                                <input type="text" id="txtEmailCliente" placeholder="Email cliente" class="cajas" >
+                                <label for="txtEmailCliente">Correo electrónico del cliente</label>
+                                <input type="text" id="txtEmailCliente" placeholder="Correo electrónico del cliente" class="cajas" >
                             </div>
                             <div id="DireccionCliente" class="">
-                                <label for="txtDireccionCliente">Dirección cliente</label>
-                                <textarea name="direccion" cols="30" rows="5" id="txtDireccionCliente" placeholder="Dirección cliente" class="cajas"></textarea>
+                                <label for="txtDireccionCliente">Dirección del cliente</label>
+                                <textarea name="direccion" cols="30" rows="5" id="txtDireccionCliente" placeholder="Dirección del cliente" class="cajas"></textarea>
                             </div>
                         </div>
     
@@ -242,8 +242,8 @@
                             <option value="">------Seleccionar mascota------</option>
                         </select>
                         <div id="NombreOtro" class="hidden">
-                            <label for="txtNombreOtro">Nombre mascota:</label>
-                            <input type="text" id="txtNombreOtro" placeholder="Nombre mascota" class="cajas">
+                            <label for="txtNombreOtro">Nombre de mascota:</label>
+                            <input type="text" id="txtNombreOtro" placeholder="Nombre de mascota" class="cajas">
                         </div>
                         <label for="txtFecha">Seleccione fecha y hora:</label>
                         <input class="cajas" id="txtFecha" type="datetime-local" value="" />
