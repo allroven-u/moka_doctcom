@@ -210,3 +210,17 @@ async function EliminarTarjeta(p_idUsuario, p_idTarjeta) {
   });
   return result;
 }
+
+
+async function buscaUsuarioByRol(pRol){
+  let result = {};
+  await  axios.get(apiUrl + '/BuscarUsuarioByRol',{params: {Rol: pRol }} , {
+    responseType: 'json'
+  }).then((res)=>{
+    result = res.data
+  }).catch((err)=>{
+    console.log(err);
+  });
+
+ return result;
+}
