@@ -52,7 +52,7 @@
 
                         <li class="list__inside" id="mascotasTab">
                             <a href="Mascotas.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i> <span id="misMascotas">Mis Mascotas</span></a>
+                                <i class="fa-solid fa-paw" list__arrow></i> <span id="misMascotas"> Mis Mascotas</span></a>
                         </li>
                     </ul>
 
@@ -65,7 +65,7 @@
                     </div>
                 </li>
 
-                <li class="list__item list__item--click" id="reservasTab">
+                <li class="list__item list__item--click selector" id="reservasTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
                         <a href="AppVerReservas.html" class="nav__link">Reservas</a>
@@ -189,11 +189,6 @@
                                 <textarea id="txtDescricionO" class="cajas white"
                                     style="width: 90%; height: 300px;"></textarea>
                             </div>
-                            <div id="boxBtn" class="btn-diag hidden">
-                                <p>&nbsp;</p>
-                                <input type="button" class="agregar-btn btnDiag" id="agregar-diagnostico"
-                                    value="Añadir">
-                            </div>
                         </div>
 
                     </div>
@@ -201,7 +196,7 @@
                     <!--box 4-->
                     <div class="box-completar box-4 hidden">
                         <div class="h2">
-                            <h2> Servicios & Costos
+                            <h2> Servicios y costos
                             </h2>
                         </div>
                         <div class="DescripcionParrafo">
@@ -214,17 +209,17 @@
                                         </div>
                                         <div class="boxInterna">
                                             <p style="color:#222;">Cantidad</p>
-                                            <input id="txtCantidad" class="cajas white">
+                                            <input id="txtCantidad" type="number" class="cajas white">
                                         </div>
                                     </div>
                                     <div class="box-central">
                                         <div class="boxInterna">
                                             <p style="color:#222;">Precio</p>
-                                            <input id="txtPrecio" class="cajas white">
+                                            <input id="txtPrecio" type="number" class="cajas white">
                                         </div>
                                         <div id="boxBtn" class="boxInterna">
                                             <p>&nbsp;</p>
-                                            <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir">
+                                            <input type="button" class="agregar-btn" id="agregar-subdoc" value="Añadir" >
                                         </div>
                                     </div>
                                 </div>
@@ -233,7 +228,7 @@
                                 <table id="TLineasFactura">
                                     <thead id="THlineas" class="box-client">
                                         <tr>
-                                            <th>Descripcion</th>
+                                            <th>Descripción</th>
                                             <th>Cantidad</th>
                                             <th>Precio</th>
                                         </tr>
@@ -248,7 +243,7 @@
                     <!--box 3-->
                     <div class="box-completar box-3 hidden">
                         <div class="h2">
-                            <h2>Motivo de Cancelación</h2>
+                            <h2>Motivo de cancelación</h2>
                         </div>
                         <div class="DescripcionParrafo">
                             <div class="cajasOut white">

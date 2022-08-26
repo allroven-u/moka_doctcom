@@ -2,9 +2,12 @@
 let listaReservas = [];
 
 
-
+let factDescripcion = document.getElementById("txtDescripcionS");
+let factCantidad = document.getElementById("txtCantidad");
+let factPrecio = document.getElementById("txtPrecio");
 const btnEnviar = document.getElementById('enviar');
 const btnFactura = document.getElementById('factura');
+const btnAgregarSub = document.getElementById('agregar-subdoc');
 
 window.addEventListener('load', () =>{
 
@@ -72,7 +75,7 @@ if (usuarioRol !== 3 && opcionVer === 'ver') {
     boxCalificacion.classList.add('hidden');
     boxCancelacion.classList.remove("hidden");
  }else if(usuarioRol !== 3 && opcionVer === 'final' && estadoR === "FINALIZADA"){
-   titleCalf.textContent = "Calificación Veterinario";
+   titleCalf.textContent = "Calificación veterinario";
    btnsVDF.classList.remove('hidden');
    box4.classList.remove("hidden");
    boxDiagnosticos.classList.remove("hidden");
@@ -119,7 +122,7 @@ function llenarCompletarReserva(){
     for (let i = 0; i < listaReservas.length; i++) {
         if(listaReservas[i]._id == _id){
             
-            inputNumReservaDatos.innerHTML= 'Número reservación: '+listaReservas[i].NumeroReservacion;
+            inputNumReservaDatos.innerHTML= 'Número de reservación: '+listaReservas[i].NumeroReservacion;
             inputNombreReservaDatos.innerHTML=listaReservas[i].NombreMascota;
 
             OutnumReserva.innerHTML=listaReservas[i].NumeroReservacion;
@@ -160,8 +163,42 @@ btnEnviar.addEventListener('click', async function(){
   })
   function ValidarDatosReserva(){
     if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
-      MostrarError('Debe ingresar la calificacion de la mascota');
+      MostrarError('¡Debe ingresar la calificación de la mascota!');
       return false;
+    }
+    if(txtDescripcion.value === null || txtDescripcion.value === "" || txtDescripcion.value === undefined){
+        MostrarError('Debe ingresar las observaciones!');
+        resaltarInputInvalido("txtDescricionO");
+        return false;
+    }
+    return true;
+  }
+/////////////////////
+
+
+  function ValidarReservaServicios(){
+    if(factDescripcion.value === null || factDescripcion.value === "" || factDescripcion.value === undefined){
+        MostrarError('Debe ingresar la descripción!');
+        resaltarInputInvalido("txtDescripcionS");
+        return false;
+    }
+    if(factCantidad.value === null || factCantidad.value === "" || factCantidad.value === undefined){
+        MostrarError('Debe ingresar la cantidad!');
+        resaltarInputInvalido("txtCantidad");
+        return false;
+    }else if(Number(factCantidad.value) <= 0){
+        MostrarError('Debe ingresar una cantidad mayor a 0!');
+        resaltarInputInvalido("txtCantidad");
+        return false;
+    }
+    if(factPrecio.value === null || factPrecio.value === "" || factPrecio.value === undefined){
+        MostrarError('Debe ingresar el precio!');
+        resaltarInputInvalidoj("txtPrecio");
+        return false;
+    }else if(Number(factPrecio.value) <= 0){
+        MostrarError('Debe ingresar un precio mayor a 0!');
+        resaltarInputInvalidoj("txtPrecio");
+        return false;
     }
     return true;
   }

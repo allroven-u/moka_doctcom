@@ -197,10 +197,6 @@
                                 <textarea id="txtDescricionR" class="cajas white"
                                     style="width: 90%; height: 300px;"></textarea>
                             </div>
-                            <div id="boxBtn" class="btn-diag hidden">
-                                <p>&nbsp;</p>
-                                <input type="button" class="agregar-btn btnDiag" id="agregar-diagnostico" value="Añadir">
-                            </div>
                         </div>
                        
                     </div>
@@ -221,18 +217,18 @@
                                         </div>
                                         <div class="boxInterna">
                                             <p style="color:#222;">Cantidad</p>
-                                            <input id="txtCantidad" class="cajas white">
+                                            <input type="number" id="txtCantidad" class="cajas white">
                                         </div>
 
                                     </div>
                                     <div class="box-central">
                                         <div class="boxInterna">
                                             <p style="color:#222;">Precio</p>
-                                            <input id="txtPrecio" class="cajas white">
+                                            <input type="number" id="txtPrecio" class="cajas white">
                                         </div>
                                         <div id="boxBtn" class="boxInterna">
                                             <p>&nbsp;</p>
-                                            <button  class="agregar-btn" id="agregar-subdoc" type="button"  onclick="agregarLineas()"> Añadir </button>
+                                            <button  class="agregar-btn" id="agregar-subdoc" type="button" onclick="agregarLineas()"> Añadir </button>
                                             <!-- <input type="button"  class="agregar-btn" id="agregar-subdoc" value="Añadir"
                                                 onclick="agregarLineas()"> -->
                                         </div>
