@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const Usuario = require('../models/UsuarioModel');
 const mailer = require('../templates/RegistroTemplate');
+const mailerPass = require('../templates/PasswordTemplate');
 
 router.post('/RegistrarUsuario', (req, res) => {
     let body = req.body;
@@ -176,6 +177,32 @@ router.put('/DesactivarUsuario', function(req, res){
                 msj: 'Usuario inactivada de manera correcta',
                 info
             });
+        }
+    });
+
+});
+
+
+router.put('/RecuperarContrasenha', function(req, res){
+    let body = req.body;
+    Usuario.updateOne({ Email: body.Email }, {
+        $set: {
+            Contrasenia: 'Df1234'
+        }
+    }, function (err, info) {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'Ocurrio un error inesperado y no se pudieron actualizar los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Contraseña actualizada de manera correcta',
+                info 
+            });
+            mailerPass.EnviarMail(body.Email);
         }
     });
 
