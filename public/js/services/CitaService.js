@@ -199,5 +199,30 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
     return result;
   }
 
+  async function UpdateCitaCalificacionVeterinario(p_id, pCalificacionVete) {
+    let result ={}; 
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+          '_id': p_id,  
+          'CalificacionVeterinario':pCalificacionVete 
+        }
+
+       })
+      .then(function (res) {
+        result = res.data;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    return result;
+  }
+
+
+  
+
 
   

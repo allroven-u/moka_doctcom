@@ -10,7 +10,9 @@ let factDescripcion = document.getElementById("txtDiagnostico");
 let factCantidad = document.getElementById("txtCantidad");
 let factPrecio = document.getElementById("txtPrecio");
 let factCita = {};
-const btnEnviar = document.getElementById('Pagar');
+const btnEnviar = document.getElementById('enviar');
+const btnFactura = document.getElementById('factura');
+const btnEnviarSV = document.getElementById('btnEnviarVete');
 
 window.addEventListener("load", () => {
   userSessionCD = GetSesion();
@@ -55,8 +57,8 @@ const btnDescrip = document.getElementById("boxBtn");
 const boxDiagnosticos = document.querySelector(".box-2");
 const boxCancelacion = document.querySelector(".box-3");
 const box4 = document.querySelector(".box-4");
-const btnsVD = document.querySelector(".btns");
-const buttonVerCita = document.getElementById("Pagar");
+const btnsVDE = document.querySelector(".btnsE");
+const btnsVDF = document.querySelector(".btnsF");
 
 const boxDescripcion = document.getElementById("boxDescripcion");
 const txtDescripcion = document.getElementById("txtDescricionR");
@@ -76,19 +78,26 @@ if (usuarioRol !== 3 && opcionVer === "ver") {
   //boxDiagnosticos.classList.add('hidden');
 } else if (usuarioRol !== 2 && opcionVer === "compl") {
   btnDescrip.classList.remove("hidden");
-  buttonVerCita.classList.toggle("btn-doctor");
-  buttonVerCita.value = "Enviar";
   box4.classList.remove("hidden");
   boxDiagnosticos.classList.remove("hidden");
   boxExterna.classList.remove("hidden");
   tableInfoCita.classList.remove("hidden");
   boxDescripcion.classList.remove("hidden");
-  btnsVD.classList.remove('hidden');
+  btnsVDE.classList.remove('hidden');
+
 }else if(opcionVer === 'final' &&  estadoC === 'CANCELADA'){
    boxCalificacion.classList.add('hidden');
+   boxCancelacion.classList.remove("hidden");
 }else if(usuarioRol !== 3 && opcionVer === 'final' && estadoC === "FINALIZADA"){
   titleCalf.textContent = "Calificación Veterinario";
-  btnsVD.classList.remove('hidden');
+  btnsVDF.classList.remove('hidden');
+  box4.classList.remove("hidden");
+  boxDiagnosticos.classList.remove("hidden");
+  boxDescripcion.classList.remove("hidden");
+  txtDescripcion.setAttribute("readonly", true);
+  tableInfoCita.classList.remove("hidden");
+  tableInfoCita.style = "margin-top: 0px";
+
 }else if(usuarioRol === 3 && opcionVer === 'final'){
   boxCalificacion.classList.add('hidden');
 }
@@ -152,7 +161,6 @@ async function llenarCompletarCita() {
       OutNumFactura.innerHTML = listaCitas[i].NumeroFactura;
       if (listaCitas[i].Estado === "CANCELADA") {
         boxDiagnosticos.classList.add("hidden");
-        btnsVD.style = "display: none;";
         boxCancelacion.classList.remove("hidden");
       }
     }
@@ -242,7 +250,10 @@ function ImprimirDetalleFactura(factura) {
 }
 
 
-//envia estrellas
+
+
+//envia estrellas mascota
+
 btnEnviar.addEventListener('click', async function(){
   for (let i = 0; i < listaCitas.length; i++) {
     if (listaCitas[i]._id === _id) {
@@ -260,6 +271,33 @@ btnEnviar.addEventListener('click', async function(){
 function ValidarDatosCita(){
   if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
     MostrarError('Debe ingresar la calificacion de la mascota');
+    return false;
+  }
+  return true;
+}
+
+
+
+
+//envia estrellas veterinario
+
+btnEnviarSV.addEventListener('click', async function(){
+  for (let i = 0; i < listaCitas.length; i++) {
+    if (listaCitas[i]._id === _id) {
+      if (ValidarDatosEstrellas() === true) {
+        let result = await  UpdateCitaCalificacionVeterinario(_id, cantidadS) 
+        if (result != {} && result.resultado) {
+            ConfirmarDatos(result.msj);
+        }else{
+            MostrarError(result.msj);
+        };
+    }
+    }
+  }
+})
+function ValidarDatosEstrellas(){
+  if(cantidadS === null || cantidadS === undefined || cantidadS === ' ' || cantidadS === 0){
+    MostrarError('Debe ingresar la calificacion del Veterinario');
     return false;
   }
   return true;
