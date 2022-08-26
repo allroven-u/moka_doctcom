@@ -48,23 +48,25 @@ function cerrar() {
 
 const navReservas =  document.getElementById('reservasTab');
 const navMascotas =  document.getElementById('mascotasTab');
+const mascotasTxt =  document.getElementById('misMascotas');
 const navReportes =  document.getElementById('reportesTab');
-const crearCitaNueva = document.querySelector('.btnNuevaCitaContainer');
+
 
 let user = GetSesion();
+console.log(user);
 
 if(Number(user.Rol) === 3){
     navReservas.style = "display: none;";
     navReportes.style = "display: none;";
     navMascotas.style = "display: none;";
-    crearCitaNueva.style = "display: none;";
-
 
 }else if(Number(user.Rol) === 4){
     navReportes.style = "display: none;";
     navMascotas.style = "display: none;";
 }else if(Number(user.Rol) === 2){
     navReportes.style = "display: none;";
+}else if(Number(user.Rol) === 1){
+    mascotasTxt.textContent = "Mascotas";
 }
 
 

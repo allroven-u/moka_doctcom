@@ -140,3 +140,25 @@ function ImprimirListaCitas(ListaCitasBD, listaUsuarios, idUser) {
   };
 
 };
+
+usuario = GetSesion();
+console.log(usuario);
+const historialPagos = document.querySelector('.historial-de-pagos');
+const historialMascota = document.querySelector('.historial-mascota');
+const veteBox = document.querySelector('.InfoVetContainer-Principal');
+
+if(Number(usuario.Rol) === 2){
+  historialPagos.classList.remove('hidden');
+  historialMascota.classList.remove('hidden')
+}
+if(Number(usuario.Rol) === 3){
+  veteBox.classList.remove('hidden');
+  
+}
+//if(Number(usuario.Rol) === 4){
+//  
+//}
+//historial-de-pagos
+//historial-mascota
+//InfoVetContainer-Principal
+//
