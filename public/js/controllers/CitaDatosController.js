@@ -206,9 +206,3 @@ function ImprimirDetalleFactura(factura) {
     }
 
 }
-const btnAgregarSub = document.getElementById('agregar-subdo');
-btnAgregarSub.addEventListener('click', function(){
-  factCantidad.reset();
-  factDescripcion.reset();
-  factPrecio.reset(); 
-})

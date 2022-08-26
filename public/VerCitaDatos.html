@@ -207,7 +207,7 @@
                         </div>
                         <div class="DescripcionParrafo">
                             <div class="box-externa hidden">
-                                <div id="boxPrecio" class="box-medicamentos">
+                                <form id="boxPrecio" class="box-medicamentos">
                                     <div class="box-central">
                                         <div class="boxInterna">
                                             <p style="color: #222;">Descripción</p>
@@ -226,12 +226,12 @@
                                         </div>
                                         <div id="boxBtn" class="boxInterna">
                                             <p>&nbsp;</p>
-                                            <button  class="agregar-btn" id="agregar-subdoc"  onclick="agregarLineas()"> Añadir </button>
+                                            <button  class="agregar-btn" id="agregar-subdoc" type="button"  onclick="agregarLineas()"> Añadir </button>
                                             <!-- <input type="button"  class="agregar-btn" id="agregar-subdoc" value="Añadir"
                                                 onclick="agregarLineas()"> -->
                                         </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                             <div class="table-description box-all hidden">
                                 <table id="TLineasFactura">
