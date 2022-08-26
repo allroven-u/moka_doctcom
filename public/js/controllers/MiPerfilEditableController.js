@@ -13,6 +13,8 @@ let inputtxtPhoneP = document.getElementById("txtPhoneP");
 let inputFotoUser= document.getElementById('imgFotoUser');
 let selectRolUser= document.getElementById('SelectRol');
 let selectEstadoUser= document.getElementById('SelectEstado');
+let inputEspecialidad= document.getElementById('txtEspecialidad');
+let InputInfoVetP= document.getElementById('txtDescrpVet');
 
 let inputtxtDireccionP = document.getElementById("txtDireccionP");
 const ValidarEmail = /^[^@]+@[^@]+\.[a-zA-Z]{2,}$/;
@@ -60,10 +62,10 @@ async function GetlistaUsuarios(){
 
   let selectRol = document.getElementById('selectRol');
   let selectEstado = document.getElementById('selectEstado');
-
+  let InputInfoVet = document.querySelector('.vetContainer');
   
 
-function CargarDatosUser(userSession){
+async function CargarDatosUser(userSession){
     for (let i = 0; i < listaUsuarios.length; i++) {
         
         if (listaUsuarios[i].Identificacion == userSession.Identificacion){
@@ -76,12 +78,20 @@ function CargarDatosUser(userSession){
             inputtxtDireccionP.value = listaUsuarios[i].Direccion;
             selectRolUser.value = listaUsuarios[i].Rol;
             selectEstadoUser.value = listaUsuarios[i].Activo;
+            if (listaUsuarios[i].Rol == 3) {
+                InputInfoVet.classList.remove('hidden');
+                let result = await buscaVeterinarioID(listaUsuarios[i].Identificacion);
+                if (result.VeterinarioDB != null){
+                    inputEspecialidad.value = result.VeterinarioDB.Especialidad;
+                    InputInfoVetP.value = result.VeterinarioDB.InfoVet;
+                }
+            }
         }
         
     }
 }
 
-function CargarDatosAdmin(listaUsuarios) {
+async function CargarDatosAdmin(listaUsuarios) {
 
     for (let i = 0; i < listaUsuarios.length; i++) {
   
@@ -95,13 +105,31 @@ function CargarDatosAdmin(listaUsuarios) {
         inputtxtDireccionP.value = listaUsuarios[i].Direccion;
         selectRolUser.value = listaUsuarios[i].Rol;
         selectEstadoUser.value = listaUsuarios[i].Activo;
+        if (listaUsuarios[i].Rol == 3) {
+            
+            let result = await buscaVeterinarioID(listaUsuarios[i].Identificacion);
+            console.log(result)
+            if (result.VeterinarioDB != null){
+                inputEspecialidad.value = result.VeterinarioDB.Especialidad;
+                InputInfoVetP.value = result.VeterinarioDB.InfoVet;
+            }
+        }
+
+
+
+
+
 
         if (userSession.Rol == 1) {
             selectRol.classList.remove('hidden');
             selectEstado.classList.remove('hidden');
+            if((userSession.Rol == 1|| userSession.Rol == 3)&& listaUsuarios[i].Rol== 3){
+                InputInfoVet.classList.remove('hidden');
+            }
         }else{
             selectRol.classList.add('hidden');
             selectEstado.classList.add('hidden');
+            InputInfoVet.classList.add('hidden');
         }
 
       }
@@ -126,18 +154,40 @@ async function EditarDatosUser() {
         let sFoto = inputFotoUser.src;
         let sRol = Number(selectRolUser.value);
         let sEstado = Number(selectEstadoUser.value);
+
+        let sEspecialidad = inputEspecialidad.value;
+        let sinfoVet = InputInfoVetP.value;
         let result = await EditarUsuario(sID,sConttxtNombreP,sConttxtApellidosP,sConttxtCedulaP,sConttxtEmailP,sConttxtPhoneP,sConttxtDireccionP,sFoto,sRol,sEstado);
         if (result != {} && result.resultado) {
+            let result2 = await RegistrarInfoVet(sConttxtCedulaP,sEspecialidad,sinfoVet);
             
-             ConfirmarDatos(result.msj);
-            setTimeout(function() {
-                if (userSession.Rol == 1 && _id!= null) {
-                    window.location.pathname = "/public/reporteUsuario.html";
+            if (result2 != {} && result2.resultado){
+                ConfirmarDatos(result.msj);
+                setTimeout(function() {
+                    if (userSession.Rol == 1 && _id!= null) {
+                        window.location.pathname = "/public/reporteUsuario.html";
+                    }else{
+                        window.location.pathname = "/public/MiPerfil.html";
+                    }
+                    
+                }, 2000);
+            }else{
+                let result3= await EditarInfoVet(sConttxtCedulaP,sEspecialidad,sinfoVet)
+                console.log(result3)
+                if (result3 != {} && result3.resultado){
+                    ConfirmarDatos(result3.msj);
+                    setTimeout(function() {
+                        if (userSession.Rol == 1 && _id!= null) {
+                            window.location.pathname = "/public/reporteUsuario.html";
+                        }else{
+                            window.location.pathname = "/public/MiPerfil.html";
+                        }
+                        
+                    }, 2000);
                 }else{
-                    window.location.pathname = "/public/MiPerfil.html";
+                    MostrarError("Datos no modificados!");
                 }
-                
-            }, 2000);
+            }
          }else{
             MostrarError(result.msj);
          }

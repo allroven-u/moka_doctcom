@@ -64,7 +64,7 @@ label {
     align-items: center;
 }
 .selectRol label{
-    color: black;
+    color: var(--gris);
 }
 
 select{
@@ -76,12 +76,18 @@ select{
     color: var(--gris);
 }
 
+.vetContainer{
+    background-color: #ddd;
+    border-radius: 5px;
+    padding: 10px;
+}
+
 
 .informacion-personal {
     overflow: hidden;
     background-color: #ddd;
     width: 60%;
-    height: 800px;
+    height: 850px; 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

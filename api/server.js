@@ -58,6 +58,9 @@ app.use('/api', mascotas);
 const citas = require('./routes/CitaRoute');
 app.use('/api', citas);
 
+const veterinario = require('./routes/VeterinariosRoute');
+app.use('/api', veterinario);
+
 const reservaciones = require('./routes/ReservacionRoute');
 app.use('/api', reservaciones);
 
