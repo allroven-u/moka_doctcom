@@ -106,7 +106,11 @@ async function llenarCompletarCita() {
       }
  
       let Factura = await getFactura(factCita.NumeroFactura);
-       ImprimirDetalleFactura(Factura); 
+      console.log(Factura)
+      if (Factura.FacturaDB != null && Factura.FacturaDB != undefined && Factura.FacturaDB !=""){
+           ImprimirDetalleFactura(Factura); 
+      }
+
 
       inputNumReservaDatos.innerHTML =
         "Cita Numero: " + listaCitas[i].NumeroCita;
@@ -186,6 +190,8 @@ async function agregarLineas() {
 
 
 function ImprimirDetalleFactura(factura) {
+
+
     let Tbody = document.getElementById('TBLienas');
 
     Tbody.innerHTML = "";
@@ -207,7 +213,9 @@ function ImprimirDetalleFactura(factura) {
     }
 
 
+
    
 
 }
+
 
