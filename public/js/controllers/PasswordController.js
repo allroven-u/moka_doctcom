@@ -110,7 +110,7 @@ async function RecuperarContrasenha(){
             return
         } else{
             if (i == listaUsuariosC.length-1) {
-                MostrarError('¡La cuenta de correo Ingresada no existe!')
+                MostrarError('¡La cuenta de correo ingresada no existe!')
             }
         }  
     }
