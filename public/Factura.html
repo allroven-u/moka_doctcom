@@ -109,8 +109,8 @@
                 <li>MOKA</li> 
                 <li>Moka,Veterinaria,S.A</li> 
                 <li>3-101-271234</li> 
-                <li>San Jose.....Dirección</li>
-                <li>CP 21004,Costa Rica*</li>
+                <li>San Jose, Curridabat, de la municipalidad 400m oeste y 25m norte</li>
+                <li>CP 11801,Costa Rica*</li>
                 <li>+506 2201-2543</li>
                 <li>dotcomMoka@gmail.com</li>
          </ul>
@@ -120,13 +120,13 @@
     <section class="datosClienteContainer">
         <div class="numFactura">
             <h2>FACTURA No.</h2>
-            <h2>9999*</h2>
+            <h2 id="numFact">9999*</h2>
         </div>
         <div class="cliente-Condiciones">
             <div class="datosCliente">
                 <h3>Cliente</h3>
                 <ul> 
-                    <li id="nombreClienteFact">Denis Salazar</li> 
+                    <li id="nombreClienteFact"></li> 
                     <li id="IdClienteFact">206790172</li> 
                     <li id="EmailClienteFact">dsalzar@gmail.com</li> 
                     <li id="DireccionClienteFact">San Jose.....Dirección</li>
@@ -137,7 +137,7 @@
                 <table>
                     <tr>
                         <th>Fecha emisión</th>
-                        <td id="FechaFact">18/09/2022</td>
+                        <td id="FechaFact"></td>
                     </tr>
                     <tr>
                         <th>Condición de venta</th>
@@ -167,20 +167,6 @@
                 </tr>
             </thead>
             <tbody id="LineasFactura">
-                <tr>
-                    <td class="descrip"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, aliquam delectus? Nobis iusto asperiores odit veniam voluptatum deserunt exercitationem nisi rem quidem nesciunt ducimus odio, id voluptate, aut rerum iste. </td>
-                    <td class="unid">Unid</td>
-                    <td class="unid">2</td>
-                    <td class="unid">1800</td>
-                    <td class="unid">3600</td>
-                </tr>
-                <tr>
-                    <td class="descrip"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, aliquam delectus? Nobis iusto asperiores odit veniam voluptatum deserunt exercitationem nisi rem quidem nesciunt ducimus odio, id voluptate, aut rerum iste. </td>
-                    <td class="unid">Unid</td>
-                    <td class="unid">2</td>
-                    <td class="unid">1800</td>
-                    <td class="unid">3600</td>
-                </tr>
             </tbody>
         </table>
     </section>
@@ -190,15 +176,15 @@
             <table>
                 <tr>
                     <th>SubTotal ₡</th>
-                    <td id="subtotalFact">5000</td>
+                    <td id="subtotalFact"></td>
                 </tr>
                 <tr>
                     <th>IVA 13%</th>
-                    <td id="IvaFact ">1250</td>
+                    <td id="IvaFact"></td>
                 </tr>
                 <tr class="totalFinal">
                     <th>Total ₡</th>
-                    <td id="TotalFact ">1650</td>
+                    <td id="TotalFact"></td>
                 </tr>
             </table>
         </div>
@@ -213,6 +199,9 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/Constantes.js"></script>
+    <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/FacturaService.js"></script>
     <script src="./js/controllers/FacturaController.js"></script>
+
 </body>
 </html>

@@ -177,7 +177,7 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
   }
 
   
-  async function UpdateCitaCalificacion(p_id, pCalificacion) {
+  async function UpdateCitaCalificacion(p_id, pCalificacion,pIdMascota,pObservacionesVeterinario) {
     let result ={}; 
       await axios({
         method:'put',
@@ -185,7 +185,8 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
         responseType: 'json',
         data: {
           '_id': p_id,  
-          'Calificacion':pCalificacion 
+          'Calificacion':pCalificacion,
+          'ObservacionesVeterinario': pObservacionesVeterinario
         }
 
        })
@@ -196,6 +197,15 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
       .catch(function (err) {
         console.log(err);
       });
+
+
+     if(result.resultado == true){
+         let promedio = await PromedioMascota(pIdMascota);
+          console.log( 'Promedio' + promedio.info[0].Promedio);
+         let Calificacion = Math.round(promedio.info[0].Promedio);
+         EditarCalificacionPromMascota(pIdMascota,Calificacion);
+       }
+
     return result;
   }
 
@@ -221,6 +231,20 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
     return result;
   }
 
+
+  async function PromedioMascota(pIdMascota){
+    let result = {};
+   
+    await  axios.get(apiUrl + '/AvgCalificacionMascota',{params: { IdMascota: pIdMascota}} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  
+   return result;
+    };
 
   
 

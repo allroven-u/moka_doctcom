@@ -1,200 +1,138 @@
 'use strict';
 
 
-// const showPagar = document.getElementById('Pagar');
-// const modalPago = document.querySelector('.form-pago-tarjeta');
-// const closeModalPago = document.querySelector('.btn-cancerlar-tarjeta');
-// const overlay = document.querySelector('.overlay');
+let listaUsuarios=[];
+let factura;
+let user;
+///////////Obtener id url/////////////////
+let queryString, urlParams, _id, numFact;
+IdentificarAccion();
+async function IdentificarAccion() {
+  queryString = window.location.search;
 
-// const hiddenPagar = function() {
-//     modalPago.classList.add('hidden');
-//     overlay.classList.add('hidden');
-// };
+  urlParams = new URLSearchParams(queryString);
 
-// // start function show modal
-// function ShowModalPagoFunct() {
-//     modalPago.classList.remove('hidden');
-//     overlay.classList.remove('hidden');
+  _id = urlParams.get("_id");
+  numFact = urlParams.get("numFact");
+}
 
-//     closeModalPago.addEventListener('click', hiddenPagar);
-//     overlay.addEventListener('click', hiddenPagar);
-//     document.addEventListener('keydown', function(e) {
-//         if (e.key === 'Escape' && !modalPago.classList.contains('hidden')) {
-//             hiddenPagar();
-//         }
-//     });
-// };
-
-// // showPagar.addEventListener('click', function() {
-// //     ShowModalPagoFunct();
-// // });
-
-
-// //////////////////////////TARJETAS///////////////////////
-
-// let inputNombreTitular = document.getElementById("txtTitular");
-// let inputNumTarjeta = document.getElementById("numTarjeta");
-// let inputNumCVV = document.getElementById("txtCvv");
-// let inputMesVenc = document.getElementById("mes_vencimiento");
-// let inputYearVenc = document.getElementById("year_vencimiento");
-
-// let tipoVisa = document.getElementById("imgVisa");
-// let tipoMaster = document.getElementById("imgMaster");
-// let tipoAmex = document.getElementById("imgAmex");
-
-// let actualDate = new Date();
-// let actualYear = actualDate.getFullYear();
-// let actualMonth = actualDate.getMonth();
-// var cantCVV;
+window.addEventListener("load", async() => {
+    await GetlistaUsuarios();
+    await GetFactura();
+    CargarFactura()
+  });
 
 
 
-// function RealizarPago(){
-//     if(ValidarDatostarjeta() == true){
-//         ConfirmarDatosT();
-//     }
-// }
-
-// function ValidarDatostarjeta(){
-//     let sNombreTitular = inputNombreTitular.value;
-//     let sNumTarjeta = inputNumTarjeta.value;
-//     let sNumCVV = inputNumCVV.value;
-//     let nMesV = inputMesVenc.value;
-//     let nYearV = inputYearVenc.value;
-
-//     if (sNombreTitular == null || sNombreTitular == undefined || sNombreTitular == "") {
-//         inputNombreTitular.classList.add("TError");
-//         MostrarErrorT();
-//         return false;
-//     } else {
-//         inputNombreTitular.classList.remove("TError");
-//     }
-//     if (sNumTarjeta == null || sNumTarjeta == undefined || sNumTarjeta == "" ) {
-//         inputNumTarjeta.classList.add("TError");
-//         MostrarErrorT();
-//         return false;
-//     }
-//     if(ValidarTipoTarjeta() == true){
-//             inputNumTarjeta.classList.remove("TError");
-//     }else{
-//         return false;
-//     }
-//     if (sNumCVV == null || sNumCVV == undefined || sNumCVV == "") {
-//         inputNumCVV.classList.add("TError");
-//         MostrarErrorT();
-//         return false;
-//     } else {
-//         console.log("cvv "+sNumCVV);
-//         if(sNumCVV.length!=cantCVV){
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Oops...',
-//                 text: 'CVV incorrecto',
-//             });
-//             return false;
-//         }else{
-//             inputNumCVV.classList.remove("TError");
-//         }
+async function GetlistaUsuarios() {
+    let result = await getUsuariosArray();
+    if (result != {} && result.resultado == true) {
         
-//     }
-//     if (nMesV == null || nMesV == undefined || nMesV == "") {
-//         inputMesVenc.classList.add("TError");
-//         MostrarErrorT();
-//         return false;
-//     } else {
-//         inputMesVenc.classList.remove("TError");
-//     }
-//     if (nYearV == null || nYearV == undefined || nYearV == "") {
-//         inputYearVenc.classList.add("TError");
-//         MostrarErrorT();
-//         return false;
-//     } else {
-//         inputYearVenc.classList.remove("TError");
-//     }
-//     if (Number(nYearV) == actualYear ) {
-//         if(Number(nMesV)<=actualMonth){
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Oops...',
-//                 text: 'Tarjeta Vencida',
-                
-//             });
-//             inputMesVenc.classList.add("TError");
-//             inputYearVenc.classList.add("TError");
-//             return false;
+      listaUsuarios = result.ListaUsuariosBD;
+      
+    }
+  }
 
-//         }else if(Number(nYearV) < actualYear){
-//             Swal.fire({
-//                 icon: 'error',
-//                 title: 'Oops...',
-//                 text: 'Tarjeta Vencida',
-//             });
-//             inputMesVenc.classList.add("TError");
-//             inputYearVenc.classList.add("TError");
-//             return false;
-//         }   
-//     }else{
-//         inputMesVenc.classList.remove("TError");
-//         inputYearVenc.classList.remove("TError");
-//     }
-//     return true;
-// }
+  async function GetFactura() {
+    let result = await getFactura(numFact);
+    if (result != {} && result.resultado == true) {
+        
+        factura = result.FacturaDB;
+        for (let i = 0; i < listaUsuarios.length; i++) {
+          if (listaUsuarios[i].Identificacion == factura.IdentificacionUsuario) {
+            user=listaUsuarios[i];
+            console.log(factura)
+            
+          }
+          
+        }
+    }
+  }
 
-// function ValidarTipoTarjeta(){
-//     let nTarjeta = inputNumTarjeta.value;
-//     ///////visa////////
-//     if(nTarjeta.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/)){
-//         tipoVisa.classList.remove("hidden");
-//         tipoMaster.classList.add("hidden");
-//         tipoAmex.classList.add("hidden");
-//         cantCVV =3;
-//         return true;
-//     ///////mastercard/////////////    
-//     }else if(nTarjeta.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)){
-//         tipoVisa.classList.add("hidden");
-//         tipoMaster.classList.remove("hidden");
-//         tipoAmex.classList.add("hidden");
-//         cantCVV =3;
-//         return true;
-//         ///////amex/////////////
-//     }else if(nTarjeta.match(/^3[4-7]\d{2}-?\d{6}-?\d{5}$/)){
-//         tipoVisa.classList.add("hidden");
-//         tipoMaster.classList.add("hidden");
-//         tipoAmex.classList.remove("hidden");
-//         cantCVV =4;
-//         return true;
-//     }
-//     else{
-//         Swal.fire({
-//             icon: 'error',
-//             title: 'Oops...',
-//             text: 'numero de tarjeta invalido',
-//         });
-//         tipoVisa.classList.add("hidden");
-//         tipoMaster.classList.add("hidden");
-//         tipoAmex.classList.add("hidden");
-//         return false;
-//     }
+//////////////////////////////cargar datos factura//////////////////////////
 
-// }
+let inputCliente=document.getElementById('nombreClienteFact');
+let inputIdCliente=document.getElementById('IdClienteFact');
+let inputEmailCliente=document.getElementById('EmailClienteFact');
+let inputDieccionCliente=document.getElementById('DireccionClienteFact');
+let inputFechaFact=document.getElementById('FechaFact');
+let inputnumFact=document.getElementById('numFact');
+let tbody=document.getElementById('LineasFactura');
+let outSubtotal= document.getElementById('subtotalFact');
+let outIVA= document.getElementById('IvaFact');
+let outTotal= document.getElementById('TotalFact');
 
-// function MostrarErrorT() {
-//     Swal.fire({
-//         icon: 'error',
-//         title: 'Oops...',
-//         text: 'Dato requerido',
-//     })
-// }
 
-// function ConfirmarDatosT() {
-//     Swal.fire({
-//         position: 'center',
-//         icon: 'success',
-//         title: 'Pago Realizado',
-//         showConfirmButton: false,
-//         timer: 1500
-//     })
-// }
+function CargarFactura(){
+    let subtotal=0;
+    inputCliente.innerHTML=user.Nombre+" "+user.Apellido;
+    inputIdCliente.innerHTML=user.Identificacion;
+    inputEmailCliente.innerHTML=user.Email;
+    inputDieccionCliente.innerHTML=user.Direccion;
+    let fecha =new Date(factura.Fecha);
+    inputFechaFact.innerHTML= fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear();
+    inputnumFact.innerHTML=factura.NumeroFactura;
+    console.log(factura.Lineas.length)
+     for (let i = 0; i < factura.Lineas.length; i++) {
+        let fila=tbody.insertRow();
+
+        let celdaDescrip= fila.insertCell();
+            celdaDescrip.innerHTML=factura.Lineas[i].Descripcion;
+            celdaDescrip.classList.add("descrip");
+            
+        let celdaUnidad= fila.insertCell();
+            celdaUnidad.innerHTML="Unid";
+            celdaDescrip.classList.add("Unid");
+
+        let celdaCantidad= fila.insertCell();
+            celdaCantidad.innerHTML=factura.Lineas[i].Cantidad;
+            celdaDescrip.classList.add("Unid");  
+            
+        let celdaPrecio= fila.insertCell();
+            celdaPrecio.innerHTML=factura.Lineas[i].PrecioUnitario;
+            celdaDescrip.classList.add("Unid"); 
+            
+        let celdaTotal= fila.insertCell();
+            celdaTotal.innerHTML=(factura.Lineas[i].PrecioUnitario*factura.Lineas[i].Cantidad);
+            subtotal+=Number((factura.Lineas[i].PrecioUnitario*factura.Lineas[i].Cantidad));
+            celdaDescrip.classList.add("Unid");
+     }
+
+     outSubtotal.innerHTML=subtotal;
+     outIVA.innerHTML=(subtotal*0.13);
+     outTotal.innerHTML=(subtotal+(subtotal*0.13))
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //////////////////////////////pagos factura/////////////////////////////////////

@@ -41,7 +41,7 @@ h2 {
 	font-size: 18px;
 }
 
-.btn {
+/* .btn {
 	text-align: center;
 	background-color: var(--blanco);
 	color: var(--turquesa);
@@ -79,7 +79,7 @@ h2 {
 .btn:hover::after {
 	transition: all 0.6s ease-out;
 	transform: scale(1, 1);
-}
+} */
 
 .thTitle {
 	border: 1px solid var(--azul2);
@@ -213,6 +213,7 @@ tr {
 }
 
 .btn {
+	text-decoration: none;
 	width: 100%;
 	padding: 10px;
 	border-radius: 5px;
@@ -224,6 +225,7 @@ tr {
 	color: white;
 	cursor: pointer;
 	transition: all .5s ease;
+	text-align: center;
 }
 
 .btnEnviar {
