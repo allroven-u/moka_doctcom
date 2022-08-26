@@ -30,11 +30,22 @@ async function IdentificarAccion() {
 
 
 async function GetlistaMascota() {
-    let result = await getMascotasArray(userSessionM.Identificacion);
-    if (result != {} && result.resultado == true) {
-        listaMascotas = result.MascotasDB;
+
+    if(userSessionM.Rol !== 1){
+        let result = await getMascotasArray(userSessionM.Identificacion);
+        if (result != {} && result.resultado == true) {
+            listaMascotas = result.MascotasDB;
+        }
+        return listaMascotas;
+    }else if(userSessionM.Rol === 1){
+        let result = await getMascotasArrayAdmin();
+        if (result != {} && result.resultado == true) {
+            listaMascotas = result.MascotasDB;
+        }
+        return listaMascotas;
     }
-    return listaMascotas;
+
+   
 }
 async function ImprimirDatosMascota(p_id) {
     let cargarMascotas = await GetlistaMascota();
