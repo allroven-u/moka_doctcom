@@ -65,7 +65,7 @@ if(checkFinalizada.checked){
 if(checkCancelada.checked){
   ArrayEstados.push(checkCancelada.value);
 }
-
+console.log(fechaStart,fechaEnd);
   let result = await FiltrarCitas(fechaStart, fechaEnd,ArrayEstados);
   if (result != {} && result.resultado == true) {
     ImprimirListaCitas(result.ListaCitasBD);

@@ -1,5 +1,8 @@
 'use strict';
 
+let listaTarjetas = [];
+let userSessionT;
+userSessionT = GetSesion();
 
 let listaUsuarios=[];
 let factura;
@@ -22,7 +25,7 @@ window.addEventListener("load", async() => {
     CargarFactura()
   });
 
-
+console.log(userSessionT);
 
 async function GetlistaUsuarios() {
     let result = await getUsuariosArray();
@@ -48,6 +51,18 @@ async function GetlistaUsuarios() {
         }
     }
   }
+
+  async function getListaTarjetas() {
+    let result = await buscaUsuarioID(userSessionT.Identificacion);
+    if (result != {} && result.resultado == true) {
+        //console.log(result.usuarioDB.Tarjetas);
+        listaTarjetas = result.usuarioDB.Tarjetas;
+    }
+    return listaTarjetas;
+
+
+}
+
 
 //////////////////////////////cargar datos factura//////////////////////////
 
@@ -144,6 +159,7 @@ let inputMesVencPago = document.getElementById("mes_vencimientoPago");
 let inputYearVencPago = document.getElementById("year_vencimientoPago");
 let btnPagarFact = document.getElementById("btnPagarFactura");
 btnPagarFact.addEventListener("click",PagarFactura);
+let btnsFacturas = document.getElementById("buttonsFact");
 
 let tipoVisa = document.getElementById("imgVisa");
 let tipoMaster = document.getElementById("imgMaster");
@@ -162,8 +178,11 @@ function PagarFactura(){
     let sMesVenc =inputMesVencPago.value;
     let sYearVenc =inputYearVencPago.value;
 
-    if(ValidarMetodoPago(sNombreTitular,numTarjeta,sCVV,sMesVenc,sYearVenc)){
-
+    if(ValidarMetodoPago(sNombreTitular,numTarjeta,sCVV,sMesVenc,sYearVenc) == true){
+        hiddenPagarFact();
+        let success = document.querySelector('#success');
+        success.classList.remove('hidden');
+        btnsFacturas.classList.add('hidden');
         ConfirmarDatos("Realizado con Exito");
     }
 
@@ -247,8 +266,8 @@ function ValidarMetodoPago(pNombreTitular,pnumTarjeta,pCVV,pMesVenc,pYearVenc){
             return false;
         }   
     }else{
-        inputMesVenc.classList.remove("TError");
-        inputYearVenc.classList.remove("TError");
+        inputMesVencPago.classList.remove("TError");
+        inputYearVencPago.classList.remove("TError");
     }
     return true;
 }
@@ -320,3 +339,11 @@ function ShowModalPagoFactFunct() {
         }
     });
 };
+
+btnPagarFact.addEventListener('click', function(){
+    PagarFactura();
+})
+
+
+
+

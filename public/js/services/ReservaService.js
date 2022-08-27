@@ -13,15 +13,44 @@ async function getReservasArray(){
  return result;
 };
 
-function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
+async function getReservasUsuario(pIdentificacionUsuario){
+  let result = {};
+  await  axios.get(apiUrl + '/MiListarReservaciones',{params: {IdentificacionUsuario: pIdentificacionUsuario }} , {
+    responseType: 'json'
+  }).then((res)=>{
+    result = res.data
+  }).catch((err)=>{
+    console.log(err);
+  });
 
-  for (let i = 0; i < reservaArray.length; i++) {
-    const cita = reservaArray[i];
-    
-  }
-
-  return reservaArray;
+ return result;
   };
+
+// function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
+
+//   for (let i = 0; i < reservaArray.length; i++) {
+//     const cita = reservaArray[i];
+    
+//   }
+
+//   return reservaArray;
+//   };
+
+  async function FiltrarReservas(pFecha1,pFecha2,pEstado){
+    let result = {};
+   
+    await  axios.get(apiUrl + '/FiltarReserva',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2,Estado:pEstado}} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  
+   return result;
+    };
+  
+
 
   async function UltimaReserva(){
     let result = {};

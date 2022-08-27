@@ -4,6 +4,20 @@ let userSessionR;
 let listaUsuarios = [];
 let listaMascotas = [];
 let listaReservas = [];
+
+let botonFiltrar = document.getElementById("btnFiltroCita");
+let fechaInicio = document.getElementById("DateFecha1");
+let fechaFinal = document.getElementById("DateFecha2");
+
+let checkAgendada = document.getElementById("chkEstadoAgendada");
+let checkFinalizada = document.getElementById("chkEstadoFinalizada");
+let checkCancelada = document.getElementById("chkEstadoCancelada");
+
+const inputFiltro = document.getElementById('txtFiltro');
+
+
+
+
 window.addEventListener('load', () => {
     userSessionR = GetSesion();
     GetListaReservas();
@@ -15,13 +29,20 @@ window.addEventListener('load', () => {
 });
 
 
+
 async function GetListaReservas() {
-
-    let result = await getReservasArray();
+    let result= {};
+    switch (userSessionR.Rol) {
+        case 2:
+          result = await getCitasUsuario(userSessionR.Identificacion);
+          break;
+        default:
+          result =  await getReservasArray();
+          break;
+    }
+    //console.log(result);
     if (result != {} && result.resultado == true) {
-
-        ImprimirListaReservas(result.ListaReservasBD)
-
+       ImprimirListaReservas(result.ListaReservasBD);
     }
 }
 
@@ -32,6 +53,32 @@ async function GetlistaUsuarios() {
     }
 }
 
+
+async function FiltarListaReservas(pFecha1, pFecha2) {
+    let fechaStart =  FilterStartDate(pFecha1);
+    let fechaEnd =  FilterEndDate(pFecha2);
+  
+    let ArrayEstados = [];
+  if(checkAgendada.checked){
+    ArrayEstados.push(checkAgendada.value);
+  }
+  if(checkFinalizada.checked){
+    ArrayEstados.push(checkFinalizada.value);
+  }
+  if(checkCancelada.checked){
+    ArrayEstados.push(checkCancelada.value);
+  }
+ 
+  let result = await FiltrarReservas(fechaStart, fechaEnd,ArrayEstados);
+  if (result != {} && result.resultado == true) {
+    ImprimirListaReservas(result.ListaReservasBD);
+  }
+    // console.log(result);
+  }
+  
+  botonFiltrar.addEventListener("click", () => {
+    FiltarListaReservas(fechaInicio.value, fechaFinal.value);
+  });
 
 function ImprimirListaReservas(ListaReservasBD) {
 
@@ -114,10 +161,10 @@ function ImprimirListaReservas(ListaReservasBD) {
         celdaMascota.innerHTML = reserva.NombreMascota;
 
         let celdafechaEnt = fila.insertCell();
-        celdafechaEnt.innerHTML = reserva.FechaHoraIngreso;
+        celdafechaEnt.innerHTML = shortDate(reserva.FechaHoraIngreso);
 
         let celdaFechaSalida = fila.insertCell();
-        celdaFechaSalida.innerHTML = reserva.FechaHoraSalida;
+        celdaFechaSalida.innerHTML = shortDate(reserva.FechaHoraSalida);
 
         let celdaEstado = fila.insertCell();
         celdaEstado.innerHTML = reserva.Estado;
