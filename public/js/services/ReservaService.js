@@ -26,15 +26,31 @@ async function getReservasUsuario(pIdentificacionUsuario){
  return result;
   };
 
-function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
+// function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
 
-  for (let i = 0; i < reservaArray.length; i++) {
-    const cita = reservaArray[i];
+//   for (let i = 0; i < reservaArray.length; i++) {
+//     const cita = reservaArray[i];
     
-  }
+//   }
 
-  return reservaArray;
-  };
+//   return reservaArray;
+//   };
+
+  async function FiltrarReservas(pFecha1,pFecha2,pEstado){
+    let result = {};
+   
+    await  axios.get(apiUrl + '/FiltarReserva',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2,Estado:pEstado}} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  
+   return result;
+    };
+  
+
 
   async function UltimaReserva(){
     let result = {};
