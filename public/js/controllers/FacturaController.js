@@ -117,70 +117,6 @@ function CargarFactura() {
 
 
 
-
-
-
-async function GetListaTarjetas() {
-    let result = await getFactura(numFact);
-    if (result != {} && result.resultado == true) {
-
-        factura = result.FacturaDB;
-        for (let i = 0; i < listaUsuarios.length; i++) {
-            if (listaUsuarios[i].Identificacion == factura.IdentificacionUsuario) {
-                user = listaUsuarios[i];
-                let tarjetas = user.Tarjetas;
-                let select = document.getElementById('seletTarjetas');
-                let opcion;
-                let valor = 0;
-                for (let i = 0; i < tarjetas.length; i++) {
-                    opcion = document.createElement("option");
-                    valor += 1;
-                    opcion.value = valor;
-                    opcion.text = tarjetas[i].NumeroTarjeta;
-                    select.appendChild(opcion);
-                }
-
-                if(Number(select.value) > 0){
-                    
-                }
-                
-
-            }
-
-        }
-    }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //////////////////////////////pagos factura/////////////////////////////////////
 
 let inputNombreTitularPago = document.getElementById("txtTitularPago");
@@ -200,6 +136,41 @@ let actualDate = new Date();
 let actualYear = actualDate.getFullYear();
 let actualMonth = actualDate.getMonth();
 var cantCVV;
+let select = document.getElementById('seletTarjetas');
+
+
+
+
+async function GetListaTarjetas() {
+    let result = await getFactura(numFact);
+    if (result != {} && result.resultado == true) {
+
+        factura = result.FacturaDB;
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            if (listaUsuarios[i].Identificacion == factura.IdentificacionUsuario) {
+                user = listaUsuarios[i];
+                let tarjetas = user.Tarjetas;
+                
+                let opcion;
+                let valor = 0;
+                for (let i = 0; i < tarjetas.length; i++) {
+                    opcion = document.createElement("option");
+                    valor += 1;
+                    opcion.value = valor;
+                    opcion.text = tarjetas[i].NumeroTarjeta;
+                    select.appendChild(opcion);
+                    console.log(opcion.value);
+                }
+
+            }
+
+        }
+    }
+
+}
+
+
+
 
 
 function PagarFactura() {
