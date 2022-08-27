@@ -6,7 +6,7 @@ userSessionT = GetSesion();
 
 let listaUsuarios = [];
 let factura;
-let user;
+var user;
 ///////////Obtener id url/////////////////
 let queryString, urlParams, _id, numFact;
 IdentificarAccion();
@@ -22,7 +22,8 @@ async function IdentificarAccion() {
 window.addEventListener("load", async () => {
     await GetlistaUsuarios();
     await GetFactura();
-    CargarFactura()
+    CargarFactura();
+    GetListaTarjetas();
 });
 
 console.log(userSessionT);
@@ -45,6 +46,7 @@ async function GetFactura() {
             if (listaUsuarios[i].Identificacion == factura.IdentificacionUsuario) {
                 user = listaUsuarios[i];
                 console.log(factura)
+
             }
 
         }
@@ -53,19 +55,6 @@ async function GetFactura() {
 
 }
 
-
-console.log(factura);
-
-async function getListaTarjetas() {
-    let result = await buscaUsuarioID(userSessionT.Identificacion);
-    if (result != {} && result.resultado == true) {
-        //console.log(result.usuarioDB.Tarjetas);
-        listaTarjetas = result.usuarioDB.Tarjetas;
-    }
-    return listaTarjetas;
-
-
-}
 
 
 //////////////////////////////cargar datos factura//////////////////////////
@@ -83,6 +72,7 @@ let outTotal = document.getElementById('TotalFact');
 
 
 function CargarFactura() {
+
     let subtotal = 0;
     inputCliente.innerHTML = user.Nombre + " " + user.Apellido;
     inputIdCliente.innerHTML = user.Identificacion;
@@ -122,6 +112,43 @@ function CargarFactura() {
     outTotal.innerHTML = (subtotal + (subtotal * 0.13))
 
 
+
+}
+
+
+
+
+
+
+async function GetListaTarjetas() {
+    let result = await getFactura(numFact);
+    if (result != {} && result.resultado == true) {
+
+        factura = result.FacturaDB;
+        for (let i = 0; i < listaUsuarios.length; i++) {
+            if (listaUsuarios[i].Identificacion == factura.IdentificacionUsuario) {
+                user = listaUsuarios[i];
+                let tarjetas = user.Tarjetas;
+                let select = document.getElementById('seletTarjetas');
+                let opcion;
+                let valor = 0;
+                for (let i = 0; i < tarjetas.length; i++) {
+                    opcion = document.createElement("option");
+                    valor += 1;
+                    opcion.value = valor;
+                    opcion.text = tarjetas[i].NumeroTarjeta;
+                    select.appendChild(opcion);
+                }
+
+                if(Number(select.value) > 0){
+                    
+                }
+                
+
+            }
+
+        }
+    }
 
 }
 
