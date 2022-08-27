@@ -13,6 +13,19 @@ async function getReservasArray(){
  return result;
 };
 
+async function getReservasUsuario(pIdentificacionUsuario){
+  let result = {};
+  await  axios.get(apiUrl + '/MiListarReservaciones',{params: {IdentificacionUsuario: pIdentificacionUsuario }} , {
+    responseType: 'json'
+  }).then((res)=>{
+    result = res.data
+  }).catch((err)=>{
+    console.log(err);
+  });
+
+ return result;
+  };
+
 function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
 
   for (let i = 0; i < reservaArray.length; i++) {
