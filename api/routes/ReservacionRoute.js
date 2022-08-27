@@ -59,6 +59,26 @@ router.get('/ListarReservaciones', (req, res) => {
     });
 });
 
+
+router.get('/MiListarReservaciones', (req, res) => {
+    let params = req.query;
+    Reservacion.find({"IdentificacionUsuario":params.IdentificacionUsuario},(err, ListaReservasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaReservasBD
+            });
+        }
+    }).sort({$natural:-1});
+});
+
 router.get('/UltimaReserva', (req, res) => {
     Reservacion.find((err, ListaReservasBD) => {
         if (err) {

@@ -15,13 +15,20 @@ window.addEventListener('load', () => {
 });
 
 
+
 async function GetListaReservas() {
-
-    let result = await getReservasArray();
+    let result= {};
+    switch (userSessionR.Rol) {
+        case 2:
+          result = await getCitasUsuario(userSessionR.Identificacion);
+          break;
+        default:
+          result =  await getReservasArray();
+          break;
+    }
+    console.log(result);
     if (result != {} && result.resultado == true) {
-
-        ImprimirListaReservas(result.ListaReservasBD)
-
+       ImprimirListaReservas(result.ListaReservasBD);
     }
 }
 
