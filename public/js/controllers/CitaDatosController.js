@@ -173,6 +173,8 @@ async function llenarCompletarCita() {
       OutMotivoCancelar.innerHTML = listaCitas[i].NotasCancelacion;
       OutNumFactura.innerHTML = listaCitas[i].NumeroFactura;
 
+      txtDescripcion.value = listaCitas[i].ObservacionesVeterinario;
+
       btnFactura.setAttribute(
         "href",
         "/public/Factura.html?_id=" + listaCitas[i]._id + "&numFact=" + listaCitas[i].NumeroFactura
@@ -278,6 +280,9 @@ function ImprimirDetalleFactura(pLineas) {
       celdaCantidad.innerHTML = linea.Cantidad;
       let celdaPrecio = fila.insertCell();
       celdaPrecio.innerHTML = linea.PrecioUnitario;
+
+
+   
     }
  
 }
@@ -293,6 +298,9 @@ btnEnviar.addEventListener('click', async function () {
         if (result != {} && result.resultado) {
           ConfirmarDatos(result.msj);
           Diagnostico.value = "";
+          setTimeout(function () {
+            location.href = './AppVerCitas.html';
+          }, 2000);
         } else {
           MostrarError(result.msj);
         };
