@@ -242,4 +242,25 @@ router.put('/CancelarReserva', function(req, res){
 
 });
 
+
+router.get('/BuscarReservaPorId', (req, res) => {
+    let params = req.query;
+    Reservacion.findOne({_id: params._id}, (err, ReservaDB) => {
+        if (err) {            
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener datos: ',
+                err
+            });
+        }else{
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ReservaDB
+            });
+        }
+    });
+});
+
+
 module.exports = router;

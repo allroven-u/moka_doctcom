@@ -9,6 +9,7 @@ const btnEnviar = document.getElementById('enviar');
 const btnFactura = document.getElementById('factura');
 const btnAgregarSub = document.getElementById('agregar-subdoc');
 
+
 window.addEventListener('load', () =>{
 
     GetListaReservas();
@@ -66,10 +67,10 @@ if (usuarioRol !== 3 && opcionVer === 'ver') {
 }else if(usuarioRol !== 2 && opcionVer === 'compl'){
     btnDescrip.classList.remove("hidden");
     box4.classList.remove("hidden");
-    boxDiagnosticos.classList.remove("hidden");
+    // boxDiagnosticos.classList.remove("hidden");
     boxExterna.classList.remove("hidden");
     tableInfoCita.classList.remove("hidden");
-    boxDescripcion.classList.remove("hidden");
+    // boxDescripcion.classList.remove("hidden");
     btnsVDE.classList.remove('hidden');
 }else if(opcionVer === 'final' &&  estadoR === 'CANCELADA'){
     boxCalificacion.classList.add('hidden');
@@ -79,7 +80,7 @@ if (usuarioRol !== 3 && opcionVer === 'ver') {
    btnsVDF.classList.remove('hidden');
    box4.classList.remove("hidden");
    boxDiagnosticos.classList.remove("hidden");
-   boxDescripcion.classList.remove("hidden");
+  //  boxDescripcion.classList.remove("hidden");
    txtDescripcion.setAttribute("readonly", true);
    tableInfoCita.classList.remove("hidden");
    tableInfoCita.style = "margin-top: 0px";
@@ -88,7 +89,7 @@ if (usuarioRol !== 3 && opcionVer === 'ver') {
    boxCalificacion.classList.add('hidden');
    box4.classList.remove("hidden");
    boxDiagnosticos.classList.remove("hidden");
-   boxDescripcion.classList.remove("hidden");
+  //  boxDescripcion.classList.remove("hidden");
    txtDescripcion.setAttribute("readonly", true);
    tableInfoCita.classList.remove("hidden");
    tableInfoCita.style = "margin-top: 0px";
@@ -203,3 +204,134 @@ btnEnviar.addEventListener('click', async function(){
     return true;
   }
   
+
+  function ValidarDatosMedicacionCostos() {
+    let sfactDescripcion = factDescripcion.value;
+    let sfactCantidad = factCantidad.value;
+    let sfactPrecio = factPrecio.value;
+  
+  
+    if (sfactDescripcion == null || sfactDescripcion == undefined || sfactDescripcion == "") {
+      resaltarInputInvalido("txtDiagnostico");
+      MostrarError("¡La descripción es requerida!");
+      return false;
+    }
+  
+    if (sfactCantidad == null || sfactCantidad == undefined || sfactCantidad == "") {
+      resaltarInputInvalido("txtCantidad");
+      MostrarError("¡La cantidad es requerida!");
+      return false;
+    } else if (Number(sfactCantidad) <= 0) {
+      MostrarError('¡Debe ingresar una cantidad mayor a 0!');
+      resaltarInputInvalido("txtCantidad");
+      return false;
+    }
+  
+    if (sfactPrecio == null || sfactPrecio == undefined || sfactPrecio == "") {
+      resaltarInputInvalido("txtPrecio");
+      MostrarError("¡El precio es requerido!");
+      return false;
+    } else if (Number(sfactPrecio) <= 0) {
+      MostrarError('¡Debe ingresar un precio mayor a 0!');
+      resaltarInputInvalido("txtPrecio");
+      return false;
+    }
+    return true;
+  }
+
+
+async function agregarLineas() {
+  let reserva = await getReserva(_id);
+
+   if (ValidarDatosMedicacionCostos() === true) {
+
+  if (reserva.ReservaDB.NumeroFactura == "" || reserva.ReservaDB.NumeroFactura == undefined || reserva.ReservaDB.NumeroFactura == null) {
+    // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
+   
+
+    let fact = await crearFactura(
+      reserva.ReservaDB.IdentificacionUsuario,
+      reserva.ReservaDB.IdMascota,
+      reserva.ReservaDB.NombreMascota,
+      new Date().toISOString(),
+      ""
+    );
+   
+    if (fact.resultado == true) {
+      let NumNewFactura = fact.facturaDB.NumeroFactura;
+       let ReservaUpdate = await UpdateReservaFactura(_id, NumNewFactura,3);
+     
+        let linea = await RegistrarLineaFactura(
+          fact.facturaDB._id,
+          1,
+          factDescripcion.value,
+          factCantidad.value,
+          factPrecio.value
+        );
+        if (linea != {} && linea.resultado) {
+ 
+          ConfirmarDatos(linea.msj);
+        } else {
+          MostrarError(linea.msj);
+        }
+        
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
+        factDescripcion.innerHTML = "";
+        factCantidad.innerHTML = "";
+        factPrecio.innerHTML = "";
+
+    }
+  } else {
+    // let Factura = await getFactura(cita.CitaDB.NumeroFactura);
+    // let _idFactura = Factura.FacturaDB._id;
+    // let ultLinea = Factura.FacturaDB.Lineas;
+    // ultLinea[Factura.FacturaDB.Lineas.length - 1];
+
+    //   let linea = await RegistrarLineaFactura(
+    //     _idFactura,
+    //     ultLinea.NumeroLinea + 1,
+    //     factDescripcion.value,
+    //     factCantidad.value,
+    //     factPrecio.value
+    //   );
+    //   if (linea != {} && linea.resultado) {
+    //     ConfirmarDatos(linea.msj);
+    //     setTimeout(function () {
+    //       location.reload();
+    //     }, 2000);
+
+    //   } else {
+    //     MostrarError(linea.msj);
+    //   }
+    //   factDescripcion.innerHTML = "";
+    //   factCantidad.innerHTML = "";
+    //   factPrecio.innerHTML = "";
+
+  }
+}
+}
+
+  function ImprimirDetalleFactura(pLineas) {
+
+    let Tbody = document.getElementById('TBLienas');
+    Tbody.innerHTML = "";
+    console.log(pLineas);
+    let cantLinea = pLineas;
+  
+      for (let i = 0; i < cantLinea.length; i++) {
+        let fila = Tbody.insertRow();
+        let linea = cantLinea[i];
+        let celdaDescripcion = fila.insertCell();
+        celdaDescripcion.innerHTML = linea.Descripcion;
+        let celdaCantidad = fila.insertCell();
+        celdaCantidad.innerHTML = linea.Cantidad;
+        let celdaPrecio = fila.insertCell();
+        celdaPrecio.innerHTML = linea.PrecioUnitario;
+  
+  
+     
+      }
+   
+  }

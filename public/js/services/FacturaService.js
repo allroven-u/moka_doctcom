@@ -102,3 +102,25 @@ async function crearFactura(pIdentificacionUsuario,pIdMascota,pNombreMascota,pFe
     return result;
 }
 
+async function UpdateCitaFactura(p_id,pNumeroFactura, pCalificacion) {
+    let result ={}; 
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+          '_id': p_id,
+          'NumeroFactura':pNumeroFactura,     
+          'Calificacion':pCalificacion 
+        }
+
+       })
+      .then(function (res) {
+        result = res.data;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    return result;
+  }

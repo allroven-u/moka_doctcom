@@ -6,7 +6,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./assets/img/Moka Logo Icon.png">
-    <title>Reporte Reservas - Moka Veterinaria</title>
+    <title>Reporte de Reservas - Moka Veterinaria</title>
     <link rel="stylesheet" href="./css/app.css">
     <link rel="stylesheet" href="./css/VerCitas.css">
     <script src="https://kit.fontawesome.com/c1ba3b44a4.js" crossorigin="anonymous"></script>
@@ -50,9 +50,9 @@
                                 <i class="fa-solid fa-address-card" list__arrow></i> Mi perfil</a>
                         </li>
 
-                        <li class="list__inside">
-                            <a href="perfilMascota.html" class="nav__link nav__link--inside">
-                                <i class="fa-solid fa-paw" list__arrow></i><span id="misMascotas"> Mis mascotas</span></a>
+                        <li class="list__inside" id="mascotasTab">
+                            <a href="Mascotas.html" class="nav__link nav__link--inside">
+                                <i class="fa-solid fa-paw" list__arrow></i> <span id="misMascotas">Mis Mascotas</span></a>
                         </li>
                     </ul>
                 </li>
@@ -64,7 +64,7 @@
                     </div>
                 </li>
 
-                <li class="list__item list__item--click">
+                <li class="list__item list__item--click selector" id="reservasTab">
                     <div class="list__button list__button--click">
                         <i class="fa-solid fa-hotel list__img"></i>
                         <a href="AppVerReservas.html" class="nav__link">Reservas</a>
@@ -72,40 +72,40 @@
 
                 </li>
 
-                    <li class="list__item list__item--click">
+                    <li class="list__item list__item--click" id="reportesTab">
                         <div class="list__button list__button--click">
                             <i class="fa-solid fa-file-contract list__img"></i>
                             <a href="#" class="nav__link">Reportes</a>
                             <i class="fa-solid fa-angle-right list__arrow "></i>
                         </div>
-                        <ul class="list__show"  style="height: 100%">
+                        <ul class="list__show">
                             <li class="list__inside">
 
                                 <a href="reporteCitas.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de citas</a>
+                                    <i class="fa-solid fa-file-lines list__arrow"></i>Listado de citas</a>
                             </li>
 
                             <li class="list__inside">
-                                <a href="reporteReservacion.html" class="nav__link nav__link--inside selector">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Listado de reservaciones</a>
+                                <a href="reporteReservacion.html" class="nav__link nav__link--inside">
+                                    <i class="fa-solid fa-file-lines list__arrow"></i>Listado de reservaciones</a>
                             </li>
 
                             <li class="list__inside">
                                 <a href="reporteVeterinario.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-star-half-stroke list__arrow"></i> Calificaciones
+                                    <i class="fa-solid fa-star-half-stroke list__arrow"></i>Calificaciones
                                 </a>
                             </li>
 
                             <li class="list__inside">
                                 <a href="reporteGanancia.html" class="nav__link nav__link--inside">
 
-                                    <i class="fa-solid fa-file-invoice-dollar list__arrow"></i> Ganacias
+                                    <i class="fa-solid fa-file-invoice-dollar list__arrow"></i>Ganacias
                                 </a>
                             </li>
 
                             <li class="list__inside">
                                 <a href="reporteUsuario.html" class="nav__link nav__link--inside">
-                                    <i class="fa-solid fa-file-lines list__arrow"></i> Usuarios registrados</a>
+                                    <i class="fa-solid fa-file-lines list__arrow"></i>Usuarios registrados</a>
                             </li>
 
                         </ul>
@@ -118,7 +118,7 @@
 
             <div class="tContainer">
                 <div class="tTituloContainer">
-
+                    
                     <div class="tituloCitas">
                         <h2>Reporte de reservas</h2>
                     </div>
@@ -127,23 +127,12 @@
 
                 <div class="tFiltros">
 
-                    <div for="txtNumCita" class="filtrosCajas">
-                        <label for="txtNumCita">No. reserva</label>
-                        <input id="txtNumReserva" class="cajasCitas" type="text">
+   
+                    <div for="txtFiltro" class="filtrosCajas">
+                        <label for="txtFiltro">Filtrar</label>
+                        <input id="txtFiltro" class="cajasCitas" type="text">
                     </div>
-                    <div for="txtDuenhoCita" class="filtrosCajas">
-                        <label for="txtDuenhoCita">Propietario(a)</label>
-                        <input id="txtDuenhoCita" class="cajasCitas" type="text">
-                    </div>
-                    <div for="txtMascotaCita" class="filtrosCajas">
-                        <label for="txtMascotaCita">Mascota</label>
-                        <input id="txtMascotaCita" class="cajasCitas" type="text">
-                    </div>
-
-                    <div for="txtVeterinarioCita" class="filtrosCajas">
-                        <label for="txtVeterinarioCita">Veterinario(a)</label>
-                        <input id="txtVeterinarioCita" class="cajasCitas" type="text">
-                    </div>
+                   
                     <div class="filtroFecha">
                         <div for="DateFecha1" class="filtrosCajas">
                             <label for="DateFecha1">Fecha inicio</label>
@@ -156,22 +145,23 @@
                     </div>
 
                     <div for="checkEstadoCita" class="filtrosCajaschk">
-                        <p>Estado cita</p>
+                        <p>Estado Cita</p>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoAgendada">Agendada</label>
-                        <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox">
+                        <input class="checkEstadoCita" id="chkEstadoAgendada" type="checkbox" value="AGENDADA" checked="true">
                         </div>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoFinalizada">Finalizada</label>
-                        <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox">
+                        <input class="checkEstadoCita" id="chkEstadoFinalizada" type="checkbox" value="FINALIZADA" checked="true">
                         </div>
                         <div class="estadoChkCajas">
                             <label for="chkEstadoCancelada">Cancelada</label>
-                        <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox">
+                        <input class="checkEstadoCita" id="chkEstadoCancelada" type="checkbox" value="CANCELADA" checked="true">
                         </div>
                     </div>
 
                     <div class="filtrosCajas">
+                        <!-- <input type="button" value="Filtrar" > -->
                         <a><i class="fa-solid fa-arrows-rotate" id="btnFiltroCita"></i></a>
                         <label for="btnFiltroCita">Filtrar</label>
                     </div>
@@ -187,6 +177,8 @@
                     </tbody>
                 </table>
             </div>
+
+
             <div class="overlay hidden"></div>
         </div>
 
@@ -194,12 +186,14 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="http://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/Constantes.js"></script>
-    <script src="./js/services/SessionService.js"></script>
+
     <script src="./js/services/UsuarioService.js"></script>
+    <script src="./js/services/SessionService.js"></script>
     <script src="./js/services/ReservaService.js"></script>
-    <script src="./js/services/MascotasService.js"></script>
     <script src="./js/controllers/appController.js"></script>
     <script src="./js/controllers/RepReservacionesController.js"></script>
 
 </body>
-</html> 
+
+
+</html>

@@ -26,6 +26,19 @@ async function getReservasUsuario(pIdentificacionUsuario){
  return result;
   };
 
+  async function getReserva(p_id){
+    let result = {};
+    await  axios.get(apiUrl + '/BuscarReservaPorId',{params: {_id: p_id}} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  
+   return result;
+  };
+
 // function FiltrarCitas(pFecha1,pFecha2,pVeterinarioID,pNombreMascota,pDuenio){
 
 //   for (let i = 0; i < reservaArray.length; i++) {
@@ -158,6 +171,29 @@ async function getReservasUsuario(pIdentificacionUsuario){
         responseType: 'json',
         data: {
           'NumeroReservacion': pNumR,  
+          'Calificacion':pCalificacion 
+        }
+
+       })
+      .then(function (res) {
+        result = res.data;
+        console.log(res);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    return result;
+  }
+
+  async function UpdateReservaFactura(p_id,pNumeroFactura, pCalificacion) {
+    let result ={}; 
+      await axios({
+        method:'put',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+          '_id': p_id,
+          'NumeroFactura':pNumeroFactura,     
           'Calificacion':pCalificacion 
         }
 
