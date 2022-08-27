@@ -4,57 +4,59 @@ let listaTarjetas = [];
 let userSessionT;
 userSessionT = GetSesion();
 
-let listaUsuarios=[];
+let listaUsuarios = [];
 let factura;
 let user;
 ///////////Obtener id url/////////////////
 let queryString, urlParams, _id, numFact;
 IdentificarAccion();
 async function IdentificarAccion() {
-  queryString = window.location.search;
+    queryString = window.location.search;
 
-  urlParams = new URLSearchParams(queryString);
+    urlParams = new URLSearchParams(queryString);
 
-  _id = urlParams.get("_id");
-  numFact = urlParams.get("numFact");
+    _id = urlParams.get("_id");
+    numFact = urlParams.get("numFact");
 }
 
-window.addEventListener("load", async() => {
+window.addEventListener("load", async () => {
     await GetlistaUsuarios();
     await GetFactura();
     CargarFactura()
-  });
+});
 
 console.log(userSessionT);
 
 async function GetlistaUsuarios() {
     let result = await getUsuariosArray();
     if (result != {} && result.resultado == true) {
-        
-      listaUsuarios = result.ListaUsuariosBD;
-      
-    }
-  }
 
-  async function GetFactura() {
+        listaUsuarios = result.ListaUsuariosBD;
+
+    }
+}
+
+async function GetFactura() {
     let result = await getFactura(numFact);
     if (result != {} && result.resultado == true) {
-        
+
         factura = result.FacturaDB;
         for (let i = 0; i < listaUsuarios.length; i++) {
-          if (listaUsuarios[i].Identificacion == factura.IdentificacionUsuario) {
-            user=listaUsuarios[i];
-            console.log(factura)
-            
-          }
-          
+            if (listaUsuarios[i].Identificacion == factura.IdentificacionUsuario) {
+                user = listaUsuarios[i];
+                console.log(factura)
+            }
+
         }
     }
 
 
-  }
+}
 
-  async function getListaTarjetas() {
+
+console.log(factura);
+
+async function getListaTarjetas() {
     let result = await buscaUsuarioID(userSessionT.Identificacion);
     if (result != {} && result.resultado == true) {
         //console.log(result.usuarioDB.Tarjetas);
@@ -68,56 +70,56 @@ async function GetlistaUsuarios() {
 
 //////////////////////////////cargar datos factura//////////////////////////
 
-let inputCliente=document.getElementById('nombreClienteFact');
-let inputIdCliente=document.getElementById('IdClienteFact');
-let inputEmailCliente=document.getElementById('EmailClienteFact');
-let inputDieccionCliente=document.getElementById('DireccionClienteFact');
-let inputFechaFact=document.getElementById('FechaFact');
-let inputnumFact=document.getElementById('numFact');
-let tbody=document.getElementById('LineasFactura');
-let outSubtotal= document.getElementById('subtotalFact');
-let outIVA= document.getElementById('IvaFact');
-let outTotal= document.getElementById('TotalFact');
+let inputCliente = document.getElementById('nombreClienteFact');
+let inputIdCliente = document.getElementById('IdClienteFact');
+let inputEmailCliente = document.getElementById('EmailClienteFact');
+let inputDieccionCliente = document.getElementById('DireccionClienteFact');
+let inputFechaFact = document.getElementById('FechaFact');
+let inputnumFact = document.getElementById('numFact');
+let tbody = document.getElementById('LineasFactura');
+let outSubtotal = document.getElementById('subtotalFact');
+let outIVA = document.getElementById('IvaFact');
+let outTotal = document.getElementById('TotalFact');
 
 
-function CargarFactura(){
-    let subtotal=0;
-    inputCliente.innerHTML=user.Nombre+" "+user.Apellido;
-    inputIdCliente.innerHTML=user.Identificacion;
-    inputEmailCliente.innerHTML=user.Email;
-    inputDieccionCliente.innerHTML=user.Direccion;
-    let fecha =new Date(factura.Fecha);
-    inputFechaFact.innerHTML= fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear();
-    inputnumFact.innerHTML=factura.NumeroFactura;
+function CargarFactura() {
+    let subtotal = 0;
+    inputCliente.innerHTML = user.Nombre + " " + user.Apellido;
+    inputIdCliente.innerHTML = user.Identificacion;
+    inputEmailCliente.innerHTML = user.Email;
+    inputDieccionCliente.innerHTML = user.Direccion;
+    let fecha = new Date(factura.Fecha);
+    inputFechaFact.innerHTML = fecha.getDate() + "-" + fecha.getMonth() + "-" + fecha.getFullYear();
+    inputnumFact.innerHTML = factura.NumeroFactura;
     console.log(factura.Lineas.length)
-     for (let i = 0; i < factura.Lineas.length; i++) {
-        let fila=tbody.insertRow();
+    for (let i = 0; i < factura.Lineas.length; i++) {
+        let fila = tbody.insertRow();
 
-        let celdaDescrip= fila.insertCell();
-            celdaDescrip.innerHTML=factura.Lineas[i].Descripcion;
-            celdaDescrip.classList.add("descrip");
-            
-        let celdaUnidad= fila.insertCell();
-            celdaUnidad.innerHTML="Unid";
-            celdaDescrip.classList.add("Unid");
+        let celdaDescrip = fila.insertCell();
+        celdaDescrip.innerHTML = factura.Lineas[i].Descripcion;
+        celdaDescrip.classList.add("descrip");
 
-        let celdaCantidad= fila.insertCell();
-            celdaCantidad.innerHTML=factura.Lineas[i].Cantidad;
-            celdaDescrip.classList.add("Unid");  
-            
-        let celdaPrecio= fila.insertCell();
-            celdaPrecio.innerHTML=factura.Lineas[i].PrecioUnitario;
-            celdaDescrip.classList.add("Unid"); 
-            
-        let celdaTotal= fila.insertCell();
-            celdaTotal.innerHTML=(factura.Lineas[i].PrecioUnitario*factura.Lineas[i].Cantidad);
-            subtotal+=Number((factura.Lineas[i].PrecioUnitario*factura.Lineas[i].Cantidad));
-            celdaDescrip.classList.add("Unid");
-     }
+        let celdaUnidad = fila.insertCell();
+        celdaUnidad.innerHTML = "Unid";
+        celdaDescrip.classList.add("Unid");
 
-     outSubtotal.innerHTML=subtotal;
-     outIVA.innerHTML=(subtotal*0.13);
-     outTotal.innerHTML=(subtotal+(subtotal*0.13))
+        let celdaCantidad = fila.insertCell();
+        celdaCantidad.innerHTML = factura.Lineas[i].Cantidad;
+        celdaDescrip.classList.add("Unid");
+
+        let celdaPrecio = fila.insertCell();
+        celdaPrecio.innerHTML = factura.Lineas[i].PrecioUnitario;
+        celdaDescrip.classList.add("Unid");
+
+        let celdaTotal = fila.insertCell();
+        celdaTotal.innerHTML = (factura.Lineas[i].PrecioUnitario * factura.Lineas[i].Cantidad);
+        subtotal += Number((factura.Lineas[i].PrecioUnitario * factura.Lineas[i].Cantidad));
+        celdaDescrip.classList.add("Unid");
+    }
+
+    outSubtotal.innerHTML = subtotal;
+    outIVA.innerHTML = (subtotal * 0.13);
+    outTotal.innerHTML = (subtotal + (subtotal * 0.13))
 
 
 
@@ -160,7 +162,7 @@ let inputNumCVVPago = document.getElementById("txtCvvPago");
 let inputMesVencPago = document.getElementById("mes_vencimientoPago");
 let inputYearVencPago = document.getElementById("year_vencimientoPago");
 let btnPagarFact = document.getElementById("btnPagarFactura");
-btnPagarFact.addEventListener("click",PagarFactura);
+btnPagarFact.addEventListener("click", PagarFactura);
 let btnsFacturas = document.getElementById("buttonsFact");
 
 let tipoVisa = document.getElementById("imgVisa");
@@ -173,14 +175,14 @@ let actualMonth = actualDate.getMonth();
 var cantCVV;
 
 
-function PagarFactura(){
-    let sNombreTitular =inputNombreTitularPago.value;
-    let numTarjeta =inputNumTarjetaPago.value;
-    let sCVV =inputNumCVVPago.value;
-    let sMesVenc =inputMesVencPago.value;
-    let sYearVenc =inputYearVencPago.value;
+function PagarFactura() {
+    let sNombreTitular = inputNombreTitularPago.value;
+    let numTarjeta = inputNumTarjetaPago.value;
+    let sCVV = inputNumCVVPago.value;
+    let sMesVenc = inputMesVencPago.value;
+    let sYearVenc = inputYearVencPago.value;
 
-    if(ValidarMetodoPago(sNombreTitular,numTarjeta,sCVV,sMesVenc,sYearVenc) == true){
+    if (ValidarMetodoPago(sNombreTitular, numTarjeta, sCVV, sMesVenc, sYearVenc) == true) {
         hiddenPagarFact();
         let success = document.querySelector('#success');
         success.classList.remove('hidden');
@@ -190,17 +192,17 @@ function PagarFactura(){
 
 }
 
-function ValidarMetodoPago(pNombreTitular,pnumTarjeta,pCVV,pMesVenc,pYearVenc){
+function ValidarMetodoPago(pNombreTitular, pnumTarjeta, pCVV, pMesVenc, pYearVenc) {
 
 
-    if (pnumTarjeta == null || pnumTarjeta == undefined || pnumTarjeta == "" ) {
+    if (pnumTarjeta == null || pnumTarjeta == undefined || pnumTarjeta == "") {
         inputNumTarjetaPago.classList.add("TError");
         MostrarError("El numero de tarjeta es requerido!");
         return false;
     }
-    if(ValidarTipoTarjetaPago(pnumTarjeta) == true){
+    if (ValidarTipoTarjetaPago(pnumTarjeta) == true) {
         inputNumTarjetaPago.classList.remove("TError");
-    }else{
+    } else {
         return false;
     }
 
@@ -218,18 +220,18 @@ function ValidarMetodoPago(pNombreTitular,pnumTarjeta,pCVV,pMesVenc,pYearVenc){
         MostrarError("El numero de CVV es requerido!");
         return false;
     } else {
-        console.log("cvv "+pCVV);
-        if(pCVV.length!=cantCVV){
+        console.log("cvv " + pCVV);
+        if (pCVV.length != cantCVV) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'CVV incorrecto',
             });
             return false;
-        }else{
+        } else {
             inputNumCVVPago.classList.remove("TError");
         }
-        
+
     }
     if (pMesVenc == null || pMesVenc == undefined || pMesVenc == "") {
         inputMesVencPago.classList.add("TError");
@@ -245,19 +247,19 @@ function ValidarMetodoPago(pNombreTitular,pnumTarjeta,pCVV,pMesVenc,pYearVenc){
     } else {
         inputYearVencPago.classList.remove("TError");
     }
-    if (Number(pYearVenc) == actualYear ) {
-        if(Number(pMesVenc)<=actualMonth){
+    if (Number(pYearVenc) == actualYear) {
+        if (Number(pMesVenc) <= actualMonth) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Tarjeta Vencida',
-                
+
             });
             inputMesVencPago.classList.add("TError");
             inputYearVencPago.classList.add("TError");
             return false;
 
-        }else if(Number(pYearVenc) < actualYear){
+        } else if (Number(pYearVenc) < actualYear) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -266,39 +268,38 @@ function ValidarMetodoPago(pNombreTitular,pnumTarjeta,pCVV,pMesVenc,pYearVenc){
             inputMesVencPago.classList.add("TError");
             inputYearVencPago.classList.add("TError");
             return false;
-        }   
-    }else{
+        }
+    } else {
         inputMesVencPago.classList.remove("TError");
         inputYearVencPago.classList.remove("TError");
     }
     return true;
 }
 
-function ValidarTipoTarjetaPago(pNumTarjeta){
+function ValidarTipoTarjetaPago(pNumTarjeta) {
     let nTarjeta = pNumTarjeta;
     ///////visa////////
-    if(nTarjeta.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/)){
+    if (nTarjeta.match(/^4\d{3}-?\d{4}-?\d{4}-?\d{4}$/)) {
         tipoVisa.classList.remove("hidden");
         tipoMaster.classList.add("hidden");
         tipoAmex.classList.add("hidden");
-        cantCVV =3;
+        cantCVV = 3;
         return true;
-    ///////mastercard/////////////    
-    }else if(nTarjeta.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)){
+        ///////mastercard/////////////    
+    } else if (nTarjeta.match(/^5[1-5]\d{2}-?\d{4}-?\d{4}-?\d{4}$/)) {
         tipoVisa.classList.add("hidden");
         tipoMaster.classList.remove("hidden");
         tipoAmex.classList.add("hidden");
-        cantCVV =3;
+        cantCVV = 3;
         return true;
         ///////amex/////////////
-    }else if(nTarjeta.match(/^3[4-7]\d{2}-?\d{6}-?\d{5}$/)){
+    } else if (nTarjeta.match(/^3[4-7]\d{2}-?\d{6}-?\d{5}$/)) {
         tipoVisa.classList.add("hidden");
         tipoMaster.classList.add("hidden");
         tipoAmex.classList.remove("hidden");
-        cantCVV =4;
+        cantCVV = 4;
         return true;
-    }
-    else{
+    } else {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -320,10 +321,10 @@ const modalPagoFact = document.querySelector('.form-pago-tarjetaFactura');
 const closeModalPagoFact = document.getElementById('btnCancelarPago');
 let cerrarModal = document.querySelector(".cerrarModalX-tarjetaPago")
 const overlay = document.querySelector('.overlay');
-showPagarFact.addEventListener('click', function() {
+showPagarFact.addEventListener('click', function () {
     ShowModalPagoFactFunct();
 });
-const hiddenPagarFact = function() {
+const hiddenPagarFact = function () {
     modalPagoFact.classList.add('hidden');
     overlay.classList.add('hidden');
 };
@@ -335,17 +336,13 @@ function ShowModalPagoFactFunct() {
     cerrarModal.addEventListener('click', hiddenPagarFact);
     closeModalPagoFact.addEventListener('click', hiddenPagarFact);
     overlay.addEventListener('click', hiddenPagarFact);
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && !modalPago.classList.contains('hidden')) {
             hiddenPagarFact();
         }
     });
 };
 
-btnPagarFact.addEventListener('click', function(){
+btnPagarFact.addEventListener('click', function () {
     PagarFactura();
 })
-
-
-
-
