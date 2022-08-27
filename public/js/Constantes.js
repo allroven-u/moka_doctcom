@@ -33,9 +33,10 @@ function resaltarInputInvalido(pinputID) {
 }
 
 
-function shortDate(pDate) {
-  let fecha = new Date(pDate);
-  return fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear() + ' '+ fecha.getHours() + ':'+ fecha.getMinutes();
+function shortDate(fecha) {
+  // let fecha = new Date(pDate.toString());
+  // return fecha.getDate()+"-"+fecha.getMonth()+"-"+fecha.getFullYear() + ' '+ fecha.getHours() + ':'+ fecha.getMinutes();
+  return fecha;
 }
 
 function FilterStartDate(pFecha) {
