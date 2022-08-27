@@ -287,6 +287,7 @@ function ImprimirDetalleFactura(pLineas) {
  
 }
 
+
 //envia estrellas mascota
 
 btnEnviar.addEventListener('click', async function () {
