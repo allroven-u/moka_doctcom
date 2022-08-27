@@ -14,8 +14,9 @@ let txtInfoVet = document.getElementById('txtInfoVet');
 
 
 let usuario;
-
-
+let factura;
+let listaUsuarios=[];
+let facturasUser=[];
 ///////////Obtener id url/////////////////
 let queryString, urlParams, _id, usuarioRol;
 IdentificarAccion();
@@ -30,9 +31,11 @@ async function IdentificarAccion() {
 
 
 
-window.addEventListener('load', () => {
+window.addEventListener('load', async() => {
   usuario = GetSesion();
-  GetListaCitas(usuario.Identificacion);
+  await GetListaCitas(usuario.Identificacion);
+  await GetFactura();
+  cargarFacturas();
 });
 
 async function GetListaCitas(idUser) {
@@ -47,7 +50,7 @@ async function GetListaCitas(idUser) {
 async function GetlistaUsuarios(ListaCitasBD, idUser) {
   let result = await getUsuariosArray();
   if (result != {} && result.resultado == true) {
-    let listaUsuarios = result.ListaUsuariosBD;
+    listaUsuarios = result.ListaUsuariosBD;
     if (usuario.Rol == 1 && _id!= null) {
       CargarDatosAdmin(listaUsuarios)
     }else{
@@ -56,6 +59,42 @@ async function GetlistaUsuarios(ListaCitasBD, idUser) {
     
     ImprimirListaCitas(ListaCitasBD, listaUsuarios, idUser);
   }
+}
+
+
+
+async function GetFactura() {
+  let result = await getFacturasArray();
+  if (result != {} && result.resultado == true) {
+      
+      factura = result.ListaFacturasBD;
+      
+      for (let i = 0; i < factura.length; i++) {
+        if (factura[i].IdentificacionUsuario == usuario.Identificacion) {
+          
+          facturasUser.push(factura[i])
+          
+        }
+        
+      }
+  }
+}
+
+let tbody = document.getElementById('PagosUser')
+function cargarFacturas(){
+  for (let i = 0; i < facturasUser.length; i++) {
+  let fila = tbody.insertRow();
+
+  let celdaFecha = fila.insertCell();
+  celdaFecha.innerHTML = facturasUser[i].Fecha.toString();
+  celdaFecha.classList.add("detalle");
+  
+
+  let celdaCosto = fila.insertCell();
+  console.log(facturasUser[i].Lineas)
+  celdaCosto.innerHTML = facturasUser[i].NumeroFactura;
+  celdaCosto.classList.add("precio");
+}
 }
 
 
@@ -160,7 +199,3 @@ if(Number(usuario.Rol) === 1){
   metodosPago.classList.remove('hidden');
 }
 
-//historial-de-pagos
-//historial-mascota
-//InfoVetContainer-Principal
-//
