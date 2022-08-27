@@ -156,7 +156,8 @@ async function llenarCompletarCita() {
       let Factura = await getFactura(factCita.NumeroFactura);
 
       if (Factura.FacturaDB != null && Factura.FacturaDB != undefined && Factura.FacturaDB != "") {
-        ImprimirDetalleFactura(Factura);
+        //console.log(Factura.FacturaDB.Lineas);
+        ImprimirDetalleFactura(Factura.FacturaDB.Lineas);
       }
 
 
@@ -171,6 +172,8 @@ async function llenarCompletarCita() {
       OutestadoCita.innerHTML = listaCitas[i].Estado;
       OutMotivoCancelar.innerHTML = listaCitas[i].NotasCancelacion;
       OutNumFactura.innerHTML = listaCitas[i].NumeroFactura;
+
+      txtDescripcion.value = listaCitas[i].ObservacionesVeterinario;
 
       btnFactura.setAttribute(
         "href",
@@ -190,6 +193,8 @@ async function llenarCompletarCita() {
 async function agregarLineas() {
   let cita = await getCita(_id);
 
+   if (ValidarDatosMedicacionCostos() === true) {
+
   if (cita.CitaDB.NumeroFactura == "" || cita.CitaDB.NumeroFactura == undefined || cita.CitaDB.NumeroFactura == null) {
     // Aca se crea la factura en estado creado si es que no esta creada y si ya esta creada se agregan las lineas respectivas
     let fact = await crearFactura(
@@ -200,14 +205,10 @@ async function agregarLineas() {
       ""
     );
 
-
-
     if (fact.resultado == true) {
       let NumNewFactura = fact.facturaDB.NumeroFactura;
       let CitaUpdate = await UpdateCitaFactura(_id, NumNewFactura);
-
-
-      if (ValidarDatosMedicacionCostos() === true) {
+     
         let linea = await RegistrarLineaFactura(
           fact.facturaDB._id,
           1,
@@ -216,21 +217,18 @@ async function agregarLineas() {
           factPrecio.value
         );
         if (linea != {} && linea.resultado) {
-          let fact2 = await getFactura(cita.CitaDB.NumeroFactura);
+    //      ImprimirDetalleFactura(linea.ListaFacturasBD.Lineas);
           ConfirmarDatos(linea.msj);
-          ImprimirDetalleFactura(fact2);
-          setTimeout(function () {
-            location.reload();
-          }, 2000);
         } else {
           MostrarError(linea.msj);
         }
+        
+        setTimeout(function () {
+          location.reload();
+        }, 2000);
         factDescripcion.innerHTML = "";
         factCantidad.innerHTML = "";
         factPrecio.innerHTML = "";
-
-
-      }
 
     }
 
@@ -241,8 +239,6 @@ async function agregarLineas() {
     let _idFactura = Factura.FacturaDB._id;
     let ultLinea = Factura.FacturaDB.Lineas;
     ultLinea[Factura.FacturaDB.Lineas.length - 1];
-
-    if (ValidarDatosMedicacionCostos() === true) {
 
       let linea = await RegistrarLineaFactura(
         _idFactura,
@@ -256,7 +252,7 @@ async function agregarLineas() {
         setTimeout(function () {
           location.reload();
         }, 2000);
-        ImprimirDetalleFactura(Factura);
+
       } else {
         MostrarError(linea.msj);
       }
@@ -264,34 +260,31 @@ async function agregarLineas() {
       factCantidad.innerHTML = "";
       factPrecio.innerHTML = "";
 
-    }
-
   }
 }
+}
 
-function ImprimirDetalleFactura(factura) {
-
+function ImprimirDetalleFactura(pLineas) {
 
   let Tbody = document.getElementById('TBLienas');
-
   Tbody.innerHTML = "";
-
-  let cantLinea = factura.FacturaDB.Lineas;
-  console.log(cantLinea);
-
+  console.log(pLineas);
+  let cantLinea = pLineas;
 
     for (let i = 0; i < cantLinea.length; i++) {
       let fila = Tbody.insertRow();
-      let linea = factura.FacturaDB.Lineas[i];
+      let linea = cantLinea[i];
       let celdaDescripcion = fila.insertCell();
       celdaDescripcion.innerHTML = linea.Descripcion;
       let celdaCantidad = fila.insertCell();
       celdaCantidad.innerHTML = linea.Cantidad;
       let celdaPrecio = fila.insertCell();
       celdaPrecio.innerHTML = linea.PrecioUnitario;
+
+
+   
     }
  
-
 }
 
 
@@ -308,6 +301,9 @@ btnEnviar.addEventListener('click', async function () {
         if (result != {} && result.resultado) {
           ConfirmarDatos(result.msj);
           Diagnostico.value = "";
+          setTimeout(function () {
+            location.href = './AppVerCitas.html';
+          }, 2000);
         } else {
           MostrarError(result.msj);
         };

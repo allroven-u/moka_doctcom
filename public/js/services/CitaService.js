@@ -186,7 +186,8 @@ async function crearCita(pIdUsuario,pIdMascota,pMascota,pFecha,pIdVeterinario,pD
         data: {
           '_id': p_id,  
           'Calificacion':pCalificacion,
-          'ObservacionesVeterinario': pObservacionesVeterinario
+          'ObservacionesVeterinario': pObservacionesVeterinario,
+          'Estado':'FINALIZADA'
         }
 
        })
