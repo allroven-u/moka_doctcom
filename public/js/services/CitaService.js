@@ -14,9 +14,19 @@ async function getCitasArray(){
  return result;
 };
 
-async function FiltrarCitas(pFecha1,pFecha2,pEstado){
+async function FiltrarCitas(pFecha1,pFecha2,pEstado,p_IdentificacionUsuario,pRol){
   let result = {};
  
+  if(pRol ==2)
+  {
+    await  axios.get(apiUrl + '/FiltarCitabyUsuario',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2,Estado:pEstado,IdentificacionUsuario:p_IdentificacionUsuario}} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+  }else{
   await  axios.get(apiUrl + '/FiltarCita',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2,Estado:pEstado}} , {
     responseType: 'json'
   }).then((res)=>{
@@ -24,7 +34,7 @@ async function FiltrarCitas(pFecha1,pFecha2,pEstado){
   }).catch((err)=>{
     console.log(err);
   });
-
+  }
  return result;
   };
 
