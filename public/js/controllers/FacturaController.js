@@ -298,7 +298,7 @@ const showPagarFact = document.getElementById('btnMetodosPago');
 const modalPagoFact = document.querySelector('.form-pago-tarjetaFactura');
 const closeModalPagoFact = document.getElementById('btnCancelarPago');
 let cerrarModal = document.querySelector(".cerrarModalX-tarjetaPago")
-// const overlay = document.querySelector('.overlay');
+const overlay = document.querySelector('.overlay');
 showPagarFact.addEventListener('click', function() {
     ShowModalPagoFactFunct();
 });
