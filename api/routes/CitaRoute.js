@@ -141,6 +141,28 @@ router.get('/FiltarCita', (req, res) => {
     },).sort({$natural:-1}).limit(50);
 });
 
+router.get('/FiltarCitabyUsuario', (req, res) => {
+    let params = req.query;
+    
+    Cita.find({"Fecha":{"$gte" : params.fechaInicio,"$lte": params.fechaFinal},"Estado":{"$in" : params.Estado},
+    "IdentificacionUsuario":params.IdentificacionUsuario
+},(err, ListaCitasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                ListaCitasBD
+            });
+        }
+    },).sort({$natural:-1}).limit(50);
+});
+
 
 router.get('/AvgCalificacionMascota', (req, res) => {
     let params = req.query;

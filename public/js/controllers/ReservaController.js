@@ -151,6 +151,14 @@ function ImprimirListaReservas(ListaReservasBD) {
 
         let reserva = listaReservas[i];
 
+        if( propietario.Nombre.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        veterinario.Nombre.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        veterinario.Apellido.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        cita.NombreMascota.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        cita.NumeroCita.toString().includes(filtroCitas.toLowerCase()) 
+        )
+
+        if(true){
         let fila = tbody.insertRow();
 
         let celdaNumReserva = fila.insertCell();
@@ -219,7 +227,7 @@ function ImprimirListaReservas(ListaReservasBD) {
             celdaBoton.appendChild(BotonV);
         }
 
-
+    }
     }
     let EstadoCita = document.querySelectorAll('.Estado');
     VerEstado(EstadoCita);
