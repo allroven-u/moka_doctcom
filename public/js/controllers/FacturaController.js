@@ -50,6 +50,8 @@ async function GetlistaUsuarios() {
           
         }
     }
+
+
   }
 
   async function getListaTarjetas() {
