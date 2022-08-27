@@ -121,80 +121,9 @@
         <div class="home">
 
             <div class="Breadcrumbs">
-
-            </div>
-            <!-- Aqui se agrega el contenido de la pagina -->
-
-
-
-            <!--  -->
-            <!-------------CREAR CITA--------->
-            <div class="cuerpoCita hidden">
-                <form id="formCrearCita" class="formCita">
-                    <h1 class="titulo">Nueva Cita</h1>
-                    <select class="cajas select" id="selectMascotaCita" onblur="AsignarNombreOtro();">
-                        <option value="">------Seleccionar mascota------</option>
-                    </select>
-
-                    <div id="NombreOtro">
-
-                    </div>
-
-                    <input class="cajas" id="txtFecha" type="datetime-local" value="" />
-
-                    <select class="cajas select" id="selectVeterinario">
-                        <option value="">------Seleccionar Veterinario------</option>
-                        
-                    </select>
-
-                    <textarea class="cajas" name="Dirección" id="txtDireccion" cols="30" rows="5" placeholder="Descripción de la Cita*"></textarea>
-[]
-
-
-
-                    <div class="btnsC">
-                        <input type="button" class="btnCancelarC" value="Cancelar">
-
-                        <input type="button" id="btnIniciar" class="btnC" value="Crear Cita">
-                    </div>
-
-                </form>
-
+                <img class="imagesize" src="../public/assets/img/MOKA Logo.png" alt="">
             </div>
 
-            <!---------------CREAR RESERVACION------------------------>
-            <div class="cuerpoReserva hidden">
-                <form id="formCrearReserva" class="formReserva">
-                    <h1 class="titulo">Nueva Reservación</h1>
-
-                    <select class="cajas select" id="selectMacota">
-                        <option value="">------Seleccionar mascota------</option>
-
-                    </select>
-                    <div>
-                        <label for="dateCheckIn">Fecha de ingreso</label>
-                        <input class="cajas" id="dateCheckIn" type="datetime-local" value="" />
-                    </div>
-
-                    <div>
-                        <label for="dateCheckOut">Fecha de Salida</label>
-                        <input class="cajas" id="dateCheckOut" type="datetime-local" value="" />
-                    </div>
-
-
-
-                    <textarea class="cajas" name="Dirección" id="txtCuidadosEsp" cols="30" rows="5" placeholder="Cuidados Especiales*"></textarea>
-
-
-
-                    <div class="btnsR">
-                        <input type="button" class="btnCancelarR" value="Cancelar">
-
-                        <input type="button" id="btnReserva" class="btnR" value="Crear Reserva">
-                    </div>
-
-                </form>
-            </div>
 
         </div>
 
