@@ -34,7 +34,7 @@ async function GetListaReservas() {
     let result= {};
     switch (userSessionR.Rol) {
         case 2:
-          result = await getCitasUsuario(userSessionR.Identificacion);
+          result = await getReservasUsuario(userSessionR.Identificacion);
           break;
         default:
           result =  await getReservasArray();
@@ -69,7 +69,7 @@ async function FiltarListaReservas(pFecha1, pFecha2) {
     ArrayEstados.push(checkCancelada.value);
   }
  
-  let result = await FiltrarReservas(fechaStart, fechaEnd,ArrayEstados);
+  let result = await FiltrarReservas(fechaStart, fechaEnd,ArrayEstados,userSessionR.Identificacion,userSessionR.Rol);
   if (result != {} && result.resultado == true) {
     ImprimirListaReservas(result.ListaReservasBD);
   }
@@ -80,7 +80,7 @@ async function FiltarListaReservas(pFecha1, pFecha2) {
     FiltarListaReservas(fechaInicio.value, fechaFinal.value);
   });
 
-function ImprimirListaReservas(ListaReservasBD) {
+async function ImprimirListaReservas(ListaReservasBD) {
 
     let tThead = document.getElementById('tTheadReservas');
     let tbody = document.getElementById('tBodyReservas');
@@ -88,15 +88,15 @@ function ImprimirListaReservas(ListaReservasBD) {
 
     tbody.innerHTML = '';
     tThead.innerHTML = '';
-
+    let filtroReservas = inputFiltro.value;
     // thead
     let thRow = tThead.insertRow();
 
     let celNumCita = thRow.insertCell();
     celNumCita.innerHTML = 'Num. Reserva';
 
-    // let celPropietario = thRow.insertCell();
-    // celPropietario.innerHTML = 'Propietario';
+     let celPropietario = thRow.insertCell();
+     celPropietario.innerHTML = 'Propietario';
 
     let celMascota = thRow.insertCell();
     celMascota.innerHTML = 'Mascota';
@@ -132,38 +132,49 @@ function ImprimirListaReservas(ListaReservasBD) {
     }
 
 
-    function compare_numCita(a, b) {
-        if (a.celNumCita < b.celNumCita) {
-            return -1;
-        }
-        if (a.celNumCita > b.celNumCita) {
-            return 1;
-        }
-        return 0;
-    }
+    // function compare_numCita(a, b) {
+    //     if (a.celNumCita < b.celNumCita) {
+    //         return -1;
+    //     }
+    //     if (a.celNumCita > b.celNumCita) {
+    //         return 1;
+    //     }
+    //     return 0;
+    // }
 
-    listaReservas.sort(compare_numCita);
-    listaReservas.reverse()
+    // listaReservas.sort(compare_numCita);
+    // listaReservas.reverse()
 
 
     for (let i = 0; i < listaReservas.length; i++) {
 
-
+        let propietario;
         let reserva = listaReservas[i];
 
-        if( propietario.Nombre.toLowerCase().includes(filtroCitas.toLowerCase()) ||
-        veterinario.Nombre.toLowerCase().includes(filtroCitas.toLowerCase()) ||
-        veterinario.Apellido.toLowerCase().includes(filtroCitas.toLowerCase()) ||
-        cita.NombreMascota.toLowerCase().includes(filtroCitas.toLowerCase()) ||
-        cita.NumeroCita.toString().includes(filtroCitas.toLowerCase()) 
-        )
+        let resultUsuario = await buscaUsuarioID(reserva.IdentificacionUsuario);
+        if (resultUsuario != {} && resultUsuario.resultado == true) {
+          propietario = resultUsuario.usuarioDB;
+        }
 
-        if(true){
+        // if( propietario.Nombre.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        // veterinario.Nombre.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        // veterinario.Apellido.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        // cita.NombreMascota.toLowerCase().includes(filtroCitas.toLowerCase()) ||
+        // cita.NumeroCita.toString().includes(filtroCitas.toLowerCase()) 
+        // )
+
+        if(propietario.Nombre.toLowerCase().includes(filtroReservas.toLowerCase()) ||
+            propietario.Apellido.toLowerCase().includes(filtroReservas.toLowerCase()) ||
+            reserva.NombreMascota.toLowerCase().includes(filtroReservas.toLowerCase()) ||
+            reserva.NumeroReservacion.toString().includes(filtroReservas.toLowerCase())
+        ){
         let fila = tbody.insertRow();
 
         let celdaNumReserva = fila.insertCell();
         celdaNumReserva.innerHTML = reserva.NumeroReservacion;
 
+        let celdaPropietario = fila.insertCell();
+        celdaPropietario.innerHTML = propietario.Nombre + ' '+ propietario.Apellido;
 
         let celdaMascota = fila.insertCell();
         celdaMascota.innerHTML = reserva.NombreMascota;

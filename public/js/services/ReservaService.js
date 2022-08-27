@@ -36,9 +36,19 @@ async function getReservasUsuario(pIdentificacionUsuario){
 //   return reservaArray;
 //   };
 
-  async function FiltrarReservas(pFecha1,pFecha2,pEstado){
+  async function FiltrarReservas(pFecha1,pFecha2,pEstado,pIdentificacionUsuario,pRol){
+    console.log(pRol);
     let result = {};
-   
+   if(pRol == 2){
+    await  axios.get(apiUrl + '/FiltarReservaByusuario',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2,Estado:pEstado,
+      IdentificacionUsuario:pIdentificacionUsuario}} , {
+      responseType: 'json'
+    }).then((res)=>{
+      result = res.data
+    }).catch((err)=>{
+      console.log(err);
+    });
+   }else{
     await  axios.get(apiUrl + '/FiltarReserva',{params: { fechaInicio: pFecha1 ,fechaFinal: pFecha2,Estado:pEstado}} , {
       responseType: 'json'
     }).then((res)=>{
@@ -46,10 +56,11 @@ async function getReservasUsuario(pIdentificacionUsuario){
     }).catch((err)=>{
       console.log(err);
     });
-  
+   }
    return result;
     };
   
+    
 
 
   async function UltimaReserva(){
