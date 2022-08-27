@@ -139,19 +139,19 @@ async function ImprimirListaCitas(ListaCitasBD) {
     let veterinario;
     let propietario;
 
-    if ((userSessionC.Rol != 2 )) {
-      let result = await buscaUsuarioID(cita.IdentificacionUsuario);
-      if (result != {} && result.resultado == true) {
-        propietario = result.usuarioDB;
+    //if ((userSessionC.Rol != 2 )) {
+      let resultUusario = await buscaUsuarioID(cita.IdentificacionUsuario);
+      if (resultUusario != {} && resultUusario.resultado == true) {
+        propietario = resultUusario.usuarioDB;
       }
-    }
+    //}
 
-    if ((userSessionC.Rol != 3)) {
-      let result = await buscaUsuarioID(cita.IdentificacionVeterinario);
-      if (result != {} && result.resultado == true) {
-        veterinario = result.usuarioDB;
+    //if ((userSessionC.Rol != 3)) {
+      let resultPropietario = await buscaUsuarioID(cita.IdentificacionVeterinario);
+      if (resultPropietario != {} && resultPropietario.resultado == true) {
+        veterinario = resultPropietario.usuarioDB;
       }
-    }
+    //}
    
     // console.log(filtroCitas);
     // console.log(propietario.Nombre.toLowerCase().includes(filtroCitas.toLowerCase()));
