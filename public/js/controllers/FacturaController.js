@@ -160,6 +160,25 @@ async function GetListaTarjetas() {
                     opcion.text = tarjetas[i].NumeroTarjeta;
                     select.appendChild(opcion);
                     console.log(opcion.value);
+                    select.addEventListener('change', function(){
+                        let opcionSeleccionada =  select.options[select.selectedIndex].text;
+                        if(opcionSeleccionada === tarjetas[i].NumeroTarjeta){
+                            inputNumTarjetaPago.value = tarjetas[i].NumeroTarjeta;
+                            inputNombreTitularPago.value = tarjetas[i].NombreTarjetahabiente
+                            inputNumCVVPago.value = tarjetas[i].CVV;
+
+                        }else if( select.options[select.selectedIndex].text === '-------Selecionar tarjeta-------'){
+                            inputNumTarjetaPago.value = "";
+                            inputNombreTitularPago.value = "";
+                            inputNumCVVPago.value = "";
+                        }
+                    })
+                   
+                }
+
+              
+                for (let i = 0; i < tarjetas.length; i++){
+                  
                 }
 
             }
